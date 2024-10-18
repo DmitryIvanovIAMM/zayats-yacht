@@ -8,7 +8,6 @@ const primary = {
   contrastText: "#fff",
 };
 
-const defaultTheme = createTheme();
 const customTheme = createTheme({
   palette: {
     primary: primary,

@@ -11,7 +11,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Zayats-Yacht",
-  description: "Refactored Allied-Yacht Transport application",
+  description: "Refactored Allied-Yacht application",
 };
 
 export default function RootLayout({

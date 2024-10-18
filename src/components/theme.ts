@@ -29,7 +29,7 @@ const customTheme = createTheme({
       minHeight: 48,
     },
   },
-  overrides: {
+  /*overrides: {
     MuiDrawer: {
       paper: {
         backgroundColor: "#12243b",
@@ -114,8 +114,8 @@ const customTheme = createTheme({
         width: 32,
         height: 32,
       },
-    },
-  },
+    }
+  }*/
 });
 
 export { customTheme };

@@ -23,6 +23,27 @@ import {
 import { menuLinks } from "@/app/helpers/menuLinks";
 
 const drawerWidth = 240;
+const leftNavigationSx = {
+  textAlign: "center",
+  paddingLeft: "10px",
+  paddingRight: "10px",
+  backgroundColor: "#0A2A3B",
+};
+const dividerStyle = {
+  border: "none",
+  color: "#00b39e",
+  backgroundColor: "#00b39e",
+  height: "1px",
+};
+const menuItemSx = {
+  textAlign: "left",
+  color: "white",
+  fontWeight: "600",
+  fontSize: "14px",
+  textTransform: "uppercase",
+  paddingLeft: "0px",
+  paddingRight: "0px",
+};
 
 export interface NavbarProps {
   isAuthenticated: boolean;
@@ -55,64 +76,24 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   };
 
   const drawer = (
-    <Box
-      onClick={handleDrawerToggle}
-      sx={{
-        textAlign: "center",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        backgroundColor: "#0A2A3B",
-      }}
-    >
+    <Box onClick={handleDrawerToggle} sx={leftNavigationSx}>
       <Typography
         variant="h6"
-        sx={{
-          my: 2,
-          textAlign: "center",
-          color: "white",
-          fontWeight: "600",
-          fontSize: "14px",
-          textTransform: "uppercase",
-          //fontFamily: "Montserrat",
-        }}
+        sx={{ ...menuItemSx, my: 2, textAlign: "center" }}
       >
         Zayats-Yacht Transport
       </Typography>
-      <hr
-        style={{
-          border: "none",
-          color: "#00b39e",
-          backgroundColor: "#00b39e",
-          height: "1px",
-          marginTop: "35px",
-        }}
-      ></hr>
+      <hr style={{ ...dividerStyle, marginTop: "35px" }}></hr>
       <Divider />
       <List>
         {menuLinks.map((item) => (
           <div key={item.label}>
             <ListItem disablePadding>
-              <ListItemButton
-                sx={{
-                  textAlign: "left",
-                  color: "white",
-                  fontWeight: "600",
-                  fontSize: "14px",
-                  textTransform: "uppercase",
-                  //fontFamily: "Montserrat",
-                }}
-              >
+              <ListItemButton sx={menuItemSx}>
                 <ListItemText primary={item.label} />
               </ListItemButton>
             </ListItem>
-            <hr
-              style={{
-                border: "none",
-                color: "#00b39e",
-                backgroundColor: "#00b39e",
-                height: "1px",
-              }}
-            ></hr>
+            <hr style={dividerStyle}></hr>
           </div>
         ))}
       </List>

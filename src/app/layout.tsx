@@ -15,8 +15,6 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
 });
-console.log("montserrat: ", montserrat);
-console.log("montserrat.className: ", montserrat.className);
 
 export default function RootLayout({
   children,

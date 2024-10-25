@@ -57,24 +57,67 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
-      sx={{ textAlign: "center", paddingLeft: "10px", paddingRight: "10[x" }}
+      sx={{
+        textAlign: "center",
+        paddingLeft: "10px",
+        paddingRight: "10px",
+        backgroundColor: "#0A2A3B",
+      }}
     >
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography
+        variant="h6"
+        sx={{
+          my: 2,
+          textAlign: "center",
+          color: "white",
+          fontWeight: "600",
+          fontSize: "14px",
+          textTransform: "uppercase",
+          //fontFamily: "Montserrat",
+        }}
+      >
         Zayats-Yacht Transport
       </Typography>
+      <hr
+        style={{
+          border: "none",
+          color: "#00b39e",
+          backgroundColor: "#00b39e",
+          height: "1px",
+          marginTop: "35px",
+        }}
+      ></hr>
       <Divider />
       <List>
         {menuLinks.map((item) => (
-          <ListItem key={item.label} disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
+          <div key={item.label}>
+            <ListItem disablePadding>
+              <ListItemButton
+                sx={{
+                  textAlign: "left",
+                  color: "white",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  textTransform: "uppercase",
+                  //fontFamily: "Montserrat",
+                }}
+              >
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+            <hr
+              style={{
+                border: "none",
+                color: "#00b39e",
+                backgroundColor: "#00b39e",
+                height: "1px",
+              }}
+            ></hr>
+          </div>
         ))}
       </List>
     </Box>
   );
-
   const container = undefined;
 
   return (
@@ -100,6 +143,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 width={105} // 81 125
                 height={71} //58 90*/
                 alt="Allied-Yat logo"
+                priority={true}
               />
             </Box>
 
@@ -123,6 +167,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              height: "auto",
             },
             opacity: 0.9,
           }}

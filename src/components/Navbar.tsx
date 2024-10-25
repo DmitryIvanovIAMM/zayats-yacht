@@ -23,6 +23,27 @@ import {
 import { menuLinks } from "@/app/helpers/menuLinks";
 
 const drawerWidth = 240;
+const leftNavigationSx = {
+  textAlign: "center",
+  paddingLeft: "10px",
+  paddingRight: "10px",
+  backgroundColor: "#0A2A3B",
+};
+const dividerStyle = {
+  border: "none",
+  color: "#00b39e",
+  backgroundColor: "#00b39e",
+  height: "1px",
+};
+const menuItemSx = {
+  textAlign: "left",
+  color: "white",
+  fontWeight: "600",
+  fontSize: "14px",
+  textTransform: "uppercase",
+  paddingLeft: "0px",
+  paddingRight: "0px",
+};
 
 export interface NavbarProps {
   isAuthenticated: boolean;
@@ -55,26 +76,29 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   };
 
   const drawer = (
-    <Box
-      onClick={handleDrawerToggle}
-      sx={{ textAlign: "center", paddingLeft: "10px", paddingRight: "10[x" }}
-    >
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box onClick={handleDrawerToggle} sx={leftNavigationSx}>
+      <Typography
+        variant="h6"
+        sx={{ ...menuItemSx, my: 2, textAlign: "center" }}
+      >
         Zayats-Yacht Transport
       </Typography>
+      <hr style={{ ...dividerStyle, marginTop: "35px" }}></hr>
       <Divider />
       <List>
         {menuLinks.map((item) => (
-          <ListItem key={item.label} disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
+          <div key={item.label}>
+            <ListItem disablePadding>
+              <ListItemButton sx={menuItemSx}>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+            <hr style={dividerStyle}></hr>
+          </div>
         ))}
       </List>
     </Box>
   );
-
   const container = undefined;
 
   return (
@@ -100,6 +124,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 width={105} // 81 125
                 height={71} //58 90*/
                 alt="Allied-Yat logo"
+                priority={true}
               />
             </Box>
 
@@ -123,6 +148,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              height: "auto",
             },
             opacity: 0.9,
           }}

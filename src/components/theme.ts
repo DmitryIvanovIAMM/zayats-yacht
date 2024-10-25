@@ -12,9 +12,9 @@ const customTheme = createTheme({
   palette: {
     primary: primary,
   },
-  typography: {
+  /*typography: {
     fontFamily: "Montserrat",
-  },
+  },*/
   shape: {
     borderRadius: 8,
   },

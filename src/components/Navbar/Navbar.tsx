@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import Image from "next/image";
-import logoImage from "../assets/images/allied_yacht_vertical_png_120.png";
+import logoImage from "../../assets/images/allied_yacht_vertical_png_120.png";
 import {
   Divider,
   Drawer,
@@ -67,12 +67,10 @@ function HideOnScroll(props: NavbarProps) {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
-  const { isAuthenticated } = props;
-  console.log("Navbar().  isAuthenticated: ", isAuthenticated);
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
+    setMenuOpen((prevState) => !prevState);
   };
 
   const drawer = (
@@ -114,6 +112,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 aria-haspopup="true"
                 onClick={handleDrawerToggle}
                 color="inherit"
+                data-testid="left-menu-button"
               >
                 <MenuIcon />
               </IconButton>
@@ -123,7 +122,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 src={logoImage}
                 width={105} // 81 125
                 height={71} //58 90*/
-                alt="Allied-Yat logo"
+                alt="Allied-Yacht logo"
                 priority={true}
               />
             </Box>
@@ -138,7 +137,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
         <Drawer
           container={container}
           variant="temporary"
-          open={mobileOpen}
+          open={menuOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.

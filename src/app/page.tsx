@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./page.module.css";
 import CopyrightFooter from "@/components/CopyrightFooter";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   return (

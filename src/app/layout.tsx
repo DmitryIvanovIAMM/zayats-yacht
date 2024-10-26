@@ -1,9 +1,9 @@
+import React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@mui/system";
 import { customTheme } from "@/components/theme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import React from "react";
 import { Montserrat } from "next/font/google";
 
 export const metadata: Metadata = {

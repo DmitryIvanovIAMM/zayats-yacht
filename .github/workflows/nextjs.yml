@@ -67,4 +67,4 @@ jobs:
       - name: Build with Next.js
         run: npm run build
       - name: Run Jest tests
-        run: npm tun test
+        run: npm run test

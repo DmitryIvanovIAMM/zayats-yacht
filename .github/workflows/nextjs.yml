@@ -3,6 +3,7 @@
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
 # Code started from: https://gist.github.com/alexng353/80f4457738b9f312f18ed6f5772ffeac
+# Continued with: https://dev.to/afraz33/automating-testing-in-nextjs-ensuring-code-integrity-with-jest-and-github-actions-3bbe
 name: Check NextJs build
 
 on:

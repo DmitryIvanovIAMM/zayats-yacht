@@ -5,6 +5,26 @@
     "next/typescript",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "env": {
+        "node": true
+      },
+      "parserOptions": {},
+      "rules": {
+        // suppress errors for missing 'import React' in files
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "no-console": "error",
+        "@typescript-eslint/no-restricted-types": "error"
+      },
+      "plugins": ["unused-imports"]
+    }
   ]
 }

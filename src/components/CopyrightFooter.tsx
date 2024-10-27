@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const PROJECT_START_YEAR = 2024;
 
@@ -6,27 +6,27 @@ const CopyrightFooter: React.FC = () => {
   return (
     <div
       style={{
-        position: "absolute",
+        position: 'absolute',
         bottom: 0,
         width: `${100}%`,
-        backgroundColor: "#0A2A3B",
-        color: "white",
-        textAlign: "center",
-        padding: "7px 0",
+        backgroundColor: '#0A2A3B',
+        color: 'white',
+        textAlign: 'center',
+        padding: '7px 0'
       }}
     >
-      {"\u00A9"}Allied Yacht Transport,{" "}
+      {'\u00A9'}Allied Yacht Transport,{' '}
       {new Date().getFullYear() > PROJECT_START_YEAR
         ? `${PROJECT_START_YEAR} - ${new Date().getFullYear()}`
         : `${new Date().getFullYear()}`}
-      {process.env.NODE_ENV === "production" ? "" : `,${"\u00A0\u00A0"}v1.01`}
+      {process.env.NODE_ENV === 'production' ? '' : `,${'\u00A0\u00A0'}v1.01`}
       <br />
       <div>
         <a
           href="https://allied-yacht.com/privacy-policy"
           style={{
-            color: "white",
-            textDecoration: "none",
+            color: 'white',
+            textDecoration: 'none'
           }}
         >
           Privacy Policy

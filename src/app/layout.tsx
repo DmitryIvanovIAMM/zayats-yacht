@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/system";
 import { customTheme } from "@/components/theme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Montserrat } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Zayats-Yacht",
@@ -27,6 +28,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={customTheme}>{children}</ThemeProvider>
         </AppRouterCacheProvider>
+        <SpeedInsights />
       </body>
     </html>
   );

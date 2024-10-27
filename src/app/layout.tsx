@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "@mui/system";
 import { customTheme } from "@/components/theme";
@@ -27,6 +28,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={customTheme}>{children}</ThemeProvider>
         </AppRouterCacheProvider>
+        <SpeedInsights />
       </body>
     </html>
   );

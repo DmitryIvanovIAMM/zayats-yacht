@@ -10,6 +10,13 @@
     min-height: 100svh;
     padding: 0px;
 }
+
+.main {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0
+}
 /*@media (max-width: 600px) {
     .page {
         grid-template-rows: 62px 1fr 55px;

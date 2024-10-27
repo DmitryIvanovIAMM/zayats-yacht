@@ -5,10 +5,7 @@ const sectionTitleSx = {
   sectionTitle: {
     textTransform: "uppercase",
     color: "#0A2A3B",
-    fontSize: "48px",
-    /*[theme.breakpoints.down("xs")]: {
-      fontSize: "36px",
-    },*/
+    fontSize: { xs: "36px", md: "48px" },
   },
 };
 

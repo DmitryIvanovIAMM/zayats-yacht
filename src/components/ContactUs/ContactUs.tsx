@@ -5,7 +5,7 @@ export interface ContactUsProps {
   title: string;
 }
 
-const ContactUs: FC<ContactUsProps> = ({}) => {
+const ContactUs: FC<ContactUsProps> = () => {
   return <SectionTitle title="Contuct Us" />;
 };
 

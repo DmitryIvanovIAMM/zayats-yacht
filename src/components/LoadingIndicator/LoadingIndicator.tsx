@@ -1,7 +1,8 @@
 const loadingIndicatorStyle = {
-  display: "flex",
-  justifyItems: "center",
+  display: 'flex',
+  justifyItems: 'center'
 };
-const LoadingIndicator = () => {
-  return <div></div>;
+
+export const LoadingIndicator = () => {
+  return <div style={loadingIndicatorStyle}></div>;
 };

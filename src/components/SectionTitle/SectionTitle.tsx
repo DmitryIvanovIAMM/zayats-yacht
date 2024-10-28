@@ -1,12 +1,10 @@
-import { FC } from "react";
-import { Typography } from "@mui/material";
+import { FC } from 'react';
+import { Typography } from '@mui/material';
 
 const sectionTitleSx = {
-  sectionTitle: {
-    textTransform: "uppercase",
-    color: "#0A2A3B",
-    fontSize: { xs: "36px", md: "48px" },
-  },
+  textTransform: 'uppercase',
+  color: 'secondary.dark',
+  fontSize: { xs: '36px', md: '48px' }
 };
 
 export interface SectionTitleProps {

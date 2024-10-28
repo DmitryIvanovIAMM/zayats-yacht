@@ -1,22 +1,17 @@
-"use client";
-import { createTheme } from "@mui/material/styles";
+'use client';
+import { createTheme } from '@mui/material/styles';
+import { primary, secondary } from './colors';
 
-const primary = {
-  light: "#769fd5",
-  main: "#3c76c3",
-  dark: "#3365A7",
-  contrastText: "#fff",
-};
-
-const customTheme = createTheme({
+export const customTheme = createTheme({
   palette: {
     primary: primary,
+    secondary: secondary
   },
   /*typography: {
     fontFamily: "Montserrat",
   },*/
   shape: {
-    borderRadius: 8,
+    borderRadius: 8
   },
   /*props: {
     MuiTab: {
@@ -25,9 +20,9 @@ const customTheme = createTheme({
   },*/
   mixins: {
     toolbar: {
-      minHeight: 48,
-    },
-  },
+      minHeight: 48
+    }
+  }
   /*overrides: {
     MuiDrawer: {
       paper: {
@@ -116,5 +111,3 @@ const customTheme = createTheme({
     }
   }*/
 });
-
-export { customTheme };

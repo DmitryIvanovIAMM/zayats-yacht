@@ -1,5 +1,40 @@
 import React, { FC } from 'react';
-import { Grid2, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+
+const contactUsContainerSx = {
+  display: 'flex',
+  justifyContent: 'start',
+  justifyItems: 'start',
+  flexDirection: 'row',
+  alignItems: {
+    xs: 'center',
+    sm: 'start'
+  }
+};
+const iconContainerStyle = {
+  background: '#fff',
+  boxShadow: '0px 2px 20px rgba(51, 101, 167, 0.18)',
+  borderRadius: '50%',
+  minWidth: '67px',
+  maxWidth: '67px',
+  height: '67px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: '20px'
+};
+const titleContainerSx = {
+  textTransform: 'uppercase',
+  //color: '#333333',
+  //color: '#006600',
+  fontWeight: '550',
+  fontSize: '18px',
+  lineHeight: '22px',
+  alignItems: 'start',
+  verticalAlign: 'top'
+};
 
 export interface ContactUsColumnProps {
   title: string;
@@ -7,44 +42,24 @@ export interface ContactUsColumnProps {
   children: React.ReactNode;
 }
 
-const ContactUsColumn: FC<ContactUsColumnProps> = ({ children, title, icon = 'icon' }) => {
+const ContactUsColumn: FC<ContactUsColumnProps> = ({
+  children,
+  title,
+  icon: Icon = LocationOnIcon
+}) => {
   return (
-    <Grid2 container spacing={3} alignContent="flex-start" style={{ margin: 20 }}>
-      <Grid2 xs={12} sm={12} md={12} lg={12}>
-        <div
-          style={{
-            background: '#fff',
-            boxShadow: '0px 2px 20px rgba(51, 101, 167, 0.18)',
-            borderRadius: '50%',
-            minWidth: '67px',
-            maxWidth: '67px',
-            height: '67px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          {icon}
-        </div>
-      </Grid2>
-      <Grid2 xs={12} sm={12} md={12} lg={12} style={{ paddingTop: 0 }}>
-        <Typography
-          variant="h6"
-          component="h6"
-          style={{
-            textTransform: 'uppercase',
-            color: '#333333',
-            fontWeight: '550',
-            fontSize: '18px',
-            lineHeight: '22px'
-          }}
-        >
+    <Box sx={contactUsContainerSx}>
+      <div style={iconContainerStyle}>
+        <Icon fontSize="large" />
+      </div>
+      <div style={{ alignItems: 'start' }}>
+        <Typography variant="h6" component="h6" sx={titleContainerSx}>
           <br />
           {title}
         </Typography>
         {children}
-      </Grid2>
-    </Grid2>
+      </div>
+    </Box>
   );
 };
 

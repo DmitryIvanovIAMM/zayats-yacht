@@ -6,13 +6,12 @@ const CopyrightFooter: React.FC = () => {
   return (
     <div
       style={{
-        position: 'absolute',
-        bottom: 0,
-        width: `${100}%`,
+        width: `100%`,
         backgroundColor: '#0A2A3B',
         color: 'white',
         textAlign: 'center',
-        padding: '7px 0'
+        padding: '9px 0',
+        marginTop: '25px'
       }}
     >
       {'\u00A9'}Allied Yacht Transport,{' '}

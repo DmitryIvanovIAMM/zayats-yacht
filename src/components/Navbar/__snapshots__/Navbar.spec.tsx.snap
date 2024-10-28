@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar component should render a non-empty Link for non-empty input 1`] = `
+exports[`Navbar component should render correctly 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>

@@ -14,7 +14,8 @@ const contactUsContainerSx = {
   width: '100%',
   justifyContent: 'center',
   marginLeft: '20px',
-  marginRight: '20px'
+  marginRight: '20px',
+  marginTop: '20px'
 };
 const contactUsDataSx = {
   display: 'flex',

@@ -8,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Image from 'next/image';
 import logoImage from '../../assets/images/allied_yacht_vertical_png_120.png';
 import {
@@ -24,7 +23,8 @@ import {
   Slide,
   useScrollTrigger
 } from '@mui/material';
-import { menuLinks } from '@/app/helpers/menuLinks';
+import { menuLinks } from '../../app/helpers/menuLinks';
+import ScrollToTopFab from './ScrollToTopFab';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -196,11 +196,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
           {drawer}
         </Drawer>
       </nav>
-      <ScrollTop {...props}>
-        <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
+      <ScrollToTopFab />
     </div>
   );
 };

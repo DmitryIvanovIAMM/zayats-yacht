@@ -1,53 +1,94 @@
-"use client";
+'use client';
 
-import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import MenuIcon from "@mui/icons-material/Menu";
-import Button from "@mui/material/Button";
-import Image from "next/image";
-import logoImage from "../../assets/images/allied_yacht_vertical_png_120.png";
+import React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Image from 'next/image';
+import logoImage from '../../assets/images/allied_yacht_vertical_png_120.png';
 import {
+  CssBaseline,
   Divider,
   Drawer,
+  Fab,
+  Fade,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
   Slide,
-  useScrollTrigger,
-} from "@mui/material";
-import { menuLinks } from "@/app/helpers/menuLinks";
+  useScrollTrigger
+} from '@mui/material';
+import { menuLinks } from '@/app/helpers/menuLinks';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
-  textAlign: "center",
-  paddingLeft: "10px",
-  paddingRight: "10px",
-  backgroundColor: "#0A2A3B",
+  textAlign: 'center',
+  paddingLeft: '10px',
+  paddingRight: '10px',
+  backgroundColor: '#0A2A3B'
 };
 const dividerStyle = {
-  border: "none",
-  color: "#00b39e",
-  backgroundColor: "#00b39e",
-  height: "1px",
+  border: 'none',
+  color: '#00b39e',
+  backgroundColor: '#00b39e',
+  height: '1px'
 };
 const menuItemSx = {
-  textAlign: "left",
-  color: "white",
-  fontWeight: "600",
-  fontSize: "14px",
-  textTransform: "uppercase",
-  paddingLeft: "0px",
-  paddingRight: "0px",
+  textAlign: 'left',
+  color: 'white',
+  fontWeight: '600',
+  fontSize: '14px',
+  textTransform: 'uppercase',
+  paddingLeft: '0px',
+  paddingRight: '0px'
 };
 
 export interface NavbarProps {
   isAuthenticated: boolean;
   children?: React.ReactElement<unknown>;
+}
+
+function ScrollTop({ children }) {
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    target: undefined,
+    disableHysteresis: true,
+    threshold: 100
+  });
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const anchor = ((event.target as HTMLDivElement).ownerDocument || document).querySelector(
+      '#back-to-top-anchor'
+    );
+    console.log('handleClick().  anchor: ', anchor);
+
+    if (anchor) {
+      console.log('scrollIntoView()');
+      anchor.scrollIntoView({
+        block: 'center'
+      });
+    }
+  };
+
+  return (
+    <Fade in={trigger}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        //sx={{ position: 'fixed', bottom: 16, right: 16 }}
+      >
+        {children}
+      </Box>
+    </Fade>
+  );
 }
 
 function HideOnScroll(props: NavbarProps) {
@@ -56,7 +97,7 @@ function HideOnScroll(props: NavbarProps) {
   // will default to window.
   // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
-    target: undefined,
+    target: undefined
   });
 
   return (
@@ -75,13 +116,10 @@ const Navbar: React.FC<NavbarProps> = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={leftNavigationSx}>
-      <Typography
-        variant="h6"
-        sx={{ ...menuItemSx, my: 2, textAlign: "center" }}
-      >
+      <Typography variant="h6" sx={{ ...menuItemSx, my: 2, textAlign: 'center' }}>
         Zayats-Yacht Transport
       </Typography>
-      <hr style={{ ...dividerStyle, marginTop: "35px" }}></hr>
+      <hr style={{ ...dividerStyle, marginTop: '35px' }}></hr>
       <Divider />
       <List>
         {menuLinks.map((item) => (
@@ -100,38 +138,41 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const container = undefined;
 
   return (
-    <>
+    <div>
+      <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar sx={{ backgroundColor: "white", color: "blue" }}>
-          <Toolbar>
-            <Box sx={{ flexGrow: 1 }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleDrawerToggle}
-                color="inherit"
-                data-testid="left-menu-button"
-              >
-                <MenuIcon />
-              </IconButton>
-            </Box>
-            <Box sx={{ flexGrow: 1 }}>
-              <Image
-                src={logoImage}
-                width={105} // 81 125
-                height={71} //58 90*/
-                alt="Allied-Yacht logo"
-                priority={true}
-              />
-            </Box>
+        <>
+          <AppBar sx={{ backgroundColor: 'white', color: 'blue' }}>
+            <Toolbar>
+              <Box sx={{ flexGrow: 1 }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleDrawerToggle}
+                  color="inherit"
+                  data-testid="left-menu-button"
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Box>
+              <Box sx={{ flexGrow: 1 }}>
+                <Image
+                  src={logoImage}
+                  width={105} // 81 125
+                  height={71} //58 90*/
+                  alt="Allied-Yacht logo"
+                  priority={true}
+                />
+              </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <Button>Sign In</Button>
-            </Box>
-          </Toolbar>
-        </AppBar>
+              <Box sx={{ flexGrow: 0 }}>
+                <Button>Sign In</Button>
+              </Box>
+            </Toolbar>
+          </AppBar>
+        </>
       </HideOnScroll>
       <nav>
         <Drawer
@@ -140,22 +181,27 @@ const Navbar: React.FC<NavbarProps> = (props) => {
           open={menuOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
+            display: { xs: 'block' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
               width: drawerWidth,
-              height: "auto",
+              height: 'auto'
             },
-            opacity: 0.9,
+            opacity: 0.9
           }}
         >
           {drawer}
         </Drawer>
       </nav>
-    </>
+      <ScrollTop {...props}>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
+    </div>
   );
 };
 export default Navbar;

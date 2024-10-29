@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Image from 'next/image';
 import logoImage from '../../assets/images/allied_yacht_vertical_png_120.png';
 import {
@@ -15,7 +16,6 @@ import {
   Divider,
   Drawer,
   Fab,
-  Fade,
   List,
   ListItem,
   ListItemButton,
@@ -24,7 +24,7 @@ import {
   useScrollTrigger
 } from '@mui/material';
 import { menuLinks } from '../../app/helpers/menuLinks';
-import ScrollToTopFab from './ScrollToTopFab';
+import ScrollToTop from './ScrollToTop';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -52,43 +52,6 @@ const menuItemSx = {
 export interface NavbarProps {
   isAuthenticated: boolean;
   children?: React.ReactElement<unknown>;
-}
-
-function ScrollTop({ children }) {
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-  const trigger = useScrollTrigger({
-    target: undefined,
-    disableHysteresis: true,
-    threshold: 100
-  });
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const anchor = ((event.target as HTMLDivElement).ownerDocument || document).querySelector(
-      '#back-to-top-anchor'
-    );
-    console.log('handleClick().  anchor: ', anchor);
-
-    if (anchor) {
-      console.log('scrollIntoView()');
-      anchor.scrollIntoView({
-        block: 'center'
-      });
-    }
-  };
-
-  return (
-    <Fade in={trigger}>
-      <Box
-        onClick={handleClick}
-        role="presentation"
-        //sx={{ position: 'fixed', bottom: 16, right: 16 }}
-      >
-        {children}
-      </Box>
-    </Fade>
-  );
 }
 
 function HideOnScroll(props: NavbarProps) {
@@ -141,38 +104,36 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     <div>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <>
-          <AppBar sx={{ backgroundColor: 'white', color: 'blue' }}>
-            <Toolbar>
-              <Box sx={{ flexGrow: 1 }}>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleDrawerToggle}
-                  color="inherit"
-                  data-testid="left-menu-button"
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Box>
-              <Box sx={{ flexGrow: 1 }}>
-                <Image
-                  src={logoImage}
-                  width={105} // 81 125
-                  height={71} //58 90*/
-                  alt="Allied-Yacht logo"
-                  priority={true}
-                />
-              </Box>
+        <AppBar sx={{ backgroundColor: 'white', color: 'blue' }}>
+          <Toolbar>
+            <Box sx={{ flexGrow: 1 }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleDrawerToggle}
+                color="inherit"
+                data-testid="left-menu-button"
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+            <Box sx={{ flexGrow: 1 }}>
+              <Image
+                src={logoImage}
+                width={105} // 81 125
+                height={71} //58 90*/
+                alt="Allied-Yacht logo"
+                priority={true}
+              />
+            </Box>
 
-              <Box sx={{ flexGrow: 0 }}>
-                <Button>Sign In</Button>
-              </Box>
-            </Toolbar>
-          </AppBar>
-        </>
+            <Box sx={{ flexGrow: 0 }}>
+              <Button>Sign In</Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
       </HideOnScroll>
       <nav>
         <Drawer
@@ -196,7 +157,11 @@ const Navbar: React.FC<NavbarProps> = (props) => {
           {drawer}
         </Drawer>
       </nav>
-      <ScrollToTopFab />
+      <ScrollToTop>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollToTop>
     </div>
   );
 };

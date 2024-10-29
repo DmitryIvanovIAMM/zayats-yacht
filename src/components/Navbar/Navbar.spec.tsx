@@ -1,6 +1,6 @@
 import { act, render } from '@testing-library/react';
-import Navbar, { NavbarProps } from '@/components/Navbar/Navbar';
 import { menuLinks } from '@/app/helpers/menuLinks';
+import Navbar, { NavbarProps } from '@/components/Navbar/Navbar';
 
 const setup = async (propsOverride?: Partial<NavbarProps>) => {
   const props = {

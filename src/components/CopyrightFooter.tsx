@@ -14,7 +14,7 @@ const CopyrightFooter: React.FC = () => {
         marginTop: '20px'
       }}
     >
-      {'\u00A9'}Allied Yacht Transport,{' '}
+      {'\u00A9'} Allied Yacht Transport,{' '}
       {new Date().getFullYear() > PROJECT_START_YEAR
         ? `${PROJECT_START_YEAR} - ${new Date().getFullYear()}`
         : `${new Date().getFullYear()}`}

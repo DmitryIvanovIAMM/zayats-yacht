@@ -12,12 +12,19 @@ export const sectionContainerSx = {
   display: 'flex',
   justifyContent: 'center',
   flexDirection: 'column',
-  width: '100%',
   marginLeft: '20px',
   marginRight: '20px',
   marginTop: '40px',
   marginBottom: '20px',
   color: 'secondary.dark'
+};
+const contactUsSectionSx = {
+  ...sectionContainerSx,
+  marginLeft: '0px',
+  marginRight: '0px',
+  marginBottom: '0px',
+  backgroundColor: '#F7F8F9',
+  padding: '10px'
 };
 const contactUsDataSx = {
   display: 'flex',
@@ -39,7 +46,7 @@ const contactUsDataSx = {
 
 const ContactUs = () => {
   return (
-    <Box id="contact-us-section" sx={sectionContainerSx}>
+    <Box id="contact-us-section" sx={contactUsSectionSx}>
       <SectionTitle title="Contact Us" />
       <Box sx={contactUsDataSx}>
         <ContactUsColumn title="Address" icon={LocationOnIcon}>

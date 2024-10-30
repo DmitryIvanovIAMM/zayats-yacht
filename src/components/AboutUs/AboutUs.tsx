@@ -96,12 +96,6 @@ const AboutUs = () => {
           Explore. Transport. Discover. With Allied Yacht Transport.
         </span>
       </Box>
-      {/*<div style={{ paddingTop: '20px' }}>
-        <picture>
-          <source media="(max-width: 600px)" srcSet={'/images/aboutus_sm_360.jpg'} />
-          <Image src={aboutUs} alt="about-us-image" priority={true} />
-        </picture>
-      </div>*/}
       <div style={{ paddingTop: '20px', width: '100' }}>
         <picture>
           <source media="(max-width: 600px)" srcSet={'/images/aboutus_sm_360.jpg'} />
@@ -111,31 +105,8 @@ const AboutUs = () => {
             width="100%"
             style={{ width: '100%', height: 'auto' }}
           />
-          {/*<image src={aboutUs} alt="about-us-image" priority={true} />*/}
         </picture>
       </div>
-
-      {/*<Box>
-        <Image
-          src={aboutUs}
-          //width='100%'
-          //height={71} /
-          alt="about-us-image"
-          priority={true}
-        />
-        <Image
-          src={aboutUsSmall}
-          //width='100%'
-          //height={71} //58 90
-          alt="about-us-image"
-          priority={true}
-        />
-        {/*<img
-          style={{ width: '100%', height: 'auto' }}
-          //src={xsScreen ? '/assets/images/aboutUs_sm.jpg' : '/assets/images/aboutUs.jpg'}
-          alt="Allied Yacht Transport ship"
-        />
-      </Box>*/}
     </Box>
   );
 };

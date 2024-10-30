@@ -27,8 +27,6 @@ const iconContainerStyle = {
 };
 const titleContainerSx = {
   textTransform: 'uppercase',
-  //color: '#333333',
-  //color: '#006600',
   fontWeight: '550',
   fontSize: '18px',
   lineHeight: '22px',

@@ -21,7 +21,10 @@ export const sectionContainerSx = {
 };
 const contactUsDataSx = {
   display: 'flex',
-  marginTop: '30px',
+  marginTop: {
+    xs: '0px',
+    sm: '30px'
+  },
   justifyContent: 'space-around',
   alignItems: {
     xs: 'left',

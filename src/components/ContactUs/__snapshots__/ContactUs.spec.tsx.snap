@@ -16,7 +16,7 @@ exports[`ContactUs component should render correctly 1`] = `
           Contact Us
         </h4>
         <div
-          class="MuiBox-root css-1xvj1vx"
+          class="MuiBox-root css-xt539u"
         >
           <div
             class="MuiBox-root css-1oj1pdk"
@@ -162,7 +162,7 @@ exports[`ContactUs component should render correctly 1`] = `
         Contact Us
       </h4>
       <div
-        class="MuiBox-root css-1xvj1vx"
+        class="MuiBox-root css-xt539u"
       >
         <div
           class="MuiBox-root css-1oj1pdk"

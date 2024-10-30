@@ -36,8 +36,6 @@ const leftNavigationSx = {
 };
 const dividerStyle = {
   border: 'none',
-  //color: '#00b39e',
-  //backgroundColor: '#00b39e',
   color: secondary.main,
   backgroundColor: secondary.main,
   height: '1px'
@@ -122,7 +120,11 @@ const Navbar: React.FC<NavbarProps> = (props) => {
               >
                 <MenuIcon />
               </IconButton>
-              <Button variant={'contained'} sx={{ backgroundColor: 'secondary.dark' }}>
+              <Button
+                variant={'contained'}
+                sx={{ backgroundColor: 'secondary.dark' }}
+                size={'small'}
+              >
                 Get Quote
               </Button>
             </Box>
@@ -142,7 +144,11 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <Button variant={'contained'} sx={{ backgroundColor: 'secondary.dark' }}>
+              <Button
+                variant={'contained'}
+                sx={{ backgroundColor: 'secondary.dark' }}
+                size={'small'}
+              >
                 {isAuthenticated ? 'LogOut' : 'SignIn'}
               </Button>
             </Box>

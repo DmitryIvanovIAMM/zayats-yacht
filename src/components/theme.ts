@@ -7,12 +7,151 @@ export const customTheme = createTheme({
     primary: primary,
     secondary: secondary
   },
+  shape: {
+    borderRadius: 2
+  },
+
+  /*components: {
+    MuiTableCell: {
+      styleOverrides: {
+        sizeSmall: {
+          fontSize: '14px'
+        }
+      }
+    },
+    MuiTab: {
+      defaultProps: {
+        disableRipple: true
+      },
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          margin: '0 16px',
+          minWidth: 0,
+          padding: 0
+        }
+      }
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: '#F5F6FA',
+          boxShadow: '5px 4px 4px rgba(0, 0, 0, 0.1)',
+          color: '#fff'
+        },
+        paperAnchorDockedLeft: {
+          borderRight: 0
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        sizeLarge: {
+          height: 50,
+          fontSize: 20
+          /*[breakpoints.down('sm')]: {
+            fontSize: 16
+          }
+        },
+        root: {
+          borderRadius: '2px'
+        },
+        contained: {
+          boxShadow: 'none',
+          '&:active': {
+            boxShadow: 'none'
+          }
+        },
+        outlined: {
+          borderWidth: 1
+        }
+      }
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          height: 3,
+          borderTopLeftRadius: 3,
+          borderTopRightRadius: 3
+        }
+      }
+    },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          borderRadius: '2px'
+        }
+      }
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#3365A7'
+        }
+      }
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          borderRadius: '2px',
+          borderWidth: '1px !important'
+        }
+      }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: '2px',
+          '& fieldset': {
+            borderRadius: '2px',
+            borderWidth: '1px !important'
+          }
+        }
+      }
+    },
+    MuiListItemText: {},
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          color: 'inherit',
+          marginRight: 0,
+          '& svg': {
+            fontSize: 20
+          }
+        }
+      }
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          width: 32,
+          height: 32
+        }
+      }
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Montserrat'
+        }
+      }
+    },
+    MuiTypography: {
+      styleOverrides: {
+        subtitle1: {
+          fontWeight: 'bold',
+          fontSize: 18,
+          color: '#666666'
+        }
+      }
+    }
+  },*/
   /*typography: {
     fontFamily: "Montserrat",
   },*/
-  shape: {
+  /*shape: {
     borderRadius: 8
-  },
+  },*/
   /*props: {
     MuiTab: {
       disableRipple: true,

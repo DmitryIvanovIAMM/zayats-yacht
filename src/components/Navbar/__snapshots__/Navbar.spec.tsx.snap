@@ -7,11 +7,11 @@ exports[`Navbar component should render correctly 1`] = `
     <div>
       <div>
         <header
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1q5x4kd-MuiPaper-root-MuiAppBar-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-12db59r-MuiPaper-root-MuiAppBar-root"
           style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
         >
           <div
-            class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1ygil4i-MuiToolbar-root"
+            class="MuiToolbar-root MuiToolbar-regular css-1uj5ifc-MuiToolbar-root"
           >
             <div
               class="MuiBox-root css-i9gxme"
@@ -37,9 +37,16 @@ exports[`Navbar component should render correctly 1`] = `
                   />
                 </svg>
               </button>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1tttafd-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                type="button"
+              >
+                Get Quote
+              </button>
             </div>
             <div
-              class="MuiBox-root css-i9gxme"
+              class="MuiBox-root css-164ig2l"
             >
               <img
                 alt="Allied-Yacht logo"
@@ -57,11 +64,11 @@ exports[`Navbar component should render correctly 1`] = `
               class="MuiBox-root css-2uchni"
             >
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1588512-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1tttafd-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
-                Sign In
+                LogOut
               </button>
             </div>
           </div>
@@ -121,7 +128,7 @@ exports[`Navbar component should render correctly 1`] = `
             Zayats-Yacht Transport
           </h6>
           <hr
-            style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px; margin-top: 35px;"
+            style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px; margin-top: 35px;"
           />
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-1jpc804-MuiDivider-root"
@@ -150,7 +157,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
             <div>
@@ -174,7 +181,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
             <div>
@@ -198,7 +205,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
             <div>
@@ -222,7 +229,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
             <div>
@@ -246,7 +253,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
             <div>
@@ -270,7 +277,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
             <div>
@@ -294,7 +301,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
             <div>
@@ -318,7 +325,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </div>
               </li>
               <hr
-                style="color: rgb(0, 179, 158); background-color: rgb(0, 179, 158); height: 1px;"
+                style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px;"
               />
             </div>
           </ul>
@@ -333,11 +340,11 @@ exports[`Navbar component should render correctly 1`] = `
   "container": <div>
     <div>
       <header
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1q5x4kd-MuiPaper-root-MuiAppBar-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-12db59r-MuiPaper-root-MuiAppBar-root"
         style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
       >
         <div
-          class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1ygil4i-MuiToolbar-root"
+          class="MuiToolbar-root MuiToolbar-regular css-1uj5ifc-MuiToolbar-root"
         >
           <div
             class="MuiBox-root css-i9gxme"
@@ -363,9 +370,16 @@ exports[`Navbar component should render correctly 1`] = `
                 />
               </svg>
             </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1tttafd-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              Get Quote
+            </button>
           </div>
           <div
-            class="MuiBox-root css-i9gxme"
+            class="MuiBox-root css-164ig2l"
           >
             <img
               alt="Allied-Yacht logo"
@@ -383,11 +397,11 @@ exports[`Navbar component should render correctly 1`] = `
             class="MuiBox-root css-2uchni"
           >
             <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1588512-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1tttafd-MuiButtonBase-root-MuiButton-root"
               tabindex="0"
               type="button"
             >
-              Sign In
+              LogOut
             </button>
           </div>
         </div>

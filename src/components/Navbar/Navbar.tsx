@@ -23,8 +23,9 @@ import {
   Slide,
   useScrollTrigger
 } from '@mui/material';
-import { menuLinks } from '../../app/helpers/menuLinks';
+import { menuLinks } from '@/app/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
+import { secondary } from '@/components/colors';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -35,8 +36,10 @@ const leftNavigationSx = {
 };
 const dividerStyle = {
   border: 'none',
-  color: '#00b39e',
-  backgroundColor: '#00b39e',
+  //color: '#00b39e',
+  //backgroundColor: '#00b39e',
+  color: secondary.main,
+  backgroundColor: secondary.main,
   height: '1px'
 };
 const menuItemSx = {
@@ -71,6 +74,7 @@ function HideOnScroll(props: NavbarProps) {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
+  const { isAuthenticated } = props;
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -104,8 +108,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     <div>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar sx={{ backgroundColor: 'white', color: 'blue' }}>
-          <Toolbar>
+        <AppBar sx={{ backgroundColor: 'white', color: 'secondary.dark' }}>
+          <Toolbar disableGutters sx={{ padding: '0 10px 0 0px' }}>
             <Box sx={{ flexGrow: 1 }}>
               <IconButton
                 size="large"
@@ -118,8 +122,16 @@ const Navbar: React.FC<NavbarProps> = (props) => {
               >
                 <MenuIcon />
               </IconButton>
+              <Button variant={'contained'} sx={{ backgroundColor: 'secondary.dark' }}>
+                Get Quote
+              </Button>
             </Box>
-            <Box sx={{ flexGrow: 1 }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                marginTop: '4px'
+              }}
+            >
               <Image
                 src={logoImage}
                 width={105} // 81 125
@@ -130,7 +142,9 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <Button>Sign In</Button>
+              <Button variant={'contained'} sx={{ backgroundColor: 'secondary.dark' }}>
+                {isAuthenticated ? 'LogOut' : 'SignIn'}
+              </Button>
             </Box>
           </Toolbar>
         </AppBar>

@@ -44,9 +44,9 @@ const AboutUs = () => {
           yacht transportation, Allied Yacht Transport has grown to become a leading name in the
           industry. Under the leadership of Vadim Yegudkin, our president who has been a prominent
           figure in the yacht transport field for over 14 years, our team combines expertise with
-          personal service to manage every aspect of your yacht's journey. From the bustling ports
-          of North America to the serene waters of the Mediterranean, we cover all major routes
-          across the globe.
+          personal service to manage every aspect of your yacht&#39;s journey. From the bustling
+          ports of North America to the serene waters of the Mediterranean, we cover all major
+          routes across the globe.
           <br />
           <br />
           <span style={emphasizedTextStyle}>Our Services</span>
@@ -90,10 +90,10 @@ const AboutUs = () => {
           <br />
           <span style={emphasizedTextStyle}>Join Us</span>
           <br />
-          Whether you're relocating, attending international regattas, or exploring new waters,
+          Whether you&#39;re relocating, attending international regattas, or exploring new waters,
           Allied Yacht Transport is here to make your yacht transportation experience seamless and
           stress-free. Connect with us today to learn more about how we can assist with your yacht
-          transport needs. Together, let's set the course for your next maritime adventure.
+          transport needs. Together, let&#39;s set the course for your next maritime adventure.
           <br />
           <br />
           <span style={emphasizedTextStyle}>

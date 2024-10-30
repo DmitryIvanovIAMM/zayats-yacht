@@ -10,8 +10,8 @@ const CopyrightFooter: React.FC = () => {
         backgroundColor: '#0A2A3B',
         color: 'white',
         textAlign: 'center',
-        padding: '5px 0px 7px 0',
-        marginTop: '20px'
+        padding: '8px 0px 8px 0px',
+        margin: '0px'
       }}
     >
       {'\u00A9'} Allied Yacht Transport,{' '}

@@ -6,7 +6,7 @@ exports[`ContactUs component should render correctly 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="MuiBox-root css-lyi2jj"
+        class="MuiBox-root css-l24tsx"
         id="contact-us-section"
       >
         <h4
@@ -152,7 +152,7 @@ exports[`ContactUs component should render correctly 1`] = `
   </body>,
   "container": <div>
     <div
-      class="MuiBox-root css-lyi2jj"
+      class="MuiBox-root css-l24tsx"
       id="contact-us-section"
     >
       <h4

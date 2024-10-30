@@ -26,10 +26,22 @@ describe('Navbar component', () => {
     expect(container.getByAltText('Allied-Yacht logo')).toBeInTheDocument();
   });
 
-  it('should show Sign In button for non authenticated user', async () => {
+  it('should show SignIn button for non authenticated user', async () => {
+    const { container } = await setup({ isAuthenticated: false });
+
+    expect(container.getByText('SignIn')).toBeInTheDocument();
+  });
+
+  it('should show LogOut button for non authenticated user', async () => {
     const { container } = await setup({ isAuthenticated: true });
 
-    expect(container.getByText('Sign In')).toBeInTheDocument();
+    expect(container.getByText('LogOut')).toBeInTheDocument();
+  });
+
+  it('should show Get Quote button for non authenticated user', async () => {
+    const { container } = await setup({ isAuthenticated: true });
+
+    expect(container.getByText('Get Quote')).toBeInTheDocument();
   });
 
   it('should contains left navigation menu items by default', async () => {

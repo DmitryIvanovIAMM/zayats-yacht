@@ -6,11 +6,11 @@ exports[`ContactUs component should render correctly 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="MuiBox-root css-1iqco2n"
+        class="MuiBox-root css-lyi2jj"
         id="contact-us-section"
       >
         <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-15gt54v-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-10dtpk3-MuiTypography-root"
           style="--Typography-textAlign: center;"
         >
           Contact Us
@@ -152,11 +152,11 @@ exports[`ContactUs component should render correctly 1`] = `
   </body>,
   "container": <div>
     <div
-      class="MuiBox-root css-1iqco2n"
+      class="MuiBox-root css-lyi2jj"
       id="contact-us-section"
     >
       <h4
-        class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-15gt54v-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-10dtpk3-MuiTypography-root"
         style="--Typography-textAlign: center;"
       >
         Contact Us

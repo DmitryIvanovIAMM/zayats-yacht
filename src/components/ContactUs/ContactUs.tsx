@@ -8,14 +8,16 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 
-const contactUsContainerSx = {
+export const sectionContainerSx = {
   display: 'flex',
+  justifyContent: 'center',
   flexDirection: 'column',
   width: '100%',
-  justifyContent: 'center',
   marginLeft: '20px',
   marginRight: '20px',
-  marginTop: '20px'
+  marginTop: '40px',
+  marginBottom: '20px',
+  color: 'secondary.dark'
 };
 const contactUsDataSx = {
   display: 'flex',
@@ -34,7 +36,7 @@ const contactUsDataSx = {
 
 const ContactUs = () => {
   return (
-    <Box id="contact-us-section" sx={contactUsContainerSx}>
+    <Box id="contact-us-section" sx={sectionContainerSx}>
       <SectionTitle title="Contact Us" />
       <Box sx={contactUsDataSx}>
         <ContactUsColumn title="Address" icon={LocationOnIcon}>

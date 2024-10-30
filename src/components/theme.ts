@@ -7,6 +7,15 @@ export const customTheme = createTheme({
     primary: primary,
     secondary: secondary
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536
+    }
+  },
   shape: {
     borderRadius: 2
   },

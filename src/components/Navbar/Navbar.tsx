@@ -85,7 +85,13 @@ const Navbar: React.FC<NavbarProps> = (props) => {
         <Typography variant="h6" sx={{ ...menuItemSx, my: 2, textAlign: 'center' }}>
           Zayats-Yacht Transport
         </Typography>
-        <Image src={logoImage} width={52} height={36} alt="Allied-Yacht logo" priority={true} />
+        <Image
+          src={logoImage}
+          width={52}
+          height={36}
+          alt="allied-yacht-left-menu-logo"
+          priority={true}
+        />
       </div>
       <hr style={{ ...dividerStyle, marginTop: '10px' }}></hr>
       <Divider />
@@ -173,8 +179,6 @@ const Navbar: React.FC<NavbarProps> = (props) => {
               boxSizing: 'border-box',
               width: drawerWidth,
               backgroundColor: '#0A2A3B'
-
-              //height: 'auto'
             },
             opacity: 0.9
           }}

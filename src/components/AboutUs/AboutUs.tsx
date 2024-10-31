@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 
 const textStyle = {
-  fontWeight: 200,
+  fontWeight: 300,
   fontSize: `1.2em`,
   lineHeight: '150%'
 };

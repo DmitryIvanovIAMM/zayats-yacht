@@ -56,7 +56,7 @@ const Testimonials: FC = () => {
       </Box>
       <Divider sx={dividerSx} />
       <Box sx={quotedTextSx}>
-        Thanks are in order forAllied Yacht Transport and Vadim who, thanks to their commitment to
+        Thanks are in order for Allied Yacht Transport and Vadim who, thanks to their commitment to
         service, helped our team to ensure we made the trip to the transport boat on time for
         departure. Awesome support.
       </Box>

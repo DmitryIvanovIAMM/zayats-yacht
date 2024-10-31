@@ -8,6 +8,7 @@ import { primary } from '@/components/colors';
 const quotedTextSx = {
   paddingLeft: '10px',
   borderLeft: `0.2em solid ${primary.main}`,
+  fontSize: '1.1em',
   position: 'relative',
   '&:before, &:after': {
     content: "'\\201C'"

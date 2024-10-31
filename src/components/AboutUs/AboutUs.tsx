@@ -4,9 +4,9 @@ import { Box } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 
 const textStyle = {
-  fontWeight: 500,
-  fontSize: `1.3em`,
-  lineHeight: '183.5%'
+  fontWeight: 200,
+  fontSize: `1.2em`,
+  lineHeight: '150%'
 };
 const emphasizedTextStyle = {
   fontWeight: 'bold'

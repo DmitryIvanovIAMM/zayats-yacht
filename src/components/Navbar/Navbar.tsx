@@ -81,10 +81,19 @@ const Navbar: React.FC<NavbarProps> = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={leftNavigationSx}>
-      <Typography variant="h6" sx={{ ...menuItemSx, my: 2, textAlign: 'center' }}>
-        Zayats-Yacht Transport
-      </Typography>
-      <hr style={{ ...dividerStyle, marginTop: '35px' }}></hr>
+      <div>
+        <Typography variant="h6" sx={{ ...menuItemSx, my: 2, textAlign: 'center' }}>
+          Zayats-Yacht Transport
+        </Typography>
+        <Image
+          src={logoImage}
+          width={52}
+          height={36}
+          alt="allied-yacht-left-menu-logo"
+          priority={true}
+        />
+      </div>
+      <hr style={{ ...dividerStyle, marginTop: '10px' }}></hr>
       <Divider />
       <List>
         {menuLinks.map((item) => (
@@ -169,7 +178,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
-              height: 'auto'
+              backgroundColor: '#0A2A3B'
             },
             opacity: 0.9
           }}

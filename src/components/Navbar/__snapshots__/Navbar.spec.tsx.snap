@@ -102,7 +102,7 @@ exports[`Navbar component should render correctly 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="MuiDrawer-root MuiDrawer-modal MuiModal-root MuiModal-hidden css-zw5q8m-MuiModal-root-MuiDrawer-root"
+      class="MuiDrawer-root MuiDrawer-modal MuiModal-root MuiModal-hidden css-1pdqlog-MuiModal-root-MuiDrawer-root"
       role="presentation"
     >
       <div
@@ -122,13 +122,26 @@ exports[`Navbar component should render correctly 1`] = `
         <div
           class="MuiBox-root css-2t7qt4"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-h6 css-j4hmdc-MuiTypography-root"
-          >
-            Zayats-Yacht Transport
-          </h6>
+          <div>
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-j4hmdc-MuiTypography-root"
+            >
+              Zayats-Yacht Transport
+            </h6>
+            <img
+              alt="allied-yacht-left-menu-logo"
+              data-nimg="1"
+              decoding="async"
+              fetchpriority="high"
+              height="36"
+              src="/_next/image?url=%2Fimg.jpg&w=128&q=75"
+              srcset="/_next/image?url=%2Fimg.jpg&w=64&q=75 1x, /_next/image?url=%2Fimg.jpg&w=128&q=75 2x"
+              style="color: transparent;"
+              width="52"
+            />
+          </div>
           <hr
-            style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px; margin-top: 35px;"
+            style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px; margin-top: 10px;"
           />
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-1jpc804-MuiDivider-root"

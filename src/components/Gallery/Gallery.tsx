@@ -17,7 +17,7 @@ const images = [
     thumbnail: 'https://alliedyacht.s3.amazonaws.com/gallery-image-8-85kB.jpg',
     originalAlt: 'gallery-image-8',
     thumbnailAlt: 'gallery-image-8',
-    loading: 'lazy'
+    loading: 'eager'
   },
   {
     original: 'https://live.staticflickr.com/65535/51430010012_29b9bb2a31_b.jpg',

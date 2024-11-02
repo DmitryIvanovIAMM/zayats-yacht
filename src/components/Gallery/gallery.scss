@@ -93,15 +93,8 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
   transform: translateY(-50%);
 
   .image-gallery-svg {
-    height: 120px;
-    width: 60px;
-  }
-
-  @media (max-width: $ig-small-screen) {
-    .image-gallery-svg {
-      height: 72px;
-      width: 36px;
-    }
+    height: 72px;
+    width: 36px;
   }
 
   @media (max-width: $ig-xsmall-screen) {
@@ -130,7 +123,8 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
 .image-gallery {
   @include vendor-prefix('user-select', none);
   -webkit-tap-highlight-color: $ig-transparent;
-  position: relative;
+  flex: 0 0 100%; // added 02.11.2024
+  width: 100%;    // added 02.11.2024
 
   &.fullscreen-modal {
     background: $ig-black;
@@ -154,14 +148,18 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
   position: relative;
   line-height: 0;
   top: 0;
-  //width: 200px;
+  flex: 0 0 100%; // added 02.11.2024
 
   &.fullscreen {
     background: $ig-black;
   }
 
   .image-gallery-slide .image-gallery-image {
-    max-height: calc(100vh - 80px); // 80 px for the thumbnail space
+    width: 100%;                // added 02.11.2024
+    height: 680px;              // added 02.11.2024
+    @media(max-width: 768px) {  // added 02.11.2024
+      height: 480px;            // added 02.11.2024
+    }                           // added 02.11.2024
   }
 
   &.image-gallery-thumbnails-left,
@@ -200,7 +198,7 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
 .image-gallery-slide {
   left: 0;
   position: absolute;
-  top: 0;
+  //top: 0;
   width: 100%;
 
   &.image-gallery-center {
@@ -362,6 +360,7 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
     cursor: pointer;
     text-align: center;
     white-space: nowrap;
+    width: 100px; // ?? added 02.11.2024
   }
 
 }

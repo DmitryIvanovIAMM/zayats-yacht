@@ -11,6 +11,8 @@ import EmailIcon from '@mui/icons-material/Email';
 export const sectionContainerSx = {
   display: 'flex',
   justifyContent: 'center',
+  justifyItems: 'center',
+  alignItems: 'center',
   flexDirection: 'column',
   marginLeft: '20px',
   marginRight: '20px',

@@ -14,10 +14,15 @@ const emphasizedTextStyle = {
 export const centeredSectionSx = {
   ...sectionContainerSx,
   width: '90%',
+  maxWidth: '90%',
   marginLeft: 'auto',
   marginRight: 'auto',
+
   '@media (min-width: 900px)': {
-    width: '66%'
+    width: '66%',
+    maxWidth: '66%',
+    marginLeft: 'auto',
+    marginRight: 'auto'
   }
 };
 

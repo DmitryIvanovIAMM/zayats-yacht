@@ -100,7 +100,7 @@ const Gallery = () => {
         infinite={true}
         showBullets={true}
         flickThreshold={30}
-        lazyLoad={false}
+        lazyLoad={true}
       />
     </Box>
   );

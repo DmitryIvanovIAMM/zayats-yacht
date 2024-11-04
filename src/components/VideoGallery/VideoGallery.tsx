@@ -105,8 +105,8 @@ const VideoGallery = () => {
         // eslint-disable-next-line react/no-unknown-property
         className="lazyload"
         // eslint-disable-next-line react/no-unknown-property
-        frameborder="0"
-        allowfullscreen
+        frameBorder="0"
+        allowFullScreen
       ></iframe>
       /*)<ReactPlayer
         width="100%"

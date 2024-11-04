@@ -11,6 +11,7 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle';
 // @ts-expect-error
 import ImageGallery from 'react-image-gallery';
 import './video-gallery.scss';
+import 'lazysizes';
 
 /*const YoutubeSlide = ({ url, isSelected }: { url: string; isSelected?: boolean }) => (
   <ReactPlayer width="100%" url={url} playing={isSelected} muted controls />
@@ -99,7 +100,8 @@ const VideoGallery = () => {
     console.log('refImg: ', refImg);
 
     return (
-      <ReactPlayer
+      <iframe data-src={item.original} class="lazyload" frameborder="0" allowfullscreen></iframe>
+      /*)<ReactPlayer
         width="100%"
         url={item.original}
         playing={refImg?.current?.state?.currentIndex == item.index}
@@ -110,13 +112,14 @@ const VideoGallery = () => {
             <h6>Video not found</h6>
           </div>
         }
-      />
-      /*<YoutubeSlide
+      />*/
+    );
+
+    /*<YoutubeSlide
         key={item?.original}
         url={c}
         isSelected={refImg?.current?.state?.currentIndex == item.index}
       />*/
-    );
   };
 
   return (

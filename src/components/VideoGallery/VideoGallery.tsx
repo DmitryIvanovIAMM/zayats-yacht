@@ -6,6 +6,8 @@ import ReactPlayer from 'react-player';
 import { Box } from '@mui/material';
 import { centeredSectionSx } from '@/components/AboutUs/AboutUs';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import ImageGallery from 'react-image-gallery';
 import './video-gallery.scss';
 

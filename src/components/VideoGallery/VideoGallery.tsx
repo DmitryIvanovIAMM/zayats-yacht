@@ -112,6 +112,11 @@ const VideoGallery = () => {
               <h6>Video not found</h6>
             </div>
           }
+          config={{
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            youtube: { className: 'lazyload' }
+          }}
           // eslint-disable-next-line react/no-unknown-property
         />
       </div>

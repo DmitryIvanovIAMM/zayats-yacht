@@ -22,8 +22,8 @@ export default function Home() {
       <div className={styles.main}>
         <EmptySection />
         {/*<VideoGallery2 />*/}
-        <VideoGallery />
         <Gallery />
+        <VideoGallery />
         <Testimonials />
         <AboutUs />
         <ContactUs />

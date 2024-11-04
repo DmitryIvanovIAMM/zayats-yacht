@@ -20,10 +20,10 @@ export default function Home() {
     <div className={styles.page}>
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
-        <VideoGallery />
         <EmptySection />
         {/*<VideoGallery2 />*/}
         <Gallery />
+        <VideoGallery />
         <Testimonials />
         <AboutUs />
         <ContactUs />

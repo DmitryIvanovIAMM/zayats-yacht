@@ -59,7 +59,8 @@ const VideoGallery = () => {
 
   const getVideoThumb = (videoId) => `https://img.youtube.com/vi/${videoId}/default.jpg`;
 
-  const getVideoId = (url) => url.substr('https://www.youtube.com/embed/'.length, url.length);
+  const getVideoId = (url): string =>
+    url.substr('https://www.youtube.com/embed/'.length, url.length);
 
   /*const customRenderThumb = (children) =>
     children.map((item) => {

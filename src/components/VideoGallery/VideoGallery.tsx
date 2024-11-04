@@ -11,9 +11,9 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import ImageGallery from 'react-image-gallery';
 import './video-gallery.scss';
 
-const YoutubeSlide = ({ url, isSelected }: { url: string; isSelected?: boolean }) => (
+/*const YoutubeSlide = ({ url, isSelected }: { url: string; isSelected?: boolean }) => (
   <ReactPlayer width="100%" url={url} playing={isSelected} muted controls />
-);
+);*/
 
 interface VideoItem {
   original: string;
@@ -98,11 +98,18 @@ const VideoGallery = () => {
     console.log('refImg: ', refImg);
 
     return (
-      <YoutubeSlide
-        key={item?.original}
+      <ReactPlayer
+        width="100%"
         url={item.original}
-        isSelected={refImg?.current?.state?.currentIndex == item.index}
+        playing={refImg?.current?.state?.currentIndex == item.index}
+        muted
+        controls
       />
+      /*<YoutubeSlide
+        key={item?.original}
+        url={c}
+        isSelected={refImg?.current?.state?.currentIndex == item.index}
+      />*/
     );
   };
 

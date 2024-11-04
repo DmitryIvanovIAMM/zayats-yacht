@@ -100,15 +100,7 @@ const VideoGallery = () => {
     console.log('refImg: ', refImg);
 
     return (
-      <iframe
-        data-src={item.original}
-        // eslint-disable-next-line react/no-unknown-property
-        className="lazyload"
-        // eslint-disable-next-line react/no-unknown-property
-        frameBorder="0"
-        allowFullScreen
-      ></iframe>
-      /*)<ReactPlayer
+      <ReactPlayer
         width="100%"
         url={item.original}
         playing={refImg?.current?.state?.currentIndex == item.index}
@@ -119,7 +111,17 @@ const VideoGallery = () => {
             <h6>Video not found</h6>
           </div>
         }
-      />*/
+        // eslint-disable-next-line react/no-unknown-property
+        className="lazyload"
+      />
+      /*<iframe
+        data-src={item.original}
+        // eslint-disable-next-line react/no-unknown-property
+        className="lazyload"
+        // eslint-disable-next-line react/no-unknown-property
+        frameBorder="0"
+        allowFullScreen
+      ></iframe>*/
     );
 
     /*<YoutubeSlide

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 ///import ReactPlayer from 'react-player';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player/youtube';
 //import '../../../stylesheets/carousel.css';
 import { Box } from '@mui/material';
 import { centeredSectionSx } from '@/components/AboutUs/AboutUs';

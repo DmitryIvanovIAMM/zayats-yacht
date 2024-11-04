@@ -100,7 +100,14 @@ const VideoGallery = () => {
     console.log('refImg: ', refImg);
 
     return (
-      <iframe data-src={item.original} class="lazyload" frameborder="0" allowfullscreen></iframe>
+      <iframe
+        data-src={item.original}
+        // eslint-disable-next-line react/no-unknown-property
+        className="lazyload"
+        // eslint-disable-next-line react/no-unknown-property
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
       /*)<ReactPlayer
         width="100%"
         url={item.original}

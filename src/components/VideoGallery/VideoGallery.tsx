@@ -67,15 +67,20 @@ const VideoGallery = () => {
       );
     });*/
   const customRenderThumb = (item) => {
+    // eslint-disable-next-line no-console
     console.log('customRenderThumb(). item: ', item);
 
     const videoId = getVideoId(item.original);
+    // eslint-disable-next-line no-console
     console.log('videoId: ', videoId);
+    // eslint-disable-next-line @next/next/no-img-element
     return <img src={getVideoThumb(videoId)} alt={'Allied Yacht Transport, LLC'} key={item?.key} />;
   };
 
   const customRenderItem = (item) => {
+    // eslint-disable-next-line no-console
     console.log('customRenderItem().  item: ', item);
+    // eslint-disable-next-line no-console
     console.log('refImg: ', refImg);
 
     return (

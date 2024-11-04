@@ -112,7 +112,6 @@ const VideoGallery = () => {
           </div>
         }
         // eslint-disable-next-line react/no-unknown-property
-        className="lazyload"
       />
       /*<iframe
         data-src={item.original}

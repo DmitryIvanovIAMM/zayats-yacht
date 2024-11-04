@@ -62,7 +62,7 @@ const items = [
 ];
 
 const VideoGallery = () => {
-  const refImg: React.RefObject<HTMLInputElement> = useRef(null);
+  const refImg: any = useRef(null);
   //const customRenderItem = (item, props) => <item.type {...item.props} {...props} />;
 
   const getVideoThumb = (videoId: string) => `https://img.youtube.com/vi/${videoId}/default.jpg`;

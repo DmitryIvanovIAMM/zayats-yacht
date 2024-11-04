@@ -15,6 +15,14 @@ const YoutubeSlide = ({ url, isSelected }: { url: string; isSelected?: boolean }
   <ReactPlayer width="100%" url={url} playing={isSelected} muted controls />
 );
 
+interface VideoItem {
+  original: string;
+  thumbnail: string;
+  originalAlt: string;
+  thumbnailAlt: string;
+  index: number;
+}
+
 const items = [
   {
     original: 'https://www.youtube.com/embed/89c0wuxFcog',
@@ -71,20 +79,19 @@ const VideoGallery = () => {
     });*/
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const customRenderThumb = (item) => {
+  const customRenderThumb = (item: VideoItem) => {
     // eslint-disable-next-line no-console
     console.log('customRenderThumb(). item: ', item);
 
     const videoId = getVideoId(item.original);
     // eslint-disable-next-line no-console
     console.log('videoId: ', videoId);
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={getVideoThumb(videoId)} alt={'Allied Yacht Transport, LLC'} key={item?.key} />;
+    return (
+      <img src={getVideoThumb(videoId)} alt={'Allied Yacht Transport, LLC'} key={item?.original} />
+    );
   };
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const customRenderItem = (item) => {
+  const customRenderItem = (item: VideoItem) => {
     // eslint-disable-next-line no-console
     console.log('customRenderItem().  item: ', item);
     // eslint-disable-next-line no-console
@@ -92,7 +99,7 @@ const VideoGallery = () => {
 
     return (
       <YoutubeSlide
-        key={item?.key}
+        key={item?.original}
         url={item.original}
         isSelected={refImg?.current?.state?.currentIndex == item.index}
       />

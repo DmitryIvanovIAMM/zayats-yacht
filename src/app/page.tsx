@@ -9,11 +9,11 @@ import Gallery from '@/components/Gallery/Gallery';
 import EmptySection from '@/components/EmptySection';
 //import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import dynamic from 'next/dynamic';
-import VideoGallery2 from '@/components/VideoGallery/VideoGallery2';
+//import VideoGallery2 from '@/components/VideoGallery/VideoGallery2';
 
-/*const VideoGallery = dynamic(() => import('@/components/VideoGallery/VideoGallery'), {
+const VideoGallery = dynamic(() => import('@/components/VideoGallery/VideoGallery'), {
   ssr: false
-});*/
+});
 
 export default function Home() {
   return (
@@ -21,8 +21,8 @@ export default function Home() {
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
         <EmptySection />
-        <VideoGallery2 />
-        {/*<VideoGallery />*/}
+        {/*<VideoGallery2 />*/}
+        <VideoGallery />
         <Gallery />
         <Testimonials />
         <AboutUs />

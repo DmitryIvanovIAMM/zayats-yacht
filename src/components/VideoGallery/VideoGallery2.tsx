@@ -12,7 +12,7 @@ import ImageGallery from 'react-image-gallery';
 import './video-gallery.scss';
 import Script from 'next/script';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+import './LiteYouTubeEmbed.css';
 
 const YoutubeSlide = ({ url, isSelected }: { url: string; isSelected?: boolean }) => (
   <ReactPlayer width="100%" url={url} playing={isSelected} muted controls />

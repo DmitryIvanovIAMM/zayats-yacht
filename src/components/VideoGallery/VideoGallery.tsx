@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 ///import ReactPlayer from 'react-player';
-import ReactPlayer from 'react-player/youtube';
+import ReactPlayer from 'react-player/lazy';
 //import '../../../stylesheets/carousel.css';
 import { Box } from '@mui/material';
 import { centeredSectionSx } from '@/components/AboutUs/AboutUs';
@@ -105,6 +105,11 @@ const VideoGallery = () => {
         playing={refImg?.current?.state?.currentIndex == item.index}
         muted
         controls
+        fallback={
+          <div>
+            <h6>Video not found</h6>
+          </div>
+        }
       />
       /*<YoutubeSlide
         key={item?.original}

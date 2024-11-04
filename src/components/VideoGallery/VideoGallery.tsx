@@ -57,7 +57,7 @@ const VideoGallery = () => {
   const refImg = useRef(null);
   //const customRenderItem = (item, props) => <item.type {...item.props} {...props} />;
 
-  const getVideoThumb = (videoId) => `https://img.youtube.com/vi/${videoId}/default.jpg`;
+  const getVideoThumb = (videoId: string) => `https://img.youtube.com/vi/${videoId}/default.jpg`;
 
   const getVideoId = (url): string =>
     url.substr('https://www.youtube.com/embed/'.length, url.length);

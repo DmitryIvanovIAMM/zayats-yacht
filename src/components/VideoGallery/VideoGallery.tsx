@@ -59,7 +59,7 @@ const VideoGallery = () => {
 
   const getVideoThumb = (videoId: string) => `https://img.youtube.com/vi/${videoId}/default.jpg`;
 
-  const getVideoId = (url): string =>
+  const getVideoId = (url: string): string =>
     url.substr('https://www.youtube.com/embed/'.length, url.length);
 
   /*const customRenderThumb = (children) =>
@@ -69,6 +69,8 @@ const VideoGallery = () => {
         <img src={getVideoThumb(videoId)} alt={'Allied Yacht Transport, LLC'} key={item.key} />
       );
     });*/
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const customRenderThumb = (item) => {
     // eslint-disable-next-line no-console
     console.log('customRenderThumb(). item: ', item);
@@ -80,6 +82,8 @@ const VideoGallery = () => {
     return <img src={getVideoThumb(videoId)} alt={'Allied Yacht Transport, LLC'} key={item?.key} />;
   };
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const customRenderItem = (item) => {
     // eslint-disable-next-line no-console
     console.log('customRenderItem().  item: ', item);

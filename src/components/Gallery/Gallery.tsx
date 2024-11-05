@@ -9,6 +9,7 @@ import './gallery.scss';
 
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import { centeredSectionSx } from '@/components/AboutUs/AboutUs';
+import { InView } from 'react-intersection-observer';
 
 // https://www.npmjs.com/package/react-image-gallery
 const images = [
@@ -94,14 +95,22 @@ const Gallery = () => {
   return (
     <Box id="photo-gallery-section" sx={centeredSectionSx}>
       <SectionTitle title="Gallery" />
-      <ImageGallery
-        showPlayButton={false}
-        items={images}
-        infinite={true}
-        showBullets={true}
-        flickThreshold={30}
-        lazyLoad={false}
-      />
+      <InView delay={1000} triggerOnce={true} initialInView={false} trackVisibility={true}>
+        {({ inView, ref, entry }) => (
+          <div ref={ref} style={{ width: '100%', maxWidth: '100%' }}>
+            {inView ? (
+              <ImageGallery
+                showPlayButton={false}
+                items={images}
+                infinite={true}
+                showBullets={true}
+                flickThreshold={30}
+                lazyLoad={false}
+              />
+            ) : null}
+          </div>
+        )}
+      </InView>
     </Box>
   );
 };

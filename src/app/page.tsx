@@ -8,12 +8,7 @@ import Testimonials from '@/components/Testimonials/Testimonials';
 import Gallery from '@/components/Gallery/Gallery';
 import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
-//import dynamic from 'next/dynamic';
-//import VideoGallery2 from '@/components/VideoGallery/VideoGallery2';
-
-/*const VideoGallery = dynamic(() => import('@/components/VideoGallery/VideoGallery'), {
-  ssr: false
-});*/
+import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 
 export default function Home() {
   return (
@@ -21,8 +16,9 @@ export default function Home() {
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
         <EmptySection />
-        {/*<VideoGallery2 />*/}
-        <Gallery />
+        <LazyViewedSection title="Gallery" id="photo-gallery-section">
+          <Gallery />
+        </LazyViewedSection>
         <VideoGallery />
 
         <Testimonials />

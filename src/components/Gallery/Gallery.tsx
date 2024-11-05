@@ -82,25 +82,14 @@ const images = [
 
 const Gallery = () => {
   return (
-    <Box id="photo-gallery-section" sx={centeredSectionSx}>
-      <SectionTitle title="Gallery" />
-      <InView triggerOnce={true} initialInView={false} rootMargin="100px 0px 0px 0px">
-        {({ inView, ref }) => (
-          <div ref={ref} style={{ width: '100%', maxWidth: '100%' }}>
-            {inView ? (
-              <ImageGallery
-                showPlayButton={false}
-                items={images}
-                infinite={true}
-                showBullets={true}
-                flickThreshold={30}
-                lazyLoad={false}
-              />
-            ) : null}
-          </div>
-        )}
-      </InView>
-    </Box>
+    <ImageGallery
+      showPlayButton={false}
+      items={images}
+      infinite={true}
+      showBullets={true}
+      flickThreshold={30}
+      lazyLoad={false}
+    />
   );
 };
 

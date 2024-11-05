@@ -82,7 +82,14 @@ const VideoGallery = () => {
     // eslint-disable-next-line no-console
     console.log('videoId: ', videoId);
     return (
-      <img src={getVideoThumb(videoId)} alt={'Allied Yacht Transport, LLC'} key={item?.original} />
+      <img
+        src={getVideoThumb(videoId)}
+        alt={'Allied Yacht Transport, LLC'}
+        key={item?.original}
+        width="93px"
+        height="93px"
+        style={{ marginTop: '2px' }}
+      />
     );
   };
 

@@ -86,9 +86,9 @@ const VideoGallery = () => {
         src={getVideoThumb(videoId)}
         alt={'Allied Yacht Transport, LLC'}
         key={item?.original}
-        width="93px"
-        height="93px"
-        style={{ marginTop: '2px' }}
+        height="auto"
+        width="70px"
+        style={{ marginTop: '3px' }}
       />
     );
   };

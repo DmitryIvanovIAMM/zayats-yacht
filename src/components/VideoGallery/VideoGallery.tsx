@@ -140,22 +140,16 @@ const VideoGallery = () => {
   };
 
   return (
-    <InView
-      delay={1000}
-      triggerOnce={true}
-      initialInView={false}
-      trackVisibility={true}
-      threshold={0.9}
-    >
-      {({ inView, ref, entry }) => {
-        // eslint-disable-next-line no-console
-        console.log('inView: ', inView);
+    <Box id="photo-gallery-section" sx={centeredSectionSx}>
+      <SectionTitle title="Video Gallery" />
+      <InView delay={1000} triggerOnce={true} initialInView={false} trackVisibility={true}>
+        {({ inView, ref, entry }) => {
+          // eslint-disable-next-line no-console
+          console.log('inView: ', inView);
 
-        return (
-          <div ref={ref}>
-            {inView ? (
-              <Box id="photo-gallery-section" sx={centeredSectionSx}>
-                <SectionTitle title="Video Gallery" />
+          return (
+            <Box ref={ref} sx={{ width: '100%', maxWidth: '100%' }}>
+              {inView ? (
                 <ImageGallery
                   ref={refImg}
                   showPlayButton={false}
@@ -169,12 +163,12 @@ const VideoGallery = () => {
                   //renderThumb={customRenderThumb}
                   renderThumbInner={customRenderThumb}
                 />
-              </Box>
-            ) : null}
-          </div>
-        );
-      }}
-    </InView>
+              ) : null}
+            </Box>
+          );
+        }}
+      </InView>
+    </Box>
   );
 };
 

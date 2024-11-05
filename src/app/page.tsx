@@ -21,9 +21,9 @@ export default function Home() {
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
         <EmptySection />
-        <VideoGallery />
         {/*<VideoGallery2 />*/}
         <Gallery />
+        <VideoGallery />
 
         <Testimonials />
         <AboutUs />

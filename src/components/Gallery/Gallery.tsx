@@ -95,7 +95,13 @@ const Gallery = () => {
   return (
     <Box id="photo-gallery-section" sx={centeredSectionSx}>
       <SectionTitle title="Gallery" />
-      <InView delay={1000} triggerOnce={true} initialInView={false} trackVisibility={true}>
+      <InView
+        delay={1000}
+        triggerOnce={true}
+        initialInView={false}
+        trackVisibility={true}
+        rootMargin="100px 0px 0px 0px"
+      >
         {({ inView, ref, entry }) => (
           <div ref={ref} style={{ width: '100%', maxWidth: '100%' }}>
             {inView ? (

@@ -18,7 +18,8 @@ const quotedTextSx = {
 const authorStyle = {
   fontSize: '1.0em',
   fontWeight: 600,
-  textAlign: 'end'
+  textAlign: 'end',
+  width: '100%'
 };
 const dividerSx = {
   width: '60%',

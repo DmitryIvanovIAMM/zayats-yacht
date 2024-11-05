@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import ErrorBoundary from './ErrorBoundary';
 import styles from './page.module.css';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import Navbar from '@/components/Navbar/Navbar';

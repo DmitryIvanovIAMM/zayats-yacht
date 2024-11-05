@@ -21,9 +21,7 @@ export default function Home() {
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
         <EmptySection />
-        <Suspense fallback={<div>Loading...</div>}>
-          <VideoGallery />
-        </Suspense>
+        <VideoGallery />
         {/*<VideoGallery2 />*/}
         <Gallery />
 

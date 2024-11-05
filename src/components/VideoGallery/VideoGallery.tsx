@@ -140,7 +140,13 @@ const VideoGallery = () => {
   };
 
   return (
-    <InView delay={5000}>
+    <InView
+      delay={5000}
+      triggerOnce={true}
+      initialInView={false}
+      trackVisibility={true}
+      threshold={0.9}
+    >
       {({ inView, ref, entry }) => {
         // eslint-disable-next-line no-console
         console.log('inView: ', inView);

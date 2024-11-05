@@ -96,10 +96,10 @@ const Gallery = () => {
     <Box id="photo-gallery-section" sx={centeredSectionSx}>
       <SectionTitle title="Gallery" />
       <InView
-        delay={1000}
+        //delay={0}
         triggerOnce={true}
         initialInView={false}
-        trackVisibility={true}
+        //trackVisibility={true}
         rootMargin="100px 0px 0px 0px"
       >
         {({ inView, ref, entry }) => (

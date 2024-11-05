@@ -142,7 +142,12 @@ const VideoGallery = () => {
   return (
     <Box id="photo-gallery-section" sx={centeredSectionSx}>
       <SectionTitle title="Video Gallery" />
-      <InView delay={1000} triggerOnce={true} initialInView={false} trackVisibility={true}>
+      <InView
+        //delay={0}
+        triggerOnce={true}
+        initialInView={false}
+        //trackVisibility={true}
+      >
         {({ inView, ref, entry }) => {
           // eslint-disable-next-line no-console
           console.log('inView: ', inView);

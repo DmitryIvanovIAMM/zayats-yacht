@@ -20,10 +20,10 @@ export default function Home() {
     <div className={styles.page}>
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
+        <EmptySection />
         <Suspense fallback={<div>Loading...</div>}>
           <VideoGallery />
         </Suspense>
-        <EmptySection />
         {/*<VideoGallery2 />*/}
         <Gallery />
 

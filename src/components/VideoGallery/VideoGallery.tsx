@@ -101,27 +101,34 @@ const VideoGallery = () => {
     console.log('refImg: ', refImg);
 
     return (
-      <div className="lazyload">
-        <ReactPlayer
-          width="100%"
-          url={item.original}
-          playing={refImg?.current?.state?.currentIndex == item.index}
-          muted
-          controls
-          fallback={
-            <div>
-              <h6>Video not found</h6>
+      <InView>
+        {({ inView, ref, entry }) => {
+          console.log('inView: ', inView);
+          return (
+            <div ref={ref}>
+              <ReactPlayer
+                width="100%"
+                url={item.original}
+                playing={refImg?.current?.state?.currentIndex == item.index}
+                muted
+                controls
+                fallback={
+                  <div>
+                    <h6>Video not found</h6>
+                  </div>
+                }
+                config={{
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  youtube: { className: 'lazyload' }
+                }}
+                // eslint-disable-next-line react/no-unknown-property
+                className="lazyload"
+              />
             </div>
-          }
-          config={{
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            youtube: { className: 'lazyload' }
-          }}
-          // eslint-disable-next-line react/no-unknown-property
-          className="lazyload"
-        />
-      </div>
+          );
+        }}
+      </InView>
       /*<iframe
         data-src={item.original}
         // eslint-disable-next-line react/no-unknown-property

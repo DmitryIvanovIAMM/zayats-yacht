@@ -1,14 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Box } from '@mui/material';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import ImageGallery from 'react-image-gallery';
 import './gallery.scss';
-import SectionTitle from '@/components/SectionTitle/SectionTitle';
-import { centeredSectionSx } from '@/components/AboutUs/AboutUs';
-import { InView } from 'react-intersection-observer';
 
 // https://www.npmjs.com/package/react-image-gallery
 const images = [

@@ -2,14 +2,10 @@
 
 import React, { useRef } from 'react';
 import ReactPlayer from 'react-player/youtube';
-import { Box } from '@mui/material';
-import { centeredSectionSx } from '@/components/AboutUs/AboutUs';
-import SectionTitle from '@/components/SectionTitle/SectionTitle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import ImageGallery from 'react-image-gallery';
 import './video-gallery.scss';
-import { InView } from 'react-intersection-observer';
 
 interface VideoItem {
   original: string;
@@ -65,13 +61,6 @@ const VideoGallery = () => {
   const getVideoId = (url: string): string =>
     url.substr('https://www.youtube.com/embed/'.length, url.length);
 
-  /*const customRenderThumb = (children) =>
-    children.map((item) => {
-      const videoId = getVideoId(item.props.url);
-      return (
-        <img src={getVideoThumb(videoId)} alt={'Allied Yacht Transport, LLC'} key={item.key} />
-      );
-    });*/
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const customRenderThumb = (item: VideoItem) => {
@@ -111,31 +100,18 @@ const VideoGallery = () => {
   };
 
   return (
-    <Box id="photo-gallery-section" sx={centeredSectionSx}>
-      <SectionTitle title="Video Gallery" />
-      <InView triggerOnce={true} initialInView={false}>
-        {({ inView, ref }) => {
-          return (
-            <Box ref={ref} sx={{ width: '100%', maxWidth: '100%' }}>
-              {inView ? (
-                <ImageGallery
-                  ref={refImg}
-                  showPlayButton={false}
-                  items={items}
-                  infinite={true}
-                  showBullets={true}
-                  showThumbnails={true}
-                  flickThreshold={30}
-                  lazyLoad={false}
-                  renderItem={customRenderItem}
-                  renderThumbInner={customRenderThumb}
-                />
-              ) : null}
-            </Box>
-          );
-        }}
-      </InView>
-    </Box>
+    <ImageGallery
+      ref={refImg}
+      showPlayButton={false}
+      items={items}
+      infinite={true}
+      showBullets={true}
+      showThumbnails={true}
+      flickThreshold={30}
+      lazyLoad={false}
+      renderItem={customRenderItem}
+      renderThumbInner={customRenderThumb}
+    />
   );
 };
 

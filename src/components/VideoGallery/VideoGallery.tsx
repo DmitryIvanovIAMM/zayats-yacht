@@ -140,7 +140,7 @@ const VideoGallery = () => {
   };
 
   return (
-    <InView>
+    <InView delay={5000}>
       {({ inView, ref, entry }) => {
         // eslint-disable-next-line no-console
         console.log('inView: ', inView);

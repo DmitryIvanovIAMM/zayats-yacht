@@ -142,6 +142,7 @@ const VideoGallery = () => {
   return (
     <InView>
       {({ inView, ref, entry }) => {
+        // eslint-disable-next-line no-console
         console.log('inView: ', inView);
 
         return (

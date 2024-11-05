@@ -140,24 +140,33 @@ const VideoGallery = () => {
   };
 
   return (
-    <div>
-      <Box id="photo-gallery-section" sx={centeredSectionSx}>
-        <SectionTitle title="Video Gallery" />
-        <ImageGallery
-          ref={refImg}
-          showPlayButton={false}
-          items={items}
-          infinite={true}
-          showBullets={true}
-          showThumbnails={true}
-          flickThreshold={30}
-          lazyLoad={false}
-          renderItem={customRenderItem}
-          //renderThumb={customRenderThumb}
-          renderThumbInner={customRenderThumb}
-        />
-      </Box>
-    </div>
+    <InView>
+      {({ inView, ref, entry }) => {
+        // eslint-disable-next-line no-console
+        console.log('inView: ', inView);
+
+        return (
+          <div ref={ref}>
+            <Box id="photo-gallery-section" sx={centeredSectionSx}>
+              <SectionTitle title="Video Gallery" />
+              <ImageGallery
+                ref={refImg}
+                showPlayButton={false}
+                items={items}
+                infinite={true}
+                showBullets={true}
+                showThumbnails={true}
+                flickThreshold={30}
+                lazyLoad={false}
+                renderItem={customRenderItem}
+                //renderThumb={customRenderThumb}
+                renderThumbInner={customRenderThumb}
+              />
+            </Box>
+          </div>
+        );
+      }}
+    </InView>
   );
 };
 

@@ -101,34 +101,27 @@ const VideoGallery = () => {
     console.log('refImg: ', refImg);
 
     return (
-      <InView>
-        {({ inView, ref, entry }) => {
-          console.log('inView: ', inView);
-          return (
-            <div ref={ref}>
-              <ReactPlayer
-                width="100%"
-                url={item.original}
-                playing={refImg?.current?.state?.currentIndex == item.index}
-                muted
-                controls
-                fallback={
-                  <div>
-                    <h6>Video not found</h6>
-                  </div>
-                }
-                config={{
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  youtube: { className: 'lazyload' }
-                }}
-                // eslint-disable-next-line react/no-unknown-property
-                className="lazyload"
-              />
+      <div className="lazyload">
+        <ReactPlayer
+          width="100%"
+          url={item.original}
+          playing={refImg?.current?.state?.currentIndex == item.index}
+          muted
+          controls
+          fallback={
+            <div>
+              <h6>Video not found</h6>
             </div>
-          );
-        }}
-      </InView>
+          }
+          config={{
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            youtube: { className: 'lazyload' }
+          }}
+          // eslint-disable-next-line react/no-unknown-property
+          className="lazyload"
+        />
+      </div>
       /*<iframe
         data-src={item.original}
         // eslint-disable-next-line react/no-unknown-property
@@ -147,24 +140,32 @@ const VideoGallery = () => {
   };
 
   return (
-    <div>
-      <Box id="photo-gallery-section" sx={centeredSectionSx}>
-        <SectionTitle title="Video Gallery" />
-        <ImageGallery
-          ref={refImg}
-          showPlayButton={false}
-          items={items}
-          infinite={true}
-          showBullets={true}
-          showThumbnails={true}
-          flickThreshold={30}
-          lazyLoad={false}
-          renderItem={customRenderItem}
-          //renderThumb={customRenderThumb}
-          renderThumbInner={customRenderThumb}
-        />
-      </Box>
-    </div>
+    <InView>
+      {({ inView, ref, entry }) => {
+        console.log('inView: ', inView);
+
+        return (
+          <div ref={ref}>
+            <Box id="photo-gallery-section" sx={centeredSectionSx}>
+              <SectionTitle title="Video Gallery" />
+              <ImageGallery
+                ref={refImg}
+                showPlayButton={false}
+                items={items}
+                infinite={true}
+                showBullets={true}
+                showThumbnails={true}
+                flickThreshold={30}
+                lazyLoad={false}
+                renderItem={customRenderItem}
+                //renderThumb={customRenderThumb}
+                renderThumbInner={customRenderThumb}
+              />
+            </Box>
+          </div>
+        );
+      }}
+    </InView>
   );
 };
 

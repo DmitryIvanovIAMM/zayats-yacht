@@ -140,7 +140,7 @@ const VideoGallery = () => {
 
   return (
     <div>
-      <Box id="photo-gallery-section" sx={centeredSectionSx} className="lazyload">
+      <Box id="photo-gallery-section" sx={centeredSectionSx} className="lazyload" data-expand="-20">
         <SectionTitle title="Video Gallery" />
         <ImageGallery
           ref={refImg}

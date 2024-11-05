@@ -12,6 +12,7 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import ImageGallery from 'react-image-gallery';
 import './video-gallery.scss';
 import 'lazysizes';
+import { InView } from 'react-intersection-observer';
 
 /*const YoutubeSlide = ({ url, isSelected }: { url: string; isSelected?: boolean }) => (
   <ReactPlayer width="100%" url={url} playing={isSelected} muted controls />
@@ -140,7 +141,7 @@ const VideoGallery = () => {
 
   return (
     <div>
-      <Box id="photo-gallery-section" sx={centeredSectionSx} className="lazyload" data-expand="-20">
+      <Box id="photo-gallery-section" sx={centeredSectionSx}>
         <SectionTitle title="Video Gallery" />
         <ImageGallery
           ref={refImg}

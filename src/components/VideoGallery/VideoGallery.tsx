@@ -96,9 +96,9 @@ const VideoGallery = () => {
 
   const customRenderItem = (item: VideoItem) => {
     // eslint-disable-next-line no-console
-    console.log('customRenderItem().  item: ', item);
+    //console.log('customRenderItem().  item: ', item);
     // eslint-disable-next-line no-console
-    console.log('refImg: ', refImg);
+    //console.log('refImg: ', refImg);
 
     return (
       <div className="lazyload">
@@ -141,7 +141,7 @@ const VideoGallery = () => {
 
   return (
     <InView
-      delay={5000}
+      delay={1000}
       triggerOnce={true}
       initialInView={false}
       trackVisibility={true}
@@ -153,22 +153,24 @@ const VideoGallery = () => {
 
         return (
           <div ref={ref}>
-            <Box id="photo-gallery-section" sx={centeredSectionSx}>
-              <SectionTitle title="Video Gallery" />
-              <ImageGallery
-                ref={refImg}
-                showPlayButton={false}
-                items={items}
-                infinite={true}
-                showBullets={true}
-                showThumbnails={true}
-                flickThreshold={30}
-                lazyLoad={false}
-                renderItem={customRenderItem}
-                //renderThumb={customRenderThumb}
-                renderThumbInner={customRenderThumb}
-              />
-            </Box>
+            {inView ? (
+              <Box id="photo-gallery-section" sx={centeredSectionSx}>
+                <SectionTitle title="Video Gallery" />
+                <ImageGallery
+                  ref={refImg}
+                  showPlayButton={false}
+                  items={items}
+                  infinite={true}
+                  showBullets={true}
+                  showThumbnails={true}
+                  flickThreshold={30}
+                  lazyLoad={false}
+                  renderItem={customRenderItem}
+                  //renderThumb={customRenderThumb}
+                  renderThumbInner={customRenderThumb}
+                />
+              </Box>
+            ) : null}
           </div>
         );
       }}

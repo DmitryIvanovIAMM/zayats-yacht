@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import ErrorBoundary from './ErrorBoundary';
 import styles from './page.module.css';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import Navbar from '@/components/Navbar/Navbar';
@@ -20,10 +21,13 @@ export default function Home() {
     <div className={styles.page}>
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <VideoGallery />
+        </Suspense>
         <EmptySection />
         {/*<VideoGallery2 />*/}
         <Gallery />
-        <VideoGallery />
+
         <Testimonials />
         <AboutUs />
         <ContactUs />

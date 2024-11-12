@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import styles from './page.module.css';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import Navbar from '@/components/Navbar/Navbar';

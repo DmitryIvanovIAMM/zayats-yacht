@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import ReactPlayer from 'react-player/youtube';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -71,12 +72,12 @@ const VideoGallery = () => {
     // eslint-disable-next-line no-console
     console.log('videoId: ', videoId);
     return (
-      <img
+      <Image
         src={getVideoThumb(videoId)}
         alt={'Allied Yacht Transport, LLC'}
         key={item?.original}
-        height="auto"
-        width="70px"
+        height={50}
+        width={73}
         style={{ marginTop: '3px' }}
       />
     );

@@ -103,9 +103,9 @@ const AboutUs = () => {
       </Box>
       <div style={{ paddingTop: '20px', width: '100' }}>
         <picture>
-          <source media="(max-width: 600px)" srcSet={'/images/aboutus_sm_360.jpg'} />
+          <source media="(max-width: 600px)" srcSet={'/images/aboutus_sm.jpeg'} />
           <img
-            src={'/images/aboutus.jpg'}
+            src={'/images/aboutus.jpeg'}
             alt="about-us-image"
             width="100%"
             style={{ width: '100%', height: 'auto' }}

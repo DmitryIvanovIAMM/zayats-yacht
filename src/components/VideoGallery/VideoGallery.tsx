@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useRef } from 'react';
-import ReactPlayer from 'react-player/youtube';
 import Image from 'next/image';
+import ReactPlayer from 'react-player/youtube';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import ImageGallery from 'react-image-gallery';

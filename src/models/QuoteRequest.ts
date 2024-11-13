@@ -21,4 +21,4 @@ const QuoteRequestSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model<QuoteRequest>('quoteRequests', QuoteRequestSchema);
+export const QuoteRequestModel = mongoose.model<QuoteRequest>('quoteRequests', QuoteRequestSchema);

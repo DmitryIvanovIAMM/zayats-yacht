@@ -28,4 +28,4 @@ const SailingSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model<Sailing>('sailings', SailingSchema);
+export const SailingModel = mongoose.model<Sailing>('sailings', SailingSchema);

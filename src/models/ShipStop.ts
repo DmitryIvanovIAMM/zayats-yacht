@@ -51,7 +51,7 @@ const ShipStopSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model<ShipStop>('shipStops', ShipStopSchema);
+export const ShipStopModel = mongoose.model<ShipStop>('shipStops', ShipStopSchema);
 
 export const shipStopsFields = [
   '_id',

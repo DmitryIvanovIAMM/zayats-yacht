@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 import { Model } from 'mongoose';
 
-// Basic interface
 interface User extends mongoose.Document {
   _id: mongoose.Types.ObjectId;
   name: string;
@@ -32,4 +31,4 @@ const UserSchema = new mongoose.Schema(
 );
 
 export type { User };
-export default mongoose.model<User, Model<User>>('users', UserSchema);
+export const UserModel = mongoose.model<User, Model<User>>('users', UserSchema);

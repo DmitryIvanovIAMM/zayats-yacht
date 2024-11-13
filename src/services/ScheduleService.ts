@@ -1,39 +1,36 @@
 import { Types } from 'mongoose';
-import ShipStop from '../models/ShipStop';
-import Sailing from '../models/Sailing';
-import { nowUTC } from '@efacity/common';
+import { ShipStop, ShipStopModel } from '../models/ShipStop';
+import { SailingModel } from '../models/Sailing';
+import { nowUTC } from '../utils/date-time';
 import { sortShipStopsByDate } from '../utils/schedules';
 
 export default class ScheduleService {
-
   public getActiveShipStops = () => {
-    return ShipStop.aggregate([
+    return ShipStopModel.aggregate([
       {
-        '$lookup': {
-          'from': 'sailings',
-          'localField': 'sailingId',
-          'foreignField': '_id',
-          'as': 'sailing'
+        $lookup: {
+          from: 'sailings',
+          localField: 'sailingId',
+          foreignField: '_id',
+          as: 'sailing'
         }
-      }, {
-        '$unwind': {
-          'path': '$sailing',
-          'preserveNullAndEmptyArrays': true
+      },
+      {
+        $unwind: {
+          path: '$sailing',
+          preserveNullAndEmptyArrays: true
         }
       },
       {
         $match: {
-          $and: [
-            { 'sailing.deletedAt': { $exists: false } },
-            { 'sailing.isActive': true}
-          ]
+          $and: [{ 'sailing.deletedAt': { $exists: false } }, { 'sailing.isActive': true }]
         }
       }
     ]);
-  }
+  };
 
   public queryAllActiveShipStopsWithPortsAndSailings = async () => {
-    const shipStops = await ShipStop.aggregate([
+    const shipStops = await ShipStopModel.aggregate([
       {
         $lookup: {
           from: 'ports',
@@ -58,10 +55,7 @@ export default class ScheduleService {
       },
       {
         $match: {
-          $and: [
-            { 'sailing.deletedAt': { $exists: false } },
-            { 'sailing.isActive': true}
-          ]
+          $and: [{ 'sailing.deletedAt': { $exists: false } }, { 'sailing.isActive': true }]
         }
       }
     ]);
@@ -69,7 +63,7 @@ export default class ScheduleService {
   };
 
   public queryAllActiveShipStopsWithPortsAndSailingsFromDate = async (date: Date) => {
-    const shipStops = await ShipStop.aggregate([
+    const shipStops = await ShipStopModel.aggregate([
       {
         $match: { arrivalOn: { $gte: date } }
       },
@@ -97,10 +91,7 @@ export default class ScheduleService {
       },
       {
         $match: {
-          $and: [
-            { 'sailing.deletedAt': { $exists: false } },
-            { 'sailing.isActive': true}
-          ]
+          $and: [{ 'sailing.deletedAt': { $exists: false } }, { 'sailing.isActive': true }]
         }
       }
     ]);
@@ -109,7 +100,7 @@ export default class ScheduleService {
   };
 
   public querySailingsWithRoutesAndPorts = async () => {
-    const sailingsWithShipStopsAndPorts = await Sailing.aggregate([
+    const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
       {
         $match: { deletedAt: { $exists: false } }
       },
@@ -174,45 +165,40 @@ export default class ScheduleService {
     const newSailing = {
       name: name
     };
-    return Sailing.create(newSailing);
+    return SailingModel.create(newSailing);
   }
 
   updateSailingName(sailingId: string, name: string) {
-    return  Sailing.findByIdAndUpdate(
+    return SailingModel.findByIdAndUpdate(
       sailingId,
       {
         name: name
       },
       { new: true }
     );
-
   }
 
   deleteShipStopsBySailingId(sailingId: string) {
-    return  ShipStop.deleteMany(
-      {sailingId: Types.ObjectId(sailingId)}
-    );
+    return ShipStopModel.deleteMany({ sailingId: new Types.ObjectId(sailingId) });
   }
 
   setSailingActivityStatus(sailingId: string, isActive: boolean) {
-    return Sailing.findByIdAndUpdate(
+    return SailingModel.findByIdAndUpdate(
       { _id: sailingId },
       {
         $set: {
-          isActive: isActive,
+          isActive: isActive
         }
       },
-      { new: true })
+      { new: true }
+    );
   }
 
   public querySailingWithShipStops = async (sailingId: string) => {
-    const sailingsWithShipStopsAndPorts = await Sailing.aggregate([
+    const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
       {
         $match: {
-          $and: [
-            { _id: { $eq: Types.ObjectId(sailingId) } },
-            { deletedAt: { $exists: false } }
-          ]
+          $and: [{ _id: { $eq: new Types.ObjectId(sailingId) } }, { deletedAt: { $exists: false } }]
         }
       },
       {
@@ -225,22 +211,22 @@ export default class ScheduleService {
       }
     ]);
 
-    if( sailingsWithShipStopsAndPorts && sailingsWithShipStopsAndPorts.length > 0) {
+    if (sailingsWithShipStopsAndPorts && sailingsWithShipStopsAndPorts.length > 0) {
       const sailing = sailingsWithShipStopsAndPorts[0];
-      sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)]
+      sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)];
       return sailing;
     } else {
       return [];
     }
   };
 
-  createShipStops(shipStops) {
-    return ShipStop.create(shipStops);
+  createShipStops(shipStops: ShipStop) {
+    return ShipStopModel.create(shipStops);
   }
 
   softDeleteSailing(sailingId: string) {
-    return Sailing.findByIdAndUpdate(
-      Types.ObjectId(sailingId),
+    return SailingModel.findByIdAndUpdate(
+      new Types.ObjectId(sailingId),
       {
         deletedAt: nowUTC()
       },

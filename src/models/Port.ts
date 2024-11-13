@@ -27,6 +27,6 @@ const PortSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model<Port>('ports', PortSchema);
+export const PortModel = mongoose.model<Port>('ports', PortSchema);
 
 export const portFields = ['_id', 'portName', 'destinationName', 'imageFileName'];

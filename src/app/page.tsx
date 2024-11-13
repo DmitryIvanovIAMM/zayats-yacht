@@ -22,7 +22,6 @@ export default function Home() {
         <LazyViewedSection title="Video Gallery" id="video-gallery-section">
           <VideoGallery />
         </LazyViewedSection>
-
         <Testimonials />
         <AboutUs />
         <ContactUs />

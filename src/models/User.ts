@@ -1,29 +1,15 @@
 import * as mongoose from 'mongoose';
-import timestamps from './plugins/timestamp';
 import { Model } from 'mongoose';
-
-import * as crypto from 'crypto';
 
 const Schema = mongoose.Schema;
 
 // Basic interface
-interface BaseUserSchema extends mongoose.Document {
+interface User extends mongoose.Document {
   _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
   hashedPassword: string;
   salt: string;
-}
-
-interface User extends BaseUserSchema {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  authenticate: Function;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  encryptPassword: Function;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  makeSalt: Function;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  safeUser: Function;
 }
 
 const UserSchema = new Schema({
@@ -41,44 +27,6 @@ const UserSchema = new Schema({
   },
   salt: String
 });
-
-UserSchema.plugin(timestamps, { index: true });
-
-UserSchema.virtual('password').set(function (password) {
-  this._password = password;
-  this.salt = this.makeSalt();
-  this.hashedPassword = this.encryptPassword(password);
-});
-
-UserSchema.pre<User>('save', function (next) {
-  this.email = this.email.toLowerCase();
-  next();
-});
-
-UserSchema.methods = {
-  authenticate: function (plainText: string) {
-    return this.encryptPassword(plainText) === this.hashedPassword;
-  },
-
-  encryptPassword: function (password: string) {
-    if (!password || !this.salt) {
-      return '';
-    }
-    const salt = new Buffer(this.salt, 'base64');
-    return crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha1').toString('base64');
-  },
-
-  makeSalt: function () {
-    return crypto.randomBytes(16).toString('base64');
-  },
-
-  safeUser: function () {
-    const safeUser = this.toJSON();
-    delete safeUser.hashedPassword;
-    delete safeUser.salt;
-    return safeUser;
-  }
-};
 
 export type { User };
 export default mongoose.model<User, Model<User>>('users', UserSchema);

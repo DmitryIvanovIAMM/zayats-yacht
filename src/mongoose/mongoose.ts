@@ -1,40 +1,29 @@
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI;
+// eslint-disable-next-line no-console
 console.log('MONGODB_URI: ', MONGODB_URI);
-
 if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local.old');
 }
 
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
+const connection: { isConnected?: number } = {};
 
 async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
-  }
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false
-    };
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      console.log('Db connected');
-      return mongoose;
-    });
-  }
-  try {
-    cached.conn = await cached.promise;
-  } catch (e) {
-    console.log;
-    cached.promise = null;
-    throw e;
+  if (connection.isConnected) {
+    return;
   }
 
-  return cached.conn;
+  try {
+    const db = await mongoose.connect(MONGODB_URI as string);
+    connection.isConnected = db.connections[0].readyState;
+    // eslint-disable-next-line no-console
+    console.log(`MongoDB successfully connected to ${MONGODB_URI}`);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(`Failed to connect to ${MONGODB_URI}: ` + error);
+    throw new Error(`Failed to connect to ${MONGODB_URI}: ` + error);
+  }
 }
 
 export default dbConnect;

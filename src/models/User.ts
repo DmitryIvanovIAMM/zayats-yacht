@@ -16,9 +16,13 @@ interface BaseUserSchema extends mongoose.Document {
 }
 
 interface User extends BaseUserSchema {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   authenticate: Function;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   encryptPassword: Function;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   makeSalt: Function;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   safeUser: Function;
 }
 
@@ -52,11 +56,11 @@ UserSchema.pre<User>('save', function (next) {
 });
 
 UserSchema.methods = {
-  authenticate: function (plainText) {
+  authenticate: function (plainText: string) {
     return this.encryptPassword(plainText) === this.hashedPassword;
   },
 
-  encryptPassword: function (password) {
+  encryptPassword: function (password: string) {
     if (!password || !this.salt) {
       return '';
     }
@@ -76,5 +80,5 @@ UserSchema.methods = {
   }
 };
 
-export { User };
+export type { User };
 export default mongoose.model<User, Model<User>>('users', UserSchema);

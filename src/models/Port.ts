@@ -1,7 +1,4 @@
 import * as mongoose from 'mongoose';
-import timestamps from './plugins/timestamp';
-
-const Schema = mongoose.Schema;
 
 export interface Port extends mongoose.Document {
   _id: mongoose.Types.ObjectId;
@@ -10,22 +7,25 @@ export interface Port extends mongoose.Document {
   imageFileName: string;
 }
 
-const PortSchema = new Schema({
-  portName: {
-    type: String,
-    required: true
+const PortSchema = new mongoose.Schema(
+  {
+    portName: {
+      type: String,
+      required: true
+    },
+    destinationName: {
+      type: String,
+      required: true
+    },
+    imageFileName: {
+      type: String,
+      required: true
+    }
   },
-  destinationName: {
-    type: String,
-    required: true
-  },
-  imageFileName: {
-    type: String,
-    required: true
+  {
+    timestamps: true
   }
-});
-
-PortSchema.plugin(timestamps, { index: true });
+);
 
 export default mongoose.model<Port>('ports', PortSchema);
 

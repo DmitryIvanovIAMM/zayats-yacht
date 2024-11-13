@@ -1,7 +1,4 @@
 import * as mongoose from 'mongoose';
-import timestamps from './plugins/timestamp';
-
-const Schema = mongoose.Schema;
 
 export interface ShipStop extends mongoose.Document {
   sailingId: mongoose.Types.ObjectId;
@@ -12,44 +9,47 @@ export interface ShipStop extends mongoose.Document {
   miles: number;
   daysAtSea: number;
   daysInPort: number;
-};
+}
 
-const ShipStopSchema = new Schema({
-  sailingId: {
-    type: Schema.Types.ObjectId,
-    required: true
+const ShipStopSchema = new mongoose.Schema(
+  {
+    sailingId: {
+      type: mongoose.Types.ObjectId,
+      required: true
+    },
+    portId: {
+      type: mongoose.Types.ObjectId,
+      required: true
+    },
+    shipId: {
+      type: mongoose.Types.ObjectId,
+      required: true
+    },
+    arrivalOn: {
+      type: Date,
+      required: true
+    },
+    departureOn: {
+      type: Date,
+      required: true
+    },
+    miles: {
+      type: Number,
+      required: true
+    },
+    daysAtSea: {
+      type: Number,
+      required: true
+    },
+    daysInPort: {
+      type: Number,
+      required: true
+    }
   },
-  portId: {
-    type: Schema.Types.ObjectId,
-    required: true
-  },
-  shipId: {
-    type: Schema.Types.ObjectId,
-    required: true
-  },
-  arrivalOn: {
-    type: Date,
-    required: true
-  },
-  departureOn: {
-    type: Date,
-    required: true
-  },
-  miles: {
-    type: Number,
-    required: true
-  },
-  daysAtSea: {
-    type: Number,
-    required: true
-  },
-  daysInPort: {
-    type: Number,
-    required: true
+  {
+    timestamps: true
   }
-});
-
-ShipStopSchema.plugin(timestamps, { index: true });
+);
 
 export default mongoose.model<ShipStop>('shipStops', ShipStopSchema);
 
@@ -61,7 +61,7 @@ export const shipStopsFields = [
   'departureOn',
   'miles',
   'daysAtSea',
-  'daysInPort',
+  'daysInPort'
 ];
 
 export const shipStopsWithPortAndSailingFields = [

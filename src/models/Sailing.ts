@@ -1,7 +1,4 @@
 import * as mongoose from 'mongoose';
-import timestamps from './plugins/timestamp';
-
-const Schema = mongoose.Schema;
 
 export interface Sailing extends mongoose.Document {
   _id: mongoose.Types.ObjectId;
@@ -11,21 +8,24 @@ export interface Sailing extends mongoose.Document {
 
 export const sailingRequiredFields = ['_id', 'name'];
 
-const SailingSchema = new Schema({
-  name: {
-    type: String,
-    required: true
+const SailingSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true
+    },
+    deletedAt: {
+      type: Date,
+      required: false
+    },
+    isActive: {
+      type: Boolean,
+      required: false
+    }
   },
-  deletedAt: {
-    type: Date,
-    required: false
-  },
-  isActive: {
-    type: Boolean,
-    required: false
+  {
+    timestamps: true
   }
-});
-
-SailingSchema.plugin(timestamps, { index: true });
+);
 
 export default mongoose.model<Sailing>('sailings', SailingSchema);

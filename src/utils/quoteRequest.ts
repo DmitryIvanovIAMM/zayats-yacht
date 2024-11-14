@@ -1,17 +1,16 @@
-import { config } from '../config';
-import logger from '../../logger';
 import { moneyFormatter } from './moneyFormatter';
 
-export function getQuoteRequestEmail(quoteRequest) {
+/* eslint-disable no-console */
+export function getQuoteRequestEmail(quoteRequest: any) {
   const subject = getQuoteEmailSubject(quoteRequest);
   const messageText = getQuoteRequestEmailText(quoteRequest);
   const html = getQuoteRequestEmailHTMLBody(quoteRequest);
   const alliedOceanEmail = getQuoteRequestDestinationEmail();
-  logger.info(`alliedOceanEmail: ${alliedOceanEmail}`);
-  logger.info(`quoteRequest.email: ${quoteRequest.email}`);
+  console.log(`alliedOceanEmail: ${alliedOceanEmail}`);
+  console.log(`quoteRequest.email: ${quoteRequest.email}`);
 
   return {
-    from: config.alliedSalesEmail,
+    from: process.env.ALLIED_SALES_EMAIL as string,
     to: alliedOceanEmail,
     subject: subject,
     text: messageText,
@@ -19,17 +18,17 @@ export function getQuoteRequestEmail(quoteRequest) {
   };
 }
 
-export function getQuoteEmailSubject(quoteRequest) {
+export function getQuoteEmailSubject(quoteRequest: any) {
   return quoteRequest.yachtModel && quoteRequest.yachtModel.length > 0
     ? `New Quote Request from ${quoteRequest.firstName} ${quoteRequest.lastName} for ${quoteRequest.yachtModel}`
     : `New Quote Request from ${quoteRequest.firstName} ${quoteRequest.lastName}`;
 }
 
 export function getQuoteRequestDestinationEmail() {
-  return config.alliedSalesEmail;
+  return process.env.ALLIED_SALES_EMAIL as string;
 }
 
-export function getQuoteRequestEmailText(quoteRequest) {
+export function getQuoteRequestEmailText(quoteRequest: any) {
   return (
     `Yacht Name: ${quoteRequest.yachtName}\n` +
     `Name: ${quoteRequest.firstName} ${quoteRequest.lastName}\n` +
@@ -57,7 +56,7 @@ export function getQuoteRequestEmailText(quoteRequest) {
   );
 }
 
-export function getQuoteRequestEmailHTMLBody(quoteRequest) {
+export function getQuoteRequestEmailHTMLBody(quoteRequest: any) {
   return (
     '<table>' +
     `<tr><td><strong>Yacht Name :</strong></td><td>&nbsp;${

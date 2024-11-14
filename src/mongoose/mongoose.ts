@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const { MONGODB_URI } = process.env;
 // eslint-disable-next-line no-console
 console.log('MONGODB_URI: ', MONGODB_URI);
 if (!MONGODB_URI) {

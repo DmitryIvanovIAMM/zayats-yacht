@@ -1,6 +1,13 @@
 import * as schedulesUtils from '../schedules';
+import { Ship } from '@/models/Ship';
+import { ShipStop } from '@/models/ShipStop';
 
-export const searchRoutes = (ships, shipStops, departurePortId, destinationPortId) => {
+export const searchRoutes = (
+  ships: Ship[],
+  shipStops: ShipStop[],
+  departurePortId: string,
+  destinationPortId: string
+): ShipStop[] => {
   const schedules = ships.map(function (ship) {
     const shipStopsForShip = shipStops
       .filter((shipStop) => shipStop.shipId.toString() === ship._id.toString())
@@ -10,13 +17,19 @@ export const searchRoutes = (ships, shipStops, departurePortId, destinationPortI
   return flat(schedules);
 };
 
-export const searchRoutesForShip = (shipStops, departurePortId, destinationPortId) => {
-  const schedules = [];
+export const searchRoutesForShip = (
+  shipStops: ShipStop[],
+  departurePortId: string,
+  destinationPortId: string
+): ShipStop[][] => {
+  const schedules: ShipStop[][] = [];
   shipStops.forEach(function (item, i) {
     if (item.portId.toString() === departurePortId) {
       const restOfShipStops = shipStops.slice(i); // If end is omitted, slice extracts to the end of the sequence.
       const possibleNewSchedule = searchScheduleFromCurrentToDestinationPort(
-        restOfShipStops.filter(shipStop => shipStop.sailingId.toString() === item.sailingId.toString()),
+        restOfShipStops.filter(
+          (shipStop) => shipStop.sailingId.toString() === item.sailingId.toString()
+        ),
         departurePortId,
         destinationPortId
       );
@@ -29,28 +42,37 @@ export const searchRoutesForShip = (shipStops, departurePortId, destinationPortI
 };
 
 const searchScheduleFromCurrentToDestinationPort = (
-  shipStops,
-  departurePortId,
-  destinationPortId
-) => {
+  shipStops: ShipStop[],
+  departurePortId: string,
+  destinationPortId: string
+): ShipStop[] => {
   for (let i = 1; i < shipStops.length; i++) {
-    if (shipStops[i].portId.toString() === departurePortId) return null;
+    if (shipStops[i].portId.toString() === departurePortId) return [];
     if (shipStops[i].portId.toString() === destinationPortId && shipStops[i]) {
       return shipStops.slice(0, i + 1);
     }
   }
-  return null;
+  return [];
 };
 
-export const filteredByLoadingDate = (schedules, loadingDates) => {
-  const startOfInterval = new Date(loadingDates.startDate).setHours(0, 0, 0, 0);
-  const endOfInterval = new Date(loadingDates.endDate).setHours(23, 59, 59, 999);
-  return schedules.filter((schedule) => {
+export interface LoadingDates {
+  startDate: Date | string;
+  endDate: Date | string;
+}
+
+export const filteredByLoadingDate = (
+  schedules: ShipStop[][],
+  loadingDates: LoadingDates
+): ShipStop[][] => {
+  const startOfInterval = new Date(new Date(loadingDates.startDate).setHours(0, 0, 0, 0));
+  const endOfInterval = new Date(new Date(loadingDates.endDate).setHours(23, 59, 59, 999));
+  return schedules.filter((schedule: ShipStop[]) => {
     return schedule[0].arrivalOn >= startOfInterval && schedule[0].arrivalOn <= endOfInterval;
   });
 };
 
-const flat = (input, depth = 1, stack = []) => {
+// ToDo Mey be ney array.fla() can be used - ?
+const flat = (input: any, depth = 1, stack: any = []): any => {
   for (const item of input) {
     if (item instanceof Array && depth > 0) {
       flat(item, depth - 1, stack);

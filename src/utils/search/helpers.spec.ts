@@ -1,14 +1,15 @@
 import { filteredByLoadingDate } from './helpers';
+import { ShipStop } from '@/models/ShipStop';
 
 describe('filteredByLoadingDate()', () => {
   it('should return part of schedules if loading date is end of given interval', () => {
     const schedule1 = [
-      { id: 1, arrivalOn: new Date('2020-01-01') },
-      { id: 2, arrivalOn: new Date('2020-02-01') }
+      { id: 1, arrivalOn: new Date('2020-01-01') } as ShipStop,
+      { id: 2, arrivalOn: new Date('2020-02-01') } as ShipStop
     ];
     const schedule2 = [
-      { id: 3, arrivalOn: new Date('2020-02-01') },
-      { id: 4, arrivalOn: new Date('2020-04-01') }
+      { id: 3, arrivalOn: new Date('2020-02-01') } as ShipStop,
+      { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
     const arrivalDates = {
@@ -22,12 +23,12 @@ describe('filteredByLoadingDate()', () => {
 
   it('should return part of schedules if loading date is start of given interval', () => {
     const schedule1 = [
-      { id: 1, arrivalOn: new Date('2020-01-01') },
-      { id: 2, arrivalOn: new Date('2020-02-01') }
+      { id: 1, arrivalOn: new Date('2020-01-01') } as ShipStop,
+      { id: 2, arrivalOn: new Date('2020-02-01') } as ShipStop
     ];
     const schedule2 = [
-      { id: 3, arrivalOn: new Date('2020-02-01') },
-      { id: 4, arrivalOn: new Date('2020-04-01') }
+      { id: 3, arrivalOn: new Date('2020-02-01') } as ShipStop,
+      { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
     const arrivalDates = {
@@ -41,12 +42,12 @@ describe('filteredByLoadingDate()', () => {
 
   it('should return all of schedules if loading date in given interval', () => {
     const schedule1 = [
-      { id: 1, arrivalOn: new Date('2020-02-01') },
-      { id: 2, arrivalOn: new Date('2020-03-01') }
+      { id: 1, arrivalOn: new Date('2020-02-01') } as ShipStop,
+      { id: 2, arrivalOn: new Date('2020-03-01') } as ShipStop
     ];
     const schedule2 = [
-      { id: 3, arrivalOn: new Date('2020-03-01') },
-      { id: 4, arrivalOn: new Date('2020-04-01') }
+      { id: 3, arrivalOn: new Date('2020-03-01') } as ShipStop,
+      { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
     const arrivalDates = {
@@ -60,12 +61,12 @@ describe('filteredByLoadingDate()', () => {
 
   it('should return empty schedules if loading date not in given interval', () => {
     const schedule1 = [
-      { id: 1, arrivalOn: new Date('2020-01-01') },
-      { id: 2, arrivalOn: new Date('2020-03-01') }
+      { id: 1, arrivalOn: new Date('2020-01-01') } as ShipStop,
+      { id: 2, arrivalOn: new Date('2020-03-01') } as ShipStop
     ];
     const schedule2 = [
-      { id: 3, arrivalOn: new Date('2020-01-01') },
-      { id: 4, arrivalOn: new Date('2020-04-01') }
+      { id: 3, arrivalOn: new Date('2020-01-01') } as ShipStop,
+      { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
     const arrivalDates = {

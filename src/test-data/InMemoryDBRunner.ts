@@ -18,17 +18,10 @@ class InMemoryDBRunner {
   public connectToInMemoryDBServer = async () => {
     const uri = await this.mongod.getUri();
 
-    this.mongod.getInstanceInfo(); // return Object with instance data
-
-    const options = {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false
-    };
+    //this.mongod.getInstanceInfo(); // return Object with instance data
 
     try {
-      await mongoose.connect(uri, { ...options });
+      await mongoose.connect(uri);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Cannot connect to in-memory mongodb:', error);

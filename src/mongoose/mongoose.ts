@@ -11,7 +11,7 @@ if (!MONGODB_URI) {
 const connection: { isConnected?: number } = {};
 
 async function dbConnect() {
-  logger.info('dbConnect() starting...');
+  logger.warn('dbConnect() starting...');
   if (connection.isConnected) {
     return;
   }

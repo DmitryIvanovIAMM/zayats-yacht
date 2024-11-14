@@ -12,6 +12,7 @@ const connection: { isConnected?: number } = {};
 
 async function dbConnect() {
   logger.warn('dbConnect() starting...');
+  console.warn('dbConnect() starting...');
   if (connection.isConnected) {
     return;
   }

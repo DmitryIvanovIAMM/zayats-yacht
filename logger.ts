@@ -1,3 +1,5 @@
 import pino from 'pino';
 
-module.exports = pino({});
+const logger = pino({});
+
+export default logger;

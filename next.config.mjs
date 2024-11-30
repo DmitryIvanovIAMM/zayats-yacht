@@ -9,6 +9,11 @@ const nextConfig = {
         pathname: '**'
       }
     ]
+  },
+  sassOptions: {
+    // temporary silent warning for legacy-js-api
+    // https://github.com/vercel/next.js/issues/71638
+    silenceDeprecations: ['legacy-js-api']
   }
 };
 

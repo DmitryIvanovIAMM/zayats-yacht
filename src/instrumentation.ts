@@ -1,6 +1,5 @@
 import dbConnect from '@/mongoose/mongoose';
 import { AppEnv } from '@/utils/appEnv';
-import testDataLoader from '@/test-data/testDataLoader';
 
 export async function register() {
   await dbConnect();

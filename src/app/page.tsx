@@ -9,12 +9,17 @@ import Gallery from '@/components/Gallery/Gallery';
 import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
+import { portService } from '@/services/PortService';
+import ScheduleSection from '@/components/Schedule/Schedule';
 
-export default function Home() {
+export default async function Home() {
+  const ports = await portService.getAllPorts();
+
   return (
     <div className={styles.page}>
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
+        <ScheduleSection ports={JSON.parse(JSON.stringify(ports))} />
         <EmptySection />
         <LazyViewedSection title="Gallery" id="photo-gallery-section">
           <Gallery />

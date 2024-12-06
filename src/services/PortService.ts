@@ -1,7 +1,9 @@
-import { PortModel } from '../models/Port';
+import { Port, PortModel } from '@/models/Port';
 
 export default class PortService {
-  public getAllPorts = () => {
-    return PortModel.find({});
+  public getAllPorts = async (): Promise<Port[]> => {
+    return PortModel.find({}).lean<Port[]>();
   };
 }
+
+export const portService = new PortService();

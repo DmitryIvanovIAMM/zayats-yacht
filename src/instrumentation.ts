@@ -1,5 +1,6 @@
 import dbConnect from '@/mongoose/mongoose';
 import { AppEnv } from '@/utils/appEnv';
+import testDataLoader from '@/test-data/testDataLoader';
 
 export async function register() {
   await dbConnect();
@@ -9,6 +10,7 @@ export async function register() {
   if (APP_ENV === AppEnv.DEV) {
     // eslint-disable-next-line no-console
     console.log('Load test data in development mode...');
+    //await testDataLoader();
   } else {
     // eslint-disable-next-line no-console
     console.log('Do not load test data in production mode.');

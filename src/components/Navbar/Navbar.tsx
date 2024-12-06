@@ -171,7 +171,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
           open={menuOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true // Better open performance on mobile.
+            keepMounted: true, // Better open performance on mobile.
+            disableScrollLock: true
           }}
           sx={{
             display: { xs: 'block' },

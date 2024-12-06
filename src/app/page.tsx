@@ -13,6 +13,9 @@ import { portService } from '@/services/PortService';
 import ScheduleSection from '@/components/Schedule/Schedule';
 
 export default async function Home() {
+  const { MONGODB_URI } = process.env;
+  // eslint-disable-next-line no-console
+  console.log('MONGODB_URI: ', MONGODB_URI);
   const ports = await portService.getAllPorts();
 
   return (

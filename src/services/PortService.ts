@@ -5,7 +5,6 @@ export default class PortService {
     const { MONGODB_URI } = process.env;
     // eslint-disable-next-line no-console
     console.log('MONGODB_URI: ', MONGODB_URI);
-    console.log('MONGODB_URI: ', MONGODB_URI);
 
     return PortModel.find({}).lean<Port[]>();
   };

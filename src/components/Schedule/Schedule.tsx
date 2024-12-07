@@ -26,7 +26,8 @@ export interface ScheduleSectionProps {
 }
 
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports }) => {
-  //console.log('ScheduleSection().  ports: ', ports);
+  // eslint-disable-next-line no-console
+  console.log('ScheduleSection().  ports: ', ports);
   const [userScheduleSelection, setUserScheduleSelection] = React.useState<UserScheduleSelection>(
     defaultUserScheduleSelection
   );

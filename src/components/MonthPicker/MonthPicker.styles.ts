@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     //boxShadow: theme?.shadows[6],
     zIndex: 11,
     backgroundColor: '#006EB9',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       flexDirection: 'column'
     }
   },

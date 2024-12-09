@@ -58,11 +58,13 @@ function MonthPicker({ value, onChange, inputLabel = 'When (optional)' }: MonthP
     <ClickAwayListener onClickAway={onCloseCalendar}>
       <div className={classes.root}>
         <TextField
+          variant={'outlined'}
           data-testid="month-field"
           label={inputLabel}
           value={labelText}
           fullWidth
           onClick={onToggleCalendar}
+          style={{ borderColor: '#3365A7' }}
           slotProps={{
             input: {
               endAdornment: (

@@ -6,16 +6,26 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '270px',
     padding: '8px 0',
     margin: 'auto',
+    marginTop: '-3px',
     position: 'relative',
     '& .MuiInputBase-input': {
+      borderColor: '#3365A7',
       color: '#3365A7',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      '& fieldset': {
+        borderColor: '#3365A7'
+      }
     },
     '& .MuiInputLabel-root': {
       color: '#3365A7'
     },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#3365A7'
+      }
+    },
     '& .MuiFormControl-root': {
-      color: '#3365A7'
+      color: '#c'
     },
     '& .MuiFormLabel-root': {
       border: 'none'

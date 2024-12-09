@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '270px',
     padding: '8px 0',
     margin: 'auto',
-    marginTop: '-3px',
+    marginTop: '2px',
+    marginBottom: '10px',
     position: 'relative',
     '& .MuiInputBase-input': {
       borderColor: '#3365A7',

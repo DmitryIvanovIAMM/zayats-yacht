@@ -14,11 +14,17 @@ import { Port } from '@/models/Port';
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    //marginTop: '10px',
+    //marginBottom: '10px',
+    paddingTop: '10px',
+    paddingBottom: '10px'
   },
   formControl: {
     //margin: theme.spacing(1),
     margin: 'auto',
+    marginTop: '10px',
+    marginBottom: '10px',
     minWidth: 80,
     position: 'relative',
     width: 270,

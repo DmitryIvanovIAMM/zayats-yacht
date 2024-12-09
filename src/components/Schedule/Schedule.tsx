@@ -51,6 +51,8 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports }) => {
           justifyItems: 'center',
           justifyContent: 'space-evenly',
           flexDirection: { xs: 'column', sm: 'row' },
+          flexWrap: 'wrap',
+          flexBasis: '100%',
           width: '100%'
         }}
       >

@@ -23,7 +23,7 @@ export default async function Home() {
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
         <ScheduleSection ports={JSON.parse(JSON.stringify(ports))} />
-        <EmptySection />
+        {/*<EmptySection />*/}
         <LazyViewedSection title="Gallery" id="photo-gallery-section">
           <Gallery />
         </LazyViewedSection>

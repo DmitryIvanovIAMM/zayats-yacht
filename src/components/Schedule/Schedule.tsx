@@ -4,7 +4,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import PortSelector from '@/components/PortSelector/PortSelector';
-import { centeredSectionSx } from '@/components/AboutUs/AboutUs';
+import { centeredSectionSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
 import { Types } from 'mongoose';
 import { Port } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
@@ -54,7 +54,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports }) => {
           width: '100%'
         }}
       >
-        <div>
+        <div style={centerItemSivStyle}>
           <PortSelector
             selectedPort={userScheduleSelection.departurePortId?.toString() || ''}
             ports={ports}
@@ -64,7 +64,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports }) => {
             onSelect={handleDeparturePortSelected}
           />
         </div>
-        <div>
+        <div style={centerItemSivStyle}>
           <PortSelector
             selectedPort={userScheduleSelection.destinationPortId?.toString() || ''}
             ports={ports}
@@ -74,7 +74,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports }) => {
             onSelect={handleDestinationPortSelected}
           />
         </div>
-        <div>
+        <div style={centerItemSivStyle}>
           <MonthPicker
             value={userScheduleSelection.loadingDate}
             onChange={handleLoadingDateSelected}

@@ -17,8 +17,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexWrap: 'wrap'
   },
   formControl: {
-    margin: theme.spacing(1),
+    //margin: theme.spacing(1),
+    margin: 'auto',
     minWidth: 80,
+    position: 'relative',
     width: 270,
     '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
       borderColor: '#3365A7',

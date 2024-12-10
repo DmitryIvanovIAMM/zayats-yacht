@@ -59,7 +59,8 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
     return getInternationalDateFormat(date);
   }, [route]);
 
-  return (
+  return <div>RouteWithImage</div>;
+  /*return (
     <Grid item className={classes.routeWihImageBox} data-cy="schedule-route-card">
       <img
         className={classes.cardImg}
@@ -101,7 +102,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
                     to={`destination/${route[0].departurePort._id}`}
                   >
                     {route[0].departurePort.portName}
-                  </Link>*/}
+                  </Link>}
                 </th>
               </tr>
               <tr>
@@ -181,7 +182,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
         </Button>
       </Hidden>
     </Grid>
-  );
+  );*/
 };
 
 export default RouteWithImage;

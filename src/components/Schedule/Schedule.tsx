@@ -19,6 +19,7 @@ export const emptyPortErrors = {
 
 export interface PortSchedulesState {
   ports: Port[];
+  destinations: Destination[];
   destinationPortId: string | Types.ObjectId | null;
   destinationPorts: Port[];
   departurePortId: string | Types.ObjectId | null;
@@ -52,15 +53,18 @@ export interface ScheduleSectionProps {
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports, destinations }) => {
   const [portSchedulesState, setPortSchedulesState] = React.useState<PortSchedulesState>({
     ...defaultPortSchedulesState,
-    ports: ports
+    ports: ports,
+    destinations: destinations
   });
   const departurePortsVariants: Port[] = portSchedulesState.ports.filter(
     (port) => port._id !== portSchedulesState.destinationPortId
   );
+  // eslint-disable-next-line no-console
   console.log('departurePortsVariants: ', departurePortsVariants);
   const destinationPortsVariants: Port[] = portSchedulesState.ports.filter(
     (port) => port._id !== portSchedulesState.departurePortId
   );
+  // eslint-disable-next-line no-console
   console.log('destinationPortsVariants: ', destinationPortsVariants);
 
   const handleDeparturePortSelected = (departurePortId: string) => {
@@ -77,9 +81,11 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports, destinations }
   };
   const handleLoadingDateSelected = (dateRange: MonthDateRange | null) => {};
   const handleStoreUserSelection = (selectedRoute: any) => {
+    // eslint-disable-next-line no-console
     console.log('handleStoreUserSelection().  selectedRoute: ', selectedRoute);
   };
   const handleShareRoute = (selectedRoute: any) => {
+    // eslint-disable-next-line no-console
     console.log('handleShareRoute().  selectedRoute: ', selectedRoute);
   };
 

@@ -34,7 +34,7 @@ export default function RoutesList({
               </Grid>
             </Grid>
           ) : (
-            <div />
+            <div key={`noShipKeyIndex${index}`} />
           )
         )
       ) : (

@@ -19,7 +19,8 @@ export default function RoutesList({
   isLoadingPortSelected,
   isDestinationPortSelected
 }: RoutesListProps) {
-  return (
+  return <div>RoutesList</div>;
+  /*return (
     <Grid container style={{ margin: 0, padding: 16 }}>
       {routesList && routesList.length > 0 ? (
         routesList.map((route, index) =>
@@ -49,7 +50,7 @@ export default function RoutesList({
         </Container>
       )}
     </Grid>
-  );
+  );*/
 }
 
 /*RouteBoxesList.propTypes = {

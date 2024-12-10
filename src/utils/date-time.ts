@@ -42,7 +42,7 @@ export function getInternationalDateFormat(date: Date | string): string {
   return `${month} ${day}, ${year}`;
 }
 
-export interface monthDateRange {
+export interface MonthDateRange {
   startDate: Date;
   endDate: Date;
 }

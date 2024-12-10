@@ -9,21 +9,24 @@ import Gallery from '@/components/Gallery/Gallery';
 import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
-import { portService } from '@/services/PortService';
 import ScheduleSection from '@/components/Schedule/Schedule';
+import { portsController } from '@/controllers/PortsController';
+import { schedulesController } from '@/controllers/SchedulesController';
 
 export default async function Home() {
-  const { MONGODB_URI } = process.env;
-  // eslint-disable-next-line no-console
-  console.log('MONGODB_URI: ', MONGODB_URI);
-  const ports = await portService.getAllPorts();
+  const ports = await portsController.getPorts();
+  console.log('ports: ', ports);
+  const schedules = await schedulesController.queryNearestShippings(new Date());
 
   return (
     <div className={styles.page}>
       <Navbar isAuthenticated={false} />
       <div className={styles.main}>
-        <ScheduleSection ports={JSON.parse(JSON.stringify(ports))} />
-        {/*<EmptySection />*/}
+        <ScheduleSection
+          ports={JSON.parse(JSON.stringify(ports.ports))}
+          destinations={ports.destinations}
+        />
+        <EmptySection />
         <LazyViewedSection title="Gallery" id="photo-gallery-section">
           <Gallery />
         </LazyViewedSection>

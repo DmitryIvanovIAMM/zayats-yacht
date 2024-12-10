@@ -2,13 +2,13 @@ import useMonthPickerStyles from './MonthPicker.styles';
 import clsx from 'clsx';
 import React from 'react';
 import { monthInRange, oneMonthRange } from './monthPickerHelpers';
-import { monthDateRange, months } from '@/utils/date-time';
+import { MonthDateRange, months } from '@/utils/date-time';
 import Typography from '@mui/material/Typography';
 
 export interface PickerProps {
   year: number;
   onMonthClick: (monthIndex: number, year: number) => void;
-  value: monthDateRange | null;
+  value: MonthDateRange | null;
 }
 
 const Picker: React.FC<PickerProps> = ({ year, onMonthClick, value }) => {

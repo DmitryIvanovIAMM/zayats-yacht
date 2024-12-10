@@ -6,40 +6,81 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
 import { Types } from 'mongoose';
-import { Port } from '@/models/Port';
+import { Destination, Port } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
-import { monthDateRange } from '@/utils/date-time';
+import { MonthDateRange } from '@/utils/date-time';
+import RoutesList from '@/components/RoutesList/RoutesList';
+import { ShipStop } from '@/models/ShipStop';
 
-export interface UserScheduleSelection {
-  departurePortId: string | Types.ObjectId | null;
+export const emptyPortErrors = {
+  departurePortId: '',
+  destinationPortId: ''
+};
+
+export interface PortSchedulesState {
+  ports: Port[];
   destinationPortId: string | Types.ObjectId | null;
-  loadingDate: monthDateRange | null;
+  destinationPorts: Port[];
+  departurePortId: string | Types.ObjectId | null;
+  loadingDate: MonthDateRange | null;
+  isLoadingPort: boolean;
+  isLoadingSchedule: boolean;
+  destinationIndex: number | null;
+  errors: any;
+  schedules: ShipStop[];
+  errorMessage: string | null;
 }
-export const defaultUserScheduleSelection: UserScheduleSelection = {
-  departurePortId: null,
+
+export const defaultPortSchedulesState: PortSchedulesState = {
+  ports: [],
   destinationPortId: null,
-  loadingDate: null
+  destinationPorts: [],
+  departurePortId: null,
+  loadingDate: null,
+  isLoadingPort: false,
+  isLoadingSchedule: false,
+  destinationIndex: null,
+  errors: emptyPortErrors,
+  schedules: [],
+  errorMessage: null
 };
 
 export interface ScheduleSectionProps {
   ports: Port[];
+  destinations: Destination[];
 }
-
-const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports }) => {
-  // eslint-disable-next-line no-console
-  console.log('ScheduleSection().  ports: ', ports);
-  const [userScheduleSelection, setUserScheduleSelection] = React.useState<UserScheduleSelection>(
-    defaultUserScheduleSelection
+const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports, destinations }) => {
+  const [portSchedulesState, setPortSchedulesState] = React.useState<PortSchedulesState>({
+    ...defaultPortSchedulesState,
+    ports: ports
+  });
+  const departurePortsVariants: Port[] = portSchedulesState.ports.filter(
+    (port) => port._id !== portSchedulesState.destinationPortId
   );
+  console.log('departurePortsVariants: ', departurePortsVariants);
+  const destinationPortsVariants: Port[] = portSchedulesState.ports.filter(
+    (port) => port._id !== portSchedulesState.departurePortId
+  );
+  console.log('destinationPortsVariants: ', destinationPortsVariants);
 
-  const handleDeparturePortSelected = (portId: string) => {
-    setUserScheduleSelection({ ...userScheduleSelection, departurePortId: portId });
+  const handleDeparturePortSelected = (departurePortId: string) => {
+    setPortSchedulesState((portSchedulesState) => ({
+      ...portSchedulesState,
+      departurePortId: departurePortId
+    }));
   };
-  const handleDestinationPortSelected = (portId: string) => {
-    setUserScheduleSelection({ ...userScheduleSelection, destinationPortId: portId });
+  const handleDestinationPortSelected = (destinationPortId: string) => {
+    setPortSchedulesState((portSchedulesState) => ({
+      ...portSchedulesState,
+      destinationPortId: destinationPortId
+    }));
   };
-  const handleLoadingDateSelected = (dateRange: monthDateRange | null) => {
-    setUserScheduleSelection({ ...userScheduleSelection, loadingDate: dateRange });
+  const handleLoadingDateSelected = (dateRange: MonthDateRange | null) => {};
+  const handleStoreUserSelection = (selectedRoute: any) => {
+    console.log('handleStoreUserSelection().  selectedRoute: ', selectedRoute);
+  };
+  const handleShareRoute = (selectedRoute: any) => {
+    console.log('handleShareRoute().  selectedRoute: ', selectedRoute);
   };
 
   return (
@@ -58,31 +99,38 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports }) => {
       >
         <div style={centerItemSivStyle}>
           <PortSelector
-            selectedPort={userScheduleSelection.departurePortId?.toString() || ''}
-            ports={ports}
-            //errors={errors.departurePortId}
-            errors={''}
+            selectedPort={portSchedulesState.departurePortId?.toString() || ''}
+            ports={departurePortsVariants}
+            errors={portSchedulesState.errors.departurePortId}
             label="From"
             onSelect={handleDeparturePortSelected}
           />
         </div>
         <div style={centerItemSivStyle}>
           <PortSelector
-            selectedPort={userScheduleSelection.destinationPortId?.toString() || ''}
-            ports={ports}
-            //errors={errors.departurePortId}
-            errors={''}
+            selectedPort={portSchedulesState.destinationPortId?.toString() || ''}
+            ports={destinationPortsVariants}
+            errors={portSchedulesState.errors.departurePortId}
             label="To"
             onSelect={handleDestinationPortSelected}
           />
         </div>
         <div style={centerItemSivStyle}>
           <MonthPicker
-            value={userScheduleSelection.loadingDate}
+            value={portSchedulesState.loadingDate}
             onChange={handleLoadingDateSelected}
           />
         </div>
       </Box>
+      <div>
+        {/*<RoutesList
+          routesList={schedules}
+          onUserGetRouteSelect={handleStoreUserSelection}
+          onShareRoute={handleShareRoute}
+          isLoadingPortSelected={!!departurePortId}
+          isDestinationPortSelected={!!destinationPortId}
+        />*/}
+      </div>
     </Box>
   );
 };

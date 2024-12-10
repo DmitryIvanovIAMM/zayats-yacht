@@ -1,4 +1,4 @@
-import { monthDateRange, months } from '@/utils/date-time';
+import { MonthDateRange, months } from '@/utils/date-time';
 /*
   Months are 0 based
   new Date(2020, 0, 1) //gives January, 1 2020
@@ -6,7 +6,7 @@ import { monthDateRange, months } from '@/utils/date-time';
   new Date(2020, 1, 0) //gives January, 31 2020
 */
 
-export function getMonthsRange(endMonthIndex: number, value: monthDateRange, year: number) {
+export function getMonthsRange(endMonthIndex: number, value: MonthDateRange, year: number) {
   const startMonthIndex = value.startDate.getMonth();
   const startYear = value.startDate.getFullYear();
   /* Reverse selection (e.g. Nov, Jan within the same year or Nov 2021, Jan 2020)*/
@@ -23,13 +23,13 @@ export function getMonthsRange(endMonthIndex: number, value: monthDateRange, yea
   }
 }
 
-export function oneMonthRange({ startDate, endDate }: monthDateRange) {
+export function oneMonthRange({ startDate, endDate }: MonthDateRange) {
   return (
     startDate.getMonth() === endDate.getMonth() && startDate.getFullYear() === endDate.getFullYear()
   );
 }
 
-export function getLabelText({ startDate, endDate }: monthDateRange) {
+export function getLabelText({ startDate, endDate }: MonthDateRange) {
   if (oneMonthRange({ startDate, endDate })) {
     const monthName = months[startDate.getMonth()];
     return `${monthName} '${startDate.getFullYear()}`;
@@ -45,14 +45,14 @@ export function getLabelText({ startDate, endDate }: monthDateRange) {
   }
 }
 
-export function getOneMonthRange(monthIndex: number, year: number): monthDateRange {
+export function getOneMonthRange(monthIndex: number, year: number): MonthDateRange {
   return {
     startDate: new Date(year, monthIndex, 1),
     endDate: new Date(year, monthIndex + 1, 0)
   };
 }
 
-export function clickedSameMonth(value: monthDateRange, monthIndex: number, year: number) {
+export function clickedSameMonth(value: MonthDateRange, monthIndex: number, year: number) {
   return (
     oneMonthRange(value) &&
     value.startDate.getMonth() === monthIndex &&
@@ -60,7 +60,7 @@ export function clickedSameMonth(value: monthDateRange, monthIndex: number, year
   );
 }
 
-export function monthInRange(value: monthDateRange, monthIndex: number, year: number) {
+export function monthInRange(value: MonthDateRange, monthIndex: number, year: number) {
   const startMonthIndex = value.startDate.getMonth();
   const endMonthIndex = value.endDate.getMonth();
   const startMonthYear = value.startDate.getFullYear();

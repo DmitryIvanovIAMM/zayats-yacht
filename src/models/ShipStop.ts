@@ -1,28 +1,33 @@
-import * as mongoose from 'mongoose';
+import mongoose, { Types, Schema, Document, model } from 'mongoose';
+import { Port } from '@/models/Port';
+import { Ship } from '@/models/Ship';
+import { Sailing } from '@/models/Sailing';
 
-export interface ShipStop extends mongoose.Document {
-  sailingId: mongoose.Types.ObjectId;
-  portId: mongoose.Types.ObjectId;
-  shipId: mongoose.Types.ObjectId;
+export interface ShipStop extends Document {
+  sailingId: Types.ObjectId;
+  portId: Types.ObjectId | Port;
+  shipId: Types.ObjectId | Ship;
   arrivalOn: Date;
   departureOn: Date;
   miles: number;
   daysAtSea: number;
   daysInPort: number;
+  port?: Port;
+  sailings?: Sailing;
 }
 
-const ShipStopSchema = new mongoose.Schema(
+const ShipStopSchema = new Schema(
   {
     sailingId: {
-      type: mongoose.Types.ObjectId,
+      type: Types.ObjectId,
       required: true
     },
     portId: {
-      type: mongoose.Types.ObjectId,
+      type: Types.ObjectId,
       required: true
     },
     shipId: {
-      type: mongoose.Types.ObjectId,
+      type: Types.ObjectId,
       required: true
     },
     arrivalOn: {
@@ -51,8 +56,9 @@ const ShipStopSchema = new mongoose.Schema(
   }
 );
 
-export const ShipStopModel = mongoose.model<ShipStop>('shipStops', ShipStopSchema);
-
+export const ShipStopModel =
+  mongoose.models?.shipStops || model<ShipStop>('shipStops', ShipStopSchema);
+// export const PortModel = mongoose.models?.ports || mongoose.model<Port>('ports', PortSchema);
 export const shipStopsFields = [
   '_id',
   'sailingId',

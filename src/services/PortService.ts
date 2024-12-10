@@ -2,17 +2,25 @@ import { Port, PortModel } from '@/models/Port';
 import dbConnect from '@/mongoose/mongoose';
 
 export default class PortService {
+  private static instance: PortService;
+  private constructor() {}
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new PortService();
+    return this.instance;
+  }
+
   public getAllPorts = async (): Promise<Port[]> => {
     try {
       await dbConnect();
 
       return PortModel.find({}).lean<Port[]>();
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Failed to connect and load test data: ', error);
       return [];
     }
   };
 }
 
-export const portService = new PortService();
+export const portService = PortService.getInstance();

@@ -9,13 +9,13 @@ import {
 import useDatePickerStyles from './MonthPicker.styles';
 import Event from '@mui/icons-material/Event';
 import Picker from './Picker';
-import { monthDateRange } from '@/utils/date-time';
+import { MonthDateRange } from '@/utils/date-time';
 import { ClickAwayListener, Fade, InputAdornment, TextField } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 export interface MonthPickerProps {
-  value: monthDateRange | null;
-  onChange: (dateRange: monthDateRange | null) => void;
+  value: MonthDateRange | null;
+  onChange: (dateRange: MonthDateRange | null) => void;
   inputLabel?: string;
 }
 function MonthPicker({ value, onChange, inputLabel = 'When (optional)' }: MonthPickerProps) {

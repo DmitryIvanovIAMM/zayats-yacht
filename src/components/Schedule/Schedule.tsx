@@ -34,6 +34,7 @@ export interface PortSchedulesState {
 
 export const defaultPortSchedulesState: PortSchedulesState = {
   ports: [],
+  destinations: [],
   destinationPortId: null,
   destinationPorts: [],
   departurePortId: null,

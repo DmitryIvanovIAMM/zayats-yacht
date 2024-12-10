@@ -1,0 +1,786 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonthPicker component should render correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="makeStyles-root-1"
+      >
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"
+          data-testid="month-field"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-cv2ggm-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="true"
+            for=":r0:"
+            id=":r0:-label"
+          >
+            When (optional)
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd Mui-readOnly MuiInputBase-readOnly css-mn28wc-MuiInputBase-root-MuiOutlinedInput-root"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd Mui-readOnly MuiInputBase-readOnly css-1dune0f-MuiInputBase-input-MuiOutlinedInput-input"
+              id=":r0:"
+              readonly=""
+              type="text"
+              value="Any Month"
+            />
+            <div
+              class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-aixiz9-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                  data-testid="EventIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M17 12h-5v5h5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1zm3 18H5V8h14z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-w1u3ce"
+              >
+                <span>
+                  When (optional)
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
+          class="makeStyles-yearsList-3"
+          style="opacity: 0; visibility: hidden;"
+        >
+          <div
+            class="makeStyles-pickerRoot-4"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter css-laos7x-MuiTypography-root"
+              style="--Typography-textAlign: center;"
+            >
+              2024
+            </h5>
+            <div
+              class="makeStyles-monthsWrapper-5"
+              data-testid="calendar"
+            >
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Jan
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Feb
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Mar
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Apr
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  May
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Jun
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Jul
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Aug
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Sep
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Oct
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Nov
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Dec
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="makeStyles-pickerRoot-4"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter css-laos7x-MuiTypography-root"
+              style="--Typography-textAlign: center;"
+            >
+              2025
+            </h5>
+            <div
+              class="makeStyles-monthsWrapper-5"
+              data-testid="calendar"
+            >
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Jan
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Feb
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Mar
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Apr
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  May
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Jun
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Jul
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Aug
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Sep
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Oct
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Nov
+                </button>
+              </div>
+              <div
+                class="makeStyles-monthContainer-6"
+                data-testid="month-item"
+              >
+                <button
+                  class="makeStyles-monthBtn-8"
+                  data-testid="month-btn"
+                >
+                  Dec
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="makeStyles-root-1"
+    >
+      <div
+        class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"
+        data-testid="month-field"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-cv2ggm-MuiFormLabel-root-MuiInputLabel-root"
+          data-shrink="true"
+          for=":r0:"
+          id=":r0:-label"
+        >
+          When (optional)
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd Mui-readOnly MuiInputBase-readOnly css-mn28wc-MuiInputBase-root-MuiOutlinedInput-root"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd Mui-readOnly MuiInputBase-readOnly css-1dune0f-MuiInputBase-input-MuiOutlinedInput-input"
+            id=":r0:"
+            readonly=""
+            type="text"
+            value="Any Month"
+          />
+          <div
+            class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-elo8k2-MuiInputAdornment-root"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-aixiz9-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                data-testid="EventIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 12h-5v5h5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1zm3 18H5V8h14z"
+                />
+              </svg>
+            </button>
+          </div>
+          <fieldset
+            aria-hidden="true"
+            class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="css-w1u3ce"
+            >
+              <span>
+                When (optional)
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="makeStyles-yearsList-3"
+        style="opacity: 0; visibility: hidden;"
+      >
+        <div
+          class="makeStyles-pickerRoot-4"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter css-laos7x-MuiTypography-root"
+            style="--Typography-textAlign: center;"
+          >
+            2024
+          </h5>
+          <div
+            class="makeStyles-monthsWrapper-5"
+            data-testid="calendar"
+          >
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Jan
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Feb
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Mar
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Apr
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                May
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Jun
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Jul
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Aug
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Sep
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Oct
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Nov
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Dec
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="makeStyles-pickerRoot-4"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-alignCenter css-laos7x-MuiTypography-root"
+            style="--Typography-textAlign: center;"
+          >
+            2025
+          </h5>
+          <div
+            class="makeStyles-monthsWrapper-5"
+            data-testid="calendar"
+          >
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Jan
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Feb
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Mar
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Apr
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                May
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Jun
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Jul
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Aug
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Sep
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Oct
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Nov
+              </button>
+            </div>
+            <div
+              class="makeStyles-monthContainer-6"
+              data-testid="month-item"
+            >
+              <button
+                class="makeStyles-monthBtn-8"
+                data-testid="month-btn"
+              >
+                Dec
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

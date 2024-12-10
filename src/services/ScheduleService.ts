@@ -74,7 +74,7 @@ export default class ScheduleService {
 
   public queryAllActiveShipStopsWithPortsAndSailingsFromDate = async (
     date: Date
-  ): Promise<ShipStop> => {
+  ): Promise<ShipStop[]> => {
     const shipStops = await ShipStopModel.aggregate([
       {
         $match: { arrivalOn: { $gte: date } }

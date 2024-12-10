@@ -1,10 +1,9 @@
-import Ship from '../models/Ship';
-import { validateShip } from '../validation/ship';
+import { Ship } from '../models/Ship';
+//import { validateShip } from '../validation/ship';
 import { searchRoutes, filteredByLoadingDate } from '../utils/search/helpers';
 import * as schedulesUtils from '../utils/schedules';
-import { datesDifferenceInDays, maxComputerDate, Messages } from '@efacity/common';
 import { scheduleService } from '@/services/ScheduleService';
-import { shipService } from '@/services/ShipServiice';
+import { shipService } from '@/services/ShipService';
 import { portService } from '@/services/PortService';
 import { ShipStop } from '@/models/ShipStop';
 

@@ -30,7 +30,7 @@ interface SelectedRoute {
 
 interface RouteWithImageBoxProps {
   route: Route[];
-  onShareRoute: Function;
+  onShareRoute: any;
   onUserGetRouteSelect: (selectedRoute: SelectedRoute) => void;
 }
 

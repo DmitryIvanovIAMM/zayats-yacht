@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import RouteWithImage from '@/components/RouteWithImage/RouteWithImage';
-import { getNoRoutesMessage } from '@/utils/routeCalculators';
+//import { getNoRoutesMessage } from '@/utils/routeCalculators';
 import { Grid } from '@mui/system';
 
 export interface RoutesListProps {

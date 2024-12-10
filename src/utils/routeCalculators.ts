@@ -1,4 +1,4 @@
-export const calculateMilesForRoute = (routes) => {
+/*export const calculateMilesForRoute = (routes) => {
   return routes.reduce((acc, item) => acc + item.miles, 0);
 };
 
@@ -40,3 +40,4 @@ export const getNoRoutesMessage = (
     return '';
   }
 };
+*/

@@ -17,13 +17,21 @@ export function getDestinationsFormPorts(ports: Port[]) {
 
 export const getGroupedBy = (ports: Port[], key: string): any[] => {
   const groups = {};
-  const result = [];
+  const result: any[] = [];
 
   ports.forEach((port: Port) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     if (!(port[key] in groups)) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       groups[port[key]] = [];
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       result.push(groups[port[key]]);
     }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     groups[port[key]].push(port);
   });
 

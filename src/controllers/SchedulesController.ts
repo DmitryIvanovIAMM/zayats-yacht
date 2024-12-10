@@ -75,7 +75,7 @@ export default class SchedulesController {
     }
   };*/
 
-  public queryNearestShippings = async (date: Date | string): Promise<ShipStop> => {
+  public queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
     try {
       const startShippingDate = schedulesUtils.isDate(date) ? new Date(date) : new Date();
 

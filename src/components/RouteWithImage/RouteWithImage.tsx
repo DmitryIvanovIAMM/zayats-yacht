@@ -3,12 +3,11 @@ import Link from 'next/link';
 import { Grid, Theme } from '@mui/system';
 import Typography from '@mui/material/Typography';
 //import Link from 'next/link';
-import { Hidden } from '@mui/material';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/app/helpers/paths';
-import { lightGrayColor, useRouteStyles } from '@/components/RouteWithImage/RouteWithImage.spec.';
-import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
+//import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
 import { getInternationalDateFormat } from '@/utils/date-time';
+import { useRouteStyles } from '@/components/RouteWithImage/RouteWithImage.spec.';
 
 interface Route {
   departurePort: {

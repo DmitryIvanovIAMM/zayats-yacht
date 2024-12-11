@@ -10,14 +10,14 @@ import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';
-import { portsController } from '@/controllers/PortsController';
-import { schedulesController } from '@/controllers/SchedulesController';
+import { getPorts } from '@/controllers/PortsController';
+import { queryNearestShippings } from '@/controllers/SchedulesController';
 
 export default async function Home() {
-  const ports = await portsController.getPorts();
+  const ports = await getPorts();
   // eslint-disable-next-line no-console
   console.log('ports: ', ports);
-  const schedules = await schedulesController.queryNearestShippings(new Date());
+  const schedules = await queryNearestShippings(new Date());
   // eslint-disable-next-line no-console
   console.log('schedules: ', schedules);
 
@@ -27,7 +27,7 @@ export default async function Home() {
       <div className={styles.main}>
         <ScheduleSection
           ports={JSON.parse(JSON.stringify(ports.ports))}
-          destinations={ports.destinations}
+          schedules={JSON.parse(JSON.stringify(schedules))}
         />
         <EmptySection />
         <LazyViewedSection title="Gallery" id="photo-gallery-section">

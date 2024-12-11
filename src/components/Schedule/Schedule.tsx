@@ -5,81 +5,40 @@ import { Box } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
-import { Types } from 'mongoose';
-import { Destination, Port } from '@/models/Port';
+import { Port } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
 import { MonthDateRange } from '@/utils/date-time';
-import RoutesList from '@/components/RoutesList/RoutesList';
 import { ShipStop } from '@/models/ShipStop';
-
-export const emptyPortErrors = {
-  departurePortId: '',
-  destinationPortId: ''
-};
-
-export interface PortSchedulesState {
-  ports: Port[];
-  destinations: Destination[];
-  destinationPortId: string | Types.ObjectId | null;
-  destinationPorts: Port[];
-  departurePortId: string | Types.ObjectId | null;
-  loadingDate: MonthDateRange | null;
-  isLoadingPort: boolean;
-  isLoadingSchedule: boolean;
-  destinationIndex: number | null;
-  errors: any;
-  schedules: ShipStop[];
-  errorMessage: string | null;
-}
-
-export const defaultPortSchedulesState: PortSchedulesState = {
-  ports: [],
-  destinations: [],
-  destinationPortId: null,
-  destinationPorts: [],
-  departurePortId: null,
-  loadingDate: null,
-  isLoadingPort: false,
-  isLoadingSchedule: false,
-  destinationIndex: null,
-  errors: emptyPortErrors,
-  schedules: [],
-  errorMessage: null
-};
+import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 
 export interface ScheduleSectionProps {
   ports: Port[];
-  destinations: Destination[];
+  schedules: ShipStop[][];
 }
-const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports, destinations }) => {
-  const [portSchedulesState, setPortSchedulesState] = React.useState<PortSchedulesState>({
-    ...defaultPortSchedulesState,
-    ports: ports,
-    destinations: destinations
-  });
-  const departurePortsVariants: Port[] = portSchedulesState.ports.filter(
-    (port) => port._id !== portSchedulesState.destinationPortId
+const ScheduleSection: React.FC<ScheduleSectionProps> = ({
+  ports,
+  schedules
+}: ScheduleSectionProps) => {
+  const {
+    schedulesState,
+    handleDeparturePortSelected,
+    handleDestinationPortSelected,
+    loadSchedules
+  } = useSchedulesLoader({ ports, schedules });
+  // eslint-disable-next-line no-console
+  console.log('schedulesState: ', schedulesState);
+
+  const departurePortsVariants: Port[] = schedulesState.ports.filter(
+    (port) => port._id !== schedulesState.destinationPortId
   );
   // eslint-disable-next-line no-console
   console.log('departurePortsVariants: ', departurePortsVariants);
-  const destinationPortsVariants: Port[] = portSchedulesState.ports.filter(
-    (port) => port._id !== portSchedulesState.departurePortId
+  const destinationPortsVariants: Port[] = schedulesState.ports.filter(
+    (port) => port._id !== schedulesState.departurePortId
   );
   // eslint-disable-next-line no-console
   console.log('destinationPortsVariants: ', destinationPortsVariants);
 
-  const handleDeparturePortSelected = (departurePortId: string) => {
-    setPortSchedulesState((portSchedulesState) => ({
-      ...portSchedulesState,
-      departurePortId: departurePortId
-    }));
-  };
-  const handleDestinationPortSelected = (destinationPortId: string) => {
-    setPortSchedulesState((portSchedulesState) => ({
-      ...portSchedulesState,
-      destinationPortId: destinationPortId
-    }));
-  };
   const handleLoadingDateSelected = (dateRange: MonthDateRange | null) => {};
   const handleStoreUserSelection = (selectedRoute: any) => {
     // eslint-disable-next-line no-console
@@ -106,27 +65,24 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ ports, destinations }
       >
         <div style={centerItemSivStyle}>
           <PortSelector
-            selectedPort={portSchedulesState.departurePortId?.toString() || ''}
+            selectedPort={schedulesState.departurePortId?.toString() || ''}
             ports={departurePortsVariants}
-            errors={portSchedulesState.errors.departurePortId}
+            errors={schedulesState.errors.departurePortId}
             label="From"
             onSelect={handleDeparturePortSelected}
           />
         </div>
         <div style={centerItemSivStyle}>
           <PortSelector
-            selectedPort={portSchedulesState.destinationPortId?.toString() || ''}
+            selectedPort={schedulesState.destinationPortId?.toString() || ''}
             ports={destinationPortsVariants}
-            errors={portSchedulesState.errors.departurePortId}
+            errors={schedulesState.errors.departurePortId}
             label="To"
             onSelect={handleDestinationPortSelected}
           />
         </div>
         <div style={centerItemSivStyle}>
-          <MonthPicker
-            value={portSchedulesState.loadingDate}
-            onChange={handleLoadingDateSelected}
-          />
+          <MonthPicker value={schedulesState.loadingDate} onChange={handleLoadingDateSelected} />
         </div>
       </Box>
       <div>

@@ -1,3 +1,5 @@
+'use server';
+
 import { Ship } from '../models/Ship';
 //import { validateShip } from '../validation/ship';
 import { searchRoutes, filteredByLoadingDate } from '../utils/search/helpers';
@@ -7,7 +9,7 @@ import { shipService } from '@/services/ShipService';
 import { portService } from '@/services/PortService';
 import { ShipStop } from '@/models/ShipStop';
 
-export default class SchedulesController {
+/*export default class SchedulesController {
   private static instance: SchedulesController;
   private constructor() {}
   static getInstance() {
@@ -16,13 +18,13 @@ export default class SchedulesController {
     }
     this.instance = new SchedulesController();
     return this.instance;
-  }
+  }*/
 
-  //public scheduleService = ;
-  //public portService = new PortService();
-  //public shipService = new ShipService();
+//public scheduleService = ;
+//public portService = new PortService();
+//public shipService = new ShipService();
 
-  /*public getSchedules = async (req, res, next) => {
+/*public getSchedules = async (req, res, next) => {
     // Route data validation
     const { errors, isValid } = validateShip(req.body);
     // Check validation
@@ -75,46 +77,43 @@ export default class SchedulesController {
     }
   };*/
 
-  public queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
-    try {
-      const startShippingDate = schedulesUtils.isDate(date) ? new Date(date) : new Date();
+export const queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
+  try {
+    const startShippingDate = schedulesUtils.isDate(date) ? new Date(date) : new Date();
 
-      const shipStops: ShipStop[] =
-        await scheduleService.queryAllActiveShipStopsWithPortsAndSailingsFromDate(
-          startShippingDate
-        );
+    const shipStops: ShipStop[] =
+      await scheduleService.queryAllActiveShipStopsWithPortsAndSailingsFromDate(startShippingDate);
 
-      const shipStopsSortedByArrivalTime = [...shipStops].sort(
-        schedulesUtils.comparatorByArrivalOnDateString
-      );
+    const shipStopsSortedByArrivalTime = [...shipStops].sort(
+      schedulesUtils.comparatorByArrivalOnDateString
+    );
 
-      const firstThreeRoutes = [];
-      let currentShipStop = 0;
-      let addedShippings = 0;
-      if (shipStopsSortedByArrivalTime.length > 0) {
-        do {
-          const currentSailingId =
-            shipStopsSortedByArrivalTime[currentShipStop].sailingId.toString();
-          const shipStopsForSailing = [...shipStopsSortedByArrivalTime]
-            .slice(currentShipStop, shipStopsSortedByArrivalTime.length - 1)
-            .filter((shipStop) => shipStop.sailingId.toString() === currentSailingId);
-          if (shipStopsForSailing.length > 0) {
-            firstThreeRoutes.push(shipStopsForSailing.slice(0, 2));
-            addedShippings++;
-          }
-          currentShipStop++;
-        } while (addedShippings < 3 && currentShipStop < shipStopsSortedByArrivalTime.length);
-      }
-
-      return firstThreeRoutes;
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error('queryNearestShippings().  err: ', err);
-      return [];
+    const firstThreeRoutes = [];
+    let currentShipStop = 0;
+    let addedShippings = 0;
+    if (shipStopsSortedByArrivalTime.length > 0) {
+      do {
+        const currentSailingId = shipStopsSortedByArrivalTime[currentShipStop].sailingId.toString();
+        const shipStopsForSailing = [...shipStopsSortedByArrivalTime]
+          .slice(currentShipStop, shipStopsSortedByArrivalTime.length - 1)
+          .filter((shipStop) => shipStop.sailingId.toString() === currentSailingId);
+        if (shipStopsForSailing.length > 0) {
+          firstThreeRoutes.push(shipStopsForSailing.slice(0, 2));
+          addedShippings++;
+        }
+        currentShipStop++;
+      } while (addedShippings < 3 && currentShipStop < shipStopsSortedByArrivalTime.length);
     }
-  };
 
-  /*public getSailing = async (req, res) => {
+    return JSON.parse(JSON.stringify(firstThreeRoutes));
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('queryNearestShippings().  err: ', err);
+    return [];
+  }
+};
+
+/*public getSailing = async (req, res) => {
     try {
       const sailingId = req.params.sailingId;
       const ports = await portService.getAllPorts();
@@ -266,7 +265,7 @@ export default class SchedulesController {
       ships: ships,
       ports: ports
     };
-  };*/
+  };
 }
 
-export const schedulesController = SchedulesController.getInstance();
+export const schedulesController = SchedulesController.getInstance();*/

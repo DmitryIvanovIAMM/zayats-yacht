@@ -7,7 +7,6 @@ import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
 import { Port } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
-import { MonthDateRange } from '@/utils/date-time';
 import { ShipStop } from '@/models/ShipStop';
 import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 
@@ -23,6 +22,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     schedulesState,
     handleDeparturePortSelected,
     handleDestinationPortSelected,
+    handleLoadingDateSelected,
     loadSchedules
   } = useSchedulesLoader({ ports, schedules });
   // eslint-disable-next-line no-console
@@ -39,7 +39,6 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   // eslint-disable-next-line no-console
   console.log('destinationPortsVariants: ', destinationPortsVariants);
 
-  const handleLoadingDateSelected = (dateRange: MonthDateRange | null) => {};
   const handleStoreUserSelection = (selectedRoute: any) => {
     // eslint-disable-next-line no-console
     console.log('handleStoreUserSelection().  selectedRoute: ', selectedRoute);

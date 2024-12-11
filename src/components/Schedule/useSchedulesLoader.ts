@@ -65,6 +65,9 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
       destinationPortId: destinationPortId
     }));
   };
+  const handleLoadingDateSelected = (loadingDate: MonthDateRange | null) => {
+    setSchedulesState((schedulesState) => ({ ...schedulesState, loadingDate: loadingDate }));
+  };
 
   const loadSchedules = useCallback(
     async ({ departurePortId, destinationPortId, loadingDate }: ScheduleParameters) => {
@@ -94,6 +97,7 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
     schedulesState,
     handleDeparturePortSelected,
     handleDestinationPortSelected,
+    handleLoadingDateSelected,
     loadSchedules
   };
 };

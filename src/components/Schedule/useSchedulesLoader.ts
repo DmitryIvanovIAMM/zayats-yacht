@@ -5,6 +5,7 @@ import { MonthDateRange } from '@/utils/date-time';
 import { Destination, Port } from '@/models/Port';
 import { Types } from 'mongoose';
 import { ScheduleSectionProps } from '@/components/Schedule/Schedule';
+import { ShipsParameters } from '@/models/types';
 
 export const emptyPortErrors = {
   departurePortId: '',
@@ -80,31 +81,28 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
       // eslint-disable-next-line no-console
       console.log('loadSchedules().  departurePortId: ');
       setSchedulesState((schedulesState) => ({ ...schedulesState, isLoading: true }));
-      if (
-        !schedulesState.departurePortId ||
-        !schedulesState.destinationPortId ||
-        !schedulesState.loadingDate
-      ) {
-        const nearestShippings = await queryNearestShippings(new Date());
+      if (schedulesState.departurePortId && schedulesState.destinationPortId) {
+        const shipsParameters: ShipsParameters = {
+          departurePortId: schedulesState.departurePortId as string,
+          destinationPortId: schedulesState.destinationPortId as string,
+          loadingDate: schedulesState.loadingDate
+        };
+        const schedules = await getSchedules(shipsParameters);
         // eslint-disable-next-line no-console
-        console.log('nearestShippings: ', nearestShippings);
+        console.log('schedules: ', schedules);
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
-          schedules: nearestShippings,
+          schedules: schedules,
           isLoading: false
         }));
       }
-      const shipsParameters = {
-        departurePortId: schedulesState.departurePortId,
-        destinationPortId: schedulesState.destinationPortId,
-        loadingDate: schedulesState.loadingDate
-      };
-      const schedules = await getSchedules(shipsParameters);
+
+      const nearestShippings = await queryNearestShippings(new Date());
       // eslint-disable-next-line no-console
-      console.log('schedules: ', schedules);
-      setSchedulesState((schedulesState) => ({
+      console.log('nearestShippings: ', nearestShippings);
+      return setSchedulesState((schedulesState) => ({
         ...schedulesState,
-        schedules: schedules,
+        schedules: nearestShippings,
         isLoading: false
       }));
     };

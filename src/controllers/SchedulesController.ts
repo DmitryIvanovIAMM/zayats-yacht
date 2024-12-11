@@ -5,9 +5,11 @@ import { Ship } from '../models/Ship';
 import { searchRoutes, filteredByLoadingDate } from '../utils/search/helpers';
 import * as schedulesUtils from '../utils/schedules';
 import { scheduleService } from '@/services/ScheduleService';
-import { shipService } from '@/services/ShipService';
+import ShipService, { shipService } from '@/services/ShipService';
 import { portService } from '@/services/PortService';
 import { ShipStop } from '@/models/ShipStop';
+import { ShipsParameters } from '@/models/types';
+import { maxComputerDate } from '@/utils/date-time';
 
 /*export default class SchedulesController {
   private static instance: SchedulesController;
@@ -24,9 +26,9 @@ import { ShipStop } from '@/models/ShipStop';
 //public portService = new PortService();
 //public shipService = new ShipService();
 
-/*public getSchedules = async (req, res, next) => {
-    // Route data validation
-    const { errors, isValid } = validateShip(req.body);
+export const getSchedules = async (shipData: ShipsParameters) => {
+  // Route data validation
+  /*const { errors, isValid } = validateShip(req.body);
     // Check validation
     if (!isValid) {
       res.status(400);
@@ -34,48 +36,46 @@ import { ShipStop } from '@/models/ShipStop';
       return res;
     }
 
-    const shipData = req.body;
+    const shipData = req.body;*/
 
-    try {
-      const shipStops = await scheduleService.queryAllActiveShipStopsWithPortsAndSailings();
-      const ships = await Ship.find({});
+  try {
+    const shipStops: ShipStop[] =
+      await scheduleService.queryAllActiveShipStopsWithPortsAndSailings();
+    const ships = await shipService.getAllShips();
 
-      const shipStopsSortedByArrivalTime = [...shipStops].sort(
-        schedulesUtils.comparatorByArrivalOnDateString
-      );
-      const schedules = searchRoutes(
-        ships,
-        shipStopsSortedByArrivalTime,
-        shipData.departurePortId,
-        shipData.destinationPortId
-      );
-      let filteredByLoadingDateSchedules = shipData.loadingDate
-        ? filteredByLoadingDate(schedules, shipData.loadingDate)
-        : schedules;
-      if (filteredByLoadingDateSchedules && filteredByLoadingDateSchedules.length === 0) {
-        const fakeLoadingDate = {
-          startDate: shipData?.loadingDate?.endDate || maxComputerDate,
-          endDate: maxComputerDate
-        };
-        const nextFilteredByLoadingDateSchedules = filteredByLoadingDate(
-          schedules,
-          fakeLoadingDate
-        );
-        filteredByLoadingDateSchedules =
-          nextFilteredByLoadingDateSchedules && nextFilteredByLoadingDateSchedules.length > 0
-            ? [nextFilteredByLoadingDateSchedules[0]]
-            : [];
-      }
-
-      const sortedByStartRouteSchedules = schedulesUtils.sortRoutesByDates(
-        filteredByLoadingDateSchedules
-      );
-
-      return res.status(200).json(sortedByStartRouteSchedules);
-    } catch (err) {
-      next(err);
+    const shipStopsSortedByArrivalTime = [...shipStops].sort(
+      schedulesUtils.comparatorByArrivalOnDateString
+    );
+    const schedules: ShipStop[][] = searchRoutes(
+      ships,
+      shipStopsSortedByArrivalTime,
+      shipData.departurePortId as string,
+      shipData.destinationPortId as string
+    );
+    let filteredByLoadingDateSchedules = shipData.loadingDate
+      ? filteredByLoadingDate(schedules, shipData.loadingDate)
+      : schedules;
+    if (filteredByLoadingDateSchedules && filteredByLoadingDateSchedules.length === 0) {
+      const fakeLoadingDate = {
+        startDate: shipData?.loadingDate?.endDate || maxComputerDate,
+        endDate: maxComputerDate
+      };
+      const nextFilteredByLoadingDateSchedules = filteredByLoadingDate(schedules, fakeLoadingDate);
+      filteredByLoadingDateSchedules =
+        nextFilteredByLoadingDateSchedules && nextFilteredByLoadingDateSchedules.length > 0
+          ? [nextFilteredByLoadingDateSchedules[0]]
+          : [];
     }
-  };*/
+
+    const sortedByStartRouteSchedules = schedulesUtils.sortRoutesByDates(
+      filteredByLoadingDateSchedules
+    );
+
+    return JSON.parse(JSON.stringify(sortedByStartRouteSchedules));
+  } catch (err) {
+    return [];
+  }
+};
 
 export const queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
   try {

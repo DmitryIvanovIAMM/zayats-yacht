@@ -1,6 +1,6 @@
 import { ShipStop } from '@/models/ShipStop';
 import { useCallback, useState } from 'react';
-import { queryNearestShippings } from '@/controllers/SchedulesController';
+import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
 import { MonthDateRange } from '@/utils/date-time';
 import { Destination, Port } from '@/models/Port';
 import { Types } from 'mongoose';
@@ -83,12 +83,23 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
       setSchedulesState((schedulesState) => ({ ...schedulesState, isLoading: true }));
       if (!departurePortId || !destinationPortId || !loadingDate) {
         const nearestShippings = await queryNearestShippings(new Date());
-        setSchedulesState((schedulesState) => ({
+        return setSchedulesState((schedulesState) => ({
           ...schedulesState,
           schedules: nearestShippings,
           isLoading: false
         }));
       }
+      const shipsParameters = {
+        departurePortId: departurePortId,
+        destinationPortId: destinationPortId,
+        loadingDate: loadingDate
+      };
+      const schedules = await getSchedules(shipsParameters);
+      setSchedulesState((schedulesState) => ({
+        ...schedulesState,
+        schedules: schedules,
+        isLoading: false
+      }));
     },
     [schedulesState.departurePortId, schedulesState.destinationPortId, schedulesState.loadingDate]
   );

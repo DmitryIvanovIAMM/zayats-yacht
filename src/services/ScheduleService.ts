@@ -39,7 +39,7 @@ export default class ScheduleService {
     ]);
   };
 
-  /*public queryAllActiveShipStopsWithPortsAndSailings = async () => {
+  public queryAllActiveShipStopsWithPortsAndSailings = async (): Promise<ShipStop[]> => {
     const shipStops = await ShipStopModel.aggregate([
       {
         $lookup: {
@@ -70,7 +70,7 @@ export default class ScheduleService {
       }
     ]);
     return shipStops;
-  };*/
+  };
 
   public queryAllActiveShipStopsWithPortsAndSailingsFromDate = async (
     date: Date

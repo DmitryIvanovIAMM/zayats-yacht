@@ -1,3 +1,5 @@
+export const maxComputerDate = new Date(2037, 11, 31, 23, 59, 59);
+
 export const nowUTC = () => {
   const date = new Date();
   const nowUtc = Date.UTC(

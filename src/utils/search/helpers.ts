@@ -7,7 +7,7 @@ export const searchRoutes = (
   shipStops: ShipStop[],
   departurePortId: string,
   destinationPortId: string
-): ShipStop[] => {
+): ShipStop[][] => {
   const schedules = ships.map(function (ship) {
     const shipStopsForShip = shipStops
       .filter((shipStop) => shipStop.shipId.toString() === ship._id.toString())

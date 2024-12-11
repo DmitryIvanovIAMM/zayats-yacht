@@ -101,7 +101,12 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
         isLoading: false
       }));
     },
-    [schedulesState.departurePortId, schedulesState.destinationPortId, schedulesState.loadingDate]
+    [
+      schedulesState.departurePortId,
+      schedulesState.destinationPortId,
+      schedulesState.loadingDate?.endDate,
+      schedulesState.loadingDate?.startDate
+    ]
   );
 
   return {

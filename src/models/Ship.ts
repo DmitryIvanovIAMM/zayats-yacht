@@ -52,7 +52,7 @@ const ShipSchema = new mongoose.Schema(
   }
 );
 
-export const ShipModel = mongoose.model<Ship>('ships', ShipSchema);
+export const ShipModel = mongoose.models?.ships || mongoose.model<Ship>('ships', ShipSchema);
 
 export const shipFields = [
   '_id',

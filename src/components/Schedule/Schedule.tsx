@@ -9,6 +9,8 @@ import { Port } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
 import { ShipStop } from '@/models/ShipStop';
 import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
+import RoutesList from '@/components/RoutesList/RoutesList';
+import { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
 
 export interface ScheduleSectionProps {
   ports: Port[];
@@ -38,11 +40,11 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   // eslint-disable-next-line no-console
   console.log('destinationPortsVariants: ', destinationPortsVariants);
 
-  const handleStoreUserSelection = (selectedRoute: any) => {
+  const handleStoreUserSelection = (selectedRoute: SelectedRoute) => {
     // eslint-disable-next-line no-console
     console.log('handleStoreUserSelection().  selectedRoute: ', selectedRoute);
   };
-  const handleShareRoute = (selectedRoute: any) => {
+  const handleShareRoute = (selectedRoute: ShipStop[]) => {
     // eslint-disable-next-line no-console
     console.log('handleShareRoute().  selectedRoute: ', selectedRoute);
   };
@@ -84,13 +86,13 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
         </div>
       </Box>
       <div>
-        {/*<RoutesList
-          routesList={schedules}
+        <RoutesList
+          routesList={schedulesState.schedules}
           onUserGetRouteSelect={handleStoreUserSelection}
           onShareRoute={handleShareRoute}
-          isLoadingPortSelected={!!departurePortId}
-          isDestinationPortSelected={!!destinationPortId}
-        />*/}
+          isLoadingPortSelected={!!schedulesState.departurePortId}
+          isDestinationPortSelected={!!schedulesState.destinationPortId}
+        />
       </div>
     </Box>
   );

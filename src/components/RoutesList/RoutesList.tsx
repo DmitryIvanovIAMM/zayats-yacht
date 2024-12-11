@@ -1,14 +1,15 @@
 import React from 'react';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import RouteWithImage from '@/components/RouteWithImage/RouteWithImage';
-//import { getNoRoutesMessage } from '@/utils/routeCalculators';
+import RouteWithImage, { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
 import { Grid } from '@mui/system';
+import { ShipStop } from '@/models/ShipStop';
+import { getNoRoutesMessage } from '@/utils/routeCalculators';
 
 export interface RoutesListProps {
-  onUserGetRouteSelect: (route: string[]) => void;
-  onShareRoute: (route: string[]) => void;
-  routesList: string[][];
+  onUserGetRouteSelect: (route: SelectedRoute) => void;
+  onShareRoute: (route: ShipStop[]) => void;
+  routesList: ShipStop[][];
   isLoadingPortSelected: boolean;
   isDestinationPortSelected: boolean;
 }
@@ -19,14 +20,13 @@ export default function RoutesList({
   isLoadingPortSelected,
   isDestinationPortSelected
 }: RoutesListProps) {
-  return <div>RoutesList</div>;
-  /*return (
+  return (
     <Grid container style={{ margin: 0, padding: 16 }}>
       {routesList && routesList.length > 0 ? (
         routesList.map((route, index) =>
           route.length > 1 ? (
-            <Grid container justify="center" key={`shipKeyIndex${index}`}>
-              <Grid item xs={12} sm={12} md={10} lg={8} style={{ marginTop: 15, marginBottom: 15 }}>
+            <Grid container key={`shipKeyIndex${index}`}>
+              <Grid xs={12} sm={12} md={10} lg={8}>
                 <RouteWithImage
                   route={route}
                   onUserGetRouteSelect={onUserGetRouteSelect}
@@ -50,7 +50,7 @@ export default function RoutesList({
         </Container>
       )}
     </Grid>
-  );*/
+  );
 }
 
 /*RouteBoxesList.propTypes = {

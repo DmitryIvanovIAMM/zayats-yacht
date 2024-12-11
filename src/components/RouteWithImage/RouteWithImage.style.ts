@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/system';
+import clippedRectangle from '../../../public/images/clippedRectangle.svg';
 
 const mainBlueColor = '#3365A7';
 const grayColor = '#777777';

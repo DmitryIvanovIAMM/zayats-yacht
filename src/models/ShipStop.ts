@@ -12,8 +12,8 @@ export interface ShipStop extends Document {
   miles: number;
   daysAtSea: number;
   daysInPort: number;
-  port?: Port;
-  sailings?: Sailing;
+  departurePort?: Port;
+  sailing?: Sailing;
 }
 
 const ShipStopSchema = new Schema(

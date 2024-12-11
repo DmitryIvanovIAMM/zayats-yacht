@@ -7,9 +7,13 @@ import Button from '@mui/material/Button';
 import { PATHS } from '@/app/helpers/paths';
 //import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
 import { getInternationalDateFormat } from '@/utils/date-time';
-import { useRouteStyles } from '@/components/RouteWithImage/RouteWithImage.spec.';
+import { lightGrayColor, useRouteStyles } from '@/components/RouteWithImage/RouteWithImage.style';
+import { ShipStop } from '@/models/ShipStop';
+import { Port } from '@/models/Port';
+import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
+import { Hidden } from '@mui/material';
 
-interface Route {
+/*interface Route {
   departurePort: {
     _id: string;
     portName: string;
@@ -19,24 +23,24 @@ interface Route {
     name: string;
   };
   arrivalOn: string;
-}
+}*/
 
-interface SelectedRoute {
+export interface SelectedRoute {
   fromWhere: string;
   toWhere: string;
   when: Date | string;
 }
 
 interface RouteWithImageBoxProps {
-  route: Route[];
-  onShareRoute: any;
+  route: ShipStop[];
+  onShareRoute: (route: ShipStop[]) => void;
   onUserGetRouteSelect: (selectedRoute: SelectedRoute) => void;
 }
 
 const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelect }) => {
   const handleUserGetRouteSelect = () => {
-    const departurePortName = route[0].departurePort.portName;
-    const destinationPortName = route[route.length - 1].departurePort.portName;
+    const departurePortName = route[0].departurePort?.portName || '';
+    const destinationPortName = route[route.length - 1].departurePort?.portName || '';
     const loadingDate = getInternationalDateFormat(route[0].arrivalOn);
     const data = {
       fromWhere: departurePortName,
@@ -58,12 +62,11 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
     return getInternationalDateFormat(date);
   }, [route]);
 
-  return <div>RouteWithImage</div>;
-  /*return (
-    <Grid item className={classes.routeWihImageBox} data-cy="schedule-route-card">
+  return (
+    <Grid className={classes.routeWihImageBox} data-cy="schedule-route-card">
       <img
         className={classes.cardImg}
-        src={`/assets/images/${route[route.length - 1].departurePort.imageFileName}`}
+        src={`/assets/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
         alt={'logo'}
         height="263"
       />
@@ -84,7 +87,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
           }}
         >
           <div className={classes.cardTitle}>
-            <p>{route[route.length - 1].sailing.name}</p>
+            <p>{route[route.length - 1].sailing?.name || ''}</p>
           </div>
         </Grid>
         <Grid container style={{ marginTop: 20, marginBottom: 20 }}>
@@ -101,7 +104,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
                     to={`destination/${route[0].departurePort._id}`}
                   >
                     {route[0].departurePort.portName}
-                  </Link>}
+                  </Link>*/}
                 </th>
               </tr>
               <tr>
@@ -110,7 +113,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
                   <Typography className={classes.destinationPortName} data-cy="destination-port">
-                    {route[route.length - 1].departurePort.portName}
+                    {route[route.length - 1].departurePort?.portName || ''}
                   </Typography>
                 </th>
               </tr>
@@ -181,7 +184,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
         </Button>
       </Hidden>
     </Grid>
-  );*/
+  );
 };
 
 export default RouteWithImage;

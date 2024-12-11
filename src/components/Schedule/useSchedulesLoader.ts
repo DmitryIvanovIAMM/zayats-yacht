@@ -1,5 +1,5 @@
 import { ShipStop } from '@/models/ShipStop';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
 import { MonthDateRange } from '@/utils/date-time';
 import { Destination, Port } from '@/models/Port';
@@ -54,35 +54,40 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
   });
 
   const handleDeparturePortSelected = (departurePortId: string) => {
+    // eslint-disable-next-line no-console
+    console.log('handleDeparturePortSelected().  departurePortId: ', departurePortId);
     setSchedulesState((schedulesState) => ({
       ...schedulesState,
       departurePortId: departurePortId
     }));
   };
   const handleDestinationPortSelected = (destinationPortId: string) => {
+    // eslint-disable-next-line no-console
+    console.log('handleDestinationPortSelected().  destinationPortId: ', destinationPortId);
     setSchedulesState((schedulesState) => ({
       ...schedulesState,
       destinationPortId: destinationPortId
     }));
   };
   const handleLoadingDateSelected = (loadingDate: MonthDateRange | null) => {
+    // eslint-disable-next-line no-console
+    console.log('handleLoadingDateSelected().  loadingDate: ', loadingDate);
     setSchedulesState((schedulesState) => ({ ...schedulesState, loadingDate: loadingDate }));
   };
 
-  const loadSchedules = useCallback(
-    async ({ departurePortId, destinationPortId, loadingDate }: ScheduleParameters) => {
+  useEffect(() => {
+    const loadSchedules = async () => {
       // eslint-disable-next-line no-console
-      console.log(
-        'loadSchedules().  departurePortId: ',
-        departurePortId,
-        'destinationPortId: ',
-        destinationPortId,
-        'loadingDate: ',
-        loadingDate
-      );
+      console.log('loadSchedules().  departurePortId: ');
       setSchedulesState((schedulesState) => ({ ...schedulesState, isLoading: true }));
-      if (!departurePortId || !destinationPortId || !loadingDate) {
+      if (
+        !schedulesState.departurePortId ||
+        !schedulesState.destinationPortId ||
+        !schedulesState.loadingDate
+      ) {
         const nearestShippings = await queryNearestShippings(new Date());
+        // eslint-disable-next-line no-console
+        console.log('nearestShippings: ', nearestShippings);
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
           schedules: nearestShippings,
@@ -90,30 +95,31 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
         }));
       }
       const shipsParameters = {
-        departurePortId: departurePortId,
-        destinationPortId: destinationPortId,
-        loadingDate: loadingDate
+        departurePortId: schedulesState.departurePortId,
+        destinationPortId: schedulesState.destinationPortId,
+        loadingDate: schedulesState.loadingDate
       };
       const schedules = await getSchedules(shipsParameters);
+      // eslint-disable-next-line no-console
+      console.log('schedules: ', schedules);
       setSchedulesState((schedulesState) => ({
         ...schedulesState,
         schedules: schedules,
         isLoading: false
       }));
-    },
-    [
-      schedulesState.departurePortId,
-      schedulesState.destinationPortId,
-      schedulesState.loadingDate?.endDate,
-      schedulesState.loadingDate?.startDate
-    ]
-  );
+    };
+    loadSchedules();
+  }, [
+    schedulesState.departurePortId,
+    schedulesState.destinationPortId,
+    schedulesState.loadingDate?.endDate,
+    schedulesState.loadingDate?.startDate
+  ]);
 
   return {
     schedulesState,
     handleDeparturePortSelected,
     handleDestinationPortSelected,
-    handleLoadingDateSelected,
-    loadSchedules
+    handleLoadingDateSelected
   };
 };

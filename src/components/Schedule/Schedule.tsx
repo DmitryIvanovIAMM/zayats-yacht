@@ -22,8 +22,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     schedulesState,
     handleDeparturePortSelected,
     handleDestinationPortSelected,
-    handleLoadingDateSelected,
-    loadSchedules
+    handleLoadingDateSelected
   } = useSchedulesLoader({ ports, schedules });
   // eslint-disable-next-line no-console
   console.log('schedulesState: ', schedulesState);

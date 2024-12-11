@@ -27,6 +27,7 @@ import { maxComputerDate } from '@/utils/date-time';
 //public shipService = new ShipService();
 
 export const getSchedules = async (shipData: ShipsParameters) => {
+  console.log('getSchedules().  shipData: ', shipData);
   // Route data validation
   /*const { errors, isValid } = validateShip(req.body);
     // Check validation
@@ -78,6 +79,7 @@ export const getSchedules = async (shipData: ShipsParameters) => {
 };
 
 export const queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
+  console.log('queryNearestShippings().  date: ', date);
   try {
     const startShippingDate = schedulesUtils.isDate(date) ? new Date(date) : new Date();
 

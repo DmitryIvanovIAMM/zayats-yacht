@@ -2,28 +2,14 @@ import React, { FC, useMemo } from 'react';
 import Link from 'next/link';
 import { Grid, Theme } from '@mui/system';
 import Typography from '@mui/material/Typography';
-//import Link from 'next/link';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/app/helpers/paths';
-//import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
 import { getInternationalDateFormat } from '@/utils/date-time';
 import { lightGrayColor, useRouteStyles } from '@/components/RouteWithImage/RouteWithImage.style';
 import { ShipStop } from '@/models/ShipStop';
 import { Port } from '@/models/Port';
 import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
-import { Hidden } from '@mui/material';
-
-/*interface Route {
-  departurePort: {
-    _id: string;
-    portName: string;
-    imageFileName: string;
-  };
-  sailing: {
-    name: string;
-  };
-  arrivalOn: string;
-}*/
+import { Box } from '@mui/material';
 
 export interface SelectedRoute {
   fromWhere: string;
@@ -63,10 +49,10 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
   }, [route]);
 
   return (
-    <Grid className={classes.routeWihImageBox} data-cy="schedule-route-card">
+    <Box className={classes.routeWihImageBox} data-cy="schedule-route-card">
       <img
         className={classes.cardImg}
-        src={`/assets/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
+        src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
         alt={'logo'}
         height="263"
       />
@@ -74,8 +60,10 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
         style={{
           minHeight: '194px',
           width: '100%',
-          padding: `0 16px 16px`,
-          flexGrow: 1
+          padding: `0px 16px 16px 16px`,
+          flexGrow: 1,
+          margin: 'auto',
+          marginTop: 0
         }}
       >
         <Grid
@@ -94,21 +82,21 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
           <table>
             <tbody>
               <tr>
-                <th style={{ verticalAlign: 'top', textAlign: 'start' }}>
+                <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
                   <Typography className={classes.title}>Loading Port</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
-                  {/*<Link
+                  <Link
                     className={classes.destinationPortName}
-                    component={NavLink}
-                    to={`destination/${route[0].departurePort._id}`}
+                    href={`destination/${route[0].departurePort?._id}`}
                   >
-                    {route[0].departurePort.portName}
-                  </Link>*/}
+                    {route[0].departurePort?.portName}
+                  </Link>
+                  *
                 </th>
               </tr>
               <tr>
-                <th style={{ verticalAlign: 'top', textAlign: 'start' }}>
+                <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
                   <Typography className={classes.title}>Destination Port</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
@@ -118,7 +106,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
                 </th>
               </tr>
               <tr>
-                <th style={{ verticalAlign: 'top', textAlign: 'start' }}>
+                <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
                   <Typography className={classes.title}>Loading Date</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
@@ -128,7 +116,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
                 </th>
               </tr>
               <tr>
-                <th style={{ verticalAlign: 'top', textAlign: 'start' }}>
+                <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
                   <Typography className={classes.title}>Arrival Date</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
@@ -161,7 +149,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
             </Typography>
           </div>
         </Grid>
-        <Hidden smUp>
+        <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
           <div className={classes.actionsSm}>
             <Button
               data-cy="get-quote-xs"
@@ -171,9 +159,9 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
               <Typography className={classes.getQuoteTypography}>Get&nbsp;Quote</Typography>
             </Button>
           </div>
-        </Hidden>
+        </Box>
       </div>
-      <Hidden xsDown>
+      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Button
           data-cy="get-quote-smUp"
           size="small"
@@ -182,8 +170,8 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
         >
           <Typography className={classes.getQuoteTypography}>Get&nbsp;Quote</Typography>
         </Button>
-      </Hidden>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

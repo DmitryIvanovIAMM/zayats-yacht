@@ -2,7 +2,6 @@ import React from 'react';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import RouteWithImage, { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
-import { Grid } from '@mui/system';
 import { ShipStop } from '@/models/ShipStop';
 import { getNoRoutesMessage } from '@/utils/routeCalculators';
 
@@ -21,19 +20,16 @@ export default function RoutesList({
   isDestinationPortSelected
 }: RoutesListProps) {
   return (
-    <Grid container style={{ margin: 0, padding: 16 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
       {routesList && routesList.length > 0 ? (
         routesList.map((route, index) =>
           route.length > 1 ? (
-            <Grid container key={`shipKeyIndex${index}`}>
-              <Grid xs={12} sm={12} md={10} lg={8}>
-                <RouteWithImage
-                  route={route}
-                  onUserGetRouteSelect={onUserGetRouteSelect}
-                  onShareRoute={onShareRoute}
-                />
-              </Grid>
-            </Grid>
+            <RouteWithImage
+              route={route}
+              onUserGetRouteSelect={onUserGetRouteSelect}
+              onShareRoute={onShareRoute}
+              key={`shipKeyIndex${index}`}
+            />
           ) : (
             <div key={`noShipKeyIndex${index}`} />
           )
@@ -49,14 +45,6 @@ export default function RoutesList({
           </Typography>
         </Container>
       )}
-    </Grid>
+    </div>
   );
 }
-
-/*RouteBoxesList.propTypes = {
-  onUserGetRouteSelect: PropTypes.func.isRequired,
-  onShareRoute: PropTypes.func.isRequired,
-  routesList: PropTypes.array,
-  isLoadingPortSelected: PropTypes.bool,
-  isDestinationPortSelected: PropTypes.bool
-};*/

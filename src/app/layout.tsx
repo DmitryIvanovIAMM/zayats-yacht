@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true} className={montserrat.className}>
       <body>
-        <AppRouterCacheProvider>
+        <AppRouterCacheProvider options={{ key: 'css' }}>
           <ThemeProvider theme={customTheme}>{children}</ThemeProvider>
         </AppRouterCacheProvider>
         <SpeedInsights />

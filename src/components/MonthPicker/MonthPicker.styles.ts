@@ -46,13 +46,13 @@ export const yearsListSx = {
   position: 'absolute',
   top: 'initial',
   left: '50%',
-  transform: 'translateX(-50%)',
-  display: 'flex',
   margin: 'auto',
-  boxShadow: '10px 10px 20px rgba(0, 117, 255, 0.15)',
-  zIndex: 11,
+  display: 'flex',
+  flexDirection: { xs: 'column', sm: 'row' },
   backgroundColor: '#006EB9',
-  flexDirection: { sx: 'column', sm: 'row' }
+  boxShadow: '10px 10px 20px rgba(0, 117, 255, 0.15)',
+  transform: 'translateX(-50%)',
+  zIndex: 11
 };
 
 const useStyles = makeStyles((theme: Theme) => ({

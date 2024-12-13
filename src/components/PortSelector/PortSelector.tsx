@@ -43,9 +43,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& .MuiInputLabel-shrink': {
       transform: 'translate(14px, 4px) scale(0.75)'
     }
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2)
   }
 }));
 

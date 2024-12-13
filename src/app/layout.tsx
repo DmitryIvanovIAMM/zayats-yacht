@@ -6,6 +6,7 @@ import { ThemeProvider } from '@mui/system';
 import { customTheme } from '@/components/theme';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { Montserrat } from 'next/font/google';
+import { CssBaseline } from '@mui/material';
 
 export const metadata: Metadata = {
   title: 'Zayats-Yacht',
@@ -26,7 +27,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true} className={montserrat.className}>
       <body>
         <AppRouterCacheProvider options={{ key: 'css' }}>
-          <ThemeProvider theme={customTheme}>{children}</ThemeProvider>
+          <ThemeProvider theme={customTheme}>
+            <CssBaseline />
+            {children}
+          </ThemeProvider>
         </AppRouterCacheProvider>
         <SpeedInsights />
       </body>

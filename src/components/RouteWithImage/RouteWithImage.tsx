@@ -1,11 +1,24 @@
 import React, { FC, useMemo } from 'react';
 import Link from 'next/link';
-import { Grid, Theme } from '@mui/system';
+import { Grid } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/app/helpers/paths';
 import { getInternationalDateFormat } from '@/utils/date-time';
-import { lightGrayColor, useRouteStyles } from '@/components/RouteWithImage/RouteWithImage.style';
+import {
+  actionsSmSx,
+  cardImgSx,
+  cardTitleSx,
+  dateValueStyle,
+  destinationPortNameStyle,
+  footerTitleStyle,
+  footerValueStyle,
+  getQuoteButtonSx,
+  getQuoteTypographySx,
+  lightGrayColor,
+  routeWihImageBoxSx,
+  titleStyle
+} from '@/components/RouteWithImage/RouteWithImage.style';
 import { ShipStop } from '@/models/ShipStop';
 import { Port } from '@/models/Port';
 import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
@@ -36,8 +49,6 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
     onUserGetRouteSelect(data);
   };
 
-  const classes = useRouteStyles();
-
   const loadingDateFormatted = useMemo(() => {
     const date = new Date(route[0].arrivalOn);
     return getInternationalDateFormat(date);
@@ -49,13 +60,15 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
   }, [route]);
 
   return (
-    <Box className={classes.routeWihImageBox} data-cy="schedule-route-card">
-      <img
-        className={classes.cardImg}
-        src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
-        alt={'logo'}
-        height="263"
-      />
+    <Box sx={routeWihImageBoxSx} data-cy="schedule-route-card">
+      <Box sx={{ ...cardImgSx, height: '263px' }}>
+        <img
+          src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
+          alt={'logo'}
+          height="263px"
+          width={'100%'}
+        />
+      </Box>
       <div
         style={{
           minHeight: '194px',
@@ -74,53 +87,52 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
             flexWrap: 'inherit'
           }}
         >
-          <div className={classes.cardTitle}>
+          <Box sx={cardTitleSx}>
             <p>{route[route.length - 1].sailing?.name || ''}</p>
-          </div>
+          </Box>
         </Grid>
         <Grid container style={{ marginTop: 20, marginBottom: 20 }}>
           <table>
             <tbody>
               <tr>
                 <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
-                  <Typography className={classes.title}>Loading Port</Typography>
+                  <Typography style={titleStyle}>Loading Port</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
                   <Link
-                    className={classes.destinationPortName}
+                    style={destinationPortNameStyle}
                     href={`destination/${route[0].departurePort?._id}`}
                   >
                     {route[0].departurePort?.portName}
                   </Link>
-                  *
                 </th>
               </tr>
               <tr>
                 <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
-                  <Typography className={classes.title}>Destination Port</Typography>
+                  <Typography style={titleStyle}>Destination Port</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
-                  <Typography className={classes.destinationPortName} data-cy="destination-port">
+                  <Typography style={destinationPortNameStyle} data-cy="destination-port">
                     {route[route.length - 1].departurePort?.portName || ''}
                   </Typography>
                 </th>
               </tr>
               <tr>
                 <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
-                  <Typography className={classes.title}>Loading Date</Typography>
+                  <Typography style={titleStyle}>Loading Date</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
-                  <Typography className={classes.dateValue} data-cy="loading-date">
+                  <Typography style={dateValueStyle} data-cy="loading-date">
                     {loadingDateFormatted}
                   </Typography>
                 </th>
               </tr>
               <tr>
                 <th style={{ verticalAlign: 'top', textAlign: 'start', paddingRight: '10px' }}>
-                  <Typography className={classes.title}>Arrival Date</Typography>
+                  <Typography style={titleStyle}>Arrival Date</Typography>
                 </th>
                 <th style={{ verticalAlign: 'top', textAlign: 'left' }}>
-                  <Typography className={classes.dateValue} data-cy="arrival-date">
+                  <Typography style={dateValueStyle} data-cy="arrival-date">
                     {arrivalDateFormatted}
                   </Typography>
                 </th>
@@ -135,40 +147,34 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
         />
         <Grid container>
           <div style={{ whiteSpace: 'nowrap', display: 'table' }}>
-            <Typography className={classes.footerTitle}>Miles &nbsp;&nbsp;</Typography>
-            <Typography className={classes.footerValue}>
+            <Typography style={footerTitleStyle}>MILES &nbsp;&nbsp;</Typography>
+            <Typography style={footerValueStyle}>
               {calculateMilesForRoute(route)}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </Typography>
           </div>
           <div style={{ whiteSpace: 'nowrap', display: 'table' }}>
-            <Typography className={classes.footerTitle}>transit time &nbsp;&nbsp;</Typography>
-            <Typography className={classes.footerValue}>
+            <Typography style={footerTitleStyle}>TRANSIT TIME &nbsp;&nbsp;</Typography>
+            <Typography style={footerValueStyle}>
               {calculateDaysInTransit(route)} days
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </Typography>
           </div>
         </Grid>
-        <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-          <div className={classes.actionsSm}>
-            <Button
-              data-cy="get-quote-xs"
-              className={classes.getQuoteButton}
-              href={PATHS.quoteRequest}
-            >
-              <Typography className={classes.getQuoteTypography}>Get&nbsp;Quote</Typography>
-            </Button>
-          </div>
+        <Box sx={actionsSmSx}>
+          <Button data-cy="get-quote-xs" sx={getQuoteButtonSx} href={PATHS.quoteRequest}>
+            <Typography sx={getQuoteTypographySx}>Get&nbsp;Quote</Typography>
+          </Button>
         </Box>
       </div>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Button
           data-cy="get-quote-smUp"
           size="small"
-          className={classes.getQuoteButton}
+          sx={getQuoteButtonSx}
           href={PATHS.quoteRequest}
         >
-          <Typography className={classes.getQuoteTypography}>Get&nbsp;Quote</Typography>
+          <Typography sx={getQuoteTypographySx}>Get&nbsp;Quote</Typography>
         </Button>
       </Box>
     </Box>

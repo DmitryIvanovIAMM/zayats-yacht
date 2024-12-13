@@ -85,7 +85,13 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
           <MonthPicker value={schedulesState.loadingDate} onChange={handleLoadingDateSelected} />
         </div>
       </Box>
-      <Box sx={{ width: { xs: '100%', sm: 'auto' } }}>
+      <Box
+        sx={{
+          width: { xs: '100%', sm: 'auto' },
+          marginRight: { xs: '0', sm: '10px' },
+          marginLeft: { xs: '0', sm: '10px' }
+        }}
+      >
         <RoutesList
           routesList={schedulesState.schedules}
           onUserGetRouteSelect={handleStoreUserSelection}

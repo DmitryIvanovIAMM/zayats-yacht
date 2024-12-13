@@ -11,7 +11,7 @@ export const useRouteStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     border: `0.5px solid ${lightGrayColor}`,
     transition: 'box-shadow 0.6s',
-    borderRadius: '0 5px 5px 0',
+    //borderRadius: '0 5px 5px 0',
     '&:hover': {
       border: `0.5px solid transparent`,
       boxShadow: '0px 10px 20px rgba(0, 117, 255, 0.15)'
@@ -83,7 +83,7 @@ export const useRouteStyles = makeStyles((theme: Theme) => ({
   getQuoteButton: {
     width: 57,
     height: '100%',
-    borderRadius: '0 5px 5px 0',
+    borderRadius: '0 2px 2px 0',
     color: 'white',
     background: '#00AA4F',
     '&:hover': {

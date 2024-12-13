@@ -1,6 +1,60 @@
 import { makeStyles } from '@mui/styles';
 import { Theme } from '@mui/system';
 
+export const rootSx = {
+  width: '270px',
+  padding: '8px 0',
+  margin: 'auto',
+  marginTop: '2px',
+  marginBottom: '10px',
+  position: 'relative',
+  '& .MuiInputBase-input': {
+    borderColor: '#3365A7',
+    color: '#3365A7',
+    fontWeight: 'bold',
+    '& fieldset': {
+      borderColor: '#3365A7'
+    }
+  },
+  '& .MuiInputLabel-root': {
+    color: '#3365A7'
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#3365A7'
+    }
+  },
+  '& .MuiFormControl-root': {
+    color: '#c'
+  },
+  '& .MuiFormLabel-root': {
+    border: 'none'
+  },
+  '& label': {
+    width: 'auto',
+    margin: '0'
+  },
+  '& .MuiIconButton-root': {
+    color: '#3365A7'
+  },
+  '& .MuiInput-underline-root': {
+    color: '#3365A7'
+  }
+};
+
+export const yearsListSx = {
+  position: 'absolute',
+  top: 'initial',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  display: 'flex',
+  margin: 'auto',
+  boxShadow: '10px 10px 20px rgba(0, 117, 255, 0.15)',
+  zIndex: 11,
+  backgroundColor: '#006EB9',
+  flexDirection: { sx: 'column', sm: 'row' }
+};
+
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: '270px',

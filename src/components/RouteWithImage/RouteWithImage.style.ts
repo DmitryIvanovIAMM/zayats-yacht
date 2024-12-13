@@ -1,6 +1,3 @@
-import { makeStyles } from '@mui/styles';
-import { Theme } from '@mui/system';
-
 const mainBlueColor = '#3365A7';
 export const lightGrayColor = '#C4C4C4';
 

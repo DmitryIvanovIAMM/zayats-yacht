@@ -7,11 +7,33 @@ import {
   Select,
   SelectChangeEvent
 } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { Theme } from '@mui/system';
 import { Port } from '@/models/Port';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const formControlSx = {
+  //margin: theme.spacing(1),
+  margin: 'auto',
+  marginTop: '10px',
+  marginBottom: '10px',
+  minWidth: 80,
+  position: 'relative',
+  width: 270,
+  '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+    borderColor: '#3365A7',
+    borderRadius: '1px'
+  },
+  '& .MuiInputLabel-outlined': {
+    color: '#3365A7',
+    fontWeight: 'bold',
+    margin: 'auto'
+  },
+  '& .MuiFormLabel-root': {
+    border: 'none'
+  },
+  '& .MuiInputLabel-shrink': {
+    transform: 'translate(14px, 4px) scale(0.75)'
+  }
+};
+/*const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -44,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: 'translate(14px, 4px) scale(0.75)'
     }
   }
-}));
+}));*/
 
 interface PortSelectorProps {
   selectedPort: string;
@@ -56,7 +78,7 @@ interface PortSelectorProps {
 }
 
 const PortSelector: FC<PortSelectorProps> = (props) => {
-  const classes = useStyles();
+  //const classes = useStyles();
 
   function handleChange(event: SelectChangeEvent<string>) {
     if (props.selectedPort !== event.target.value) {
@@ -65,7 +87,7 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
   }
 
   return (
-    <FormControl className={classes.formControl} variant="outlined">
+    <FormControl sx={formControlSx} variant="outlined">
       <InputLabel>{props.label}</InputLabel>
       <Select
         value={props.selectedPort}

@@ -140,7 +140,8 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             <Box
               sx={{
                 flexGrow: 1,
-                marginTop: '4px'
+                marginTop: '4px',
+                marginLeft: { xs: '0', sm: '-72px' }
               }}
             >
               <Image

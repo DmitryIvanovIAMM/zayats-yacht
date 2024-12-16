@@ -1,9 +1,20 @@
-import useMonthPickerStyles from './MonthPicker.styles';
-import clsx from 'clsx';
+import {
+  edgeMonthConnectorLineLeftSx,
+  edgeMonthConnectorLineSx,
+  monthBtnStyle,
+  monthContainerSx,
+  monthsWrapperStyle,
+  pickerRootSx,
+  selectedEdgeMonthSx,
+  selectedMonthSx
+} from './MonthPicker.styles';
 import React from 'react';
 import { monthInRange, oneMonthRange } from './monthPickerHelpers';
 import { MonthDateRange, months } from '@/utils/date-time';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
+import Button from '@mui/material/Button';
+import { edgeMonthConnectorLineRightSx } from '@/components/MonthPicker/MonthPicker.styles';
 
 export interface PickerProps {
   year: number;
@@ -12,23 +23,20 @@ export interface PickerProps {
 }
 
 const Picker: React.FC<PickerProps> = ({ year, onMonthClick, value }) => {
-  const classes = useMonthPickerStyles();
-
   const handleMonthClick = (monthIndex: number) => () => {
     onMonthClick(monthIndex, year);
   };
 
   const getMonthStyle = (monthIndex: number) => {
-    if (!value) return; // initial state
+    if (!value) return {}; // initial state
     const { startDate, endDate } = value;
 
     if (
       oneMonthRange(value) &&
       monthIndex === startDate.getMonth() &&
       year === value.startDate.getFullYear()
-    ) {
-      return classes.selectedEdgeMonth;
-    }
+    )
+      return selectedEdgeMonthSx;
 
     const isEdgeStartMonth =
       monthIndex === startDate.getMonth() && year === value.startDate.getFullYear();
@@ -36,42 +44,33 @@ const Picker: React.FC<PickerProps> = ({ year, onMonthClick, value }) => {
       monthIndex === endDate.getMonth() && year === value.endDate.getFullYear();
 
     if (!oneMonthRange(value) && (isEdgeStartMonth || isEdgeEndMonth)) {
-      return [
-        classes.selectedEdgeMonth,
-        classes.edgeMonthConnectorLine,
-        isEdgeStartMonth && classes.edgeMonthConnectorLineRight,
-        isEdgeEndMonth && classes.edgeMonthConnectorLineLeft
-      ];
+      if (isEdgeStartMonth) return edgeMonthConnectorLineRightSx;
+      if (isEdgeEndMonth) return edgeMonthConnectorLineLeftSx;
+      return edgeMonthConnectorLineSx;
     }
 
-    if (!oneMonthRange(value) && monthInRange(value, monthIndex, year)) {
-      return classes.selectedMonth;
-    }
+    if (!oneMonthRange(value) && monthInRange(value, monthIndex, year)) return selectedMonthSx;
   };
 
   return (
-    <div className={classes.pickerRoot}>
+    <Box sx={pickerRootSx}>
       <Typography variant="h5" align="center">
         {year}
       </Typography>
-      <div className={classes.monthsWrapper} data-testid="calendar">
+      <div style={monthsWrapperStyle} data-testid="calendar">
         {months.map((month: string, index: number) => (
-          <div
+          <Box
             key={index}
             data-testid="month-item"
-            className={clsx(classes.monthContainer, getMonthStyle(index))}
+            sx={{ ...monthContainerSx, ...getMonthStyle(index) }}
           >
-            <button
-              data-testid="month-btn"
-              className={classes.monthBtn}
-              onClick={handleMonthClick(index)}
-            >
+            <Button data-testid="month-btn" sx={monthBtnStyle} onClick={handleMonthClick(index)}>
               {month}
-            </button>
-          </div>
+            </Button>
+          </Box>
         ))}
       </div>
-    </div>
+    </Box>
   );
 };
 

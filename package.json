@@ -16,7 +16,6 @@
     "@mui/icons-material": "^6.1.9",
     "@mui/material": "^6.1.9",
     "@mui/material-nextjs": "^6.1.9",
-    "@mui/styles": "^6.1.10",
     "@types/jsonwebtoken": "^9.0.7",
     "@vercel/speed-insights": "^1.0.14",
     "jsonwebtoken": "^9.0.2",

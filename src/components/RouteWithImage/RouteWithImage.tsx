@@ -30,7 +30,7 @@ export interface SelectedRoute {
   when: Date | string;
 }
 
-interface RouteWithImageBoxProps {
+export interface RouteWithImageBoxProps {
   route: ShipStop[];
   onShareRoute: (route: ShipStop[]) => void;
   onUserGetRouteSelect: (selectedRoute: SelectedRoute) => void;
@@ -162,14 +162,14 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
           </div>
         </Grid>
         <Box sx={actionsSmSx}>
-          <Button data-cy="get-quote-xs" sx={getQuoteButtonSx} href={PATHS.quoteRequest}>
+          <Button data-testid="get-quote-xs" sx={getQuoteButtonSx} href={PATHS.quoteRequest}>
             <Typography sx={getQuoteTypographySx}>Get&nbsp;Quote</Typography>
           </Button>
         </Box>
       </div>
       <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
         <Button
-          data-cy="get-quote-smUp"
+          data-testid="get-quote-smUp"
           size="small"
           sx={getQuoteButtonSx}
           href={PATHS.quoteRequest}

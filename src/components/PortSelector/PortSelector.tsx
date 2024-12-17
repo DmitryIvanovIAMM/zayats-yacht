@@ -68,7 +68,7 @@ const formControlSx = {
   }
 }));*/
 
-interface PortSelectorProps {
+export interface PortSelectorProps {
   selectedPort: string;
   ports: Port[];
   label: string;
@@ -87,19 +87,31 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
   }
 
   return (
-    <FormControl sx={formControlSx} variant="outlined">
-      <InputLabel>{props.label}</InputLabel>
+    <FormControl sx={formControlSx} variant="outlined" data-testid="port-selector-for-control">
+      <InputLabel htmlFor={props.name}>{props.label}</InputLabel>
       <Select
         value={props.selectedPort}
         onChange={handleChange}
         name={props.name}
-        inputProps={{ MenuProps: { disableScrollLock: true } }}
+        id={props.name}
+        inputProps={{
+          MenuProps: { disableScrollLock: true },
+          'data-testid': 'port-selector-input'
+        }}
+        data-testid="port-selector"
       >
-        {props.ports.map((port, index) => (
-          <MenuItem value={port._id.toString()} key={`portSelectorKey${index}`}>
-            {port.portName}
-          </MenuItem>
-        ))}
+        {props.ports.map((port, index) => {
+          console.log('port: ', port);
+          return (
+            <MenuItem
+              value={port._id.toString()}
+              key={`portSelectorKey${index}`}
+              data-testid="menu-item"
+            >
+              {port.portName}
+            </MenuItem>
+          );
+        })}
       </Select>
       <FormHelperText error>{props.errors}</FormHelperText>
     </FormControl>

@@ -26,6 +26,11 @@ export const centeredSectionSx = {
   }
 };
 
+export const centerItemSivStyle = {
+  display: 'flex',
+  justifyContent: 'center'
+};
+
 const AboutUs = () => {
   return (
     <Box id="about-us-section" sx={centeredSectionSx}>

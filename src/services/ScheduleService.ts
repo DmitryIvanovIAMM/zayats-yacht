@@ -1,11 +1,17 @@
-import { Types } from 'mongoose';
-import { ShipStop, ShipStopModel } from '../models/ShipStop';
-import { SailingModel } from '../models/Sailing';
-import { nowUTC } from '../utils/date-time';
-import { sortShipStopsByDate } from '../utils/schedules';
+import { ShipStop, ShipStopModel } from '@/models/ShipStop';
 
 export default class ScheduleService {
-  public getActiveShipStops = () => {
+  private static instance: ScheduleService;
+  private constructor() {}
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new ScheduleService();
+    return this.instance;
+  }
+
+  public getActiveShipStops = (): Promise<ShipStop[]> => {
     return ShipStopModel.aggregate([
       {
         $lookup: {
@@ -29,7 +35,7 @@ export default class ScheduleService {
     ]);
   };
 
-  public queryAllActiveShipStopsWithPortsAndSailings = async () => {
+  public queryAllActiveShipStopsWithPortsAndSailings = async (): Promise<ShipStop[]> => {
     const shipStops = await ShipStopModel.aggregate([
       {
         $lookup: {
@@ -62,7 +68,9 @@ export default class ScheduleService {
     return shipStops;
   };
 
-  public queryAllActiveShipStopsWithPortsAndSailingsFromDate = async (date: Date) => {
+  public queryAllActiveShipStopsWithPortsAndSailingsFromDate = async (
+    date: Date
+  ): Promise<ShipStop[]> => {
     const shipStops = await ShipStopModel.aggregate([
       {
         $match: { arrivalOn: { $gte: date } }
@@ -99,7 +107,7 @@ export default class ScheduleService {
     return shipStops;
   };
 
-  public querySailingsWithRoutesAndPorts = async () => {
+  /*public querySailingsWithRoutesAndPorts = async () => {
     const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
       {
         $match: { deletedAt: { $exists: false } }
@@ -220,11 +228,11 @@ export default class ScheduleService {
     }
   };
 
-  createShipStops(shipStops: ShipStop) {
-    return ShipStopModel.create(shipStops);
+  createShipStops(shipStops: ShipStop): Promise<ShipStop> {
+    return ShipStopModel.create(shipStops, { new: true });
   }
 
-  softDeleteSailing(sailingId: string) {
+  softDeleteSailing(sailingId: string): Promise<ShipStop> {
     return SailingModel.findByIdAndUpdate(
       new Types.ObjectId(sailingId),
       {
@@ -232,5 +240,7 @@ export default class ScheduleService {
       },
       { new: true }
     );
-  }
+  }*/
 }
+
+export const scheduleService = ScheduleService.getInstance();

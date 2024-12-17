@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Grid } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -63,11 +64,13 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
   return (
     <Box sx={routeWihImageBoxSx} data-cy="schedule-route-card">
       <Box sx={{ ...cardImgSx, height: '263px' }}>
-        <img
+        <Image
           src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
           alt={'logo'}
-          height="263px"
-          width={'100%'}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: '263px' }} // optional
         />
       </Box>
       <div

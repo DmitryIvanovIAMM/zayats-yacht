@@ -115,7 +115,6 @@ describe('RouteBoxesList component ', () => {
   it('should render nested components data', () => {
     const { container, props } = setup();
 
-    // expect(container.getByText('Address')).toBeInTheDocument();
     expect(container.container).toHaveTextContent('Get Quote');
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

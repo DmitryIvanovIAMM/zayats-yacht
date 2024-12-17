@@ -37,6 +37,7 @@ export interface RouteWithImageBoxProps {
 }
 
 const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelect }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleUserGetRouteSelect = () => {
     const departurePortName = route[0].departurePort?.portName || '';
     const destinationPortName = route[route.length - 1].departurePort?.portName || '';

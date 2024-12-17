@@ -10,7 +10,6 @@ import {
 import { Port } from '@/models/Port';
 
 const formControlSx = {
-  //margin: theme.spacing(1),
   margin: 'auto',
   marginTop: '10px',
   marginBottom: '10px',
@@ -33,40 +32,6 @@ const formControlSx = {
     transform: 'translate(14px, 4px) scale(0.75)'
   }
 };
-/*const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    //marginTop: '10px',
-    //marginBottom: '10px',
-    paddingTop: '10px',
-    paddingBottom: '10px'
-  },
-  formControl: {
-    //margin: theme.spacing(1),
-    margin: 'auto',
-    marginTop: '10px',
-    marginBottom: '10px',
-    minWidth: 80,
-    position: 'relative',
-    width: 270,
-    '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#3365A7',
-      borderRadius: '1px'
-    },
-    '& .MuiInputLabel-outlined': {
-      color: '#3365A7',
-      fontWeight: 'bold',
-      margin: 'auto'
-    },
-    '& .MuiFormLabel-root': {
-      border: 'none'
-    },
-    '& .MuiInputLabel-shrink': {
-      transform: 'translate(14px, 4px) scale(0.75)'
-    }
-  }
-}));*/
 
 export interface PortSelectorProps {
   selectedPort: string;
@@ -78,8 +43,6 @@ export interface PortSelectorProps {
 }
 
 const PortSelector: FC<PortSelectorProps> = (props) => {
-  //const classes = useStyles();
-
   function handleChange(event: SelectChangeEvent<string>) {
     if (props.selectedPort !== event.target.value) {
       props.onSelect(event.target.value);
@@ -100,18 +63,15 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
         }}
         data-testid="port-selector"
       >
-        {props.ports.map((port, index) => {
-          console.log('port: ', port);
-          return (
-            <MenuItem
-              value={port._id.toString()}
-              key={`portSelectorKey${index}`}
-              data-testid="menu-item"
-            >
-              {port.portName}
-            </MenuItem>
-          );
-        })}
+        {props.ports.map((port, index) => (
+          <MenuItem
+            value={port._id.toString()}
+            key={`portSelectorKey${index}`}
+            data-testid="menu-item"
+          >
+            {port.portName}
+          </MenuItem>
+        ))}
       </Select>
       <FormHelperText error>{props.errors}</FormHelperText>
     </FormControl>

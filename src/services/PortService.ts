@@ -17,7 +17,7 @@ export default class PortService {
       await dbConnect();
 
       return PortModel.find({}).lean<Port[]>();
-    } catch (error) {
+    } catch {
       return [];
     }
   };

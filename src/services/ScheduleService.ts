@@ -1,8 +1,4 @@
-import { Aggregate, Types } from 'mongoose';
-import { ShipStop, ShipStopModel } from '../models/ShipStop';
-import { SailingModel } from '../models/Sailing';
-import { nowUTC } from '../utils/date-time';
-import { sortShipStopsByDate } from '../utils/schedules';
+import { ShipStop, ShipStopModel } from '@/models/ShipStop';
 
 export default class ScheduleService {
   private static instance: ScheduleService;

@@ -1,7 +1,6 @@
 import React from 'react';
 import PortSelector, { PortSelectorProps } from './PortSelector';
-import { fireEvent, getByTestId, render, waitFor } from '@testing-library/react';
-import { FormControl, FormHelperText, InputLabel, Select } from '@mui/material';
+import { render } from '@testing-library/react';
 
 const testPort1 = {
   _id: 1,

@@ -105,7 +105,7 @@ const setup = (propOverrides: Partial<RoutesListProps> = {}) => {
   };
 };
 
-describe('RouteBoxesList', () => {
+describe('RouteBoxesList component ', () => {
   it('should render component', () => {
     const { container } = setup();
 

@@ -80,7 +80,7 @@ const setup = (propOverrides: Partial<RouteWithImageBoxProps> = {}, theme: any =
   };
 };
 
-describe('RouteWithImageBox', () => {
+describe('RouteWithImageBox component ', () => {
   it('should render component with header', async () => {
     const { container } = await setup();
 

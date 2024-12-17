@@ -38,7 +38,7 @@ export const getGroupedBy = (ports: Port[], key: string): any[] => {
   return result;
 };
 
-type Serializable = string | number | bigint | boolean | null | undefined;
+/*type Serializable = string | number | bigint | boolean | null | undefined;
 function groupBy<T extends Record<K, Serializable>, K extends keyof T>(data: T[], key: K) {
   return data.reduce<{ [P in `${T[K]}`]?: T[] }>((acc, item) => {
     const group: `${T[K]}` = `${item[key]}`;
@@ -46,4 +46,4 @@ function groupBy<T extends Record<K, Serializable>, K extends keyof T>(data: T[]
     arr.push(item);
     return acc;
   }, {});
-}
+}*/

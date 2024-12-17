@@ -1,45 +1,16 @@
 'use server';
 
-import { Ship } from '../models/Ship';
-//import { validateShip } from '../validation/ship';
-import { searchRoutes, filteredByLoadingDate } from '../utils/search/helpers';
+import { searchRoutes, filteredByLoadingDate } from '@/utils/search/helpers';
 import * as schedulesUtils from '../utils/schedules';
 import { scheduleService } from '@/services/ScheduleService';
-import ShipService, { shipService } from '@/services/ShipService';
-import { portService } from '@/services/PortService';
+import { shipService } from '@/services/ShipService';
 import { ShipStop } from '@/models/ShipStop';
 import { ShipsParameters } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
 
-/*export default class SchedulesController {
-  private static instance: SchedulesController;
-  private constructor() {}
-  static getInstance() {
-    if (this.instance) {
-      return this.instance;
-    }
-    this.instance = new SchedulesController();
-    return this.instance;
-  }*/
-
-//public scheduleService = ;
-//public portService = new PortService();
-//public shipService = new ShipService();
-
 export const getSchedules = async (shipData: ShipsParameters) => {
   // eslint-disable-next-line no-console
   console.log('getSchedules().  shipData: ', shipData);
-  // Route data validation
-  /*const { errors, isValid } = validateShip(req.body);
-    // Check validation
-    if (!isValid) {
-      res.status(400);
-      res.json(errors);
-      return res;
-    }
-
-    const shipData = req.body;*/
-
   try {
     const shipStops: ShipStop[] =
       await scheduleService.queryAllActiveShipStopsWithPortsAndSailings();
@@ -74,7 +45,7 @@ export const getSchedules = async (shipData: ShipsParameters) => {
     );
 
     return JSON.parse(JSON.stringify(sortedByStartRouteSchedules));
-  } catch (err) {
+  } catch {
     return [];
   }
 };

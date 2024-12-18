@@ -46,7 +46,7 @@ exports[`Navbar component should render correctly 1`] = `
               </button>
             </div>
             <div
-              class="MuiBox-root css-164ig2l"
+              class="MuiBox-root css-x3pvyu"
             >
               <img
                 alt="Allied-Yacht logo"
@@ -390,7 +390,7 @@ exports[`Navbar component should render correctly 1`] = `
             </button>
           </div>
           <div
-            class="MuiBox-root css-164ig2l"
+            class="MuiBox-root css-x3pvyu"
           >
             <img
               alt="Allied-Yacht logo"

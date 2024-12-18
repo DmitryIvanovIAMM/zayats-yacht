@@ -25,10 +25,17 @@ export const centeredSectionSx = {
     marginRight: 'auto'
   }
 };
+export const centeredSectionExtendedSx = {
+  ...sectionContainerSx,
+  marginLeft: 'auto',
+  marginRight: 'auto'
+};
 
 export const centerItemSivStyle = {
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  marginLeft: '10px',
+  marginRight: '10px'
 };
 
 const AboutUs = () => {

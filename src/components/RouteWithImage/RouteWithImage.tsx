@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Grid } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/app/helpers/paths';
@@ -17,6 +16,7 @@ import {
   getQuoteButtonSx,
   getQuoteTypographySx,
   lightGrayColor,
+  mainInfoStyle,
   routeWihImageBoxSx,
   titleStyle
 } from '@/components/RouteWithImage/RouteWithImage.style';
@@ -63,7 +63,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
 
   return (
     <Box sx={routeWihImageBoxSx} data-cy="schedule-route-card">
-      <Box sx={{ ...cardImgSx, height: '263px' }}>
+      <Box sx={cardImgSx}>
         <Image
           src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
           alt={'logo'}
@@ -73,29 +73,11 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
           style={{ width: '100%', height: '263px' }} // optional
         />
       </Box>
-      <div
-        style={{
-          minHeight: '194px',
-          width: '100%',
-          padding: `0px 16px 16px 16px`,
-          flexGrow: 1,
-          margin: 'auto',
-          marginTop: 0
-        }}
-      >
-        <Grid
-          container
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            flexWrap: 'inherit'
-          }}
-        >
-          <Box sx={cardTitleSx}>
-            <p>{route[route.length - 1].sailing?.name || ''}</p>
-          </Box>
-        </Grid>
-        <Grid container style={{ marginTop: 20, marginBottom: 20 }}>
+      <div style={mainInfoStyle}>
+        <Box sx={cardTitleSx}>
+          <p>{route[route.length - 1].sailing?.name || ''}</p>
+        </Box>
+        <div style={{ marginTop: 20, marginBottom: 20 }}>
           <table>
             <tbody>
               <tr>
@@ -143,13 +125,13 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
               </tr>
             </tbody>
           </table>
-        </Grid>
+        </div>
         <hr
           style={{
             border: `0.5px solid ${lightGrayColor}`
           }}
         />
-        <Grid container>
+        <div>
           <div style={{ whiteSpace: 'nowrap', display: 'table' }}>
             <Typography style={footerTitleStyle}>MILES &nbsp;&nbsp;</Typography>
             <Typography style={footerValueStyle}>
@@ -164,14 +146,14 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </Typography>
           </div>
-        </Grid>
+        </div>
         <Box sx={actionsSmSx}>
           <Button data-testid="get-quote-xs" sx={getQuoteButtonSx} href={PATHS.quoteRequest}>
             <Typography sx={getQuoteTypographySx}>Get&nbsp;Quote</Typography>
           </Button>
         </Box>
       </div>
-      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+      <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
         <Button
           data-testid="get-quote-smUp"
           size="small"

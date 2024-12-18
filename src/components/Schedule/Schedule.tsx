@@ -4,7 +4,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import PortSelector from '@/components/PortSelector/PortSelector';
-import { centeredSectionSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
+import { centeredSectionExtendedSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
 import { Port } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
 import { ShipStop } from '@/models/ShipStop';
@@ -16,6 +16,7 @@ export interface ScheduleSectionProps {
   ports: Port[];
   schedules: ShipStop[][];
 }
+
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   ports,
   schedules
@@ -50,7 +51,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   };
 
   return (
-    <Box id="photo-gallery-section" sx={{ ...centeredSectionSx }}>
+    <Box id="photo-gallery-section" sx={{ ...centeredSectionExtendedSx }}>
       <SectionTitle title="Schedule" />
       <Box
         sx={{

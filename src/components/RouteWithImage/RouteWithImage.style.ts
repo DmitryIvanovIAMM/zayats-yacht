@@ -29,8 +29,8 @@ export const cardTitleSx = {
   backgroundSize: 'cover',
   backgroundPosition: 'right',
   color: 'white',
-  width: { xs: '90%', sm: '90%', md: '80%' },
-  marginLeft: { xs: '-16px', md: '0px' },
+  width: '90%',
+  marginLeft: { xs: '-16px', sm: '-16px', md: '0px' },
   marginTop: { xs: '-2px', sm: '-2px', md: '0px' },
   fontWeight: 'bold',
   '& p': {

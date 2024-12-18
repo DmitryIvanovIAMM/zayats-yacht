@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Grid } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/app/helpers/paths';

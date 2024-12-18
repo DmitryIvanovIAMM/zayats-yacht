@@ -16,6 +16,7 @@ import {
   getQuoteButtonSx,
   getQuoteTypographySx,
   lightGrayColor,
+  mainInfoStyle,
   routeWihImageBoxSx,
   titleStyle
 } from '@/components/RouteWithImage/RouteWithImage.style';
@@ -61,11 +62,8 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
   }, [route]);
 
   return (
-    <Box
-      sx={{ ...routeWihImageBoxSx, marginRight: '10px', marginLeft: '10px' }}
-      data-cy="schedule-route-card"
-    >
-      <Box sx={{ ...cardImgSx, height: '263px' }}>
+    <Box sx={routeWihImageBoxSx} data-cy="schedule-route-card">
+      <Box sx={cardImgSx}>
         <Image
           src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
           alt={'logo'}
@@ -75,24 +73,8 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
           style={{ width: '100%', height: '263px' }} // optional
         />
       </Box>
-      <div
-        style={{
-          minHeight: '194px',
-          width: '100%',
-          padding: `0px 16px 16px 16px`,
-          flexGrow: 1,
-          margin: 'auto',
-          marginTop: 0
-        }}
-      >
-        <Box
-          sx={{
-            ...cardTitleSx,
-            display: 'flex',
-            justifyContent: 'space-between',
-            flexWrap: 'inherit'
-          }}
-        >
+      <div style={mainInfoStyle}>
+        <Box sx={cardTitleSx}>
           <p>{route[route.length - 1].sailing?.name || ''}</p>
         </Box>
         <div style={{ marginTop: 20, marginBottom: 20 }}>

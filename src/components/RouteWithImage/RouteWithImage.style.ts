@@ -11,18 +11,30 @@ export const routeWihImageBoxSx = {
     border: `0.5px solid transparent`,
     boxShadow: '0px 10px 20px rgba(0, 117, 255, 0.15)'
   },
-  margin: '16px 0px 16px 0px '
+  margin: '16px 10px 16px 10px '
+  //marginRight: '10px', marginLeft: '10px'
 };
 
 export const cardImgSx = {
   minWidth: '300px',
-  width: { xs: '100%', sm: '100%', md: '30%' },
-  //  width: '30%',
-  objectFit: 'cover',
-  height: { sm: 'initial' }
+  height: '263px',
+  width: { xs: '100%', sm: '100%', md: '300px' },
+  objectFit: 'cover'
+};
+
+export const mainInfoStyle = {
+  minHeight: '194px',
+  width: '100%',
+  padding: `0px 16px 16px 16px`,
+  flexGrow: 1,
+  margin: 'auto',
+  marginTop: 0
 };
 
 export const cardTitleSx = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  flexWrap: 'inherit',
   textTransform: 'none',
   padding: '7px 30px 7px 14px',
   background: `url(/images/clippedRectangle.svg) no-repeat`,

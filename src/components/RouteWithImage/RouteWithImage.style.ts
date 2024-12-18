@@ -29,17 +29,9 @@ export const cardTitleSx = {
   backgroundSize: 'cover',
   backgroundPosition: 'right',
   color: 'white',
-  width: '90%',
   marginLeft: { xs: '-16px', sm: '-16px', md: '0px' },
   marginTop: { xs: '-2px', sm: '-2px', md: '0px' },
-  fontWeight: 'bold',
-  '& p': {
-    fontFamily: 'Montserrat',
-    fontStyle: 'normal',
-    fontSize: '18px',
-    margin: 0,
-    lineHeight: '24px'
-  }
+  fontWeight: 'bold'
 };
 
 export const titleStyle = {

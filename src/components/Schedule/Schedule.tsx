@@ -16,6 +16,7 @@ export interface ScheduleSectionProps {
   ports: Port[];
   schedules: ShipStop[][];
 }
+
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   ports,
   schedules

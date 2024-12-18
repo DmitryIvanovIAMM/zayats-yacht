@@ -4,29 +4,22 @@ export const lightGrayColor = '#C4C4C4';
 export const routeWihImageBoxSx = {
   backgroundColor: 'white',
   minHeight: '194px',
-  display: { xs: 'block', sm: 'flex' },
+  display: { xs: 'block', sm: 'block', md: 'flex' },
   border: `0.5px solid ${lightGrayColor}`,
   transition: 'box-shadow 0.6s',
-  //borderRadius: '0 5px 5px 0',
   '&:hover': {
     border: `0.5px solid transparent`,
     boxShadow: '0px 10px 20px rgba(0, 117, 255, 0.15)'
   },
   margin: '16px 0px 16px 0px '
-  /*[theme.breakpoints.down('sm')]: {
-    display: 'block'
-  }*/
 };
 
 export const cardImgSx = {
   minWidth: '300px',
-  width: { xs: '100%', sm: '30%' },
+  width: { xs: '100%', sm: '100%', md: '30%' },
+  //  width: '30%',
   objectFit: 'cover',
   height: { sm: 'initial' }
-  /*[theme.breakpoints.down('sm')]: {
-    height: 'initial',
-    width: `100%`
-  }*/
 };
 
 export const cardTitleSx = {
@@ -36,16 +29,10 @@ export const cardTitleSx = {
   backgroundSize: 'cover',
   backgroundPosition: 'right',
   color: 'white',
-  //color: (theme) => theme.palette.primary.contrastText,
-  width: { xs: '90%', sm: '80%' },
-  marginLeft: { xs: '-16px', sm: '0px' },
-  marginTop: { xs: '-2px', sm: '0px' },
+  width: { xs: '90%', sm: '90%', md: '80%' },
+  marginLeft: { xs: '-16px', md: '0px' },
+  marginTop: { xs: '-2px', sm: '-2px', md: '0px' },
   fontWeight: 'bold',
-  /*[theme.breakpoints.down('sm')]: {
-    width: `90%`,
-    marginLeft: '-16px',
-    marginTop: '-2px'
-  },*/
   '& p': {
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
@@ -67,7 +54,6 @@ export const titleStyle = {
 };
 
 export const destinationPortNameStyle = {
-  //float: 'left'
   fontFamily: 'Montserrat',
   fontSize: '18px',
   fontStyle: 'regular',
@@ -88,7 +74,6 @@ export const dateValueStyle = {
 export const footerTitleStyle = {
   display: 'table-cell',
   fontFamily: 'Montserrat',
-  //textTransform: 'uppercase'
   fontSize: '14px',
   fontStyle: 'normal',
   fontWeight: 500,
@@ -105,55 +90,35 @@ export const footerValueStyle = {
 };
 
 export const actionsSmSx = {
-  //marginTop: theme.spacing(4),
-  display: { xs: 'block', sm: 'none' },
-  marginTop: { xs: '32px', sm: '0px' },
-  //display: 'flex',
+  display: { xs: 'block', sm: 'block', md: 'none' },
+  marginTop: { xs: '32px', sm: '32px', md: '0px' },
   justifyContent: 'center',
-  width: { xs: 'auto', sm: '100%' }
+  width: { xs: 'auto', sm: 'auto', md: '100%' }
 };
 export const getQuoteButtonSx = {
-  width: { xs: 'inherit', sm: '57px' },
-  height: { xs: 'unset', sm: '100%' },
-  borderRadius: { xs: '2px', sm: '0 2px 2px 0' },
+  width: { xs: 'inherit', sm: 'inherit', md: '57px' },
+  height: { xs: 'unset', sm: 'unset', md: '100%' },
+  borderRadius: { xs: '2px', sm: '2px', md: '0 2px 2px 0' },
   color: 'white',
   background: '#00AA4F',
   '&:hover': {
     background: '#00AA4F'
   },
-  display: { xs: 'block', sm: 'flex' },
-  padding: { xs: '15px 30px', sm: '0' }
-  /*textAlign: 'center',
-  justifyContent: 'center',
-  alignItems: 'center',
-  margin: 'auto'*/
-  //marginRight: { xs: '4px' }
-  /*[theme.breakpoints.down('sm')]: {
-    width: 'inherit',
-    display: 'block',
-    padding: '15px 30px',
-    borderRadius: '1px',
-    marginRight: '4px',
-    height: 'unset'
-  }*/
+  display: { xs: 'block', sm: 'block', md: 'flex' },
+  padding: { xs: '15px 30px', sm: '15px 30px', md: '0' }
 };
 
 export const getQuoteTypographySx = {
-  textAlign: { xs: 'center', sm: 'left' },
+  textAlign: { xs: 'center', sm: 'center', md: 'left' },
   textTransform: 'uppercase',
   fontFamily: 'Montserrat',
   fontWeight: 600,
   letterSpacing: '0.115em',
-  transform: { xs: 'none', sm: 'rotate(-90deg)' },
+  transform: { xs: 'none', sm: 'none', md: 'rotate(-90deg)' },
   fontSize: '16px',
   lineHeight: '20px',
   fontStyle: 'normal',
   justifyContent: 'center'
-
-  /*[theme.breakpoints.down('sm')]: {
-    transform: 'none',
-    textAlign: 'center'
-  }*/
 };
 
 /*export const useRouteStyles = makeStyles((theme: Theme) => ({

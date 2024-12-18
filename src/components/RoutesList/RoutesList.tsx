@@ -20,7 +20,7 @@ export default function RoutesList({
   isDestinationPortSelected
 }: RoutesListProps) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       {routesList && routesList.length > 0 ? (
         routesList.map((route, index) =>
           route.length > 1 ? (

@@ -62,7 +62,10 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
   }, [route]);
 
   return (
-    <Box sx={routeWihImageBoxSx} data-cy="schedule-route-card">
+    <Box
+      sx={{ ...routeWihImageBoxSx, marginRight: '10px', marginLeft: '10px' }}
+      data-cy="schedule-route-card"
+    >
       <Box sx={{ ...cardImgSx, height: '263px' }}>
         <Image
           src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
@@ -83,19 +86,17 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
           marginTop: 0
         }}
       >
-        <Grid
-          container
-          style={{
+        <Box
+          sx={{
+            ...cardTitleSx,
             display: 'flex',
             justifyContent: 'space-between',
             flexWrap: 'inherit'
           }}
         >
-          <Box sx={cardTitleSx}>
-            <p>{route[route.length - 1].sailing?.name || ''}</p>
-          </Box>
-        </Grid>
-        <Grid container style={{ marginTop: 20, marginBottom: 20 }}>
+          <p>{route[route.length - 1].sailing?.name || ''}</p>
+        </Box>
+        <div style={{ marginTop: 20, marginBottom: 20 }}>
           <table>
             <tbody>
               <tr>
@@ -143,13 +144,13 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
               </tr>
             </tbody>
           </table>
-        </Grid>
+        </div>
         <hr
           style={{
             border: `0.5px solid ${lightGrayColor}`
           }}
         />
-        <Grid container>
+        <div>
           <div style={{ whiteSpace: 'nowrap', display: 'table' }}>
             <Typography style={footerTitleStyle}>MILES &nbsp;&nbsp;</Typography>
             <Typography style={footerValueStyle}>
@@ -164,14 +165,14 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </Typography>
           </div>
-        </Grid>
+        </div>
         <Box sx={actionsSmSx}>
           <Button data-testid="get-quote-xs" sx={getQuoteButtonSx} href={PATHS.quoteRequest}>
             <Typography sx={getQuoteTypographySx}>Get&nbsp;Quote</Typography>
           </Button>
         </Box>
       </div>
-      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+      <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
         <Button
           data-testid="get-quote-smUp"
           size="small"

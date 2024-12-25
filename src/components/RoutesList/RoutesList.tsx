@@ -34,8 +34,8 @@ export default function RoutesList({
       )
     )
   ) : (
-    <Container>
-      <Typography component="h4" variant="h6" align="center">
+    <Container style={{ marginTop: '50px' }}>
+      <Typography component="h3" variant="h5" align="center">
         {getNoRoutesMessage(routesList.length, isLoadingPortSelected, isDestinationPortSelected)}
       </Typography>
     </Container>

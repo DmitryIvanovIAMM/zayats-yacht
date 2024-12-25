@@ -27,21 +27,13 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     handleDestinationPortSelected,
     handleLoadingDateSelected
   } = useSchedulesLoader({ ports, schedules });
-  // eslint-disable-next-line no-console
-  console.log('schedulesState: ', schedulesState);
-  // eslint-disable-next-line no-console
-  //onsole.log('schedulesState.isLoadingSchedule: ', schedulesState.isLoadingSchedule);
 
   const departurePortsVariants: Port[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.destinationPortId
   );
-  // eslint-disable-next-line no-console
-  //console.log('departurePortsVariants: ', departurePortsVariants);
   const destinationPortsVariants: Port[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.departurePortId
   );
-  // eslint-disable-next-line no-console
-  //console.log('destinationPortsVariants: ', destinationPortsVariants);
 
   const handleStoreUserSelection = (selectedRoute: SelectedRoute) => {
     // eslint-disable-next-line no-console

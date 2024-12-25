@@ -31,18 +31,18 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   // eslint-disable-next-line no-console
   console.log('schedulesState: ', schedulesState);
   // eslint-disable-next-line no-console
-  console.log('schedulesState.isLoadingSchedule: ', schedulesState.isLoadingSchedule);
+  //onsole.log('schedulesState.isLoadingSchedule: ', schedulesState.isLoadingSchedule);
 
   const departurePortsVariants: Port[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.destinationPortId
   );
   // eslint-disable-next-line no-console
-  console.log('departurePortsVariants: ', departurePortsVariants);
+  //console.log('departurePortsVariants: ', departurePortsVariants);
   const destinationPortsVariants: Port[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.departurePortId
   );
   // eslint-disable-next-line no-console
-  console.log('destinationPortsVariants: ', destinationPortsVariants);
+  //console.log('destinationPortsVariants: ', destinationPortsVariants);
 
   const handleStoreUserSelection = (selectedRoute: SelectedRoute) => {
     // eslint-disable-next-line no-console

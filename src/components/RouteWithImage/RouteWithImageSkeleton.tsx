@@ -5,10 +5,20 @@ import {
   cardImgSx,
   cardTitleSx,
   lightGrayColor,
-  mainInfoStyle,
-  routeWihImageBoxSx
+  mainInfoStyle
 } from '@/components/RouteWithImage/RouteWithImage.style';
 import { Box } from '@mui/material';
+
+const routeWihImageBoxSx = {
+  backgroundColor: 'white',
+  width: '100%',
+  minHeight: '194px',
+  display: { xs: 'block', sm: 'block', md: 'flex' },
+  border: `0.5px solid ${lightGrayColor}`,
+  transition: 'box-shadow 0.6s',
+  margin: '16px 10px 16px 10px '
+  //marginRight: '10px', marginLeft: '10px'
+};
 
 export const RouteWithImageSkeleton = () => {
   return (
@@ -17,27 +27,13 @@ export const RouteWithImageSkeleton = () => {
         <Skeleton variant="rectangular" height="100%" />
       </Box>
       <div style={mainInfoStyle}>
-        <Box sx={{ ...cardTitleSx, background: '' }}>
-          <Skeleton />
-        </Box>
         <div style={{ marginTop: 20, marginBottom: 20 }}>
           <Skeleton />
         </div>
-        <hr
-          style={{
-            border: `0.5px solid ${lightGrayColor}`
-          }}
-        />
         <div>
-          <Skeleton />
+          <Skeleton variant="rectangular" />
         </div>
-        <Box sx={actionsSmSx}>
-          <Skeleton />
-        </Box>
       </div>
-      <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
-        <Skeleton />
-      </Box>
     </Box>
   );
 };

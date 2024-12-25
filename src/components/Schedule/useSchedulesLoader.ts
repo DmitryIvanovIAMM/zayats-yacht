@@ -25,6 +25,7 @@ export interface PortSchedulesState {
   errors: any;
   schedules: ShipStop[][];
   errorMessage: string | null;
+  isFirstRender: boolean;
 }
 
 export const defaultPortSchedulesState: PortSchedulesState = {
@@ -39,7 +40,8 @@ export const defaultPortSchedulesState: PortSchedulesState = {
   destinationIndex: null,
   errors: emptyPortErrors,
   schedules: [],
-  errorMessage: null
+  errorMessage: null,
+  isFirstRender: true
 };
 export interface ScheduleParameters {
   departurePortId?: string | null;
@@ -81,6 +83,10 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
       // eslint-disable-next-line no-console
       console.log('Departure/destination port or loading date changed.  Reloading schedules.');
       const loadSchedules = async () => {
+        /*if (schedulesState.isFirstRender) {
+          setSchedulesState((schedulesState) => ({ ...schedulesState, isFirstRender: false }));
+          return;
+        }*/
         // eslint-disable-next-line no-console
         console.log('loadSchedules().  departurePortId: ');
         setSchedulesState((schedulesState) => ({ ...schedulesState, isLoadingSchedule: true }));
@@ -92,7 +98,7 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
           };
           const schedules = await getSchedules(shipsParameters);
           // eslint-disable-next-line no-console
-          console.log('schedules: ', schedules);
+          //console.log('schedules: ', schedules);
           return setSchedulesState((schedulesState) => ({
             ...schedulesState,
             schedules: schedules

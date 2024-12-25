@@ -4,7 +4,7 @@ import { RouteWithImageSkeleton } from '@/components/RouteWithImage/RouteWithIma
 export interface RoutesListSkeletonProps {
   itemsNumber?: number;
 }
-export default function RoutesListSkeleton({ itemsNumber = 3 }: RoutesListSkeletonProps) {
+export default function RoutesListSkeleton({ itemsNumber = 2 }: RoutesListSkeletonProps) {
   const SkeletonList = [];
   for (let index = 0; index < itemsNumber; index++) {
     SkeletonList.push(<RouteWithImageSkeleton key={`route-skeleton-${index}`} />);

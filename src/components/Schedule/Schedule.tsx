@@ -12,7 +12,6 @@ import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 import RoutesList from '@/components/RoutesList/RoutesList';
 import { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
 import RoutesListSkeleton from '@/components/RoutesList/RoutesListSkeleton';
-import RoutesSkeleton from '@/components/RoutesList/RoutesSkeleton';
 
 export interface ScheduleSectionProps {
   ports: Port[];
@@ -31,6 +30,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   } = useSchedulesLoader({ ports, schedules });
   // eslint-disable-next-line no-console
   console.log('schedulesState: ', schedulesState);
+  // eslint-disable-next-line no-console
   console.log('schedulesState.isLoadingSchedule: ', schedulesState.isLoadingSchedule);
 
   const departurePortsVariants: Port[] = schedulesState.ports.filter(

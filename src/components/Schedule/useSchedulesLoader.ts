@@ -78,6 +78,7 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
 
   useEffect(
     () => {
+      // eslint-disable-next-line no-console
       console.log('Departure/destination port or loading date changed.  Reloading schedules.');
       const loadSchedules = async () => {
         // eslint-disable-next-line no-console

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionExtendedSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
@@ -27,19 +27,13 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     handleDestinationPortSelected,
     handleLoadingDateSelected
   } = useSchedulesLoader({ ports, schedules });
-  // eslint-disable-next-line no-console
-  console.log('schedulesState: ', schedulesState);
 
   const departurePortsVariants: Port[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.destinationPortId
   );
-  // eslint-disable-next-line no-console
-  console.log('departurePortsVariants: ', departurePortsVariants);
   const destinationPortsVariants: Port[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.departurePortId
   );
-  // eslint-disable-next-line no-console
-  console.log('destinationPortsVariants: ', destinationPortsVariants);
 
   const handleStoreUserSelection = (selectedRoute: SelectedRoute) => {
     // eslint-disable-next-line no-console
@@ -93,13 +87,27 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
           marginLeft: { xs: '0', sm: '10px' }
         }}
       >
-        <RoutesList
-          routesList={schedulesState.schedules}
-          onUserGetRouteSelect={handleStoreUserSelection}
-          onShareRoute={handleShareRoute}
-          isLoadingPortSelected={!!schedulesState.departurePortId}
-          isDestinationPortSelected={!!schedulesState.destinationPortId}
-        />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {schedulesState.isLoadingSchedule ? (
+            <CircularProgress
+              size="3rem"
+              style={{
+                marginTop: '50px',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            />
+          ) : (
+            <RoutesList
+              routesList={schedulesState.schedules}
+              onUserGetRouteSelect={handleStoreUserSelection}
+              onShareRoute={handleShareRoute}
+              isLoadingPortSelected={!!schedulesState.departurePortId}
+              isDestinationPortSelected={!!schedulesState.destinationPortId}
+            />
+          )}
+        </div>
       </Box>
     </Box>
   );

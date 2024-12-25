@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionExtendedSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
@@ -11,7 +11,6 @@ import { ShipStop } from '@/models/ShipStop';
 import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 import RoutesList from '@/components/RoutesList/RoutesList';
 import { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
-import RoutesListSkeleton from '@/components/RoutesList/RoutesListSkeleton';
 
 export interface ScheduleSectionProps {
   ports: Port[];
@@ -98,7 +97,15 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
       >
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {schedulesState.isLoadingSchedule ? (
-            <RoutesListSkeleton />
+            <CircularProgress
+              size="3rem"
+              style={{
+                marginTop: '50px',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            />
           ) : (
             <RoutesList
               routesList={schedulesState.schedules}

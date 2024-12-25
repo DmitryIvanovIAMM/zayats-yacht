@@ -83,10 +83,10 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
       // eslint-disable-next-line no-console
       console.log('Departure/destination port or loading date changed.  Reloading schedules.');
       const loadSchedules = async () => {
-        /*if (schedulesState.isFirstRender) {
+        if (schedulesState.isFirstRender) {
           setSchedulesState((schedulesState) => ({ ...schedulesState, isFirstRender: false }));
           return;
-        }*/
+        }
         // eslint-disable-next-line no-console
         console.log('loadSchedules().  departurePortId: ');
         setSchedulesState((schedulesState) => ({ ...schedulesState, isLoadingSchedule: true }));
@@ -101,8 +101,8 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
           //console.log('schedules: ', schedules);
           return setSchedulesState((schedulesState) => ({
             ...schedulesState,
-            schedules: schedules
-            //isLoadingSchedule: false
+            schedules: schedules,
+            isLoadingSchedule: false
           }));
         }
 
@@ -111,8 +111,8 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
         console.log('nearestShippings: ', nearestShippings);
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
-          schedules: nearestShippings
-          //isLoadingSchedule: false
+          schedules: nearestShippings,
+          isLoadingSchedule: false
         }));
       };
       loadSchedules();

@@ -78,10 +78,11 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
 
   useEffect(
     () => {
+      console.log('Departure/destination port or loading date changed.  Reloading schedules.');
       const loadSchedules = async () => {
         // eslint-disable-next-line no-console
         console.log('loadSchedules().  departurePortId: ');
-        setSchedulesState((schedulesState) => ({ ...schedulesState, isLoading: true }));
+        setSchedulesState((schedulesState) => ({ ...schedulesState, isLoadingSchedule: true }));
         if (schedulesState.departurePortId && schedulesState.destinationPortId) {
           const shipsParameters: ShipsParameters = {
             departurePortId: schedulesState.departurePortId as string,
@@ -93,8 +94,8 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
           console.log('schedules: ', schedules);
           return setSchedulesState((schedulesState) => ({
             ...schedulesState,
-            schedules: schedules,
-            isLoading: false
+            schedules: schedules
+            //isLoadingSchedule: false
           }));
         }
 
@@ -103,8 +104,8 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
         console.log('nearestShippings: ', nearestShippings);
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
-          schedules: nearestShippings,
-          isLoading: false
+          schedules: nearestShippings
+          //isLoadingSchedule: false
         }));
       };
       loadSchedules();

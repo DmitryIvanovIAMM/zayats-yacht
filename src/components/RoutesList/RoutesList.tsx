@@ -12,6 +12,7 @@ export interface RoutesListProps {
   isLoadingPortSelected: boolean;
   isDestinationPortSelected: boolean;
 }
+
 export default function RoutesList({
   routesList,
   onShareRoute,
@@ -19,32 +20,24 @@ export default function RoutesList({
   isLoadingPortSelected,
   isDestinationPortSelected
 }: RoutesListProps) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {routesList && routesList.length > 0 ? (
-        routesList.map((route, index) =>
-          route.length > 1 ? (
-            <RouteWithImage
-              route={route}
-              onUserGetRouteSelect={onUserGetRouteSelect}
-              onShareRoute={onShareRoute}
-              key={`shipKeyIndex${index}`}
-            />
-          ) : (
-            <div key={`noShipKeyIndex${index}`} />
-          )
-        )
+  return routesList && routesList.length > 0 ? (
+    routesList.map((route, index) =>
+      route.length > 1 ? (
+        <RouteWithImage
+          route={route}
+          onUserGetRouteSelect={onUserGetRouteSelect}
+          onShareRoute={onShareRoute}
+          key={`shipKeyIndex${index}`}
+        />
       ) : (
-        <Container>
-          <Typography component="h4" variant="h6" align="center">
-            {getNoRoutesMessage(
-              routesList.length,
-              isLoadingPortSelected,
-              isDestinationPortSelected
-            )}
-          </Typography>
-        </Container>
-      )}
-    </div>
+        <div key={`noShipKeyIndex${index}`} />
+      )
+    )
+  ) : (
+    <Container>
+      <Typography component="h4" variant="h6" align="center">
+        {getNoRoutesMessage(routesList.length, isLoadingPortSelected, isDestinationPortSelected)}
+      </Typography>
+    </Container>
   );
 }

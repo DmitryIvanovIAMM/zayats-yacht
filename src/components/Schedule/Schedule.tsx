@@ -11,6 +11,8 @@ import { ShipStop } from '@/models/ShipStop';
 import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 import RoutesList from '@/components/RoutesList/RoutesList';
 import { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
+import RoutesListSkeleton from '@/components/RoutesList/RoutesListSkeleton';
+import RoutesSkeleton from '@/components/RoutesList/RoutesSkeleton';
 
 export interface ScheduleSectionProps {
   ports: Port[];
@@ -29,6 +31,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   } = useSchedulesLoader({ ports, schedules });
   // eslint-disable-next-line no-console
   console.log('schedulesState: ', schedulesState);
+  console.log('schedulesState.isLoadingSchedule: ', schedulesState.isLoadingSchedule);
 
   const departurePortsVariants: Port[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.destinationPortId
@@ -93,13 +96,19 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
           marginLeft: { xs: '0', sm: '10px' }
         }}
       >
-        <RoutesList
-          routesList={schedulesState.schedules}
-          onUserGetRouteSelect={handleStoreUserSelection}
-          onShareRoute={handleShareRoute}
-          isLoadingPortSelected={!!schedulesState.departurePortId}
-          isDestinationPortSelected={!!schedulesState.destinationPortId}
-        />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {schedulesState.isLoadingSchedule ? (
+            <RoutesListSkeleton />
+          ) : (
+            <RoutesList
+              routesList={schedulesState.schedules}
+              onUserGetRouteSelect={handleStoreUserSelection}
+              onShareRoute={handleShareRoute}
+              isLoadingPortSelected={!!schedulesState.departurePortId}
+              isDestinationPortSelected={!!schedulesState.destinationPortId}
+            />
+          )}
+        </div>
       </Box>
     </Box>
   );

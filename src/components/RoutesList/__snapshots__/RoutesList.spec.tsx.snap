@@ -6,199 +6,179 @@ exports[`RouteBoxesList component  should render component 1`] = `
   "baseElement": <body>
     <div>
       <div
-        style="display: flex; flex-direction: column;"
+        class="MuiBox-root css-682hce"
+        data-cy="schedule-route-card"
       >
         <div
-          class="MuiBox-root css-682hce"
-          data-cy="schedule-route-card"
+          class="MuiBox-root css-h1bvjn"
+        >
+          <img
+            alt="logo"
+            data-nimg="1"
+            decoding="async"
+            height="0"
+            loading="lazy"
+            sizes="100vw"
+            src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
+            style="color: transparent; width: 100%; height: 263px;"
+            width="0"
+          />
+        </div>
+        <div
+          style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
         >
           <div
-            class="MuiBox-root css-h1bvjn"
+            class="MuiBox-root css-1i2iwfh"
           >
-            <img
-              alt="logo"
-              data-nimg="1"
-              decoding="async"
-              height="0"
-              loading="lazy"
-              sizes="100vw"
-              src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
-              srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
-              style="color: transparent; width: 100%; height: 263px;"
-              width="0"
-            />
+            <p>
+              Summer Mediterranean Sailing
+            </p>
           </div>
           <div
-            style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
+            style="margin-top: 20px; margin-bottom: 20px;"
           >
+            <table>
+              <tbody>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Loading Port
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <a
+                      href="destination/41224d776a326fb40f001101"
+                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    >
+                      Fort Lauderdale, Florida
+                    </a>
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Destination Port
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      data-cy="destination-port"
+                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    >
+                      Palma de Mallorca, Spain
+                    </p>
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Loading Date
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      data-cy="loading-date"
+                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    >
+                      May 16, 2020
+                    </p>
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Arrival Date
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      data-cy="arrival-date"
+                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    >
+                      Jun 2, 2020
+                    </p>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr
+            style="border: 0.5px solid #c4c4c4;"
+          />
+          <div>
             <div
-              class="MuiBox-root css-1i2iwfh"
+              style="white-space: nowrap; display: table;"
             >
-              <p>
-                Summer Mediterranean Sailing
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
+              >
+                MILES   
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
+              >
+                4703
+                            
               </p>
             </div>
             <div
-              style="margin-top: 20px; margin-bottom: 20px;"
+              style="white-space: nowrap; display: table;"
             >
-              <table>
-                <tbody>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Loading Port
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <a
-                        href="destination/41224d776a326fb40f001101"
-                        style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                      >
-                        Fort Lauderdale, Florida
-                      </a>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Destination Port
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        data-cy="destination-port"
-                        style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                      >
-                        Palma de Mallorca, Spain
-                      </p>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Loading Date
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        data-cy="loading-date"
-                        style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                      >
-                        May 16, 2020
-                      </p>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Arrival Date
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        data-cy="arrival-date"
-                        style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                      >
-                        Jun 2, 2020
-                      </p>
-                    </th>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <hr
-              style="border: 0.5px solid #c4c4c4;"
-            />
-            <div>
-              <div
-                style="white-space: nowrap; display: table;"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-                >
-                  MILES   
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-                >
-                  4703
-                              
-                </p>
-              </div>
-              <div
-                style="white-space: nowrap; display: table;"
+                TRANSIT TIME   
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-                >
-                  TRANSIT TIME   
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-                >
-                  17
-                   days             
-                </p>
-              </div>
-            </div>
-            <div
-              class="MuiBox-root css-1xhl3e2"
-            >
-              <a
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
-                data-testid="get-quote-xs"
-                href="/quote-request"
-                tabindex="0"
-              >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
-                >
-                  Get Quote
-                </p>
-              </a>
+                17
+                 days             
+              </p>
             </div>
           </div>
           <div
-            class="MuiBox-root css-5w4cce"
+            class="MuiBox-root css-1xhl3e2"
           >
             <a
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
-              data-testid="get-quote-smUp"
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
+              data-testid="get-quote-xs"
               href="/quote-request"
               tabindex="0"
             >
@@ -211,196 +191,196 @@ exports[`RouteBoxesList component  should render component 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root css-682hce"
-          data-cy="schedule-route-card"
+          class="MuiBox-root css-5w4cce"
+        >
+          <a
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
+            data-testid="get-quote-smUp"
+            href="/quote-request"
+            tabindex="0"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
+            >
+              Get Quote
+            </p>
+          </a>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root css-682hce"
+        data-cy="schedule-route-card"
+      >
+        <div
+          class="MuiBox-root css-h1bvjn"
+        >
+          <img
+            alt="logo"
+            data-nimg="1"
+            decoding="async"
+            height="0"
+            loading="lazy"
+            sizes="100vw"
+            src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
+            srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
+            style="color: transparent; width: 100%; height: 263px;"
+            width="0"
+          />
+        </div>
+        <div
+          style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
         >
           <div
-            class="MuiBox-root css-h1bvjn"
+            class="MuiBox-root css-1i2iwfh"
           >
-            <img
-              alt="logo"
-              data-nimg="1"
-              decoding="async"
-              height="0"
-              loading="lazy"
-              sizes="100vw"
-              src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
-              srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
-              style="color: transparent; width: 100%; height: 263px;"
-              width="0"
-            />
+            <p>
+              Summer Mediterranean Sailing
+            </p>
           </div>
           <div
-            style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
+            style="margin-top: 20px; margin-bottom: 20px;"
           >
+            <table>
+              <tbody>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Loading Port
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <a
+                      href="destination/41224d776a326fb40f001101"
+                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    >
+                      Fort Lauderdale, Florida
+                    </a>
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Destination Port
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      data-cy="destination-port"
+                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    >
+                      Palma de Mallorca, Spain
+                    </p>
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Loading Date
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      data-cy="loading-date"
+                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    >
+                      May 16, 2020
+                    </p>
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    style="vertical-align: top; text-align: start; padding-right: 10px;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    >
+                      Arrival Date
+                    </p>
+                  </th>
+                  <th
+                    style="vertical-align: top; text-align: left;"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                      data-cy="arrival-date"
+                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    >
+                      Jun 2, 2020
+                    </p>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr
+            style="border: 0.5px solid #c4c4c4;"
+          />
+          <div>
             <div
-              class="MuiBox-root css-1i2iwfh"
+              style="white-space: nowrap; display: table;"
             >
-              <p>
-                Summer Mediterranean Sailing
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
+              >
+                MILES   
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
+              >
+                4703
+                            
               </p>
             </div>
             <div
-              style="margin-top: 20px; margin-bottom: 20px;"
+              style="white-space: nowrap; display: table;"
             >
-              <table>
-                <tbody>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Loading Port
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <a
-                        href="destination/41224d776a326fb40f001101"
-                        style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                      >
-                        Fort Lauderdale, Florida
-                      </a>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Destination Port
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        data-cy="destination-port"
-                        style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                      >
-                        Palma de Mallorca, Spain
-                      </p>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Loading Date
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        data-cy="loading-date"
-                        style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                      >
-                        May 16, 2020
-                      </p>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th
-                      style="vertical-align: top; text-align: start; padding-right: 10px;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                      >
-                        Arrival Date
-                      </p>
-                    </th>
-                    <th
-                      style="vertical-align: top; text-align: left;"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                        data-cy="arrival-date"
-                        style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                      >
-                        Jun 2, 2020
-                      </p>
-                    </th>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <hr
-              style="border: 0.5px solid #c4c4c4;"
-            />
-            <div>
-              <div
-                style="white-space: nowrap; display: table;"
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-                >
-                  MILES   
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-                >
-                  4703
-                              
-                </p>
-              </div>
-              <div
-                style="white-space: nowrap; display: table;"
+                TRANSIT TIME   
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-                >
-                  TRANSIT TIME   
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                  style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-                >
-                  17
-                   days             
-                </p>
-              </div>
-            </div>
-            <div
-              class="MuiBox-root css-1xhl3e2"
-            >
-              <a
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
-                data-testid="get-quote-xs"
-                href="/quote-request"
-                tabindex="0"
-              >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
-                >
-                  Get Quote
-                </p>
-              </a>
+                17
+                 days             
+              </p>
             </div>
           </div>
           <div
-            class="MuiBox-root css-5w4cce"
+            class="MuiBox-root css-1xhl3e2"
           >
             <a
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
-              data-testid="get-quote-smUp"
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
+              data-testid="get-quote-xs"
               href="/quote-request"
               tabindex="0"
             >
@@ -411,205 +391,201 @@ exports[`RouteBoxesList component  should render component 1`] = `
               </p>
             </a>
           </div>
+        </div>
+        <div
+          class="MuiBox-root css-5w4cce"
+        >
+          <a
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
+            data-testid="get-quote-smUp"
+            href="/quote-request"
+            tabindex="0"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
+            >
+              Get Quote
+            </p>
+          </a>
         </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      style="display: flex; flex-direction: column;"
+      class="MuiBox-root css-682hce"
+      data-cy="schedule-route-card"
     >
       <div
-        class="MuiBox-root css-682hce"
-        data-cy="schedule-route-card"
+        class="MuiBox-root css-h1bvjn"
+      >
+        <img
+          alt="logo"
+          data-nimg="1"
+          decoding="async"
+          height="0"
+          loading="lazy"
+          sizes="100vw"
+          src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
+          style="color: transparent; width: 100%; height: 263px;"
+          width="0"
+        />
+      </div>
+      <div
+        style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
       >
         <div
-          class="MuiBox-root css-h1bvjn"
+          class="MuiBox-root css-1i2iwfh"
         >
-          <img
-            alt="logo"
-            data-nimg="1"
-            decoding="async"
-            height="0"
-            loading="lazy"
-            sizes="100vw"
-            src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
-            srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
-            style="color: transparent; width: 100%; height: 263px;"
-            width="0"
-          />
+          <p>
+            Summer Mediterranean Sailing
+          </p>
         </div>
         <div
-          style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
+          style="margin-top: 20px; margin-bottom: 20px;"
         >
+          <table>
+            <tbody>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Loading Port
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <a
+                    href="destination/41224d776a326fb40f001101"
+                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                  >
+                    Fort Lauderdale, Florida
+                  </a>
+                </th>
+              </tr>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Destination Port
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    data-cy="destination-port"
+                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                  >
+                    Palma de Mallorca, Spain
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Loading Date
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    data-cy="loading-date"
+                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                  >
+                    May 16, 2020
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Arrival Date
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    data-cy="arrival-date"
+                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                  >
+                    Jun 2, 2020
+                  </p>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr
+          style="border: 0.5px solid #c4c4c4;"
+        />
+        <div>
           <div
-            class="MuiBox-root css-1i2iwfh"
+            style="white-space: nowrap; display: table;"
           >
-            <p>
-              Summer Mediterranean Sailing
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
+            >
+              MILES   
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
+            >
+              4703
+                          
             </p>
           </div>
           <div
-            style="margin-top: 20px; margin-bottom: 20px;"
+            style="white-space: nowrap; display: table;"
           >
-            <table>
-              <tbody>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Loading Port
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <a
-                      href="destination/41224d776a326fb40f001101"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                    >
-                      Fort Lauderdale, Florida
-                    </a>
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Destination Port
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      data-cy="destination-port"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                    >
-                      Palma de Mallorca, Spain
-                    </p>
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Loading Date
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      data-cy="loading-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                    >
-                      May 16, 2020
-                    </p>
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Arrival Date
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      data-cy="arrival-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                    >
-                      Jun 2, 2020
-                    </p>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <hr
-            style="border: 0.5px solid #c4c4c4;"
-          />
-          <div>
-            <div
-              style="white-space: nowrap; display: table;"
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-              >
-                MILES   
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-              >
-                4703
-                            
-              </p>
-            </div>
-            <div
-              style="white-space: nowrap; display: table;"
+              TRANSIT TIME   
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-              >
-                TRANSIT TIME   
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-              >
-                17
-                 days             
-              </p>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-1xhl3e2"
-          >
-            <a
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
-              data-testid="get-quote-xs"
-              href="/quote-request"
-              tabindex="0"
-            >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
-              >
-                Get Quote
-              </p>
-            </a>
+              17
+               days             
+            </p>
           </div>
         </div>
         <div
-          class="MuiBox-root css-5w4cce"
+          class="MuiBox-root css-1xhl3e2"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
-            data-testid="get-quote-smUp"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
+            data-testid="get-quote-xs"
             href="/quote-request"
             tabindex="0"
           >
@@ -622,196 +598,196 @@ exports[`RouteBoxesList component  should render component 1`] = `
         </div>
       </div>
       <div
-        class="MuiBox-root css-682hce"
-        data-cy="schedule-route-card"
+        class="MuiBox-root css-5w4cce"
+      >
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
+          data-testid="get-quote-smUp"
+          href="/quote-request"
+          tabindex="0"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
+          >
+            Get Quote
+          </p>
+        </a>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-682hce"
+      data-cy="schedule-route-card"
+    >
+      <div
+        class="MuiBox-root css-h1bvjn"
+      >
+        <img
+          alt="logo"
+          data-nimg="1"
+          decoding="async"
+          height="0"
+          loading="lazy"
+          sizes="100vw"
+          src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
+          style="color: transparent; width: 100%; height: 263px;"
+          width="0"
+        />
+      </div>
+      <div
+        style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
       >
         <div
-          class="MuiBox-root css-h1bvjn"
+          class="MuiBox-root css-1i2iwfh"
         >
-          <img
-            alt="logo"
-            data-nimg="1"
-            decoding="async"
-            height="0"
-            loading="lazy"
-            sizes="100vw"
-            src="/_next/image?url=%2Fimages%2Fundefined&w=3840&q=75"
-            srcset="/_next/image?url=%2Fimages%2Fundefined&w=640&q=75 640w, /_next/image?url=%2Fimages%2Fundefined&w=750&q=75 750w, /_next/image?url=%2Fimages%2Fundefined&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fundefined&w=1080&q=75 1080w, /_next/image?url=%2Fimages%2Fundefined&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fundefined&w=1920&q=75 1920w, /_next/image?url=%2Fimages%2Fundefined&w=2048&q=75 2048w, /_next/image?url=%2Fimages%2Fundefined&w=3840&q=75 3840w"
-            style="color: transparent; width: 100%; height: 263px;"
-            width="0"
-          />
+          <p>
+            Summer Mediterranean Sailing
+          </p>
         </div>
         <div
-          style="min-height: 194px; width: 100%; padding: 0px 16px 16px 16px; flex-grow: 1; margin: 0px auto auto auto;"
+          style="margin-top: 20px; margin-bottom: 20px;"
         >
+          <table>
+            <tbody>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Loading Port
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <a
+                    href="destination/41224d776a326fb40f001101"
+                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                  >
+                    Fort Lauderdale, Florida
+                  </a>
+                </th>
+              </tr>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Destination Port
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    data-cy="destination-port"
+                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                  >
+                    Palma de Mallorca, Spain
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Loading Date
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    data-cy="loading-date"
+                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                  >
+                    May 16, 2020
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <th
+                  style="vertical-align: top; text-align: start; padding-right: 10px;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                  >
+                    Arrival Date
+                  </p>
+                </th>
+                <th
+                  style="vertical-align: top; text-align: left;"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+                    data-cy="arrival-date"
+                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                  >
+                    Jun 2, 2020
+                  </p>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr
+          style="border: 0.5px solid #c4c4c4;"
+        />
+        <div>
           <div
-            class="MuiBox-root css-1i2iwfh"
+            style="white-space: nowrap; display: table;"
           >
-            <p>
-              Summer Mediterranean Sailing
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
+            >
+              MILES   
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
+            >
+              4703
+                          
             </p>
           </div>
           <div
-            style="margin-top: 20px; margin-bottom: 20px;"
+            style="white-space: nowrap; display: table;"
           >
-            <table>
-              <tbody>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Loading Port
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <a
-                      href="destination/41224d776a326fb40f001101"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                    >
-                      Fort Lauderdale, Florida
-                    </a>
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Destination Port
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      data-cy="destination-port"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
-                    >
-                      Palma de Mallorca, Spain
-                    </p>
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Loading Date
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      data-cy="loading-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                    >
-                      May 16, 2020
-                    </p>
-                  </th>
-                </tr>
-                <tr>
-                  <th
-                    style="vertical-align: top; text-align: start; padding-right: 10px;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
-                    >
-                      Arrival Date
-                    </p>
-                  </th>
-                  <th
-                    style="vertical-align: top; text-align: left;"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      data-cy="arrival-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
-                    >
-                      Jun 2, 2020
-                    </p>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <hr
-            style="border: 0.5px solid #c4c4c4;"
-          />
-          <div>
-            <div
-              style="white-space: nowrap; display: table;"
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-              >
-                MILES   
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-              >
-                4703
-                            
-              </p>
-            </div>
-            <div
-              style="white-space: nowrap; display: table;"
+              TRANSIT TIME   
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
+              style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: 500; line-height: 15px;"
-              >
-                TRANSIT TIME   
-              </p>
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                style="display: table-cell; font-family: Montserrat; font-size: 14px; font-style: normal; font-weight: bold; line-height: 15px;"
-              >
-                17
-                 days             
-              </p>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-1xhl3e2"
-          >
-            <a
-              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
-              data-testid="get-quote-xs"
-              href="/quote-request"
-              tabindex="0"
-            >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
-              >
-                Get Quote
-              </p>
-            </a>
+              17
+               days             
+            </p>
           </div>
         </div>
         <div
-          class="MuiBox-root css-5w4cce"
+          class="MuiBox-root css-1xhl3e2"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
-            data-testid="get-quote-smUp"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1ycg0ce-MuiButtonBase-root-MuiButton-root"
+            data-testid="get-quote-xs"
             href="/quote-request"
             tabindex="0"
           >
@@ -822,6 +798,22 @@ exports[`RouteBoxesList component  should render component 1`] = `
             </p>
           </a>
         </div>
+      </div>
+      <div
+        class="MuiBox-root css-5w4cce"
+      >
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1r98s6f-MuiButtonBase-root-MuiButton-root"
+          data-testid="get-quote-smUp"
+          href="/quote-request"
+          tabindex="0"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-9e0rf4-MuiTypography-root"
+          >
+            Get Quote
+          </p>
+        </a>
       </div>
     </div>
   </div>,

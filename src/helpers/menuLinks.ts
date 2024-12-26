@@ -11,7 +11,7 @@ export const menuLinks = [
   {
     label: 'Schedule',
     link: PATHS.landing,
-    section: 'video-gallery-section',
+    section: 'schedule-section',
     scrollDuration: 500
   },
   {

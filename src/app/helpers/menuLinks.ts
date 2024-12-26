@@ -1,49 +1,56 @@
-import { PATHS } from "../helpers/paths";
+import { PATHS } from '../helpers/paths';
+
+export interface MenuLink {
+  label: string;
+  sectionName?: string;
+  link?: string;
+  scrollDuration?: number;
+}
 
 export const menuLinks = [
   {
-    label: "Schedule",
-    sectionName: "schedulesSection",
-    scrollDuration: 500,
+    label: 'Schedule',
+    sectionName: 'schedulesSection',
+    scrollDuration: 500
   },
   {
-    label: "Get a Quote",
-    link: PATHS.quoteRequest,
+    label: 'Get a Quote',
+    link: PATHS.quoteRequest
   },
   {
-    label: "Gallery",
-    link: PATHS.gallery,
+    label: 'Gallery',
+    link: PATHS.gallery
   },
   {
-    label: "Services",
-    link: PATHS.services,
+    label: 'Services',
+    link: PATHS.services
   },
   {
-    label: "Instructions",
-    link: PATHS.instructions,
+    label: 'Instructions',
+    link: PATHS.instructions
   },
   {
-    label: "Testimonials",
-    sectionName: "testimonials",
-    scrollDuration: 500,
+    label: 'Testimonials',
+    sectionName: 'testimonials',
+    scrollDuration: 500
   },
   {
-    label: "About Us",
-    sectionName: "aboutUsSection",
-    scrollDuration: 1000,
+    label: 'About Us',
+    sectionName: 'aboutUsSection',
+    scrollDuration: 1000
   },
   {
-    label: "Contact Us",
-    sectionName: "contactsSection",
-    scrollDuration: 1500,
-  },
+    label: 'Contact Us',
+    sectionName: 'contactsSection',
+    scrollDuration: 1500
+  }
 ];
 
 export const editScheduleMenuLinks = [
   {
-    label: "Home",
-    link: "/",
-    sectionName: "quoteRequestSection",
-    scrollDuration: 500,
-  },
+    label: 'Home',
+    link: '/',
+    sectionName: 'quoteRequestSection',
+    scrollDuration: 500
+  }
 ];

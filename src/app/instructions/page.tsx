@@ -1,33 +1,20 @@
 import { Box, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import ContactUs from '@/components/ContactUs/ContactUs';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { centeredSectionSx } from '@/components/AboutUs/AboutUs';
 
-const rootSx = {
-  color: 'secondary.dark',
-  '& .MuiAccordionSummary-root': {
-    backgroundColor: '#00000007'
-  }
-};
-const faqSx = {
-  display: 'flex',
-  flexDirection: 'column',
-  marginTop: { sx: '0px' }
-};
 const emphasizedTextStyle = {
   fontWeight: 'bold'
 };
-const sectionTextStyle = {
+const textStyle = {
   fontWeight: 500,
   fontSize: `1.2em`,
   lineHeight: '150%',
   fontFamily: 'Montserrat',
-  //color: '#777777'
   color: 'secondary.dark'
 };
 
-const secondaryDarkColorSx = {
+const accordionSx = {
   color: 'secondary.dark',
   fontSize: '0.9em',
   lineHeight: '150%',
@@ -36,54 +23,12 @@ const secondaryDarkColorSx = {
     backgroundColor: '#00000007'
   }
 };
-/*const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    '& .MuiAccordionSummary-root': {
-      backgroundColor: '#00000007'
-    }
-  },
-  quote: {
-    position: 'relative',
-    paddingLeft: '1em',
-    borderLeft: `0.2em solid ${theme.palette.primary.main}`,
-    fontSize: '16px',
-    color: theme.palette.grey['600'],
-    fontWeight: 100,
-    margin: 0,
-    padding: 0,
-    border: 0,
-    outline: 0,
-    '&:before, &:after': {
-      content: "'\\201C'",
-      color: theme.palette.grey['600']
-    }
-  },
-  sectionText: {
-    fontWeight: 500,
-    fontSize: `1.3em`,
-    fontFamily: 'Montserrat',
-    lineHeight: '183.5%',
-    color: '#777777'
-  },
-  image: {
-    width: '100%'
-  },
-  emphasizedText: {
-    fontWeight: 'bold'
-  },
-
-  faq: {
-    [theme.breakpoints.down('md')]: {
-      marginTop: '-0px'
-    }
-  }
-}));*/
 
 export default async function Instructions() {
   return (
     <Box id="faq" sx={{ ...centeredSectionSx, color: 'secondary.dark' }}>
       <SectionTitle title="Yacht Transport Instructions" />
-      <div style={sectionTextStyle}>
+      <div style={textStyle}>
         <span style={emphasizedTextStyle}>Allied Yacht Transport</span> is pleased to provide our
         customers with the following instructions and information to ensure a successful transit
         facilitated by properly preparing vessels and their representatives to work with our
@@ -92,7 +37,7 @@ export default async function Instructions() {
         <br />
         <br />
         <br />
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -108,7 +53,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -134,10 +79,10 @@ export default async function Instructions() {
             demurrage, or potential arrest of the vessel by authorities.
             <br />
             <br />
-            Citizens of countries other than the United States aboard anAllied Yacht Transport ship
+            Citizens of countries other than the United States aboard an Allied Yacht Transport ship
             as a rider arriving in or passing through the United States are required to hold a valid
-            B1/B2 Visa. Without a B1/B2 Visa, riders will not be allowed on anAllied Yacht Transport
-            ship.
+            B1/B2 Visa. Without a B1/B2 Visa, riders will not be allowed on an Allied Yacht
+            Transport ship.
             <br />
             <br />
             Copies of valid Visas and current passports will be requested by an Allied Ocean
@@ -150,7 +95,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -171,7 +116,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -180,14 +125,14 @@ export default async function Instructions() {
             <h4>VESSEL SPECIFICATIONS FOR CRIBBING</h4>
           </AccordionSummary>
           <AccordionDetails>
-            For a vessel to be safely secured and stowed on anAllied Yacht Transport ship, all
+            For a vessel to be safely secured and stowed on an Allied Yacht Transport ship, all
             measurements provided must include any protrusions including but not limited to
             outriggers, bowsprits, transducers, etc.
             <br />
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -202,7 +147,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -218,7 +163,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -243,7 +188,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -259,14 +204,14 @@ export default async function Instructions() {
             <br />
             <br />
             Plug-in connections and specifications will be provided. If arrangements have been made
-            in advance,Allied Yacht Transport can also provide water connections. Standard 2" water
-            connections are available on board and vessels are responsible for supplying their own
-            hoses with multiple hoses sometimes required.
+            in advance,Allied Yacht Transport can also provide water connections. Standard 2&ldquo;
+            water connections are available on board and vessels are responsible for supplying their
+            own hoses with multiple hoses sometimes required.
             <br />
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -281,7 +226,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -291,7 +236,7 @@ export default async function Instructions() {
           </AccordionSummary>
           <AccordionDetails>
             WhileAllied Yacht Transport representatives will never board a vessel, the following are
-            strictly prohibited to be aboard a vessel during transport on anAllied Yacht Transport
+            strictly prohibited to be aboard a vessel during transport on an Allied Yacht Transport
             ship:
             <ul> 1. Firearms </ul>
             <ul> 2. Ammunitions </ul>
@@ -300,7 +245,7 @@ export default async function Instructions() {
             <ul> 5. Plants </ul>
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -310,17 +255,17 @@ export default async function Instructions() {
           </AccordionSummary>
           <AccordionDetails>
             All garbage and waste products including but not limited to oil or oil residues,
-            garbage, plastics, and paint residues should be discarded prior to arrival to anAllied
+            garbage, plastics, and paint residues should be discarded prior to arrival to an Allied
             Yacht Transport ship for loading.
             <br />
             <br />
-            Removal of waste from a vessel to the deck of anAllied Yacht Transport ship is strictly
+            Removal of waste from a vessel to the deck of an Allied Yacht Transport ship is strictly
             prohibited.
             <br />
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -333,7 +278,7 @@ export default async function Instructions() {
             for any vessel.
             <br />
             <br />
-            When anAllied Yacht Transport ship is anchored offshore, limited launch service will be
+            When an Allied Yacht Transport ship is anchored offshore, limited launch service will be
             provided.
             <br />
             <br />
@@ -348,7 +293,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -364,7 +309,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -379,7 +324,7 @@ export default async function Instructions() {
             </li>
             <br />
             <li>
-              Berthing alongside anAllied Yacht Transport ship is not permitted without prior
+              Berthing alongside an Allied Yacht Transport ship is not permitted without prior
               authorization from theAllied Yacht Transport load master.
             </li>
             <br />
@@ -415,7 +360,7 @@ export default async function Instructions() {
             </li>
             <br />
             <li>
-              All riders aboard anAllied Yacht Transport ship must be on board one hour before
+              All riders aboard an Allied Yacht Transport ship must be on board one hour before
               scheduled departure.
             </li>
             <br />
@@ -427,7 +372,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -446,7 +391,7 @@ export default async function Instructions() {
             <br />
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={secondaryDarkColorSx}>
+        <Accordion sx={accordionSx}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -457,16 +402,16 @@ export default async function Instructions() {
           <AccordionDetails>
             <span style={emphasizedTextStyle}>Allied Yacht Transport</span> riders must attend the
             orientation meeting on board the vessel prior to departure in order to familiarize
-            themselves with safety protocols, procedures and ask any further questions ofAllied
-            Yacht Transport representatives and ship's crew before departure from port.
+            themselves with safety protocols, procedures and ask any further questions of Allied
+            Yacht Transport representatives and ship&lsquo;s crew before departure from port.
             <br />
             <br />
-            Riders must be physically capable of boarding anAllied Yacht Transport ship from a
+            Riders must be physically capable of boarding an Allied Yacht Transport ship from a
             tender and climb a rope ladder.
             <br />
             <br />
-            After receiving instructions from anAllied Yacht Transport representatives or ship's
-            crew member, riders can proceed to climb the ladder and board the ship.
+            After receiving instructions from an Allied Yacht Transport representatives or
+            ship&lsquo;s crew member, riders can proceed to climb the ladder and board the ship.
             <br />
             <br />
             <span style={emphasizedTextStyle}>Allied Yacht Transport</span> does not accept any

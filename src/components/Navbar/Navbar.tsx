@@ -23,7 +23,7 @@ import {
   Slide,
   useScrollTrigger
 } from '@mui/material';
-import { MenuLink, menuLinks } from '@/app/helpers/menuLinks';
+import { MenuLink, menuLinks } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
@@ -82,9 +82,12 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   };
 
   const handleMenuItemClicked = (menuItem: MenuLink) => {
-    if (menuItem.link) {
-      router.push(menuItem.link);
-    }
+    const pathname = menuItem?.link
+      ? menuItem?.section
+        ? `${menuItem?.link}#${menuItem?.section}`
+        : `${menuItem?.link}`
+      : `#${menuItem?.link}`;
+    router.push(pathname, { scroll: true });
   };
 
   const drawer = (

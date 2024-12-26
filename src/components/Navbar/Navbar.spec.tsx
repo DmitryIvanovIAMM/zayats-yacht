@@ -1,5 +1,5 @@
 import { act, render } from '@testing-library/react';
-import { menuLinks } from '@/app/helpers/menuLinks';
+import { menuLinks } from '@/helpers/menuLinks';
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar';
 
 // Mock useRouter:

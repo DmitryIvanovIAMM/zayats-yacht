@@ -1,8 +1,8 @@
-import { PATHS } from '../helpers/paths';
+import { PATHS } from './paths';
 
 export interface MenuLink {
   label: string;
-  sectionName?: string;
+  section?: string;
   link?: string;
   scrollDuration?: number;
 }
@@ -10,7 +10,8 @@ export interface MenuLink {
 export const menuLinks = [
   {
     label: 'Schedule',
-    sectionName: 'schedulesSection',
+    link: PATHS.landing,
+    section: 'video-gallery-section',
     scrollDuration: 500
   },
   {
@@ -31,17 +32,20 @@ export const menuLinks = [
   },
   {
     label: 'Testimonials',
-    sectionName: 'testimonials',
+    link: PATHS.landing,
+    section: 'testimonials-section',
     scrollDuration: 500
   },
   {
     label: 'About Us',
-    sectionName: 'aboutUsSection',
+    link: PATHS.landing,
+    section: 'about-us-section',
     scrollDuration: 1000
   },
   {
     label: 'Contact Us',
-    sectionName: 'contactsSection',
+    link: PATHS.landing,
+    section: 'contact-us-section',
     scrollDuration: 1500
   }
 ];
@@ -49,8 +53,8 @@ export const menuLinks = [
 export const editScheduleMenuLinks = [
   {
     label: 'Home',
-    link: '/',
-    sectionName: 'quoteRequestSection',
+    link: PATHS.landing,
+    section: 'schedule-section',
     scrollDuration: 500
   }
 ];

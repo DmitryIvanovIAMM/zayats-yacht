@@ -2,6 +2,15 @@ import { act, render } from '@testing-library/react';
 import { menuLinks } from '@/app/helpers/menuLinks';
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar';
 
+// Mock useRouter:
+jest.mock('next/navigation', () => ({
+  useRouter() {
+    return {
+      prefetch: () => null
+    };
+  }
+}));
+
 const setup = async (propsOverride?: Partial<NavbarProps>) => {
   const props = {
     isAuthenticated: false,

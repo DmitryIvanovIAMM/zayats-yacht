@@ -23,9 +23,10 @@ import {
   Slide,
   useScrollTrigger
 } from '@mui/material';
-import { menuLinks } from '@/app/helpers/menuLinks';
+import { MenuLink, menuLinks } from '@/app/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
+import { useRouter } from 'next/navigation';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -74,9 +75,16 @@ function HideOnScroll(props: NavbarProps) {
 const Navbar: React.FC<NavbarProps> = (props) => {
   const { isAuthenticated } = props;
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);
+  };
+
+  const handleMenuItemClicked = (menuItem: MenuLink) => {
+    if (menuItem.link) {
+      router.push(menuItem.link);
+    }
   };
 
   const drawer = (
@@ -99,7 +107,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
         {menuLinks.map((item) => (
           <div key={item.label}>
             <ListItem disablePadding>
-              <ListItemButton sx={menuItemSx}>
+              <ListItemButton sx={menuItemSx} onClick={() => handleMenuItemClicked(item)}>
                 <ListItemText primary={item.label} />
               </ListItemButton>
             </ListItem>

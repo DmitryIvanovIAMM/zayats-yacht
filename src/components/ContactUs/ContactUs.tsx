@@ -22,11 +22,10 @@ export const sectionContainerSx = {
 };
 const contactUsSectionSx = {
   ...sectionContainerSx,
-  marginLeft: '0px',
-  marginRight: '0px',
-  marginBottom: '0px',
+  margin: '0px',
   backgroundColor: '#F7F8F9',
-  padding: '10px'
+  padding: '10px',
+  width: `100%`
 };
 const contactUsDataSx = {
   display: 'flex',

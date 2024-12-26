@@ -23,10 +23,10 @@ import {
   Slide,
   useScrollTrigger
 } from '@mui/material';
-import { MenuLink, menuLinks } from '@/app/helpers/menuLinks';
+import { MenuLink, menuLinks } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -76,15 +76,21 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const { isAuthenticated } = props;
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
+  const pathName = usePathname();
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);
   };
 
   const handleMenuItemClicked = (menuItem: MenuLink) => {
-    if (menuItem.link) {
-      router.push(menuItem.link);
-    }
+    console.log('handleMenuItemClicked().  pathName: ', pathName);
+    const pathname = menuItem?.link
+      ? menuItem?.section
+        ? `${menuItem?.link}#${menuItem?.section}`
+        : `${menuItem?.link}`
+      : `#${menuItem?.link}`;
+    console.log('pathname: ', pathname);
+    router.push(pathname, { scroll: true });
   };
 
   const drawer = (

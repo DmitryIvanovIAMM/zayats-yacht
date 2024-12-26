@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { PATHS } from '@/app/helpers/paths';
+import { PATHS } from '@/helpers/paths';
 import { getInternationalDateFormat } from '@/utils/date-time';
 import {
   actionsSmSx,

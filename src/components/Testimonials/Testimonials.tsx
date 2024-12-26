@@ -29,7 +29,7 @@ const dividerSx = {
 
 const Testimonials: FC = () => {
   return (
-    <Box id="about-us-section" sx={centeredSectionSx}>
+    <Box id="testimonials-section" sx={centeredSectionSx}>
       <SectionTitle title="Testimonials" />
       <Box sx={quotedTextSx}>
         Thank you for the fine work you did on the Beneteau swift trawler that we had you send down

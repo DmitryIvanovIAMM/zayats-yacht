@@ -22,25 +22,20 @@ export default async function Home() {
   console.log('schedules: ', schedules);
 
   return (
-    <div className={styles.page}>
-      <Navbar isAuthenticated={false} />
-      <div className={styles.main}>
-        <ScheduleSection
-          ports={JSON.parse(JSON.stringify(ports.ports))}
-          schedules={JSON.parse(JSON.stringify(schedules))}
-        />
-        <EmptySection />
-        <LazyViewedSection title="Gallery" id="photo-gallery-section">
-          <Gallery />
-        </LazyViewedSection>
-        <LazyViewedSection title="Video Gallery" id="video-gallery-section">
-          <VideoGallery />
-        </LazyViewedSection>
-        <Testimonials />
-        <AboutUs />
-        <ContactUs />
-      </div>
-      <CopyrightFooter />
+    <div className={styles.main}>
+      <ScheduleSection
+        ports={JSON.parse(JSON.stringify(ports.ports))}
+        schedules={JSON.parse(JSON.stringify(schedules))}
+      />
+      <EmptySection />
+      <LazyViewedSection title="Gallery" id="photo-gallery-section">
+        <Gallery />
+      </LazyViewedSection>
+      <LazyViewedSection title="Video Gallery" id="video-gallery-section">
+        <VideoGallery />
+      </LazyViewedSection>
+      <Testimonials />
+      <AboutUs />
     </div>
   );
 }

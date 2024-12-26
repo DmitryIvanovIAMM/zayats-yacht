@@ -478,7 +478,6 @@ export default async function Instructions() {
         <br />
         <br />
       </div>
-      <ContactUs />
     </Box>
   );
 }

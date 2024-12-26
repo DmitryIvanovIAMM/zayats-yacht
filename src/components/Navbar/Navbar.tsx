@@ -26,7 +26,6 @@ import {
 import { MenuLink, menuLinks } from '@/app/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const drawerWidth = 240;

@@ -1,7 +1,6 @@
 'use client';
 
 import { FormProvider, useForm } from 'react-hook-form';
-import { FormInputText } from '@/components/MUI-RHF/FormInputText';
 import {
   defaultQuoteRequest,
   LENGTH_METRIC,
@@ -27,11 +26,16 @@ export default function GetQuote() {
     shouldFocusError: true,
     shouldUseNativeValidation: false
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { handleSubmit, formState, getValues } = methods;
+  // eslint-disable-next-line no-console
   console.log('formState: ', formState);
+  // eslint-disable-next-line no-console
   console.log('formState.values: ', getValues());
+  // eslint-disable-next-line no-console
   console.log('formState.errors: ', formState.errors);
   const onSubmit = (data: QuoteRequestForm) => {
+    // eslint-disable-next-line no-console
     console.log(data);
   };
 

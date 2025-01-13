@@ -17,6 +17,7 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
       control={control}
       name={name}
       defaultValue=""
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       render={({ field, fieldState: { error } }) => {
         return (
           <div style={{ ...groupWrapperStyle, marginTop: '9px', marginLeft: '6px', ...style }}>

@@ -1,4 +1,4 @@
-import { object, string, number, date, InferType, mixed } from 'yup';
+import { object, string, number, InferType, mixed } from 'yup';
 
 export const LENGTH_METRIC = {
   meters: 'meters',
@@ -17,19 +17,20 @@ export const PURPOSE_OF_TRANSPORT = {
   yardWork: 'Yard Work',
   fishingTournament: 'Fishing Tournament',
   regatta: 'Regatta',
-  other: 'Other'
+  other: 'Other',
+  '': ''
 };
 
 export const quoteRequestSchema = object({
   firstName: string().required('First Name is required').length(1),
   lastName: string().required('Last Name is required'),
-  phone: string().required('Phone is required').nullable(),
+  phoneNumber: string().required('Phone is required').nullable(),
   email: string().required('Email is required').email('Must be valid email').required(),
   bestTimeToContact: string().optional().nullable(),
-  purposeOfTransport: mixed().oneOf(Object.values(PURPOSE_OF_TRANSPORT)).optional().nullable(),
+  purpose: mixed().oneOf(Object.values(PURPOSE_OF_TRANSPORT)).optional().nullable(),
   yachtName: string().optional().nullable(),
   yachtModel: string().optional().nullable(),
-  insuredValue: number().optional().nullable(),
+  insuredValue: number().required('Insured value is required'),
   length: number().optional().nullable(),
   lengthUnit: mixed().oneOf(Object.values(LENGTH_METRIC)).optional().nullable(),
   beam: number().optional().nullable(),
@@ -46,10 +47,10 @@ export type QuoteRequestForm = InferType<typeof quoteRequestSchema>;
 export const defaultQuoteRequest: QuoteRequestForm = {
   firstName: '',
   lastName: '',
-  phone: '',
+  phoneNumber: '',
   email: '',
   bestTimeToContact: '',
-  purposeOfTransport: '',
+  purpose: '',
   yachtName: '',
   yachtModel: '',
   insuredValue: 0,

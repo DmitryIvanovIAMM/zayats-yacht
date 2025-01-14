@@ -46,7 +46,7 @@ export default function GetQuote() {
     <Box id="faq" sx={{ ...centeredSectionSx, color: 'secondary.dark' }}>
       <SectionTitle title="Get Quote" />
       <FormProvider {...methods}>
-        <form noValidate autoComplete="off" onSubmit={methods.handleSubmit(onSubmit)}>
+        <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <Box
             sx={{
               display: 'flex',
@@ -57,11 +57,11 @@ export default function GetQuote() {
             <Box sx={{ flex: { xs: '100%', sm: '50%' } }}>
               <FormTextInput name={'firstName'} label={'First Name *'} />
               <FormTextInput name={'lastName'} label={'Last Name *'} />
-              <FormTextInput name={'phone'} label={'Phone *'} />
+              <FormTextInput name={'phoneNumber'} label={'Phone *'} />
               <FormTextInput name={'email'} label={'Email *'} />
               <FormTextInput name={'bestTimeToContact'} label={'Best Time to Contact'} />
               <FormSelector
-                name={'purposeOfTransport'}
+                name={'purpose'}
                 label={'Purpose of Transport'}
                 options={PURPOSE_OF_TRANSPORT}
                 style={{ marginTop: '14px' }}
@@ -70,7 +70,7 @@ export default function GetQuote() {
             <Box sx={{ flex: { xs: '100%', sm: '50%' } }}>
               <FormTextInput name={'yachtName'} label={'Yacht Name'} />
               <FormTextInput name={'yachtModel'} label={'Yacht Model'} />
-              <FormTextInput name={'insuredValue'} label={'Insured Value in USD'} />
+              <FormTextInput name={'insuredValue'} label={'Insured Value in USD *'} />
               <Box sx={{ flex: { xs: '100%', sm: '50%' } }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                   <Box sx={{ flex: { xs: '50%', sm: '50%', md: '50%', lg: '60%' } }}>

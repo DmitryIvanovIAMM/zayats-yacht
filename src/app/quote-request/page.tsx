@@ -16,6 +16,8 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import React from 'react';
 import { FormTextInput } from '@/components/MUI-RHF/FormTextInput';
 import { FormSelector } from '@/components/MUI-RHF/FormSelector';
+import Button from '@mui/material/Button';
+import { secondary } from '@/components/colors';
 
 export default function GetQuote() {
   const methods = useForm<QuoteRequestForm>({
@@ -34,9 +36,10 @@ export default function GetQuote() {
   console.log('formState.values: ', getValues());
   // eslint-disable-next-line no-console
   console.log('formState.errors: ', formState.errors);
+
   const onSubmit = (data: QuoteRequestForm) => {
     // eslint-disable-next-line no-console
-    console.log(data);
+    console.log('onSubmit().  data: ', data);
   };
 
   return (
@@ -118,6 +121,23 @@ export default function GetQuote() {
             </Box>
             <Box sx={{ flex: '100%' }}>
               <FormTextInput name={'notes'} label={'Notes'} rows={2} />
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                flex: { xs: '100%' },
+                marginTop: '20px',
+                marginBottom: '20px',
+                justifyContent: 'center'
+              }}
+            >
+              <Button
+                type="submit"
+                variant="contained"
+                style={{ backgroundColor: `${secondary.dark}` }}
+              >
+                Submit
+              </Button>
             </Box>
           </Box>
         </form>

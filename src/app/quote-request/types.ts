@@ -21,10 +21,10 @@ export const PURPOSE_OF_TRANSPORT = {
 };
 
 export const quoteRequestSchema = object({
-  firstName: string().required().length(1),
-  lastName: string().required(),
-  phone: string().required().nullable(),
-  email: string().email().required(),
+  firstName: string().required('First Name is required').length(1),
+  lastName: string().required('Last Name is required'),
+  phone: string().required('Phone is required').nullable(),
+  email: string().required('Email is required').email('Must be valid email').required(),
   bestTimeToContact: string().optional().nullable(),
   purposeOfTransport: mixed().oneOf(Object.values(PURPOSE_OF_TRANSPORT)).optional().nullable(),
   yachtName: string().optional().nullable(),
@@ -38,7 +38,7 @@ export const quoteRequestSchema = object({
   weightUnit: mixed().oneOf(Object.values(WEIGHT_METRIC)).optional().nullable(),
   fromWhere: string().optional().nullable(),
   toWhere: string().optional().nullable(),
-  when: date().optional().nullable(),
+  when: string().optional().nullable(),
   notes: string().optional().nullable()
 });
 

@@ -17,7 +17,9 @@ import React from 'react';
 import { FormTextInput } from '@/components/MUI-RHF/FormTextInput';
 import { FormSelector } from '@/components/MUI-RHF/FormSelector';
 import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 import { secondary } from '@/components/colors';
+import { sendQuoteRequest } from '@/controllers/EmailController';
 
 export default function GetQuote() {
   const methods = useForm<QuoteRequestForm>({
@@ -37,9 +39,16 @@ export default function GetQuote() {
   // eslint-disable-next-line no-console
   console.log('formState.errors: ', formState.errors);
 
-  const onSubmit = (data: QuoteRequestForm) => {
+  const onSubmit = async (data: QuoteRequestForm) => {
     // eslint-disable-next-line no-console
     console.log('onSubmit().  data: ', data);
+
+    try {
+      await sendQuoteRequest(data);
+      // add show notification
+    } catch {
+      // add show error notification
+    }
   };
 
   return (
@@ -134,9 +143,10 @@ export default function GetQuote() {
               <Button
                 type="submit"
                 variant="contained"
+                endIcon={<SendIcon />}
                 style={{ backgroundColor: `${secondary.dark}` }}
               >
-                Submit
+                Send
               </Button>
             </Box>
           </Box>

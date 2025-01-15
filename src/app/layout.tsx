@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import type { Metadata } from 'next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -13,7 +11,7 @@ import styles from '@/app/page.module.css';
 import Navbar from '@/components/Navbar/Navbar';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import ContactUs from '@/components/ContactUs/ContactUs';
-import { SnackbarProvider } from './SnackProvicer';
+import SnackProvider from '@/app/SnackProvider';
 
 export const metadata: Metadata = {
   title: 'Zayats-Yacht',
@@ -35,7 +33,7 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={{ key: 'css' }}>
           <ThemeProvider theme={customTheme}>
-            <SnackbarProvider maxSnack={3}>
+            <SnackProvider>
               <CssBaseline />
               <div className={styles.page}>
                 <Navbar isAuthenticated={false} />
@@ -43,7 +41,7 @@ export default function RootLayout({
                 <ContactUs />
                 <CopyrightFooter />
               </div>
-            </SnackbarProvider>
+            </SnackProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
         <SpeedInsights />

@@ -51,7 +51,9 @@ export default function GetQuote() {
       await sendQuoteRequest(data);
       reset();
       enqueueSnackbar('Quote request sent successfully', { variant: 'success' });
-    } catch {
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log('error: ', error);
       enqueueSnackbar('Failed to send quote request', { variant: 'error' });
     }
   };

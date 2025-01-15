@@ -11,6 +11,7 @@ import styles from '@/app/page.module.css';
 import Navbar from '@/components/Navbar/Navbar';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import ContactUs from '@/components/ContactUs/ContactUs';
+import { SnackbarProvider } from './SnackProvicer';
 
 export const metadata: Metadata = {
   title: 'Zayats-Yacht',
@@ -32,13 +33,15 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={{ key: 'css' }}>
           <ThemeProvider theme={customTheme}>
-            <CssBaseline />
-            <div className={styles.page}>
-              <Navbar isAuthenticated={false} />
-              {children}
-              <ContactUs />
-              <CopyrightFooter />
-            </div>
+            <SnackbarProvider maxSnack={3}>
+              <CssBaseline />
+              <div className={styles.page}>
+                <Navbar isAuthenticated={false} />
+                {children}
+                <ContactUs />
+                <CopyrightFooter />
+              </div>
+            </SnackbarProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
         <SpeedInsights />

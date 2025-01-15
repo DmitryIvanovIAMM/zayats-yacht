@@ -21,8 +21,11 @@ import SendIcon from '@mui/icons-material/Send';
 import { primary, secondary } from '@/components/colors';
 import { sendQuoteRequest } from '@/controllers/EmailController';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useSnackbar } from 'notistack';
 
 export default function GetQuote() {
+  const { enqueueSnackbar } = useSnackbar();
+
   const methods = useForm<QuoteRequestForm>({
     resolver: yupResolver(quoteRequestSchema),
     mode: 'onBlur',
@@ -47,9 +50,9 @@ export default function GetQuote() {
     try {
       await sendQuoteRequest(data);
       reset();
-      // add show notification
+      enqueueSnackbar('Quote request sent successfully', { variant: 'success' });
     } catch {
-      // add show error notification
+      enqueueSnackbar('Failed to send quote request', { variant: 'error' });
     }
   };
 
@@ -147,7 +150,12 @@ export default function GetQuote() {
                 variant="contained"
                 endIcon={
                   <div
-                    style={{ display: 'flex', alignItems: 'center', width: '24px', height: '24px' }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      width: '24px',
+                      height: '24px'
+                    }}
                   >
                     {formState.isSubmitting ? (
                       <CircularProgress size="20px" sx={{ color: `${primary.contrastText}` }} />

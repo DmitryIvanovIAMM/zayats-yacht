@@ -13,6 +13,10 @@ const QuoteRequestSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    receivedAt: {
+      type: String,
+      required: true
+    },
     requestData: {
       type: String,
       required: true

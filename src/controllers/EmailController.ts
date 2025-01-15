@@ -23,6 +23,7 @@ export const sendQuoteRequest = async (quoteRequest: QuoteRequestForm) => {
 
     try {
       const result = await QuoteRequestModel.create(newQuoteRequest);
+      // eslint-disable-next-line no-console
       console.log('result: ', result);
       return result;
     } catch (error) {

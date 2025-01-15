@@ -18,10 +18,8 @@ async function dbConnect() {
     return;
   }
 
-  const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
-
   try {
-    const db = await mongoose.connect(MONGODB_URI as string, clientOptions);
+    const db = await mongoose.connect(MONGODB_URI as string);
     connection.isConnected = db.connections[0].readyState;
     // eslint-disable-next-line no-console
     console.log(`MongoDB successfully connected to ${MONGODB_URI}`);

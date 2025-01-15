@@ -23,4 +23,6 @@ const QuoteRequestSchema = new mongoose.Schema(
   }
 );
 
-export const QuoteRequestModel = mongoose.model<QuoteRequest>('quoteRequests', QuoteRequestSchema);
+export const QuoteRequestModel =
+  mongoose.models?.quoteRequests ||
+  mongoose.model<QuoteRequest>('quoteRequests', QuoteRequestSchema);

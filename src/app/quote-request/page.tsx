@@ -18,8 +18,9 @@ import { FormTextInput } from '@/components/MUI-RHF/FormTextInput';
 import { FormSelector } from '@/components/MUI-RHF/FormSelector';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import { secondary } from '@/components/colors';
+import { primary, secondary } from '@/components/colors';
 import { sendQuoteRequest } from '@/controllers/EmailController';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function GetQuote() {
   const methods = useForm<QuoteRequestForm>({
@@ -31,7 +32,7 @@ export default function GetQuote() {
     shouldUseNativeValidation: false
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { handleSubmit, formState, getValues } = methods;
+  const { handleSubmit, formState, getValues, reset } = methods;
   // eslint-disable-next-line no-console
   console.log('formState: ', formState);
   // eslint-disable-next-line no-console
@@ -45,6 +46,7 @@ export default function GetQuote() {
 
     try {
       await sendQuoteRequest(data);
+      reset();
       // add show notification
     } catch {
       // add show error notification
@@ -143,8 +145,19 @@ export default function GetQuote() {
               <Button
                 type="submit"
                 variant="contained"
-                endIcon={<SendIcon />}
+                endIcon={
+                  <div
+                    style={{ display: 'flex', alignItems: 'center', width: '24px', height: '24px' }}
+                  >
+                    {formState.isSubmitting ? (
+                      <CircularProgress size="20px" sx={{ color: `${primary.contrastText}` }} />
+                    ) : (
+                      <SendIcon />
+                    )}
+                  </div>
+                }
                 style={{ backgroundColor: `${secondary.dark}` }}
+                disabled={formState.isSubmitting}
               >
                 Send
               </Button>

@@ -65,6 +65,3 @@ export const defaultQuoteRequest: QuoteRequestForm = {
   when: '',
   notes: ''
 };
-
-// parse and assert validity
-//let quoteReqquest = await quoteRequestSchema.validate(await fetchUser());

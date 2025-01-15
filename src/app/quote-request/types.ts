@@ -22,7 +22,7 @@ export const PURPOSE_OF_TRANSPORT = {
 };
 
 export const quoteRequestSchema = object({
-  firstName: string().required('First Name is required').length(1),
+  firstName: string().required('First Name is required'),
   lastName: string().required('Last Name is required'),
   phoneNumber: string().required('Phone is required').nullable(),
   email: string().required('Email is required').email('Must be valid email').required(),

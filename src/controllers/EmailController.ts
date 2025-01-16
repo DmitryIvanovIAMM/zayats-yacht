@@ -1,6 +1,6 @@
 'use server';
 
-//import mailTransporter from '../modules/mailer/nodemailer';
+import mailTransporter from '../modules/mailer/nodemailer';
 //import logger from '../utils/logger';
 import * as quoteRequestUtils from '../utils/quoteRequest';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
@@ -43,7 +43,7 @@ export const sendQuoteRequest = async (quoteRequest: QuoteRequestForm) => {
     // eslint-disable-next-line no-console
     console.log(`Sending email message: ${emailMessage}`);
     //logger.info(`Sending email message: ${emailMessage}`);
-    //await mailTransporter.sendMail(emailMessage);
+    await mailTransporter.sendMail(emailMessage);
     const successResult = { isSuccessful: true, message: 'Email sent successfully' };
     return successResult;
   } catch (err) {

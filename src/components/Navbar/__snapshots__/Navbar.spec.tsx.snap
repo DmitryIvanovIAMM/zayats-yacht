@@ -37,13 +37,13 @@ exports[`Navbar component should render correctly 1`] = `
                   />
                 </svg>
               </button>
-              <button
+              <a
                 class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+                href="/quote-request"
                 tabindex="0"
-                type="button"
               >
                 Get Quote
-              </button>
+              </a>
             </div>
             <div
               class="MuiBox-root css-x3pvyu"
@@ -381,13 +381,13 @@ exports[`Navbar component should render correctly 1`] = `
                 />
               </svg>
             </button>
-            <button
+            <a
               class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+              href="/quote-request"
               tabindex="0"
-              type="button"
             >
               Get Quote
-            </button>
+            </a>
           </div>
           <div
             class="MuiBox-root css-x3pvyu"

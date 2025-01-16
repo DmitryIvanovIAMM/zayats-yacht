@@ -3,7 +3,7 @@
 //import mailTransporter from '../modules/mailer/nodemailer';
 //import logger from '../utils/logger';
 import * as quoteRequestUtils from '../utils/quoteRequest';
-import { QuoteRequestForm } from '@/app/quote-request/types';
+import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequestModel } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
 

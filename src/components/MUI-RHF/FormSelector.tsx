@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { WEIGHT_METRIC } from '@/app/quote-request/types';
+import { WEIGHT_METRIC } from '@/components/QuoteRequest/types';
 import { FormInputTextProps, groupWrapperStyle } from '@/components/MUI-RHF/FormTextInput';
 import { Controller, useFormContext } from 'react-hook-form';
 

@@ -20,6 +20,122 @@ export const customTheme = createTheme({
   shape: {
     borderRadius: 2
   },
+  components: {
+    /*MuiInputBase: {
+      styleOverrides: {
+        root: {
+          //color: `${secondary.light} !important`,
+          borderColor: `${secondary.light} !important`,
+          '&.Mui-disabled': {
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          },
+          '&.Mui-focused': {
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          }
+        },
+        input: {
+          // color: `${secondary.light} !important`,
+          borderColor: `${secondary.light} !important`,
+          /*'&.Mui-disabled': {
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          },
+          '&.Mui-focused': {
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          },
+          '& .MuiInput-underline:after': {
+            borderBottomColor: `${secondary.light} !important`
+          }
+        }
+      }
+    },*/
+    /*MuiTextField: {
+      styleOverrides: {
+        root: {
+          color: `${secondary.light} !important`,
+          borderColor: `${secondary.light} !important`
+        }
+      }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: `${secondary.light} !important`,
+          borderColor: `${secondary.light} !important`,
+          '& fieldset': {
+            borderWidth: '1px !important',
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          },
+          '&.Mui-focused': {
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          }
+        }
+      }
+    },*/
+    /* MuiInput: {
+      styleOverrides: {
+        root: {
+          /*color: `${secondary.light} !important`,
+          borderColor: `${secondary.light} !important`,
+          '& fieldset': {
+            borderWidth: '1px !important',
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          },
+          '&.Mui-focused': {
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          }
+        },
+        underline: {
+          '&:before': {
+            color: `${secondary.light}`,
+            borderColor: `${secondary.light}`,
+            borderBottom: `1px solid ${`${secondary.light}`}`
+          }
+          /*'&.Mui-focused': {
+            color: `${secondary.light} !important`,
+            borderColor: `${secondary.light} !important`
+          }
+        }
+      }
+    }*/
+    /*MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          color: `${`${secondary.light} !important`} !important`,
+          borderColor: `${`${secondary.light} !important`} !important`,
+          '& fieldset': {
+            borderWidth: '1px !important',
+            color: `${`${secondary.light} !important`} !important`,
+            borderColor: `${`${secondary.light} !important`} !important`
+          },
+          '&.Mui-focused': {
+            color: `${`${secondary.light} !important`} !important`,
+            borderColor: `${`${secondary.light} !important`} !important`
+          }
+        }
+      }
+    }*/
+    /*MuiDivider: {
+      styleOverrides: {
+        root: {
+          color: `${`${secondary.light} !important`} !important`,
+          borderColor: `${`${secondary.light} !important`} !important`,
+          '& fieldset': {
+            borderWidth: '1px !important',
+            color: `${`${secondary.light} !important`} !important`,
+            borderColor: `${`${secondary.light} !important`} !important`
+          }
+        }
+      }
+    }*/
+  },
 
   /*components: {
     MuiTableCell: {

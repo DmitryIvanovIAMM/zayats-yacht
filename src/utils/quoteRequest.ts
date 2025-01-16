@@ -52,11 +52,12 @@ export function getQuoteRequestEmailText(quoteRequest: any) {
     `Form Where: ${quoteRequest.fromWhere ? quoteRequest.fromWhere : '-'}\n` +
     `To Where: ${quoteRequest.toWhere ? quoteRequest.toWhere : '-'}\n` +
     `When: ${quoteRequest.when ? quoteRequest.when : '-'}\n` +
-    `When: ${quoteRequest.notes ? quoteRequest.notes : '-'}`
+    `Notes: ${quoteRequest.notes ? quoteRequest.notes : '-'}`
   );
 }
 
 export function getQuoteRequestEmailHTMLBody(quoteRequest: any) {
+  console.log('getQuoteRequestEmailHTMLBody().  quoteRequest: ', quoteRequest);
   return (
     '<table>' +
     `<tr><td><strong>Yacht Name :</strong></td><td>&nbsp;${

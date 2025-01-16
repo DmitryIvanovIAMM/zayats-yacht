@@ -4,7 +4,6 @@ import { scheduleService } from '@/services/ScheduleService';
 import { portService } from '@/services/PortService';
 import { Port } from '@/models/Port';
 import { ShipStop } from '@/models/ShipStop';
-import logger from '../../logger';
 
 export const getPorts = async () => {
   try {
@@ -21,7 +20,9 @@ export const getPorts = async () => {
       message: null
     };
   } catch (err) {
-    logger.info(err);
+    // eslint-disable-next-line no-console
+    console.log(err);
+    //logger.info(err);
     return { ports: [], destinations: [], message: 'Error while fetching ports' };
   }
 };

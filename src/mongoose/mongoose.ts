@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import logger from '../../logger';
 
 const { MONGODB_URI } = process.env;
 // eslint-disable-next-line no-console
@@ -11,9 +10,9 @@ if (!MONGODB_URI) {
 const connection: { isConnected?: number } = {};
 
 async function dbConnect() {
-  logger.warn('dbConnect() starting...');
   // eslint-disable-next-line no-console
-  console.warn('dbConnect() starting...');
+  console.log('dbConnect() starting...');
+  //logger.warn('dbConnect() starting...');
   if (connection.isConnected) {
     return;
   }

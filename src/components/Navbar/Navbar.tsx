@@ -27,6 +27,8 @@ import { MenuLink, menuLinks } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
+import { PATHS } from '@/helpers/paths';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -141,6 +143,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 <MenuIcon />
               </IconButton>
               <Button
+                href={PATHS.quoteRequest}
                 variant={'contained'}
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}

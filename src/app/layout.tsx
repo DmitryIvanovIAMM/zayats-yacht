@@ -2,19 +2,26 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
-import { ThemeProvider } from '@mui/system';
-import { customTheme } from '@/components/theme';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { Montserrat } from 'next/font/google';
 import { CssBaseline } from '@mui/material';
 import styles from '@/app/page.module.css';
 import Navbar from '@/components/Navbar/Navbar';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import ContactUs from '@/components/ContactUs/ContactUs';
+import { Providers } from './Providers';
 
 export const metadata: Metadata = {
   title: 'Zayats-Yacht',
-  description: 'Refactored Allied-Yacht application'
+  description: 'Refactored Allied-Yacht application',
+  authors: {
+    url: 'https://www.linkedin.com/in/%D0%B4%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9-%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2-67816178/',
+    name: 'Dmytro Ivanov'
+  },
+  openGraph: {
+    title: 'Zayats-Yacht',
+    images: [],
+    type: 'website'
+  }
 };
 
 const montserrat = Montserrat({
@@ -22,7 +29,7 @@ const montserrat = Montserrat({
   display: 'swap'
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
@@ -30,17 +37,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true} className={montserrat.className}>
       <body>
-        <AppRouterCacheProvider options={{ key: 'css' }}>
-          <ThemeProvider theme={customTheme}>
-            <CssBaseline />
-            <div className={styles.page}>
-              <Navbar isAuthenticated={false} />
-              {children}
-              <ContactUs />
-              <CopyrightFooter />
-            </div>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <Providers>
+          <CssBaseline />
+          <div className={styles.page}>
+            <Navbar isAuthenticated={false} />
+            {children}
+            <ContactUs />
+            <CopyrightFooter />
+          </div>
+        </Providers>
         <SpeedInsights />
       </body>
     </html>

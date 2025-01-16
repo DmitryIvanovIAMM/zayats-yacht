@@ -2,6 +2,9 @@
   "name": "zayats-yacht",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +16,7 @@
     "@emotion/cache": "^11.13.5",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
+    "@hookform/resolvers": "^3.9.1",
     "@mui/icons-material": "^6.1.9",
     "@mui/material": "^6.1.9",
     "@mui/material-nextjs": "^6.1.9",
@@ -20,14 +24,18 @@
     "@vercel/speed-insights": "^1.0.14",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.4",
-    "next": "15.0.3",
+    "next": "15.1.4",
+    "notistack": "^3.0.1",
     "pino": "^9.5.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.54.2",
     "react-image-gallery": "^1.3.0",
     "react-intersection-observer": "^9.13.1",
     "react-lite-youtube-embed": "^2.4.0",
-    "react-player": "^2.16.0"
+    "react-player": "^2.16.0",
+    "winston": "^3.17.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

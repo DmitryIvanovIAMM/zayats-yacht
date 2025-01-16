@@ -12,7 +12,16 @@ import { Providers } from './Providers';
 
 export const metadata: Metadata = {
   title: 'Zayats-Yacht',
-  description: 'Refactored Allied-Yacht application'
+  description: 'Refactored Allied-Yacht application',
+  authors: {
+    url: 'https://www.linkedin.com/in/%D0%B4%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9-%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2-67816178/',
+    name: 'Dmytro Ivanov'
+  },
+  openGraph: {
+    title: 'Zayats-Yacht',
+    images: [],
+    type: 'website'
+  }
 };
 
 const montserrat = Montserrat({

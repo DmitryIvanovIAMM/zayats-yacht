@@ -6,6 +6,7 @@ import * as quoteRequestUtils from '../utils/quoteRequest';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequestModel } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
+import { Messages } from '@/helpers/messages';
 
 export const sendQuoteRequest = async (quoteRequest: QuoteRequestForm) => {
   // eslint-disable-next-line no-console
@@ -44,10 +45,9 @@ export const sendQuoteRequest = async (quoteRequest: QuoteRequestForm) => {
     console.log(`Sending email message: ${emailMessage}`);
     //logger.info(`Sending email message: ${emailMessage}`);
     await mailTransporter.sendMail(emailMessage);
-    const successResult = { isSuccessful: true, message: 'Email sent successfully' };
-    return successResult;
+    return { isSuccessful: true, message: Messages.QuoteRequestSent };
   } catch (err) {
-    const errorResult = { isSuccessful: false, message: 'Failed to send Email' };
+    const errorResult = { isSuccessful: false, message: Messages.QuoteRequestFailed };
     // eslint-disable-next-line no-console
     console.log(`Error sending email: ${err}`);
     //logger.error(`Error sending email: ${err}`);

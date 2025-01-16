@@ -22,6 +22,7 @@ import { primary, secondary } from '@/components/colors';
 import { sendQuoteRequest } from '@/controllers/EmailController';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSnackbar } from 'notistack';
+import { Messages } from '@/helpers/messages';
 
 export default function QuoteRequest() {
   const { enqueueSnackbar } = useSnackbar();
@@ -48,13 +49,13 @@ export default function QuoteRequest() {
     console.log('onSubmit().  data: ', data);
 
     try {
-      await sendQuoteRequest(data);
+      const { isSuccessful, message } = await sendQuoteRequest(data);
       reset();
-      enqueueSnackbar('Quote request sent successfully', { variant: 'success' });
+      enqueueSnackbar(message, { variant: isSuccessful ? 'success' : 'error' });
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log('error: ', error);
-      enqueueSnackbar('Failed to send quote request', { variant: 'error' });
+      enqueueSnackbar(Messages.QuoteRequestFailed, { variant: 'error' });
     }
   };
 

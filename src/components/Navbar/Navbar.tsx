@@ -28,7 +28,6 @@ import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
 import { PATHS } from '@/helpers/paths';
-import Link from 'next/link';
 
 const drawerWidth = 240;
 const leftNavigationSx = {

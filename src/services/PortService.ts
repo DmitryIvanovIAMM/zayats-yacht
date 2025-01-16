@@ -1,5 +1,5 @@
 import { Port, PortModel } from '@/models/Port';
-import dbConnect from '@/mongoose/mongoose';
+import dbConnect from '@/modules/mongoose/mongoose';
 
 export default class PortService {
   private static instance: PortService;

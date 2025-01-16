@@ -1,5 +1,5 @@
 import { ShipModel } from '@/models/Ship';
-import dbConnect from '@/mongoose/mongoose';
+import dbConnect from '@/modules/mongoose/mongoose';
 
 export default class ShipService {
   private static instance: ShipService;

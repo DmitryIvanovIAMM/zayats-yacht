@@ -22,6 +22,7 @@ import { primary, secondary } from '@/components/colors';
 import { sendQuoteRequest } from '@/controllers/EmailController';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSnackbar } from 'notistack';
+import { Messages } from '@/helpers/messages';
 
 export default function QuoteRequest() {
   const { enqueueSnackbar } = useSnackbar();
@@ -34,27 +35,17 @@ export default function QuoteRequest() {
     shouldFocusError: true,
     shouldUseNativeValidation: false
   });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { handleSubmit, formState, getValues, reset } = methods;
-  // eslint-disable-next-line no-console
-  console.log('formState: ', formState);
-  // eslint-disable-next-line no-console
-  console.log('formState.values: ', getValues());
-  // eslint-disable-next-line no-console
-  console.log('formState.errors: ', formState.errors);
+  const { handleSubmit, formState, reset } = methods;
 
   const onSubmit = async (data: QuoteRequestForm) => {
-    // eslint-disable-next-line no-console
-    console.log('onSubmit().  data: ', data);
-
     try {
-      await sendQuoteRequest(data);
+      const { isSuccessful, message } = await sendQuoteRequest(data);
       reset();
-      enqueueSnackbar('Quote request sent successfully', { variant: 'success' });
+      enqueueSnackbar(message, { variant: isSuccessful ? 'success' : 'error' });
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log('error: ', error);
-      enqueueSnackbar('Failed to send quote request', { variant: 'error' });
+      enqueueSnackbar(Messages.QuoteRequestFailed, { variant: 'error' });
     }
   };
 

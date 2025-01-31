@@ -13,40 +13,48 @@ const Services = () => {
       <SectionTitle title="Services" />
       <Box
         sx={{
-          width: { xs: '100%', md: '80%' },
+          width: { xs: '100%', sm: '440px', md: 'auto', lg: 'auto' },
           margin: 'auto',
-          padding: '0 16px',
+          padding: '0 0',
           fontSize: '1.2em'
         }}
       >
-        <span style={emphasizedTextStyle}>Allied Yacht Transport</span>
-        &nbsp;offers numerous services which yacht owners have access to. Some services are
-        necessary for every transport and these are included in every shipping contract; while
-        others are optional based on customer needs.
-      </Box>
+        <div style={{ marginLeft: '10px' }}>
+          <span style={emphasizedTextStyle}>Allied Yacht Transport</span>
+          &nbsp;offers numerous services which yacht owners have access to. Some services are
+          necessary for every transport and these are included in every shipping contract; while
+          others are optional based on customer needs.
+        </div>
 
-      <div style={{ marginTop: '40px' }} />
-      <SectionTitle title="Included Services" />
-      {INCLUDED_SERVICES.map((service, index) => (
-        <ServiceCard {...service} key={index} />
-      ))}
+        <div style={{ marginTop: '40px' }} />
+        <SectionTitle title="Included Services" />
+        {INCLUDED_SERVICES.map((service, index) => (
+          <ServiceCard {...service} key={index} />
+        ))}
 
-      <div style={{ marginTop: '40px' }} />
-      <SectionTitle title="Optional Services" />
-      {OPTIONAL_SERVICES.map((service, index) => (
-        <ServiceCard {...service} key={index} />
-      ))}
-
-      <div style={{ marginTop: '40px', marginBottom: '40px' }}>
-        <Button
-          href={PATHS.quoteRequest}
-          variant={'contained'}
-          sx={{ backgroundColor: 'secondary.dark' }}
-          size={'large'}
+        <div style={{ marginTop: '40px' }} />
+        <SectionTitle title="Optional Services" />
+        {OPTIONAL_SERVICES.map((service, index) => (
+          <ServiceCard {...service} key={index} />
+        ))}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '40px',
+            marginBottom: '40px'
+          }}
         >
-          Get Quote
-        </Button>
-      </div>
+          <Button
+            href={PATHS.quoteRequest}
+            variant={'contained'}
+            sx={{ backgroundColor: 'secondary.dark' }}
+            size={'large'}
+          >
+            Get Quote
+          </Button>
+        </div>
+      </Box>
     </Box>
   );
 };

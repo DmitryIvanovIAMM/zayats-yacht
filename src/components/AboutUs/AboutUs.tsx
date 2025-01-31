@@ -8,7 +8,7 @@ const textStyle = {
   fontSize: `1.2em`,
   lineHeight: '150%'
 };
-const emphasizedTextStyle = {
+export const emphasizedTextStyle = {
   fontWeight: 'bold'
 };
 export const centeredSectionSx = {

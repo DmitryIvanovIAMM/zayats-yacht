@@ -5,7 +5,7 @@ import React from 'react';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import PhotoGallery from '@/components/Gallery2/PhotoGallery';
 
-export default async function Gallery() {
+export default async function GalleryPage() {
   return (
     <Box id="faq" sx={{ ...centeredSectionSx, color: 'secondary.dark' }}>
       <LazyViewedSection title="Video Gallery" id="video-gallery-section">

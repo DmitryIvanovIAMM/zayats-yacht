@@ -6,7 +6,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.grandPrixSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date('20255-04-01'),
+    arrivalOn: new Date('2025-04-01'),
     departureOn: new Date('2025-04-05'),
     miles: 0,
     daysAtSea: 0,

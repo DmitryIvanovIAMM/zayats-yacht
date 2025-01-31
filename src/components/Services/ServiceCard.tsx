@@ -18,7 +18,7 @@ export interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, image, index }: ServiceCardProps) => {
   return (
-    <Box sx={routeWihImageBoxSx} data-cy="schedule-route-card">
+    <Box sx={routeWihImageBoxSx} data-cy="service-card">
       <Box sx={cardImgSx}>
         <Image
           src={image}

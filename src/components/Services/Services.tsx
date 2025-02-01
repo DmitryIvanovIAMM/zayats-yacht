@@ -9,7 +9,14 @@ import { PATHS } from '@/helpers/paths';
 
 const Services = () => {
   return (
-    <Box id="services-section" sx={{ ...centeredSectionSx }}>
+    <Box
+      id="services-section"
+      sx={{
+        ...centeredSectionSx,
+        width: { xs: '100%', sm: '90%' },
+        maxWidth: { xs: '100%', sm: '90%' }
+      }}
+    >
       <SectionTitle title="Services" />
       <Box
         sx={{

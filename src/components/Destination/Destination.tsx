@@ -84,10 +84,12 @@ const Destination = ({ destinationId }: DestinationProps) => {
                 ...sectionImageSx
               }}
             >
-              <img
-                src={getDestinationImageSourceByName(destination.firstSectionImageName)}
-                alt="destination image"
-              />
+              <picture>
+                <img
+                  src={getDestinationImageSourceByName(destination.firstSectionImageName)}
+                  alt="destination image"
+                />
+              </picture>
             </Box>
           </Box>
           <Box sx={rowSx}>
@@ -97,10 +99,12 @@ const Destination = ({ destinationId }: DestinationProps) => {
                 ...sectionImageSx
               }}
             >
-              <img
-                src={getDestinationImageSourceByName(destination.secondSectionImageName)}
-                alt="destination image"
-              />
+              <picture>
+                <img
+                  src={getDestinationImageSourceByName(destination.secondSectionImageName)}
+                  alt="destination image"
+                />
+              </picture>
             </Box>
             <Box
               sx={{
@@ -117,7 +121,9 @@ const Destination = ({ destinationId }: DestinationProps) => {
           </Box>
         </div>
         <Box sx={fullImageSX}>
-          <img src={getDestinationImageSourceByName(destination.lastImageName)} alt="Port" />
+          <picture>
+            <img src={getDestinationImageSourceByName(destination.lastImageName)} alt="Port" />
+          </picture>
         </Box>
       </Box>
     </div>

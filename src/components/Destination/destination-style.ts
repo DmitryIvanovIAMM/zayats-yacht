@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const subheaderSx = {
   padding: { sm: '0 17px', md: '0 114px' },
   width: '100%',
@@ -52,7 +54,7 @@ export const rowSx = {
     flexDirection: { xs: 'column-reverse', sm: 'column-reverse', md: 'row' }
   }
 };
-export const sectionTitleStyle = {
+export const sectionTitleStyle: React.CSSProperties = {
   fontSize: '1.8em',
   textTransform: 'uppercase',
   fontWeight: 500

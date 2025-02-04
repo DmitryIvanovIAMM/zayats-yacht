@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+import { compile } from 'path-to-regexp';
 
 export enum PATHS {
   landing = '/',
@@ -11,3 +11,10 @@ export enum PATHS {
   scheduleManagement = '/schedule-management',
   destination = '/destination/:id'
 }
+
+/**
+ * @param path such as '/user/:id.
+ * @param params such as {id: 1}
+ * @returns string such as '/user/1'
+ */
+export const toPath = (path: string, params = {}) => compile(path)(params);

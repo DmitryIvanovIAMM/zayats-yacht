@@ -7,7 +7,7 @@ import PhotoGallery from '@/components/Gallery2/PhotoGallery';
 
 export default async function GalleryPage() {
   return (
-    <Box id="faq" sx={{ ...centeredSectionSx, color: 'secondary.dark' }}>
+    <Box id="gallery-page" sx={{ ...centeredSectionSx, color: 'secondary.dark' }}>
       <LazyViewedSection title="Video Gallery" id="video-gallery-section">
         <VideoGallery />
       </LazyViewedSection>

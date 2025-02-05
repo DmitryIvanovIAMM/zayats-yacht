@@ -8,7 +8,7 @@ export interface ImageModalProps {
 }
 
 const ImageModal = ({ setSelectedImg, selectedImg }: ImageModalProps) => {
-  const handleClick = (e) => {
+  const handleClick = (e: any) => {
     if (e.target?.classList?.contains('backdrop')) {
       setSelectedImg(null);
     }

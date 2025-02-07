@@ -55,7 +55,6 @@ const menuItemSx = {
 };
 
 export interface NavbarProps {
-  isAuthenticated: boolean;
   children?: React.ReactElement<unknown>;
 }
 

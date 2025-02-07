@@ -42,7 +42,7 @@ export default async function RootLayout({
           <Providers>
             <CssBaseline />
             <div className={styles.page}>
-              <Navbar isAuthenticated={false} />
+              <Navbar />
               {children}
               <ContactUs />
               <CopyrightFooter />

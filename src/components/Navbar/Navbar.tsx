@@ -76,9 +76,7 @@ function HideOnScroll(props: NavbarProps) {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
-  const { isAuthenticated } = props;
-  const { user, error, isLoading } = useUser();
-  console.log('Navbar().  user: ', user);
+  const { user, isLoading } = useUser();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
 

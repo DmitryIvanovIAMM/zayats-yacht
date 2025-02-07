@@ -21,13 +21,15 @@ import {
   ListItemButton,
   ListItemText,
   Slide,
-  useScrollTrigger
+  useScrollTrigger,
+  CircularProgress
 } from '@mui/material';
 import { MenuLink, menuLinks } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
 import { PATHS } from '@/helpers/paths';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -53,7 +55,6 @@ const menuItemSx = {
 };
 
 export interface NavbarProps {
-  isAuthenticated: boolean;
   children?: React.ReactElement<unknown>;
 }
 
@@ -74,7 +75,7 @@ function HideOnScroll(props: NavbarProps) {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
-  const { isAuthenticated } = props;
+  const { user, isLoading } = useUser();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
 
@@ -146,6 +147,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 variant={'contained'}
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}
+                style={{ height: '31px' }}
               >
                 Get Quote
               </Button>
@@ -171,8 +173,16 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 variant={'contained'}
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}
+                href={user ? '/api/auth/logout' : '/api/auth/login'}
+                style={{ width: '78px', height: '31px' }}
               >
-                {isAuthenticated ? 'LogOut' : 'SignIn'}
+                {isLoading ? (
+                  <CircularProgress size="20px" color="inherit" />
+                ) : user ? (
+                  'Logout'
+                ) : (
+                  'Login'
+                )}
               </Button>
             </Box>
           </Toolbar>

@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 const sectionTitleSx = {
   textTransform: 'uppercase',
   color: 'secondary.dark',
-  fontSize: { xs: '36px', md: '48px' },
+  fontSize: { xs: '2em', md: '3em' },
   marginBottom: '20px'
 };
 

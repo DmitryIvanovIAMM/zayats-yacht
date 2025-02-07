@@ -9,7 +9,8 @@ export enum PATHS {
   privacyPolicy = '/privacy-policy',
   authCallback = '/auth-callback',
   scheduleManagement = '/schedule-management',
-  destination = '/destination/:id'
+  destination = '/destination/:id',
+  loginFailed = '/login-failed'
 }
 
 /**

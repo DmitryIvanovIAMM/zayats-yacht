@@ -10,7 +10,7 @@ exports[`ContactUs component should render correctly 1`] = `
         id="contact-us-section"
       >
         <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-10dtpk3-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-1ds3pyi-MuiTypography-root"
           style="--Typography-textAlign: center;"
         >
           Contact Us
@@ -156,7 +156,7 @@ exports[`ContactUs component should render correctly 1`] = `
       id="contact-us-section"
     >
       <h4
-        class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-10dtpk3-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter css-1ds3pyi-MuiTypography-root"
         style="--Typography-textAlign: center;"
       >
         Contact Us

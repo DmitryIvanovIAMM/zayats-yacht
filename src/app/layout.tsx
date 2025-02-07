@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import ContactUs from '@/components/ContactUs/ContactUs';
 import { Providers } from './Providers';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export const metadata: Metadata = {
   title: 'Zayats-Yacht',
@@ -36,18 +37,20 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true} className={montserrat.className}>
-      <body>
-        <Providers>
-          <CssBaseline />
-          <div className={styles.page}>
-            <Navbar isAuthenticated={false} />
-            {children}
-            <ContactUs />
-            <CopyrightFooter />
-          </div>
-        </Providers>
-        <SpeedInsights />
-      </body>
+      <UserProvider>
+        <body>
+          <Providers>
+            <CssBaseline />
+            <div className={styles.page}>
+              <Navbar />
+              {children}
+              <ContactUs />
+              <CopyrightFooter />
+            </div>
+          </Providers>
+          <SpeedInsights />
+        </body>
+      </UserProvider>
     </html>
   );
 }

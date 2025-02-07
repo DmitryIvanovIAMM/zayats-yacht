@@ -16,10 +16,11 @@ const messageSx = {
   padding: '20px'
 };
 
-export default async function LoginFailedPage({
-  searchParams
-}: Promise<{ searchParams: { message: string } }>) {
-  const message: string = (await searchParams)?.message || 'Unauthorized';
+interface LoginFailedPageProps {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }> | undefined;
+}
+export default async function LoginFailedPage({ searchParams }: LoginFailedPageProps) {
+  const message: string = ((await searchParams)?.message as string) || 'Unauthorized';
 
   return (
     <div>

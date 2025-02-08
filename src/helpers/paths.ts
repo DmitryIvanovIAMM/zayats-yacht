@@ -10,7 +10,9 @@ export enum PATHS {
   authCallback = '/auth-callback',
   scheduleManagement = '/schedule-management',
   destination = '/destination/:id',
-  loginFailed = '/login-failed'
+  loginFailed = '/login-failed',
+  loginApi = '/api/auth/login',
+  logoutApi = '/api/auth/logout'
 }
 
 /**

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PATHS } from '@/helpers/paths';
 
 const PROJECT_START_YEAR = 2024;
 
@@ -22,7 +23,7 @@ const CopyrightFooter: React.FC = () => {
       <br />
       <div>
         <a
-          href="https://allied-yacht.com/privacy-policy"
+          href={`https://allied-yacht.com/${PATHS.privacyPolicy}`}
           style={{
             color: 'white',
             textDecoration: 'none'

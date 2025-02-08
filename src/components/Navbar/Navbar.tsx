@@ -12,6 +12,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Image from 'next/image';
 import logoImage from '../../../public/images/allied_yacht_vertical_png_120.png';
 import {
+  CircularProgress,
   CssBaseline,
   Divider,
   Drawer,
@@ -21,8 +22,7 @@ import {
   ListItemButton,
   ListItemText,
   Slide,
-  useScrollTrigger,
-  CircularProgress
+  useScrollTrigger
 } from '@mui/material';
 import { MenuLink, menuLinks } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
@@ -173,7 +173,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 variant={'contained'}
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}
-                href={user ? '/api/auth/logout' : '/api/auth/login'}
+                href={user ? PATHS.logoutApi : PATHS.loginApi}
                 style={{ width: '78px', height: '31px' }}
               >
                 {isLoading ? (

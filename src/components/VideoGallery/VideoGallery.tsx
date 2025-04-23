@@ -65,12 +65,7 @@ const VideoGallery = () => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const customRenderThumb = (item: VideoItem) => {
-    // eslint-disable-next-line no-console
-    console.log('customRenderThumb(). item: ', item);
-
     const videoId = getVideoId(item.original);
-    // eslint-disable-next-line no-console
-    console.log('videoId: ', videoId);
     return (
       <Image
         src={getVideoThumb(videoId)}

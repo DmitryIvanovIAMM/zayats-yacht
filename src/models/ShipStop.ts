@@ -19,7 +19,7 @@ export interface ShipStop extends Document {
 const ShipStopSchema = new Schema(
   {
     sailingId: {
-      type: Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       required: true
     },
     portId: {

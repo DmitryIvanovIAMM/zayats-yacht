@@ -9,7 +9,8 @@ import Navbar from '@/components/Navbar/Navbar';
 import CopyrightFooter from '@/components/CopyrightFooter';
 import ContactUs from '@/components/ContactUs/ContactUs';
 import { Providers } from './Providers';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { getServerSession } from 'next-auth';
+import SessionProvider from '@/components/SessionProvider/SessionProvider';
 
 export const metadata: Metadata = {
   title: 'Zayats-Yacht',
@@ -35,9 +36,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
+  console.log('RootLayout().  session: ', session);
+
   return (
     <html lang="en" suppressHydrationWarning={true} className={montserrat.className}>
-      <UserProvider>
+      <SessionProvider session={session}>
         <body>
           <Providers>
             <CssBaseline />
@@ -50,7 +54,7 @@ export default async function RootLayout({
           </Providers>
           <SpeedInsights />
         </body>
-      </UserProvider>
+      </SessionProvider>
     </html>
   );
 }

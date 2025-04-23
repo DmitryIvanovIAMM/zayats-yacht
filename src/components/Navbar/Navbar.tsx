@@ -29,7 +29,8 @@ import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
 import { PATHS } from '@/helpers/paths';
-import { useUser } from '@auth0/nextjs-auth0/client';
+//import { useUser } from '@auth0/nextjs-auth0/client';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -75,9 +76,11 @@ function HideOnScroll(props: NavbarProps) {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
-  const { user, isLoading } = useUser();
+  //const { user, isLoading } = useUser();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
+  console.log('session: ', session);
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);
@@ -122,6 +125,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
       </List>
     </Box>
   );
+
   const container = undefined;
 
   return (
@@ -173,16 +177,13 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 variant={'contained'}
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}
-                href={user ? '/api/auth/logout' : '/api/auth/login'}
+                //href={user ? '/api/auth/logout' : '/api/auth/login'}
+                onClick={() => {
+                  session?.user ? signOut() : signIn();
+                }}
                 style={{ width: '78px', height: '31px' }}
               >
-                {isLoading ? (
-                  <CircularProgress size="20px" color="inherit" />
-                ) : user ? (
-                  'Logout'
-                ) : (
-                  'Login'
-                )}
+                {session?.user ? 'Logout' : 'Login'}
               </Button>
             </Box>
           </Toolbar>

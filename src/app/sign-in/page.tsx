@@ -2,7 +2,7 @@ import LoginForm from '@/components/Login/LoginForm';
 import { sectionContainerSx } from '@/components/ContactUs/ContactUs';
 import Box from '@mui/material/Box';
 
-export const loginSectionSx = {
+const loginSectionSx = {
   ...sectionContainerSx,
   width: {
     xs: '80%',
@@ -16,10 +16,17 @@ export const loginSectionSx = {
   }
 };
 
-export default async function SignInPage() {
+export interface SignInPageProps {
+  searchParams?: Promise<Record<'callbackUrl' | 'error', string>>;
+}
+
+export default async function SignInPage(props: Promise<SignInPageProps>) {
+  const { searchParams } = await props;
+  const { callbackUrl, error } = await searchParams;
+
   return (
     <Box sx={loginSectionSx}>
-      <LoginForm />
+      <LoginForm loginRedirectUrl={callbackUrl} error={error} />
     </Box>
   );
 }

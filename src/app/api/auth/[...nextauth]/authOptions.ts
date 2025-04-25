@@ -1,13 +1,11 @@
-import { NextAuthConfig } from 'next-auth';
+import type { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { LoginOrRegister } from '@/controllers/AuthController';
 import { UserFrontend } from '@/models/User';
 import { cloneDeep } from 'lodash';
 import { Messages } from '@/helpers/messages';
 
-// extract NextAuthConfig type from next-auth route
-// https://stackoverflow.com/questions/77637651/authoptions-is-not-a-valid-route-export-field
-export const authOptions: NextAuthConfig = {
+export const authOptions: NextAuthOptions = {
   session: {
     // Choose how you want to save the user session.
     // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.
@@ -70,7 +68,7 @@ export const authOptions: NextAuthConfig = {
   // return standard session object (name, email and image fields) without _id and role fields
   // https://next-auth.js.org/getting-started/typescript#module-augmentation
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user }: { user: User & { error?: string } }) {
       if (user.error) {
         throw new Error(user.error);
       }

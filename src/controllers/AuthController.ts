@@ -10,7 +10,7 @@ export const LoginOrRegister = async (user: UserFrontend) => {
   // eslint-disable-next-line no-console
   console.log(`LoginOrRegister().  user: ${user}`);
 
-  const mayBeUser: User | null = await findUserByEmail(user.email);
+  const mayBeUser = await findUserByEmail(user.email);
   if (mayBeUser) {
     const isPasswordMatching = await bcrypt.compare(user.password, mayBeUser.hashedPassword || '');
     if (!isPasswordMatching) {
@@ -37,10 +37,10 @@ export const LoginOrRegister = async (user: UserFrontend) => {
   return { isSuccessful: true, message: Messages.NewUserCreated, user: newUser };
 };
 
-const findUserByEmail = async (email: string) => {
+const findUserByEmail = async (email: string): Promise<User | null> => {
   const mayBeUser = await UserModel.findOne({
     email: email
-  }).lean();
-  if (mayBeUser) return mayBeUser;
+  });
+  if (mayBeUser) return mayBeUser.toObject();
   return null;
 };

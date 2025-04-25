@@ -5,6 +5,7 @@ interface User extends mongoose.Document {
   _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
+  role: string;
   hashedPassword: string;
   salt: string;
 }

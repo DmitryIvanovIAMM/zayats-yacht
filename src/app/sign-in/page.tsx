@@ -16,17 +16,18 @@ const loginSectionSx = {
   }
 };
 
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
 export interface SignInPageProps {
-  searchParams?: Promise<Record<'callbackUrl' | 'error', string>>;
+  searchParams?: SearchParams;
 }
 
-export default async function SignInPage(props: Promise<SignInPageProps>) {
-  const { searchParams } = await props;
-  const { callbackUrl, error } = await searchParams;
+export default async function SignInPage(props: { searchParams: SearchParams }) {
+  const { callbackUrl, error } = await props.searchParams;
 
   return (
     <Box sx={loginSectionSx}>
-      <LoginForm loginRedirectUrl={callbackUrl} error={error} />
+      <LoginForm loginRedirectUrl={callbackUrl as string} error={error as string} />
     </Box>
   );
 }

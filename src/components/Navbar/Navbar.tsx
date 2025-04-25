@@ -175,10 +175,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 variant={'contained'}
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}
-                //href={user ? '/api/auth/logout' : '/api/auth/login'}
-                onClick={() => {
-                  session?.user ? signOut() : signIn();
-                }}
+                onClick={session?.user ? () => signOut() : () => signIn()}
                 style={{ width: '78px', height: '31px' }}
               >
                 {session?.user ? 'Logout' : 'Login'}

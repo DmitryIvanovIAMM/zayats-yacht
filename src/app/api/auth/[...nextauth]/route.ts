@@ -1,11 +1,11 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthConfig } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { LoginOrRegister } from '@/controllers/AuthController';
 import { UserFrontend } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { cloneDeep } from 'lodash';
 
-export const authOptions = {
+export const authOptions: NextAuthConfig = {
   session: {
     // Choose how you want to save the user session.
     // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.

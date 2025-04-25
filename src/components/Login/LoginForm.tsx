@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
 import { signIn } from 'next-auth/react';
 import { PATHS } from '@/helpers/paths';
+import { useRouter } from 'next/navigation';
 
 export interface LoginFormProps {
   loginRedirectUrl?: string;
@@ -19,6 +20,8 @@ export interface LoginFormProps {
 }
 
 const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormProps) => {
+  const [loginError, setLoginError] = React.useState<string>(error);
+  const router = useRouter();
   const methods = useForm<LoginFormValues>({
     resolver: yupResolver(loginSchema),
     mode: 'onBlur',
@@ -29,12 +32,18 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
   });
   const { handleSubmit, formState } = methods;
   const onSubmit = async (data: LoginFormValues) => {
-    console.log('onSubmit().  data: ', data);
-    await signIn('credentials', {
+    setLoginError('');
+    const result = await signIn('credentials', {
       ...data,
-      redirect: true,
+      redirect: false,
       callbackUrl: loginRedirectUrl
     });
+    if (result?.error) {
+      setLoginError(result.error);
+    } else {
+      // navigate to redirect page via next/router
+      router.push(loginRedirectUrl);
+    }
   };
 
   return (
@@ -48,11 +57,11 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
           style={{ width: '100%' }}
         >
           <Box sx={{ width: '100%' }}>
-            <FormTextInput name={'name'} label={'Full Name *'} fullWidth={true} />
+            <FormTextInput name={'name'} label={'Full Name (optionsl)'} fullWidth={true} />
             <FormTextInput name={'email'} label={'Email *'} />
             <FormTextInput name={'password'} label={'Password *'} />
           </Box>
-          <h3 style={{ color: 'red' }}>{error?.length > 0 ? 'Failed to login' : '\u00A0'} </h3>
+          <h3 style={{ color: 'red' }}>{loginError?.length > 0 ? loginError : '\u00A0'} </h3>
           <div style={{ margin: '20px', textAlign: 'center' }}>
             <Button
               type="submit"

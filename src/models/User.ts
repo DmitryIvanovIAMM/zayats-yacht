@@ -19,11 +19,16 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    role: {
+      type: String,
+      enum: ['admin', 'user'],
+      default: 'user'
+    },
     hashedPassword: {
       type: String,
       required: true
     },
-    salt: String
+    salt: Number
   },
   {
     timestamps: true
@@ -31,4 +36,14 @@ const UserSchema = new mongoose.Schema(
 );
 
 export type { User };
-export const UserModel = mongoose.model<User, Model<User>>('users', UserSchema);
+export const UserModel =
+  mongoose.models?.users || mongoose.model<User, Model<User>>('users', UserSchema);
+export const userFields = ['_id', 'name', 'email', 'role'];
+
+export interface UserFrontend {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+}

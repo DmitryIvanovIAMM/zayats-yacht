@@ -21,15 +21,13 @@ import {
   ListItemButton,
   ListItemText,
   Slide,
-  useScrollTrigger,
-  CircularProgress
+  useScrollTrigger
 } from '@mui/material';
 import { MenuLink, menuLinks } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
 import { PATHS } from '@/helpers/paths';
-//import { useUser } from '@auth0/nextjs-auth0/client';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 const drawerWidth = 240;
@@ -76,11 +74,11 @@ function HideOnScroll(props: NavbarProps) {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
-  //const { user, isLoading } = useUser();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
   const { data: session } = useSession();
-  console.log('session: ', session);
+  // eslint-disable-next-line no-console
+  console.log('Navbar().  session: ', session);
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);

@@ -1,38 +1,28 @@
-import { ReactNode } from 'react';
-
-const mockUseUser = jest.fn().mockImplementation(() => ({
-  user: null,
-  error: null,
-  isLoading: false
-}));
-
-/* eslint-disable import/first */
+import { Session } from 'next-auth';
 import { act, render } from '@testing-library/react';
 import { menuLinks } from '@/helpers/menuLinks';
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+import SessionProvider from '@/components/SessionProvider/SessionProvider';
 
-// Mock useRouter:
-jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      prefetch: () => null
-    };
-  }
-}));
-jest.mock('@auth0/nextjs-auth0/client', () => ({
-  UserProvider: ({ children }: ReactNode) => <div>{children}</div>,
-  useUser: () => mockUseUser()
-}));
+const mockSession = {
+  user: null
+};
 
-const setup = async (propsOverride?: Partial<NavbarProps>) => {
+jest.mock('next/navigation');
+
+const setup = async (propsOverride?: Partial<NavbarProps> = {}, session: Partial<Session> = {}) => {
+  const sessionForProvider = {
+    ...mockSession,
+    ...session
+  };
   const props = {
+    session: mockSession,
     ...propsOverride
   };
   const container = render(
-    <UserProvider>
+    <SessionProvider session={sessionForProvider}>
       <Navbar {...props} />
-    </UserProvider>
+    </SessionProvider>
   );
   return {
     container
@@ -58,13 +48,8 @@ describe('Navbar component', () => {
     expect(container.getByText('Login')).toBeInTheDocument();
   });
 
-  it('should show LogOut button for non authenticated user', async () => {
-    mockUseUser.mockImplementation(() => ({
-      user: { name: 'test' },
-      error: null,
-      isLoading: false
-    }));
-    const { container } = await setup();
+  it('should show LogOut button for authenticated user', async () => {
+    const { container } = await setup({}, { user: { name: 'test', image: 'admin' } });
 
     expect(container.getByText('Logout')).toBeInTheDocument();
   });

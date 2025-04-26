@@ -13,10 +13,10 @@ import { queryNearestShippings } from '@/controllers/SchedulesController';
 export default async function Home() {
   const ports = await getPorts();
   // eslint-disable-next-line no-console
-  console.log('ports: ', ports);
+  //console.log('ports: ', ports);
   const schedules = await queryNearestShippings(new Date());
   // eslint-disable-next-line no-console
-  console.log('schedules: ', schedules);
+  //console.log('schedules: ', schedules);
 
   return (
     <div className={styles.main}>

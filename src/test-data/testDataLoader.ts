@@ -5,6 +5,7 @@ import { ShipModel } from '@/models/Ship';
 import { ShipStopModel } from '@/models/ShipStop';
 import { PortModel } from '@/models/Port';
 import { SailingModel } from '@/models/Sailing';
+import { USERS } from './seedData';
 
 /* eslint-disable no-console */
 export default async function testDataLoader() {
@@ -50,6 +51,17 @@ export default async function testDataLoader() {
     .then(() => console.log('New Sailings inserted into DB.'))
     .catch((err) => {
       console.log('Failed to save new Sailings into test data.  Error: ' + err);
+    });
+
+  // remove existed test data in Users collection
+  await UserModel.deleteMany({})
+    .then(() => console.log('Current Users collection was removed.'))
+    .catch((err) => console.log('Error removing Users collection: ' + err));
+
+  await UserModel.insertMany(USERS.map((item) => new UserModel(item)))
+    .then(() => console.log('New Users inserted into DB.'))
+    .catch((err) => {
+      console.log('Failed to save new Users into test data.  Error: ' + err);
     });
 
   console.log('Test Data loaded successfully.');

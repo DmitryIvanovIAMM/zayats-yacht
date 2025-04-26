@@ -6,49 +6,51 @@ exports[`Navbar component should render correctly 1`] = `
   "baseElement": <body>
     <div>
       <div>
-        <div>
-          <header
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-12db59r-MuiPaper-root-MuiAppBar-root"
-            style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+        <header
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-12db59r-MuiPaper-root-MuiAppBar-root"
+          style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+        >
+          <div
+            class="MuiToolbar-root MuiToolbar-regular css-1uj5ifc-MuiToolbar-root"
           >
             <div
-              class="MuiToolbar-root MuiToolbar-regular css-1uj5ifc-MuiToolbar-root"
+              class="MuiBox-root css-i9gxme"
             >
-              <div
-                class="MuiBox-root css-i9gxme"
+              <button
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                aria-label="account of current user"
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-1vipebp-MuiButtonBase-root-MuiIconButton-root"
+                data-testid="left-menu-button"
+                tabindex="0"
+                type="button"
               >
-                <button
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  aria-label="account of current user"
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-1vipebp-MuiButtonBase-root-MuiIconButton-root"
-                  data-testid="left-menu-button"
-                  tabindex="0"
-                  type="button"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                  data-testid="MenuIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-                    data-testid="MenuIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
-                    />
-                  </svg>
-                </button>
-                <a
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
-                  href="/quote-request"
-                  style="height: 31px;"
-                  tabindex="0"
-                >
-                  Get Quote
-                </a>
-              </div>
-              <div
-                class="MuiBox-root css-x3pvyu"
+                  <path
+                    d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+                  />
+                </svg>
+              </button>
+              <a
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+                href="/quote-request"
+                style="height: 31px;"
+                tabindex="0"
+              >
+                Get Quote
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-x3pvyu"
+            >
+              <a
+                href="/"
               >
                 <img
                   alt="Allied-Yacht logo"
@@ -60,46 +62,46 @@ exports[`Navbar component should render correctly 1`] = `
                   style="color: transparent;"
                   width="105"
                 />
-              </div>
-              <div
-                class="MuiBox-root css-2uchni"
-              >
-                <a
-                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
-                  href="/api/auth/login"
-                  style="width: 78px; height: 31px;"
-                  tabindex="0"
-                >
-                  Login
-                </a>
-              </div>
+              </a>
             </div>
-          </header>
-          <nav />
-          <div
-            class="MuiBox-root css-omdpw6"
-            role="presentation"
-            style="opacity: 0; visibility: hidden;"
-          >
-            <button
-              aria-label="scroll back to top"
-              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default css-14bntoc-MuiButtonBase-root-MuiFab-root"
-              tabindex="0"
-              type="button"
+            <div
+              class="MuiBox-root css-2uchni"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-                data-testid="KeyboardArrowUpIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+                style="width: 78px; height: 31px;"
+                tabindex="0"
+                type="button"
               >
-                <path
-                  d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
-                />
-              </svg>
-            </button>
+                Login
+              </button>
+            </div>
           </div>
+        </header>
+        <nav />
+        <div
+          class="MuiBox-root css-omdpw6"
+          role="presentation"
+          style="opacity: 0; visibility: hidden;"
+        >
+          <button
+            aria-label="scroll back to top"
+            class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default css-14bntoc-MuiButtonBase-root-MuiFab-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="KeyboardArrowUpIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -131,16 +133,20 @@ exports[`Navbar component should render correctly 1`] = `
             >
               Zayats-Yacht Transport
             </h6>
-            <img
-              alt="allied-yacht-left-menu-logo"
-              data-nimg="1"
-              decoding="async"
-              height="36"
-              src="/_next/image?url=%2Fimg.jpg&w=128&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=64&q=75 1x, /_next/image?url=%2Fimg.jpg&w=128&q=75 2x"
-              style="color: transparent;"
-              width="52"
-            />
+            <a
+              href="/"
+            >
+              <img
+                alt="allied-yacht-left-menu-logo"
+                data-nimg="1"
+                decoding="async"
+                height="36"
+                src="/_next/image?url=%2Fimg.jpg&w=128&q=75"
+                srcset="/_next/image?url=%2Fimg.jpg&w=64&q=75 1x, /_next/image?url=%2Fimg.jpg&w=128&q=75 2x"
+                style="color: transparent;"
+                width="52"
+              />
+            </a>
           </div>
           <hr
             style="color: rgb(51, 153, 102); background-color: rgb(51, 153, 102); height: 1px; margin-top: 10px;"
@@ -354,49 +360,51 @@ exports[`Navbar component should render correctly 1`] = `
   </body>,
   "container": <div>
     <div>
-      <div>
-        <header
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-12db59r-MuiPaper-root-MuiAppBar-root"
-          style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+      <header
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-12db59r-MuiPaper-root-MuiAppBar-root"
+        style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+      >
+        <div
+          class="MuiToolbar-root MuiToolbar-regular css-1uj5ifc-MuiToolbar-root"
         >
           <div
-            class="MuiToolbar-root MuiToolbar-regular css-1uj5ifc-MuiToolbar-root"
+            class="MuiBox-root css-i9gxme"
           >
-            <div
-              class="MuiBox-root css-i9gxme"
+            <button
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              aria-label="account of current user"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-1vipebp-MuiButtonBase-root-MuiIconButton-root"
+              data-testid="left-menu-button"
+              tabindex="0"
+              type="button"
             >
-              <button
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                aria-label="account of current user"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-1vipebp-MuiButtonBase-root-MuiIconButton-root"
-                data-testid="left-menu-button"
-                tabindex="0"
-                type="button"
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-                  data-testid="MenuIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
-                  />
-                </svg>
-              </button>
-              <a
-                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
-                href="/quote-request"
-                style="height: 31px;"
-                tabindex="0"
-              >
-                Get Quote
-              </a>
-            </div>
-            <div
-              class="MuiBox-root css-x3pvyu"
+                <path
+                  d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+                />
+              </svg>
+            </button>
+            <a
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+              href="/quote-request"
+              style="height: 31px;"
+              tabindex="0"
+            >
+              Get Quote
+            </a>
+          </div>
+          <div
+            class="MuiBox-root css-x3pvyu"
+          >
+            <a
+              href="/"
             >
               <img
                 alt="Allied-Yacht logo"
@@ -408,46 +416,46 @@ exports[`Navbar component should render correctly 1`] = `
                 style="color: transparent;"
                 width="105"
               />
-            </div>
-            <div
-              class="MuiBox-root css-2uchni"
-            >
-              <a
-                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
-                href="/api/auth/login"
-                style="width: 78px; height: 31px;"
-                tabindex="0"
-              >
-                Login
-              </a>
-            </div>
+            </a>
           </div>
-        </header>
-        <nav />
-        <div
-          class="MuiBox-root css-omdpw6"
-          role="presentation"
-          style="opacity: 0; visibility: hidden;"
-        >
-          <button
-            aria-label="scroll back to top"
-            class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default css-14bntoc-MuiButtonBase-root-MuiFab-root"
-            tabindex="0"
-            type="button"
+          <div
+            class="MuiBox-root css-2uchni"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              data-testid="KeyboardArrowUpIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+              style="width: 78px; height: 31px;"
+              tabindex="0"
+              type="button"
             >
-              <path
-                d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
-              />
-            </svg>
-          </button>
+              Login
+            </button>
+          </div>
         </div>
+      </header>
+      <nav />
+      <div
+        class="MuiBox-root css-omdpw6"
+        role="presentation"
+        style="opacity: 0; visibility: hidden;"
+      >
+        <button
+          aria-label="scroll back to top"
+          class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default css-14bntoc-MuiButtonBase-root-MuiFab-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+            data-testid="KeyboardArrowUpIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   </div>,

@@ -1,37 +1,54 @@
 import * as ids from './ids';
 import { REGULAR_SHIP_STOPS_2020 } from './regularShipStops_2020';
 import { ALASKA_YACHTING_SHIP_STOPS_2020 } from './alaskaYachtingAdventure_2020';
+import { Types } from 'mongoose';
 
 export const USERS = [
   {
-    _id: '41224d776a326fb40f000001',
-    name: 'Dmitry',
-    email: 'Ivanov',
-    password: 'cap'
+    _id: new Types.ObjectId('6809ea399a784e46a366d780'),
+    name: 'Dmytro Ivanov',
+    email: 'dmitry.ivanov.iamm@gmail.com',
+    role: 'admin',
+    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q', // Zayats123
+    salt: 10,
+    createdAt: '2025-04-24T07:37:29.411+00:00',
+    updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
-  {
+  /*{
     _id: '41224d776a326fb40f000002',
-    name: 'Ruslan',
+    name: 'Ruslan Kharitonov',
     email: 'Kharitonov',
     password: 'cap'
-  },
+  },*/
   {
     _id: '41224d776a326fb40f000003',
     name: 'Customer2',
-    email: 'Customer2',
-    password: 'cap'
+    email: 'customer2@email.com',
+    role: 'user',
+    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
+    salt: 10,
+    createdAt: '2025-04-24T07:37:29.411+00:00',
+    updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
   {
     _id: '41224d776a326fb40f000004',
     name: 'Customer3',
-    email: 'Customer3',
-    password: 'test'
+    email: 'customer3@email.com',
+    role: 'user',
+    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
+    salt: 10,
+    createdAt: '2025-04-24T07:37:29.411+00:00',
+    updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
   {
     _id: '41224d776a326fb40f000005',
     name: 'Customer4',
-    email: 'Customer4',
-    password: 'test'
+    email: 'customer4@email.com',
+    role: 'user',
+    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
+    salt: 10,
+    createdAt: '2025-04-24T07:37:29.411+00:00',
+    updatedAt: '2025-04-24T07:37:29.411+00:00'
   }
 ];
 
@@ -135,7 +152,4 @@ export const PORTS = [
   }
 ];
 
-export const SHIP_STOPS = [
-  ...REGULAR_SHIP_STOPS_2020,
-  ...ALASKA_YACHTING_SHIP_STOPS_2020
-];
+export const SHIP_STOPS = [...REGULAR_SHIP_STOPS_2020, ...ALASKA_YACHTING_SHIP_STOPS_2020];

@@ -21,15 +21,15 @@ import {
   ListItemButton,
   ListItemText,
   Slide,
-  useScrollTrigger,
-  CircularProgress
+  useScrollTrigger
 } from '@mui/material';
 import { MenuLink, menuLinks } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
 import { PATHS } from '@/helpers/paths';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -75,9 +75,11 @@ function HideOnScroll(props: NavbarProps) {
 }
 
 const Navbar: React.FC<NavbarProps> = (props) => {
-  const { user, isLoading } = useUser();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
+  // eslint-disable-next-line no-console
+  console.log('Navbar().  session: ', session);
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);
@@ -98,13 +100,15 @@ const Navbar: React.FC<NavbarProps> = (props) => {
         <Typography variant="h6" sx={{ ...menuItemSx, my: 2, textAlign: 'center' }}>
           Zayats-Yacht Transport
         </Typography>
-        <Image
-          src={logoImage}
-          width={52}
-          height={36}
-          alt="allied-yacht-left-menu-logo"
-          priority={true}
-        />
+        <Link href={PATHS.landing}>
+          <Image
+            src={logoImage}
+            width={52}
+            height={36}
+            alt="allied-yacht-left-menu-logo"
+            priority={true}
+          />
+        </Link>
       </div>
       <hr style={{ ...dividerStyle, marginTop: '10px' }}></hr>
       <Divider />
@@ -122,6 +126,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
       </List>
     </Box>
   );
+
   const container = undefined;
 
   return (
@@ -159,13 +164,15 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 marginLeft: { xs: '0', sm: '-72px' }
               }}
             >
-              <Image
-                src={logoImage}
-                width={105} // 81 125
-                height={71} //58 90*/
-                alt="Allied-Yacht logo"
-                priority={true}
-              />
+              <Link href={PATHS.landing}>
+                <Image
+                  src={logoImage}
+                  width={105} // 81 125
+                  height={71} //58 90*/
+                  alt="Allied-Yacht logo"
+                  priority={true}
+                />
+              </Link>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -173,16 +180,10 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 variant={'contained'}
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}
-                href={user ? '/api/auth/logout' : '/api/auth/login'}
+                onClick={session?.user ? () => signOut() : () => signIn()}
                 style={{ width: '78px', height: '31px' }}
               >
-                {isLoading ? (
-                  <CircularProgress size="20px" color="inherit" />
-                ) : user ? (
-                  'Logout'
-                ) : (
-                  'Login'
-                )}
+                {session?.user ? 'Logout' : 'Login'}
               </Button>
             </Box>
           </Toolbar>

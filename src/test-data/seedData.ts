@@ -11,15 +11,11 @@ export const USERS = [
     role: 'admin',
     hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q', // Zayats123
     salt: 10,
+    isActive: true,
+    emailValidated: true,
     createdAt: '2025-04-24T07:37:29.411+00:00',
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
-  /*{
-    _id: '41224d776a326fb40f000002',
-    name: 'Ruslan Kharitonov',
-    email: 'Kharitonov',
-    password: 'cap'
-  },*/
   {
     _id: '41224d776a326fb40f000003',
     name: 'Customer2',
@@ -27,6 +23,8 @@ export const USERS = [
     role: 'user',
     hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
     salt: 10,
+    isActive: true,
+    emailValidated: false,
     createdAt: '2025-04-24T07:37:29.411+00:00',
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
@@ -37,6 +35,8 @@ export const USERS = [
     role: 'user',
     hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
     salt: 10,
+    isActive: true,
+    emailValidated: false,
     createdAt: '2025-04-24T07:37:29.411+00:00',
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
@@ -47,6 +47,8 @@ export const USERS = [
     role: 'user',
     hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
     salt: 10,
+    isActive: true,
+    emailValidated: false,
     createdAt: '2025-04-24T07:37:29.411+00:00',
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   }

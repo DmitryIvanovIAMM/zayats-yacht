@@ -56,7 +56,7 @@ export const authOptions: NextAuthOptions = {
         } catch (error) {
           // eslint-disable-next-line no-console
           console.log('authorize().  error: ', error);
-          return null;
+          return { error: Messages.AuthenticationFailed };
         }
       }
     })
@@ -69,7 +69,7 @@ export const authOptions: NextAuthOptions = {
   // https://next-auth.js.org/getting-started/typescript#module-augmentation
   callbacks: {
     async signIn({ user }: { user: User & { error?: string } }) {
-      if (user.error) {
+      if (user?.error) {
         throw new Error(user.error);
       }
       return true;

@@ -61,7 +61,9 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
             <FormTextInput name={'email'} label={'Email *'} />
             <FormTextInput name={'password'} label={'Password *'} />
           </Box>
-          <h3 style={{ color: 'red' }}>{loginError?.length > 0 ? loginError : '\u00A0'} </h3>
+          <h3 style={{ color: 'red', marginTop: '20px' }}>
+            {loginError?.length > 0 ? loginError : '\u00A0'}{' '}
+          </h3>
           <div style={{ margin: '20px', textAlign: 'center' }}>
             <Button
               type="submit"

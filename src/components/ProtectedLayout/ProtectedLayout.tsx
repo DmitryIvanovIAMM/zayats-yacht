@@ -10,7 +10,7 @@ export interface ProtectedLayoutProps {
   callbackUrl?: string;
 }
 
-export const c = ({
+export const ProtectedLayout = ({
   children,
   session,
   allowedRoles = ['admin'],

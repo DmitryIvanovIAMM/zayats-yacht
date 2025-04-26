@@ -29,6 +29,7 @@ import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
 import { PATHS } from '@/helpers/paths';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -99,13 +100,15 @@ const Navbar: React.FC<NavbarProps> = (props) => {
         <Typography variant="h6" sx={{ ...menuItemSx, my: 2, textAlign: 'center' }}>
           Zayats-Yacht Transport
         </Typography>
-        <Image
-          src={logoImage}
-          width={52}
-          height={36}
-          alt="allied-yacht-left-menu-logo"
-          priority={true}
-        />
+        <Link href={PATHS.landing}>
+          <Image
+            src={logoImage}
+            width={52}
+            height={36}
+            alt="allied-yacht-left-menu-logo"
+            priority={true}
+          />
+        </Link>
       </div>
       <hr style={{ ...dividerStyle, marginTop: '10px' }}></hr>
       <Divider />
@@ -161,13 +164,15 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 marginLeft: { xs: '0', sm: '-72px' }
               }}
             >
-              <Image
-                src={logoImage}
-                width={105} // 81 125
-                height={71} //58 90*/
-                alt="Allied-Yacht logo"
-                priority={true}
-              />
+              <Link href={PATHS.landing}>
+                <Image
+                  src={logoImage}
+                  width={105} // 81 125
+                  height={71} //58 90*/
+                  alt="Allied-Yacht logo"
+                  priority={true}
+                />
+              </Link>
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>

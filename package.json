@@ -7,10 +7,12 @@
   },
   "scripts": {
     "dev": "next dev",
+    "dev-mongo": "npm run dev:mongodb & npm run dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "dev:mongodb": "docker compose up -d mongodb"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.5",

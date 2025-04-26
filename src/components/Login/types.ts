@@ -1,6 +1,6 @@
 import { InferType, object, string } from 'yup';
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/; // min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/; // min 8 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
 export const loginSchema = object({
   name: string().optional(),

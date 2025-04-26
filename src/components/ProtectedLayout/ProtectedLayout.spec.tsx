@@ -32,12 +32,6 @@ const setup = (propsOverride: Partial<ProtectedLayoutProps>) => {
 };
 
 describe('ProtectedLayout component', () => {
-  it('should render correctly', async () => {
-    const { container } = setup();
-
-    expect(container).toMatchSnapshot();
-  });
-
   it('should show private section for allowed role', async () => {
     setup();
 

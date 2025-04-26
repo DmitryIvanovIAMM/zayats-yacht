@@ -16,12 +16,6 @@ export const USERS = [
     createdAt: '2025-04-24T07:37:29.411+00:00',
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
-  /*{
-    _id: '41224d776a326fb40f000002',
-    name: 'Ruslan Kharitonov',
-    email: 'Kharitonov',
-    password: 'cap'
-  },*/
   {
     _id: '41224d776a326fb40f000003',
     name: 'Customer2',

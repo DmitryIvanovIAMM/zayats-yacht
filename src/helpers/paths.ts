@@ -2,6 +2,7 @@ import { compile } from 'path-to-regexp';
 
 export enum PATHS {
   landing = '/',
+  signIn = '/sign-in',
   quoteRequest = '/quote-request',
   gallery = '/gallery',
   services = '/services',

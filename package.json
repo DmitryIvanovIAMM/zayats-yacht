@@ -7,10 +7,15 @@
   },
   "scripts": {
     "dev": "next dev",
+    "dev:mongo": "npm run dev:mongodb & npm run dev",
+    "dev:mongodb": "docker compose up -d mongodb",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "e2e": "start-server-and-test dev:mongo http://localhost:3000 \"cypress run --e2e\"",
+    "e2e:watch": "start-server-and-test dev:mongo http://localhost:3000 \"cypress open --e2e\"",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.5",
@@ -57,6 +62,7 @@
     "@types/node": "^22.9.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cypress": "^14.3.2",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.0.3",
     "eslint-config-prettier": "^9.1.0",
@@ -68,6 +74,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "mongodb-memory-server": "^10.1.2",
     "prettier": "3.3.3",
+    "start-server-and-test": "^2.0.11",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.11.0"
   }

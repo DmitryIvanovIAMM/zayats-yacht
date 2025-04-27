@@ -27,7 +27,7 @@ jobs:
   build-ant-test:
     runs-on: ubuntu-latest
     env:
-      APP_ENV: dev
+      APP_ENV: CI
       MONGODB_URI: 'mongodb://root:password@localhost:27019/test?authSource=admin'
       BASE_URI: http://localhost:3000
       AUTH_SECRET: 'ZAYATS-YACHT-SECRET'

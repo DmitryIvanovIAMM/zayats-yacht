@@ -7,7 +7,7 @@ export async function register() {
 
   const { APP_ENV } = process.env;
 
-  if (APP_ENV === AppEnv.DEV) {
+  if (APP_ENV === AppEnv.DEV || APP_ENV === AppEnv.CI) {
     // eslint-disable-next-line no-console
     console.log('Load test data in development mode...');
     await testDataLoader();

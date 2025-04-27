@@ -26,12 +26,11 @@ permissions:
 
 jobs:
   # Build job
-  build:
+  build-ant-test:
     runs-on: ubuntu-latest
     env:
-      #MONGODB_URI: ${{ secrets.MONGODB_URI }}
       APP_ENV: dev
-      MONGODB_UR: 'mongodb://root:password@localhost:27019/test?authSource=admin'
+      MONGODB_URI: 'mongodb://root:password@localhost:27019/test?authSource=admin'
       BASE_URI: http://localhost:3000
       AUTH_SECRET: 'ZAYATS-YACHT-SECRET'
       NEXTAUTH_SECRET: 'ZAYATS-YACHT-SECRET'

@@ -13,9 +13,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "e2e": "cypress open",
-    "ci": "start-server-and-test dev:mongo http://localhost:3000 \"cypress run --e2e\"",
-    "cypress:open": "cypress open",
+    "e2e": "start-server-and-test dev:mongo http://localhost:3000 \"cypress run --e2e\"",
+    "e2e:watch": "start-server-and-test dev:mongo http://localhost:3000 \"cypress open --e2e\"",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.5",

@@ -29,7 +29,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      #MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      APP_ENV: dev
+      MONGODB_UR: 'mongodb://root:password@localhost:27019/test?authSource=admin'
+      BASE_URI: http://localhost:3000
+      AUTH_SECRET: 'ZAYATS-YACHT-SECRET'
+      NEXTAUTH_SECRET: 'ZAYATS-YACHT-SECRET'
+      NEXTAUTH_URL: http://localhost:3000/api/auth
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -71,3 +78,5 @@ jobs:
         run: npm run build
       - name: Run Jest tests
         run: npm run test
+      - name: Run Cypress tests
+        run: npm run e2e

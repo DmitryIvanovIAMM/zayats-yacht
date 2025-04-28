@@ -2,7 +2,7 @@ import { Roles } from '@/utils/types';
 import { baseMenuLinks, adminMenuLinks, getMenuLinksForRole } from '@/helpers/menuLinks';
 
 describe('getMenuLinksForRole', () => {
-  it('should return the correct menu links for a user', () => {
+  it('should return the base menu links for a user', () => {
     const role = Roles.User;
 
     const menuLinksForUser = getMenuLinksForRole(role);

@@ -36,14 +36,14 @@ export const showNotification = (
     </Button>
   );
   if (isSuccess) {
-    needConfirmation
+    return needConfirmation
       ? showNotificationWithVariant(notificationMessage, NOTIFICATION_TYPES.success, action)
       : showNotificationWithVariantWithoutConfirmation(
           notificationMessage,
           NOTIFICATION_TYPES.success
         );
   } else {
-    needConfirmation
+    return needConfirmation
       ? showNotificationWithVariant(notificationMessage, NOTIFICATION_TYPES.error, action)
       : showNotificationWithVariantWithoutConfirmation(
           notificationMessage,

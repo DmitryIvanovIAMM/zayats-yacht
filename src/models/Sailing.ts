@@ -6,7 +6,12 @@ export interface Sailing extends mongoose.Document {
   deletedAt?: Date;
 }
 
-export const sailingRequiredFields = ['_id', 'name'];
+export interface SailingFrontend {
+  _id: string | null;
+  name: string;
+}
+
+export const sailingFrontendFields = ['_id', 'name'];
 
 const SailingSchema = new mongoose.Schema(
   {

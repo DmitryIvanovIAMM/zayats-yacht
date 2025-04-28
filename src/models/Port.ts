@@ -29,7 +29,13 @@ const PortSchema = new mongoose.Schema(
 
 export const PortModel = mongoose.models?.ports || mongoose.model<Port>('ports', PortSchema);
 
-export const portFields = ['_id', 'portName', 'destinationName', 'imageFileName'];
+export interface PortFrontend {
+  _id: string | null;
+  portName: string;
+  destinationName: string;
+  imageFileName: string;
+}
+export const portFrontendFields = ['_id', 'portName', 'destinationName', 'imageFileName'];
 
 export interface Destination {
   destinationName: string;

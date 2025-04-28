@@ -23,7 +23,7 @@ import {
   Slide,
   useScrollTrigger
 } from '@mui/material';
-import { getMenuLinksForRole, MenuLink, baseMenuLinks } from '@/helpers/menuLinks';
+import { getMenuLinksForRole, MenuLink } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
@@ -79,13 +79,10 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
   const { data: session } = useSession();
-  // eslint-disable-next-line no-console
-  console.log('Navbar().  session: ', session);
 
   const menuLinksForUser = useMemo(() => {
-    return getMenuLinksForRole((session?.user?.image as Rolse) || Roles.User);
+    return getMenuLinksForRole((session?.user?.image as Roles) || Roles.User);
   }, [session?.user?.image]);
-  console.log('Navbar().  menuLinksForUser: ', menuLinksForUser);
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);

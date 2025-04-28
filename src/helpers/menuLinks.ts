@@ -70,7 +70,6 @@ export const adminMenuLinks = [
 ];
 
 export const getMenuLinksForRole = (role: Roles = Roles.User) => {
-  console.log('getMenuLinksForRole().  role: ', role);
   if (role === Roles.Admin) {
     return adminMenuLinks;
   } else {

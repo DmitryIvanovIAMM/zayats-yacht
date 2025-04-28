@@ -7,23 +7,20 @@ import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';
-import { getPorts } from '@/controllers/PortsController';
-import { queryNearestShippings } from '@/controllers/SchedulesController';
+import { getPortsAction } from '@/controllers/PortsController';
+import { queryNearestShippingsAction } from '@/controllers/SchedulesController';
 
 export default async function Home() {
-  const ports = await getPorts();
+  const ports = await getPortsAction();
   // eslint-disable-next-line no-console
-  //console.log('ports: ', ports);
-  const schedules = await queryNearestShippings(new Date());
+  console.log('ports: ', ports);
+  const schedules = await queryNearestShippingsAction(new Date());
   // eslint-disable-next-line no-console
-  //console.log('schedules: ', schedules);
+  console.log('schedules: ', schedules);
 
   return (
     <div className={styles.main}>
-      <ScheduleSection
-        ports={JSON.parse(JSON.stringify(ports.ports))}
-        schedules={JSON.parse(JSON.stringify(schedules))}
-      />
+      <ScheduleSection ports={ports.ports} schedules={schedules} />
       <EmptySection />
       <LazyViewedSection title="Gallery" id="photo-gallery-section">
         <Gallery />

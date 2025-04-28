@@ -1,4 +1,4 @@
-export interface LongActionResult {
-  isSuccessful: boolean;
-  message?: string;
+export enum Roles {
+  Admin = 'admin',
+  User = 'user'
 }

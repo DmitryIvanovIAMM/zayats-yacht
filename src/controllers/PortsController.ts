@@ -5,7 +5,7 @@ import { portService } from '@/services/PortService';
 import { Port } from '@/models/Port';
 import { ShipStop } from '@/models/ShipStop';
 
-export const getPorts = async () => {
+export const getPortsAction = async () => {
   try {
     const ports: Port[] = await portService.getAllPorts();
     const shipStops: ShipStop[] = await scheduleService.getActiveShipStops();

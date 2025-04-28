@@ -1,6 +1,6 @@
 import { ShipStop } from '@/models/ShipStop';
 import { useEffect, useState } from 'react';
-import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
+import { getSchedules, queryNearestShippingsAction } from '@/controllers/SchedulesController';
 import { MonthDateRange } from '@/utils/date-time';
 import { Destination, Port } from '@/models/Port';
 import { Types } from 'mongoose';
@@ -89,7 +89,7 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
           }));
         }
 
-        const nearestShippings = await queryNearestShippings(new Date());
+        const nearestShippings = await queryNearestShippingsAction(new Date());
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
           schedules: nearestShippings,

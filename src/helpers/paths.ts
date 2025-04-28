@@ -4,6 +4,7 @@ export enum PATHS {
   landing = '/',
   signIn = '/sign-in',
   quoteRequest = '/quote-request',
+  usersRequests = '/users-requests',
   gallery = '/gallery',
   services = '/services',
   instructions = '/instructions',

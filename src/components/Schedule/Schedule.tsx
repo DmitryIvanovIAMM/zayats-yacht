@@ -7,14 +7,14 @@ import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionExtendedSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
 import { Port } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
-import { ShipStop } from '@/models/ShipStop';
+import { ShipStop, ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 import RoutesList from '@/components/RoutesList/RoutesList';
 import { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
 
 export interface ScheduleSectionProps {
   ports: Port[];
-  schedules: ShipStop[][];
+  schedules: ShipStopWithSailingAndPort[][];
 }
 
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({

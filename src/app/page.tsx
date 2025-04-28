@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <div className={styles.main}>
-      <ScheduleSection ports={ports.ports} schedules={schedules} />
+      <ScheduleSection ports={ports} schedules={schedules} />
       <EmptySection />
       <LazyViewedSection title="Gallery" id="photo-gallery-section">
         <Gallery />

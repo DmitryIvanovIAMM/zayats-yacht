@@ -59,6 +59,8 @@ export const adminSectionMenuLink = {
 export const adminMenuLinks = [adminSectionMenuLink, ...baseMenuLinks];
 
 export const getMenuLinksForRole = (role: Roles = Roles.User) => {
+  // eslint-disable-next-line no-console
+  console.log('getMenuLinksForRole().  role: ', role);
   if (role === Roles.Admin) {
     return adminMenuLinks;
   } else {

@@ -4,13 +4,15 @@ export enum PATHS {
   landing = '/',
   signIn = '/sign-in',
   quoteRequest = '/quote-request',
-  usersRequests = '/users-requests',
   gallery = '/gallery',
   services = '/services',
   instructions = '/instructions',
   privacyPolicy = '/privacy-policy',
   authCallback = '/auth-callback',
-  scheduleManagement = '/schedule-management',
+  admin = '/admin',
+  usersRequests = '/admin/users-requests',
+  scheduleManagement = '/admin/schedule-management',
+  portsManagement = '/admin/ports',
   destination = '/destination/:id',
   loginFailed = '/login-failed'
 }

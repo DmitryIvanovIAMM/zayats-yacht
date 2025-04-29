@@ -51,23 +51,12 @@ export const baseMenuLinks = [
   }
 ];
 
-export const editScheduleMenuLink = {
-  label: 'Edit Schedule',
-  link: PATHS.scheduleManagement
+export const adminSectionMenuLink = {
+  label: 'Admin',
+  link: PATHS.admin
 };
 
-export const usersListMenuLink = {
-  label: 'Users Requests',
-  link: PATHS.usersRequests
-};
-
-export const adminMenuLinks = [
-  baseMenuLinks[0],
-  editScheduleMenuLink,
-  baseMenuLinks[1],
-  usersListMenuLink,
-  ...baseMenuLinks.slice(2)
-];
+export const adminMenuLinks = [baseMenuLinks[0], adminSectionMenuLink, ...baseMenuLinks.slice(1)];
 
 export const getMenuLinksForRole = (role: Roles = Roles.User) => {
   if (role === Roles.Admin) {

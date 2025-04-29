@@ -45,7 +45,7 @@ export const getSchedules = async (shipData: ShipsParametersFlat) => {
       filteredByLoadingDateSchedules
     );
 
-    return sortedByStartRouteSchedules;
+    return JSON.parse(JSON.stringify(sortedByStartRouteSchedules));
   } catch {
     return [];
   }
@@ -82,7 +82,7 @@ export const queryNearestShippingsAction = async (date: Date | string): Promise<
     }
 
     //return JSON.parse(JSON.stringify(firstThreeRoutes));
-    return firstThreeRoutes;
+    return JSON.parse(JSON.stringify(firstThreeRoutes));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('queryNearestShippings().  err: ', err);

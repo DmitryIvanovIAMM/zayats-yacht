@@ -5,7 +5,7 @@ import { portService } from '@/services/PortService';
 import { Port } from '@/models/Port';
 import { ShipStop } from '@/models/ShipStop';
 
-export const getPortsAction = async () => {
+export const getActivePortsAction = async () => {
   try {
     const ports: Port[] = await portService.getAllPorts();
     const shipStops: ShipStop[] = await scheduleService.getActiveShipStops();
@@ -21,7 +21,7 @@ export const getPortsAction = async () => {
     };
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log(err);
+    console.log('Error while fetching ports: ', err);
     //logger.info(err);
     return { ports: [], destinations: [], message: 'Error while fetching ports' };
   }

@@ -1,7 +1,9 @@
-import { getPortsAction } from '@/controllers/PortsController';
+import { getActivePortsAction } from '@/controllers/PortsController';
 
 export async function GET() {
-  const ports = await getPortsAction();
+  // use server action to get data  from backend
+  // https://nextjs-faq.com/fetch-api-in-rsc
+  const ports = await getActivePortsAction();
 
   return new Response(JSON.stringify(ports), {
     status: 200,

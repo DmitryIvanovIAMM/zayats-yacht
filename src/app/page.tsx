@@ -7,20 +7,25 @@ import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';
-import { getPorts } from '@/app/api/ports/getPorts';
-import { getNearestSchedule } from '@/app/api/schedule/nearest/getNearestSchedule';
+import { getActivePortsAction } from '@/controllers/PortsController';
+import { queryNearestShippingsAction } from '@/controllers/SchedulesController';
+import { PortFrontend } from '@/models/Port';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
 
 export default async function Home() {
-  const ports = await getPorts();
+  const ports = await getActivePortsAction();
   // eslint-disable-next-line no-console
   // console.log('Home().  ports: ', ports);
-  const schedules = await getNearestSchedule();
+  const schedules = await queryNearestShippingsAction(new Date());
   // eslint-disable-next-line no-console
   // console.log('schedules: ', schedules);
 
   return (
     <div className={styles.main}>
-      <ScheduleSection ports={ports} schedules={schedules} />
+      <ScheduleSection
+        ports={ports.ports as PortFrontend[]}
+        schedules={schedules as unknown as ShipStopWithSailingAndPort[][]}
+      />
       <EmptySection />
       <LazyViewedSection title="Gallery" id="photo-gallery-section">
         <Gallery />

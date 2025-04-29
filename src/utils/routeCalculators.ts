@@ -1,10 +1,10 @@
-import { ShipStop } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
 
-export const calculateMilesForRoute = (routes: ShipStop[]) => {
+export const calculateMilesForRoute = (routes: ShipStopWithSailingAndPort[]) => {
   return routes.reduce((acc: number, item) => acc + item.miles, 0);
 };
 
-export const calculateDaysInTransit = (routes: ShipStop[]) => {
+export const calculateDaysInTransit = (routes: ShipStopWithSailingAndPort[]) => {
   const arrivalStartPortDate = new Date(routes[0].arrivalOn);
   const arrivalEndPortDate = new Date(routes[routes.length - 1].arrivalOn);
 

@@ -1,11 +1,13 @@
-import { ShipStop } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import { useEffect, useState } from 'react';
-import { getSchedules, queryNearestShippingsAction } from '@/controllers/SchedulesController';
+//import { getSchedules, queryNearestShippingsAction } from '@/controllers/SchedulesController';
 import { MonthDateRange } from '@/utils/date-time';
-import { Destination, Port } from '@/models/Port';
+import { Destination, PortFrontend } from '@/models/Port';
 import { Types } from 'mongoose';
 import { ScheduleSectionProps } from '@/components/Schedule/Schedule';
 import { ShipsParameters } from '@/models/types';
+import { getNearestSchedule } from '@/app/api/schedule/nearest/getNearestSchedule';
+import { getSchedule } from '@/app/api/schedule/getSchedule';
 
 export const emptyPortErrors = {
   departurePortId: '',
@@ -13,17 +15,17 @@ export const emptyPortErrors = {
 };
 
 export interface PortSchedulesState {
-  ports: Port[];
+  ports: PortFrontend[];
   destinations: Destination[];
   destinationPortId: string | Types.ObjectId | null;
-  destinationPorts: Port[];
+  destinationPorts: PortFrontend[];
   departurePortId: string | Types.ObjectId | null;
   loadingDate: MonthDateRange | null;
   isLoadingPort: boolean;
   isLoadingSchedule: boolean;
   destinationIndex: number | null;
   errors: any;
-  schedules: ShipStop[][];
+  schedules: ShipStopWithSailingAndPort[][];
   errorMessage: string | null;
   isFirstRender: boolean;
 }
@@ -81,7 +83,7 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
             destinationPortId: schedulesState.destinationPortId as string,
             loadingDate: schedulesState.loadingDate
           };
-          const schedules = await getSchedules(shipsParameters);
+          const schedules = await getSchedule(shipsParameters);
           return setSchedulesState((schedulesState) => ({
             ...schedulesState,
             schedules: schedules,
@@ -89,10 +91,10 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
           }));
         }
 
-        const nearestShippings = await queryNearestShippingsAction(new Date());
+        const schedules = await getNearestSchedule();
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
-          schedules: nearestShippings,
+          schedules: schedules,
           isLoadingSchedule: false
         }));
       };

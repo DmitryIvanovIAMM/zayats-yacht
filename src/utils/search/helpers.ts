@@ -55,17 +55,13 @@ const searchScheduleFromCurrentToDestinationPort = (
   return [];
 };
 
-export interface LoadingDates {
-  startDate: Date | string;
-  endDate: Date | string;
-}
-
 export const filteredByLoadingDate = (
   schedules: ShipStop[][],
-  loadingDates: LoadingDates
+  startDate: Date | string,
+  endDate: Date | string
 ): ShipStop[][] => {
-  const startOfInterval = new Date(new Date(loadingDates.startDate).setHours(0, 0, 0, 0));
-  const endOfInterval = new Date(new Date(loadingDates.endDate).setHours(23, 59, 59, 999));
+  const startOfInterval = new Date(new Date(startDate).setHours(0, 0, 0, 0));
+  const endOfInterval = new Date(new Date(endDate).setHours(23, 59, 59, 999));
   return schedules.filter((schedule: ShipStop[]) => {
     return schedule[0].arrivalOn >= startOfInterval && schedule[0].arrivalOn <= endOfInterval;
   });

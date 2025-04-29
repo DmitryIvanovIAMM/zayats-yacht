@@ -20,8 +20,8 @@ import {
   routeWihImageBoxSx,
   titleStyle
 } from '@/components/RouteWithImage/RouteWithImage.style';
-import { ShipStop } from '@/models/ShipStop';
-import { Port } from '@/models/Port';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
+import { PortFrontend } from '@/models/Port';
 import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
 import { Box } from '@mui/material';
 
@@ -32,8 +32,8 @@ export interface SelectedRoute {
 }
 
 export interface RouteWithImageBoxProps {
-  route: ShipStop[];
-  onShareRoute: (route: ShipStop[]) => void;
+  route: ShipStopWithSailingAndPort[];
+  onShareRoute: (route: ShipStopWithSailingAndPort[]) => void;
   onUserGetRouteSelect: (selectedRoute: SelectedRoute) => void;
 }
 
@@ -65,7 +65,7 @@ const RouteWithImage: FC<RouteWithImageBoxProps> = ({ route, onUserGetRouteSelec
     <Box sx={routeWihImageBoxSx} data-cy="schedule-route-card">
       <Box sx={cardImgSx}>
         <Image
-          src={`/images/${(route[route.length - 1].departurePort as Port).imageFileName}`}
+          src={`/images/${(route[route.length - 1].departurePort as PortFrontend).imageFileName}`}
           alt={'logo'}
           width={0}
           height={0}

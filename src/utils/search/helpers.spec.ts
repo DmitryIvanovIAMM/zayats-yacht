@@ -12,12 +12,10 @@ describe('filteredByLoadingDate()', () => {
       { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
-    const arrivalDates = {
-      startDate: new Date('2020-02-01'),
-      endDate: new Date('2020-02-28')
-    };
+    const startDate = new Date('2020-02-01');
+    const endDate = new Date('2020-02-28');
 
-    const expectedSchedules = filteredByLoadingDate(schedules, arrivalDates);
+    const expectedSchedules = filteredByLoadingDate(schedules, startDate, endDate);
     expect(expectedSchedules).toEqual([schedule2]);
   });
 
@@ -31,12 +29,10 @@ describe('filteredByLoadingDate()', () => {
       { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
-    const arrivalDates = {
-      startDate: new Date('2020-02-01'),
-      endDate: new Date('2020-03-01')
-    };
+    const startDate = new Date('2020-02-01');
+    const endDate = new Date('2020-03-01');
 
-    const expectedSchedules = filteredByLoadingDate(schedules, arrivalDates);
+    const expectedSchedules = filteredByLoadingDate(schedules, startDate, endDate);
     expect(expectedSchedules).toEqual([schedule2]);
   });
 
@@ -50,12 +46,10 @@ describe('filteredByLoadingDate()', () => {
       { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
-    const arrivalDates = {
-      startDate: new Date('2020-01-01'),
-      endDate: new Date('2020-05-01')
-    };
+    const startDate = new Date('2020-01-01');
+    const endDate = new Date('2020-05-01');
 
-    const expectedSchedules = filteredByLoadingDate(schedules, arrivalDates);
+    const expectedSchedules = filteredByLoadingDate(schedules, startDate, endDate);
     expect(expectedSchedules).toEqual([schedule1, schedule2]);
   });
 
@@ -69,12 +63,10 @@ describe('filteredByLoadingDate()', () => {
       { id: 4, arrivalOn: new Date('2020-04-01') } as ShipStop
     ];
     const schedules = [schedule1, schedule2];
-    const arrivalDates = {
-      startDate: new Date('2020-05-01'),
-      endDate: new Date('2020-06-01')
-    };
+    const startDate = new Date('2020-05-01');
+    const endDate = new Date('2020-06-01');
 
-    const expectedSchedules = filteredByLoadingDate(schedules, arrivalDates);
+    const expectedSchedules = filteredByLoadingDate(schedules, startDate, endDate);
     expect(expectedSchedules).toEqual([]);
   });
 });

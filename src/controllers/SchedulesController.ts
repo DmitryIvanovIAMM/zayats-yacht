@@ -5,10 +5,10 @@ import * as schedulesUtils from '../utils/schedules';
 import { scheduleService } from '@/services/ScheduleService';
 import { shipService } from '@/services/ShipService';
 import { ShipStop } from '@/models/ShipStop';
-import { ShipsParameters } from '@/models/types';
+import { ShipsParametersFlat } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
 
-export const getSchedules = async (shipData: ShipsParameters) => {
+export const getSchedules = async (shipData: ShipsParametersFlat) => {
   // eslint-disable-next-line no-console
   console.log('getSchedules().  shipData: ', shipData);
   try {
@@ -25,15 +25,16 @@ export const getSchedules = async (shipData: ShipsParameters) => {
       shipData.departurePortId as string,
       shipData.destinationPortId as string
     );
-    let filteredByLoadingDateSchedules = shipData.loadingDate
-      ? filteredByLoadingDate(schedules, shipData.loadingDate)
-      : schedules;
+    let filteredByLoadingDateSchedules =
+      shipData.startDate && shipData?.endDate
+        ? filteredByLoadingDate(schedules, shipData.startDate, shipData?.endDate)
+        : schedules;
     if (filteredByLoadingDateSchedules && filteredByLoadingDateSchedules.length === 0) {
-      const fakeLoadingDate = {
-        startDate: shipData?.loadingDate?.endDate || maxComputerDate,
-        endDate: maxComputerDate
-      };
-      const nextFilteredByLoadingDateSchedules = filteredByLoadingDate(schedules, fakeLoadingDate);
+      const nextFilteredByLoadingDateSchedules = filteredByLoadingDate(
+        schedules,
+        shipData?.endDate || maxComputerDate,
+        maxComputerDate
+      );
       filteredByLoadingDateSchedules =
         nextFilteredByLoadingDateSchedules && nextFilteredByLoadingDateSchedules.length > 0
           ? [nextFilteredByLoadingDateSchedules[0]]
@@ -44,7 +45,7 @@ export const getSchedules = async (shipData: ShipsParameters) => {
       filteredByLoadingDateSchedules
     );
 
-    return JSON.parse(JSON.stringify(sortedByStartRouteSchedules));
+    return sortedByStartRouteSchedules;
   } catch {
     return [];
   }
@@ -80,7 +81,8 @@ export const queryNearestShippingsAction = async (date: Date | string): Promise<
       } while (addedShippings < 3 && currentShipStop < shipStopsSortedByArrivalTime.length);
     }
 
-    return JSON.parse(JSON.stringify(firstThreeRoutes));
+    //return JSON.parse(JSON.stringify(firstThreeRoutes));
+    return firstThreeRoutes;
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('queryNearestShippings().  err: ', err);

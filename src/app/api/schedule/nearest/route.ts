@@ -1,9 +1,9 @@
-import { queryNearestShippingsAction } from '@/controllers/SchedulesController';
+import { queryNearestShippingsAction } from '@/app/serverActions';
 
 export async function GET() {
-  const ports = await queryNearestShippingsAction(new Date());
+  const schedule = await queryNearestShippingsAction(new Date());
 
-  return new Response(JSON.stringify(ports), {
+  return new Response(JSON.stringify(schedule), {
     status: 200,
     headers: { 'Content-Type': 'application/json' }
   });

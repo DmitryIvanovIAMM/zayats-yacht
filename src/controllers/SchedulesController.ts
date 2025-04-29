@@ -51,7 +51,7 @@ export const getSchedules = async (shipData: ShipsParametersFlat) => {
   }
 };
 
-export const queryNearestShippingsAction = async (date: Date | string): Promise<ShipStop[][]> => {
+export const queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
   // eslint-disable-next-line no-console
   console.log('queryNearestShippings().  date: ', date);
   try {

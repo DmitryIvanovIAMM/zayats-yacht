@@ -1,4 +1,4 @@
-import { getActivePortsAction } from '@/controllers/PortsController';
+import { getActivePortsAction } from '@/app/serverActions';
 
 export async function GET() {
   // use server action to get data  from backend

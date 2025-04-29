@@ -7,10 +7,7 @@ import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';
-import { getActivePortsAction } from '@/controllers/PortsController';
-import { queryNearestShippingsAction } from '@/controllers/SchedulesController';
-import { PortFrontend } from '@/models/Port';
-import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
+import { getActivePortsAction, queryNearestShippingsAction } from '@/app/serverActions';
 
 export default async function Home() {
   const ports = await getActivePortsAction();
@@ -22,10 +19,7 @@ export default async function Home() {
 
   return (
     <div className={styles.main}>
-      <ScheduleSection
-        ports={ports.ports as PortFrontend[]}
-        schedules={schedules as unknown as ShipStopWithSailingAndPort[][]}
-      />
+      <ScheduleSection ports={ports.data} schedules={schedules.data} />
       <EmptySection />
       <LazyViewedSection title="Gallery" id="photo-gallery-section">
         <Gallery />

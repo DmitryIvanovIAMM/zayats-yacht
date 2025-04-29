@@ -5,7 +5,7 @@ import { Destination, PortFrontend } from '@/models/Port';
 import { Types } from 'mongoose';
 import { ScheduleSectionProps } from '@/components/Schedule/Schedule';
 import { ShipsParametersFlat } from '@/models/types';
-import { getSchedules, queryNearestShippingsAction } from '@/controllers/SchedulesController';
+import { getSchedulesAction, queryNearestShippingsAction } from '@/app/serverActions';
 
 export const emptyPortErrors = {
   departurePortId: '',
@@ -82,10 +82,10 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
             startDate: schedulesState.loadingDate?.startDate,
             endDate: schedulesState.loadingDate?.endDate
           };
-          const schedules = await getSchedules(shipsParameters);
+          const schedules = await getSchedulesAction(shipsParameters);
           return setSchedulesState((schedulesState) => ({
             ...schedulesState,
-            schedules: schedules,
+            schedules: schedules.data,
             isLoadingSchedule: false
           }));
         }

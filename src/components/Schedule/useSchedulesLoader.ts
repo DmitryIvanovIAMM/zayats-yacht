@@ -1,6 +1,6 @@
 import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import { useEffect, useState } from 'react';
-import { MonthDateRange } from '@/utils/date-time';
+import { addMinutes, MonthDateRange } from '@/utils/date-time';
 import { Destination, PortFrontend } from '@/models/Port';
 import { Types } from 'mongoose';
 import { ScheduleSectionProps } from '@/components/Schedule/Schedule';
@@ -79,8 +79,18 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
           const shipsParameters: ShipsParametersFlat = {
             departurePortId: schedulesState.departurePortId as string,
             destinationPortId: schedulesState.destinationPortId as string,
-            startDate: schedulesState.loadingDate?.startDate,
+            startDate: schedulesState.loadingDate?.startDate
+              ? addMinutes(
+                  schedulesState.loadingDate.startDate,
+                  -new Date(schedulesState.loadingDate.startDate).getTimezoneOffset()
+                )
+              : null,
             endDate: schedulesState.loadingDate?.endDate
+              ? addMinutes(
+                  schedulesState.loadingDate.startDate,
+                  -new Date(schedulesState.loadingDate.startDate).getTimezoneOffset()
+                )
+              : null
           };
           const schedules = await getSchedulesAction(shipsParameters);
           return setSchedulesState((schedulesState) => ({

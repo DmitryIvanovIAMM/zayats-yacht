@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const { data: session } = useSession();
 
   const menuLinksForUser = useMemo(() => {
-    return getMenuLinksForRole((session?.user?.image as Roles) || Roles.User);
+    return getMenuLinksForRole(session?.user?.image as Roles);
   }, [session?.user?.image]);
   // eslint-disable-next-line no-console
   console.log('menuLinksForUser: ', menuLinksForUser);

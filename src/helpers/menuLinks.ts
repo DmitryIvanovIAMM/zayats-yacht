@@ -56,7 +56,7 @@ export const adminSectionMenuLink = {
   link: PATHS.admin
 };
 
-export const adminMenuLinks = [baseMenuLinks[0], adminSectionMenuLink, ...baseMenuLinks.slice(1)];
+export const adminMenuLinks = [adminSectionMenuLink, ...baseMenuLinks];
 
 export const getMenuLinksForRole = (role: Roles = Roles.User) => {
   if (role === Roles.Admin) {

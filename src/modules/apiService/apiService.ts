@@ -7,6 +7,7 @@ import axios, { type AxiosRequestConfig } from 'axios';
 
 // eslint-disable-next-line no-console
 console.log("process.env['BASE_URI']: ", process.env['BASE_URI']);
+
 //const baseURI = typeof window === 'undefined' ? process.env['BASE_URI'] : undefined;
 const baseURI = process.env['BASE_URI'];
 // eslint-disable-next-line no-console

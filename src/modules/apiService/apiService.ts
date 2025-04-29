@@ -6,9 +6,15 @@ import axios, { type AxiosRequestConfig } from 'axios';
 // But if on server of Next.js, we should use the full URL of backend such as http://test-api.efacity.com/
 
 const baseURI = typeof window === 'undefined' ? process.env['BASE_URI'] : undefined;
+// eslint-disable-next-line no-console
+console.log('baseURI: ', baseURI);
 
 export const baseURL = baseURI || '';
+// eslint-disable-next-line no-console
+console.log('baseURL: ', baseURL);
 export const rootPath = `${baseURL}/api/`;
+// eslint-disable-next-line no-console
+console.log('rootPath: ', rootPath);
 export const axiosInstance = axios.create({
   baseURL: `${rootPath}`,
   withCredentials: true

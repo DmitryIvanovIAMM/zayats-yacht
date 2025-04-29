@@ -5,6 +5,8 @@ import axios, { type AxiosRequestConfig } from 'axios';
 // If we are on the client of Next.js, we should redirect all API calls from base '/'
 // But if on server of Next.js, we should use the full URL of backend such as http://test-api.efacity.com/
 
+// eslint-disable-next-line no-console
+console.log("process.env['BASE_URI']: ", process.env['BASE_URI']);
 //const baseURI = typeof window === 'undefined' ? process.env['BASE_URI'] : undefined;
 const baseURI = process.env['BASE_URI'];
 // eslint-disable-next-line no-console

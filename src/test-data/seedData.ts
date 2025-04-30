@@ -9,7 +9,8 @@ export const USERS = [
     name: 'Dmytro Ivanov',
     email: 'dmitry.ivanov.iamm@gmail.com',
     role: 'admin',
-    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q', // Zayats123
+    //hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q', // Zayats123
+    hashedPassword: '$2b$10$9C3tM1F.mfZP.Q492ai2aOPMu3duSoLqgy0go/f4qz2REwbVmQx9q', // Yacht123
     salt: 10,
     isActive: true,
     emailValidated: true,
@@ -21,7 +22,7 @@ export const USERS = [
     name: 'Customer2',
     email: 'customer2@email.com',
     role: 'user',
-    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
+    hashedPassword: '$2b$10$9C3tM1F.mfZP.Q492ai2aOPMu3duSoLqgy0go/f4qz2REwbVmQx9q',
     salt: 10,
     isActive: true,
     emailValidated: false,
@@ -33,7 +34,7 @@ export const USERS = [
     name: 'Customer3',
     email: 'customer3@email.com',
     role: 'user',
-    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
+    hashedPassword: '$2b$10$9C3tM1F.mfZP.Q492ai2aOPMu3duSoLqgy0go/f4qz2REwbVmQx9q',
     salt: 10,
     isActive: true,
     emailValidated: false,
@@ -45,7 +46,7 @@ export const USERS = [
     name: 'Customer4',
     email: 'customer4@email.com',
     role: 'user',
-    hashedPassword: '$2b$10$mT2ICCTqkmWzT4SRPlG6A.u87WTSvGWSU6aYEUD1Fv5B0Nqd7ry9q',
+    hashedPassword: '$2b$10$9C3tM1F.mfZP.Q492ai2aOPMu3duSoLqgy0go/f4qz2REwbVmQx9q',
     salt: 10,
     isActive: true,
     emailValidated: false,

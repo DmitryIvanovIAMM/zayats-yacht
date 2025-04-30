@@ -5,16 +5,16 @@ import { Box, CircularProgress } from '@mui/material';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionExtendedSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
-import { Port } from '@/models/Port';
+import { PortFrontend } from '@/models/Port';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
-import { ShipStop } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 import RoutesList from '@/components/RoutesList/RoutesList';
 import { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
 
 export interface ScheduleSectionProps {
-  ports: Port[];
-  schedules: ShipStop[][];
+  ports: PortFrontend[];
+  schedules: ShipStopWithSailingAndPort[][];
 }
 
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({
@@ -28,10 +28,10 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     handleLoadingDateSelected
   } = useSchedulesLoader({ ports, schedules });
 
-  const departurePortsVariants: Port[] = schedulesState.ports.filter(
+  const departurePortsVariants: PortFrontend[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.destinationPortId
   );
-  const destinationPortsVariants: Port[] = schedulesState.ports.filter(
+  const destinationPortsVariants: PortFrontend[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.departurePortId
   );
 
@@ -39,7 +39,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     // eslint-disable-next-line no-console
     console.log('handleStoreUserSelection().  selectedRoute: ', selectedRoute);
   };
-  const handleShareRoute = (selectedRoute: ShipStop[]) => {
+  const handleShareRoute = (selectedRoute: ShipStopWithSailingAndPort[]) => {
     // eslint-disable-next-line no-console
     console.log('handleShareRoute().  selectedRoute: ', selectedRoute);
   };

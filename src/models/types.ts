@@ -5,3 +5,10 @@ export interface ShipsParameters {
   departurePortId?: string | null;
   loadingDate?: MonthDateRange | null;
 }
+
+export interface ShipsParametersFlat {
+  departurePortId?: string | null;
+  destinationPortId?: string | null;
+  startDate?: Date | null;
+  endDate?: Date | null;
+}

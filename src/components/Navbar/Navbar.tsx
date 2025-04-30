@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,13 +23,14 @@ import {
   Slide,
   useScrollTrigger
 } from '@mui/material';
-import { MenuLink, menuLinks } from '@/helpers/menuLinks';
+import { getMenuLinksForRole, MenuLink } from '@/helpers/menuLinks';
 import ScrollToTop from './ScrollToTop';
 import { secondary } from '@/components/colors';
 import { useRouter } from 'next/navigation';
 import { PATHS } from '@/helpers/paths';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { Roles } from '@/utils/types';
 
 const drawerWidth = 240;
 const leftNavigationSx = {
@@ -78,8 +79,12 @@ const Navbar: React.FC<NavbarProps> = (props) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const router = useRouter();
   const { data: session } = useSession();
+
+  const menuLinksForUser = useMemo(() => {
+    return getMenuLinksForRole(session?.user?.image as Roles);
+  }, [session?.user?.image]);
   // eslint-disable-next-line no-console
-  console.log('Navbar().  session: ', session);
+  console.log('menuLinksForUser: ', menuLinksForUser);
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);
@@ -113,7 +118,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
       <hr style={{ ...dividerStyle, marginTop: '10px' }}></hr>
       <Divider />
       <List>
-        {menuLinks.map((item) => (
+        {menuLinksForUser.map((item) => (
           <div key={item.label}>
             <ListItem disablePadding>
               <ListItemButton sx={menuItemSx} onClick={() => handleMenuItemClicked(item)}>

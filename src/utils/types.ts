@@ -1,4 +1,15 @@
+export enum Roles {
+  Admin = 'admin',
+  User = 'user'
+}
+
+export interface LongActionData<T> {
+  success: boolean;
+  data: T;
+  message?: string;
+}
+
 export interface LongActionResult {
-  isSuccessful: boolean;
+  success: boolean;
   message?: string;
 }

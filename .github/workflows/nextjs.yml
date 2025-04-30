@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   # Build job
-  build-ant-test:
+  build-and-test:
     runs-on: ubuntu-latest
     env:
       APP_ENV: CI

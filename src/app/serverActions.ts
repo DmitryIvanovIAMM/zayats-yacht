@@ -1,13 +1,17 @@
 'use server';
+
 import { getActivePorts } from '@/controllers/PortsController';
-import { LongActionResult } from '@/utils/types';
+import { LongActionData, LongActionResult, Roles } from '@/utils/types';
 import { PortFrontend } from '@/models/Port';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
 import { ShipsParametersFlat } from '@/models/types';
+import { QuoteRequestForm } from '@/components/QuoteRequest/types';
+import { withServerAuth } from '@/utils/auth/withServerAuth';
+import { sendQuoteRequest } from '@/controllers/EmailController';
 
-export async function getActivePortsAction(): Promise<LongActionResult<PortFrontend[]>> {
+export async function getActivePortsAction(): Promise<LongActionData<PortFrontend[]>> {
   try {
     const ports = await getActivePorts();
     // force
@@ -24,7 +28,7 @@ export async function getActivePortsAction(): Promise<LongActionResult<PortFront
 
 export async function queryNearestShippingsAction(
   date: Date | string
-): Promise<LongActionResult<ShipStopWithSailingAndPort[][]>> {
+): Promise<LongActionData<ShipStopWithSailingAndPort[][]>> {
   try {
     const schedule = await queryNearestShippings(date);
     return {
@@ -40,7 +44,7 @@ export async function queryNearestShippingsAction(
 
 export async function getSchedulesAction(
   shipData: ShipsParametersFlat
-): Promise<LongActionResult<ShipStopWithSailingAndPort[][]>> {
+): Promise<LongActionData<ShipStopWithSailingAndPort[][]>> {
   try {
     const schedules = await getSchedules(shipData);
     return {
@@ -52,4 +56,9 @@ export async function getSchedulesAction(
     console.log('Error while fetching schedules: ', error);
     return { success: false, data: [], message: Messages.FailedGetSchedules };
   }
+}
+export async function sendQuoteRequestAction(
+  quoteRequest: QuoteRequestForm
+): Promise<LongActionResult> {
+  return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }

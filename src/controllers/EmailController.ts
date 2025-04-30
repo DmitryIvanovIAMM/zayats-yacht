@@ -7,8 +7,11 @@ import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequestModel } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
+import { LongActionResult } from '@/utils/types';
 
-export const sendQuoteRequest = async (quoteRequest: QuoteRequestForm) => {
+export const sendQuoteRequest = async (
+  quoteRequest: QuoteRequestForm
+): Promise<LongActionResult> => {
   // eslint-disable-next-line no-console
   console.log(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
   //logger.info(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
@@ -45,9 +48,9 @@ export const sendQuoteRequest = async (quoteRequest: QuoteRequestForm) => {
     console.log(`Sending email message: ${emailMessage}`);
     //logger.info(`Sending email message: ${emailMessage}`);
     await mailTransporter.sendMail(emailMessage);
-    return { isSuccessful: true, message: Messages.QuoteRequestSent };
+    return { success: true, message: Messages.QuoteRequestSent };
   } catch (err) {
-    const errorResult = { isSuccessful: false, message: Messages.QuoteRequestFailed };
+    const errorResult = { success: false, message: Messages.QuoteRequestFailed };
     // eslint-disable-next-line no-console
     console.log(`Error sending email: ${err}`);
     //logger.error(`Error sending email: ${err}`);

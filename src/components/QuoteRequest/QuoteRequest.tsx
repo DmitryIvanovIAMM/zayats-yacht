@@ -19,10 +19,10 @@ import { FormSelector } from '@/components/MUI-RHF/FormSelector';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { primary, secondary } from '@/components/colors';
-import { sendQuoteRequest } from '@/controllers/EmailController';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSnackbar } from 'notistack';
 import { Messages } from '@/helpers/messages';
+import { sendQuoteRequestAction } from '@/app/serverActions';
 
 export default function QuoteRequest() {
   const { enqueueSnackbar } = useSnackbar();
@@ -39,9 +39,9 @@ export default function QuoteRequest() {
 
   const onSubmit = async (data: QuoteRequestForm) => {
     try {
-      const { isSuccessful, message } = await sendQuoteRequest(data);
-      reset();
-      enqueueSnackbar(message, { variant: isSuccessful ? 'success' : 'error' });
+      const { success, message } = await sendQuoteRequestAction(data);
+      if (success) reset();
+      enqueueSnackbar(message, { variant: success ? 'success' : 'error' });
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log('error: ', error);

@@ -32,6 +32,7 @@ jobs:
       AUTH_SECRET: 'ZAYATS-YACHT-SECRET'
       NEXTAUTH_SECRET: 'ZAYATS-YACHT-SECRET'
       NEXTAUTH_URL: http://localhost:3000/api/auth
+      SEND_EMAIL: 'false'
 
     steps:
       - name: Checkout

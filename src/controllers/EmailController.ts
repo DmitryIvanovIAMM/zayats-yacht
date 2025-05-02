@@ -1,7 +1,6 @@
 'use server';
 
-import mailTransporter from '../modules/mailer/nodemailer';
-//import logger from '../utils/logger';
+import { sesMailTransport } from '../modules/mailer/nodemailer';
 import * as quoteRequestUtils from '../utils/quoteRequest';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequestModel } from '@/models/QuoteRequest';
@@ -44,10 +43,14 @@ export const sendQuoteRequest = async (
 
   try {
     await storeQuoteRequest(quoteRequest.email, emailMessage.text);
-    // eslint-disable-next-line no-console
-    console.log(`Sending email message: ${emailMessage}`);
-    //logger.info(`Sending email message: ${emailMessage}`);
-    await mailTransporter.sendMail(emailMessage);
+
+    const sendToEmail = process.env.SEND_EMAIL;
+    if (sendToEmail === 'true') {
+      // eslint-disable-next-line no-console
+      console.log(`Sending email message: ${emailMessage}`);
+      //logger.info(`Sending email message: ${emailMessage}`);
+      await sesMailTransport.sendMail(emailMessage);
+    }
     return { success: true, message: Messages.QuoteRequestSent };
   } catch (err) {
     const errorResult = { success: false, message: Messages.QuoteRequestFailed };

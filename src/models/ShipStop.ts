@@ -1,9 +1,13 @@
-import mongoose, { Types, Schema, Document, model } from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import { Port, PortFrontend } from '@/models/Port';
 import { Ship } from '@/models/Ship';
 import { Sailing, SailingFrontend } from '@/models/Sailing';
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
 
+@modelOptions({
+  options: { allowMixed: Severity.ALLOW },
+  schemaOptions: { timestamps: true }
+})
 export class ShipStop {
   @prop({ required: true })
   _id: Types.ObjectId;
@@ -29,8 +33,7 @@ export class ShipStop {
   sailing?: Sailing;
 }
 
-export const ShipStopModel =
-  mongoose.models?.ShipStop || getModelForClass(ShipStop, { schemaOptions: { timestamps: true } });
+export const ShipStopModel = mongoose.models?.ShipStop || getModelForClass(ShipStop);
 
 export const shipStopsFields = [
   '_id',

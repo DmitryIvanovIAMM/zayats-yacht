@@ -40,10 +40,14 @@ export const sendQuoteRequest = async (quoteRequest: QuoteRequestForm) => {
 
   try {
     await storeQuoteRequest(quoteRequest.email, emailMessage.text);
-    // eslint-disable-next-line no-console
-    console.log(`Sending email message: ${emailMessage}`);
-    //logger.info(`Sending email message: ${emailMessage}`);
-    await sesMailTransport.sendMail(emailMessage);
+
+    const sendToEmail = process.env.SEND_EMAIL;
+    if (sendToEmail === 'true') {
+      // eslint-disable-next-line no-console
+      console.log(`Sending email message: ${emailMessage}`);
+      //logger.info(`Sending email message: ${emailMessage}`);
+      await sesMailTransport.sendMail(emailMessage);
+    }
     return { isSuccessful: true, message: Messages.QuoteRequestSent };
   } catch (err) {
     const errorResult = { isSuccessful: false, message: Messages.QuoteRequestFailed };

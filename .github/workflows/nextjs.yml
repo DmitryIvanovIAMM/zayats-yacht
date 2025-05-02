@@ -29,10 +29,10 @@ jobs:
     env:
       APP_ENV: CI
       MONGODB_URI: 'mongodb://root:password@localhost:27019/test?authSource=admin'
-      BASE_URI: http://localhost:3000
       AUTH_SECRET: 'ZAYATS-YACHT-SECRET'
       NEXTAUTH_SECRET: 'ZAYATS-YACHT-SECRET'
       NEXTAUTH_URL: http://localhost:3000/api/auth
+      SEND_EMAIL: 'false'
 
     steps:
       - name: Checkout

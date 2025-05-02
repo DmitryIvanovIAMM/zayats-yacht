@@ -1,4 +1,5 @@
 import { PATHS } from './paths';
+import { Roles } from '@/utils/types';
 
 export interface MenuLink {
   label: string;
@@ -7,7 +8,7 @@ export interface MenuLink {
   scrollDuration?: number;
 }
 
-export const menuLinks = [
+export const baseMenuLinks = [
   {
     label: 'Schedule',
     link: PATHS.landing,
@@ -50,11 +51,19 @@ export const menuLinks = [
   }
 ];
 
-export const editScheduleMenuLinks = [
-  {
-    label: 'Home',
-    link: PATHS.landing,
-    section: 'schedule-section',
-    scrollDuration: 500
+export const adminSectionMenuLink = {
+  label: 'Admin',
+  link: PATHS.admin
+};
+
+export const adminMenuLinks = [adminSectionMenuLink, ...baseMenuLinks];
+
+export const getMenuLinksForRole = (role: Roles = Roles.User) => {
+  // eslint-disable-next-line no-console
+  console.log('getMenuLinksForRole().  role: ', role);
+  if (role === Roles.Admin) {
+    return adminMenuLinks;
+  } else {
+    return baseMenuLinks;
   }
-];
+};

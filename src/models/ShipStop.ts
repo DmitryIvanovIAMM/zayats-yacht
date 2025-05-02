@@ -1,7 +1,7 @@
 import mongoose, { Types, Schema, Document, model } from 'mongoose';
-import { Port } from '@/models/Port';
+import { Port, PortFrontend } from '@/models/Port';
 import { Ship } from '@/models/Ship';
-import { Sailing } from '@/models/Sailing';
+import { Sailing, SailingFrontend } from '@/models/Sailing';
 
 export interface ShipStop extends Document {
   sailingId: Types.ObjectId;
@@ -69,6 +69,23 @@ export const shipStopsFields = [
   'daysAtSea',
   'daysInPort'
 ];
+
+export interface ShipStopFrontend {
+  sailingId: string;
+  portId: string;
+  shipId: string;
+  arrivalOn: string;
+  departureOn: string;
+  miles: number;
+  daysAtSea: number;
+  daysInPort: number;
+  departurePort?: PortFrontend;
+  sailing?: SailingFrontend;
+}
+export interface ShipStopWithSailingAndPort extends ShipStopFrontend {
+  sailing: SailingFrontend;
+  port: PortFrontend;
+}
 
 export const shipStopsWithPortAndSailingFields = [
   '_id',

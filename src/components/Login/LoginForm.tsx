@@ -57,8 +57,13 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
           style={{ width: '100%' }}
         >
           <Box sx={{ width: '100%' }}>
-            <FormTextInput name={'name'} label={'Full Name (optional)'} fullWidth={true} />
-            <FormTextInput name={'email'} label={'Email *'} />
+            <FormTextInput
+              name={'name'}
+              type="text"
+              label={'Full Name (optional)'}
+              fullWidth={true}
+            />
+            <FormTextInput name={'email'} type="email" label={'Email *'} />
             <FormTextInput name={'password'} label={'Password *'} />
           </Box>
           <h3 style={{ color: 'red', marginTop: '20px' }}>

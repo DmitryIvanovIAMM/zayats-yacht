@@ -1,6 +1,6 @@
 import { Session } from 'next-auth';
 import { act, render } from '@testing-library/react';
-import { menuLinks } from '@/helpers/menuLinks';
+import { baseMenuLinks } from '@/helpers/menuLinks';
 import Navbar, { NavbarProps } from '@/components/Navbar/Navbar';
 import SessionProvider from '@/components/SessionProvider/SessionProvider';
 
@@ -67,7 +67,7 @@ describe('Navbar component', () => {
       // no click required in current realization because drawer always mounted
       container.getByTestId('left-menu-button').click();
     });
-    menuLinks.forEach((menuLink) => {
+    baseMenuLinks.forEach((menuLink) => {
       expect(container.getByText(menuLink.label)).toBeInTheDocument();
     });
   });

@@ -1,11 +1,11 @@
-import { ShipStop } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import { useEffect, useState } from 'react';
-import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
-import { MonthDateRange } from '@/utils/date-time';
-import { Destination, Port } from '@/models/Port';
+import { addMinutes, MonthDateRange } from '@/utils/date-time';
+import { Destination, PortFrontend } from '@/models/Port';
 import { Types } from 'mongoose';
 import { ScheduleSectionProps } from '@/components/Schedule/Schedule';
-import { ShipsParameters } from '@/models/types';
+import { ShipsParametersFlat } from '@/models/types';
+import { getSchedulesAction, queryNearestShippingsAction } from '@/app/serverActions';
 
 export const emptyPortErrors = {
   departurePortId: '',
@@ -13,17 +13,17 @@ export const emptyPortErrors = {
 };
 
 export interface PortSchedulesState {
-  ports: Port[];
+  ports: PortFrontend[];
   destinations: Destination[];
   destinationPortId: string | Types.ObjectId | null;
-  destinationPorts: Port[];
+  destinationPorts: PortFrontend[];
   departurePortId: string | Types.ObjectId | null;
   loadingDate: MonthDateRange | null;
   isLoadingPort: boolean;
   isLoadingSchedule: boolean;
   destinationIndex: number | null;
   errors: any;
-  schedules: ShipStop[][];
+  schedules: ShipStopWithSailingAndPort[][];
   errorMessage: string | null;
   isFirstRender: boolean;
 }
@@ -76,23 +76,34 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
         }
         setSchedulesState((schedulesState) => ({ ...schedulesState, isLoadingSchedule: true }));
         if (schedulesState.departurePortId && schedulesState.destinationPortId) {
-          const shipsParameters: ShipsParameters = {
+          const shipsParameters: ShipsParametersFlat = {
             departurePortId: schedulesState.departurePortId as string,
             destinationPortId: schedulesState.destinationPortId as string,
-            loadingDate: schedulesState.loadingDate
+            startDate: schedulesState.loadingDate?.startDate
+              ? addMinutes(
+                  schedulesState.loadingDate.startDate,
+                  -new Date(schedulesState.loadingDate.startDate).getTimezoneOffset()
+                )
+              : null,
+            endDate: schedulesState.loadingDate?.endDate
+              ? addMinutes(
+                  schedulesState.loadingDate.startDate,
+                  -new Date(schedulesState.loadingDate.startDate).getTimezoneOffset()
+                )
+              : null
           };
-          const schedules = await getSchedules(shipsParameters);
+          const schedules = await getSchedulesAction(shipsParameters);
           return setSchedulesState((schedulesState) => ({
             ...schedulesState,
-            schedules: schedules,
+            schedules: schedules.data,
             isLoadingSchedule: false
           }));
         }
 
-        const nearestShippings = await queryNearestShippings(new Date());
+        const schedules = await queryNearestShippingsAction(new Date());
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
-          schedules: nearestShippings,
+          schedules: schedules as unknown as ShipStopWithSailingAndPort[][],
           isLoadingSchedule: false
         }));
       };

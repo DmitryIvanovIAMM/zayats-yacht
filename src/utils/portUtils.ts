@@ -5,7 +5,7 @@ export function getDestinationsFormPorts(ports: Port[]) {
 
   return groupedGyDestinationPorts.map((group) => {
     const ports = group.map((port: Port) => {
-      return { _id: port.id, portName: port.portName };
+      return { _id: port._id, portName: port.portName };
     });
 
     return {

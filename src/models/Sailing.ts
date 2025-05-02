@@ -1,10 +1,17 @@
 import * as mongoose from 'mongoose';
+import { prop, getModelForClass } from '@typegoose/typegoose';
 
-export interface Sailing extends mongoose.Document {
+export class Sailing {
+  @prop({ required: true })
   _id: mongoose.Types.ObjectId;
+  @prop({ required: true })
   name: string;
+  @prop({ required: false })
   deletedAt?: Date;
 }
+
+export const SailingModel =
+  mongoose.models?.Sailing || getModelForClass(Sailing, { schemaOptions: { timestamps: true } });
 
 export interface SailingFrontend {
   _id: string | null;
@@ -12,25 +19,3 @@ export interface SailingFrontend {
 }
 
 export const sailingFrontendFields = ['_id', 'name'];
-
-const SailingSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true
-    },
-    deletedAt: {
-      type: Date,
-      required: false
-    },
-    isActive: {
-      type: Boolean,
-      required: false
-    }
-  },
-  {
-    timestamps: true
-  }
-);
-
-export const SailingModel = mongoose.model<Sailing>('sailings', SailingSchema);

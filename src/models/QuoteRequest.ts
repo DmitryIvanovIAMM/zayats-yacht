@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({
-  schemaOptions: { timestamps: true, collection: 'quotarequests' }
+  schemaOptions: { timestamps: true, collection: 'quoterequests' }
 })
 export class QuoteRequest {
   @prop({ required: true })

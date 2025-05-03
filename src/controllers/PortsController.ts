@@ -8,6 +8,7 @@ import { ShipStop } from '@/models/ShipStop';
 export const getActivePorts = async () => {
   try {
     const ports: Port[] = await portService.getAllPorts();
+
     // eslint-disable-next-line no-console
     console.log('getActivePorts(). ports: ', ports);
     const shipStops: ShipStop[] = await scheduleService.getActiveShipStops();

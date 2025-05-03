@@ -1,57 +1,29 @@
 import * as mongoose from 'mongoose';
-import { Model } from 'mongoose';
+import { prop, getModelForClass } from '@typegoose/typegoose';
+import { Roles } from '@/utils/types';
 
-interface User {
+export class User {
+  @prop({ required: true })
   _id: mongoose.Types.ObjectId;
+  @prop({ required: true })
   name: string;
+  @prop({ required: true })
   email: string;
-  role: string;
+  @prop({ required: true, type: String, enum: Roles, default: Roles.User })
+  role: Roles;
+  @prop({ required: true })
   hashedPassword: string;
+  @prop({ required: true })
   salt: number;
+  @prop({ required: true, default: true })
   isActive: boolean;
+  @prop({ required: true, default: false })
   emailValidated: boolean;
 }
 
-const UserSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    role: {
-      type: String,
-      enum: ['admin', 'user'],
-      default: 'user',
-      required: true
-    },
-    hashedPassword: {
-      type: String,
-      required: true
-    },
-    salt: Number,
-    isActive: {
-      type: Boolean,
-      required: true,
-      default: true
-    },
-    emailValidated: {
-      type: Boolean,
-      required: true,
-      default: false
-    }
-  },
-  {
-    timestamps: true
-  }
-);
-
-export type { User };
 export const UserModel =
-  mongoose.models?.users || mongoose.model<User, Model<User>>('users', UserSchema);
+  mongoose.models?.User || getModelForClass(User, { schemaOptions: { timestamps: true } });
+
 export const userFrontendFields = ['_id', 'name', 'email', 'role'];
 
 export interface UserFrontend {

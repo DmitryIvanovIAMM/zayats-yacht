@@ -1,32 +1,17 @@
 import * as mongoose from 'mongoose';
+import { prop, getModelForClass } from '@typegoose/typegoose';
 
-export interface QuoteRequest extends mongoose.Document {
+export class QuoteRequest {
+  @prop({ required: true })
   _id: mongoose.Types.ObjectId;
+  @prop({ required: true })
   fromEmail: string;
+  @prop({ required: true })
   receivedAt: string;
+  @prop({ required: true })
   requestData: string;
 }
 
-const QuoteRequestSchema = new mongoose.Schema(
-  {
-    fromEmail: {
-      type: String,
-      required: true
-    },
-    receivedAt: {
-      type: String,
-      required: true
-    },
-    requestData: {
-      type: String,
-      required: true
-    }
-  },
-  {
-    timestamps: true
-  }
-);
-
 export const QuoteRequestModel =
-  mongoose.models?.quoteRequests ||
-  mongoose.model<QuoteRequest>('quoteRequests', QuoteRequestSchema);
+  mongoose.models?.QuoteRequest ||
+  getModelForClass(QuoteRequest, { schemaOptions: { timestamps: true } });

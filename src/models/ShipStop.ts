@@ -1,64 +1,40 @@
-import mongoose, { Types, Schema, Document, model } from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import { Port, PortFrontend } from '@/models/Port';
 import { Ship } from '@/models/Ship';
 import { Sailing, SailingFrontend } from '@/models/Sailing';
+import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
 
-export interface ShipStop extends Document {
+@modelOptions({
+  options: { allowMixed: Severity.ALLOW },
+  schemaOptions: { timestamps: true }
+})
+export class ShipStop {
+  @prop({ required: true })
+  _id: Types.ObjectId;
+  @prop({ required: true })
   sailingId: Types.ObjectId;
+  @prop({ required: true })
   portId: Types.ObjectId | Port;
+  @prop({ required: true })
   shipId: Types.ObjectId | Ship;
+  @prop({ required: true })
   arrivalOn: Date;
+  @prop({ required: true })
   departureOn: Date;
+  @prop({ required: true })
   miles: number;
+  @prop({ required: true })
   daysAtSea: number;
+  @prop({ required: true })
   daysInPort: number;
+  @prop({ required: false })
   departurePort?: Port;
+  @prop({ required: false })
   sailing?: Sailing;
 }
 
-const ShipStopSchema = new Schema(
-  {
-    sailingId: {
-      type: Types.ObjectId,
-      required: true
-    },
-    portId: {
-      type: Types.ObjectId,
-      required: true
-    },
-    shipId: {
-      type: Types.ObjectId,
-      required: true
-    },
-    arrivalOn: {
-      type: Date,
-      required: true
-    },
-    departureOn: {
-      type: Date,
-      required: true
-    },
-    miles: {
-      type: Number,
-      required: true
-    },
-    daysAtSea: {
-      type: Number,
-      required: true
-    },
-    daysInPort: {
-      type: Number,
-      required: true
-    }
-  },
-  {
-    timestamps: true
-  }
-);
+export const ShipStopModel = mongoose.models?.ShipStop || getModelForClass(ShipStop);
 
-export const ShipStopModel =
-  mongoose.models?.shipStops || model<ShipStop>('shipStops', ShipStopSchema);
-// export const PortModel = mongoose.models?.ports || mongoose.model<Port>('ports', PortSchema);
 export const shipStopsFields = [
   '_id',
   'sailingId',

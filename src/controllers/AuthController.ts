@@ -1,10 +1,11 @@
 'use server';
 
-import { User, userFrontendFields, UserFrontend, UserModel } from '@/models/User';
+import { User, UserFrontend, userFrontendFields, UserModel } from '@/models/User';
 import * as bcrypt from 'bcryptjs';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
 import { pick } from 'lodash';
+import { Roles } from '@/utils/types';
 
 export const LoginOrRegister = async (user: UserFrontend) => {
   // eslint-disable-next-line no-console
@@ -28,7 +29,7 @@ export const LoginOrRegister = async (user: UserFrontend) => {
     _id: new Types.ObjectId(),
     name: user.name || user.email,
     email: user.email.toLowerCase(),
-    role: 'user',
+    role: Roles.User,
     hashedPassword: await bcrypt.hash(user.password, salt),
     salt: salt,
     isActive: true,

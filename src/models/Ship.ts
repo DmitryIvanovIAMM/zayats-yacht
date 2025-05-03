@@ -1,58 +1,29 @@
 import * as mongoose from 'mongoose';
+import { prop, getModelForClass } from '@typegoose/typegoose';
 
-export interface Ship extends mongoose.Document {
+export class Ship {
+  @prop({ required: true })
   _id: mongoose.Types.ObjectId;
+  @prop({ required: true })
   name: string;
+  @prop({ required: true })
   type: string;
+  @prop({ required: true })
   builder: string;
+  @prop({ required: true })
   flag: string;
+  @prop({ required: true })
   homePort: string;
+  @prop({ required: true })
   class: string;
+  @prop({ required: true })
   imoNo: string;
+  @prop({ required: true })
   callSign: string;
 }
 
-const ShipSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true
-    },
-    type: {
-      type: String,
-      required: true
-    },
-    builder: {
-      type: String,
-      required: true
-    },
-    flag: {
-      type: String,
-      required: true
-    },
-    homePort: {
-      type: String,
-      required: true
-    },
-    class: {
-      type: String,
-      required: true
-    },
-    imoNo: {
-      type: String,
-      required: true
-    },
-    callSign: {
-      type: String,
-      required: true
-    }
-  },
-  {
-    timestamps: true
-  }
-);
-
-export const ShipModel = mongoose.models?.ships || mongoose.model<Ship>('ships', ShipSchema);
+export const ShipModel =
+  mongoose.models?.Ship || getModelForClass(Ship, { schemaOptions: { timestamps: true } });
 
 export const shipFields = [
   '_id',

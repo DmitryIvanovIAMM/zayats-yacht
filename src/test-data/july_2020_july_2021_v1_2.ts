@@ -7,11 +7,12 @@ import {
   palmBeachPortId,
   victoriaPortId
 } from './ids';
+import { Types } from 'mongoose';
 
 export const JULY_2020_JULY_2021_V1_2 = [
   // Sailing AL2001W
   {
-    _id: '41224d776a336fb40f022233',
+    _id: new Types.ObjectId('41224d776a336fb40f022233'),
     sailingName: 'Sailing AL2001W',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -23,7 +24,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a346fb40f022233',
+    _id: new Types.ObjectId('41224d776a346fb40f022233'),
     sailingName: 'Sailing AL2001W',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -35,7 +36,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a356fb40f022233',
+    _id: new Types.ObjectId('41224d776a356fb40f022233'),
     sailingName: 'Sailing AL2001W',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -47,7 +48,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a366fb40f022233',
+    _id: new Types.ObjectId('41224d776a366fb40f022233'),
     sailingName: 'Sailing AL2001W',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -59,7 +60,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a376fb40f022233',
+    _id: new Types.ObjectId('41224d776a376fb40f022233'),
     sailingName: 'Sailing AL2001W',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -71,7 +72,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a386fb40f022233',
+    _id: new Types.ObjectId('41224d776a386fb40f022233'),
     sailingName: 'Sailing AL2001W',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -84,7 +85,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2001E
   {
-    _id: '41224d776a396fb40f022233',
+    _id: new Types.ObjectId('41224d776a396fb40f022233'),
     sailingName: 'Sailing AL2001E',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -96,7 +97,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Victoria.jpg'
   },
   {
-    _id: '41224d776a3a6fb40f022233',
+    _id: new Types.ObjectId('41224d776a3a6fb40f022233'),
     sailingName: 'Sailing AL2001E',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -108,7 +109,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a3b6fb40f022233',
+    _id: new Types.ObjectId('41224d776a3b6fb40f022233'),
     sailingName: 'Sailing AL2001E',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -120,7 +121,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a3c6fb40f022233',
+    _id: new Types.ObjectId('41224d776a3c6fb40f022233'),
     sailingName: 'Sailing AL2001E',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -132,7 +133,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a3d6fb40f022233',
+    _id: new Types.ObjectId('41224d776a3d6fb40f022233'),
     sailingName: 'Sailing AL2001E',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -144,7 +145,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a3e6fb40f022233',
+    _id: new Types.ObjectId('41224d776a3e6fb40f022233'),
     sailingName: 'Sailing AL2001E',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -157,7 +158,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2002W
   {
-    _id: '41224d776a3f6fb40f022233',
+    _id: new Types.ObjectId('41224d776a3f6fb40f022233'),
     sailingName: 'Sailing AL2002W',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -169,7 +170,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a406fb40f022233',
+    _id: new Types.ObjectId('41224d776a406fb40f022233'),
     sailingName: 'Sailing AL2002W',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -181,7 +182,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a416fb40f022233',
+    _id: new Types.ObjectId('41224d776a416fb40f022233'),
     sailingName: 'Sailing AL2002W',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -193,7 +194,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a426fb40f022233',
+    _id: new Types.ObjectId('41224d776a426fb40f022233'),
     sailingName: 'Sailing AL2002W',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -205,7 +206,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a436fb40f022233',
+    _id: new Types.ObjectId('41224d776a436fb40f022233'),
     sailingName: 'Sailing AL2002W',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -217,7 +218,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a446fb40f022233',
+    _id: new Types.ObjectId('41224d776a446fb40f022233'),
     sailingName: 'Sailing AL2002W',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -230,7 +231,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2002E
   {
-    _id: '41224d776a456fb40f022233',
+    _id: new Types.ObjectId('41224d776a456fb40f022233'),
     sailingName: 'Sailing AL2002E',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -242,7 +243,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Victoria.jpg'
   },
   {
-    _id: '41224d776a466fb40f022233',
+    _id: new Types.ObjectId('41224d776a466fb40f022233'),
     sailingName: 'Sailing AL2002E',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -254,7 +255,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a476fb40f022233',
+    _id: new Types.ObjectId('41224d776a476fb40f022233'),
     sailingName: 'Sailing AL2002E',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -266,7 +267,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a486fb40f022233',
+    _id: new Types.ObjectId('41224d776a486fb40f022233'),
     sailingName: 'Sailing AL2002E',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -278,7 +279,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a496fb40f022233',
+    _id: new Types.ObjectId('41224d776a496fb40f022233'),
     sailingName: 'Sailing AL2002E',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -290,7 +291,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a4a6fb40f022233',
+    _id: new Types.ObjectId('41224d776a4a6fb40f022233'),
     sailingName: 'Sailing AL2002E',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -303,7 +304,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2003W
   {
-    _id: '41224d776a4b6fb40f022233',
+    _id: new Types.ObjectId('41224d776a4b6fb40f022233'),
     sailingName: 'Sailing AL2003W',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -315,7 +316,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a4c6fb40f022233',
+    _id: new Types.ObjectId('41224d776a4c6fb40f022233'),
     sailingName: 'Sailing AL2003W',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -327,7 +328,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a4d6fb40f022233',
+    _id: new Types.ObjectId('41224d776a4d6fb40f022233'),
     sailingName: 'Sailing AL2003W',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -339,7 +340,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a4e6fb40f022233',
+    _id: new Types.ObjectId('41224d776a4e6fb40f022233'),
     sailingName: 'Sailing AL2003W',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -351,7 +352,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a4f6fb40f022233',
+    _id: new Types.ObjectId('41224d776a4f6fb40f022233'),
     sailingName: 'Sailing AL2003W',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -363,7 +364,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a506fb40f022233',
+    _id: new Types.ObjectId('41224d776a506fb40f022233'),
     sailingName: 'Sailing AL2003W',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -376,7 +377,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2003E
   {
-    _id: '41224d776a516fb40f022233',
+    _id: new Types.ObjectId('41224d776a516fb40f022233'),
     sailingName: 'Sailing AL2003E',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -388,7 +389,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Victoria.jpg'
   },
   {
-    _id: '41224d776a526fb40f022233',
+    _id: new Types.ObjectId('41224d776a526fb40f022233'),
     sailingName: 'Sailing AL2003E',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -400,7 +401,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a536fb40f022233',
+    _id: new Types.ObjectId('41224d776a536fb40f022233'),
     sailingName: 'Sailing AL2003E',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -412,7 +413,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a546fb40f022233',
+    _id: new Types.ObjectId('41224d776a546fb40f022233'),
     sailingName: 'Sailing AL2003E',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -424,7 +425,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a556fb40f022233',
+    _id: new Types.ObjectId('41224d776a556fb40f022233'),
     sailingName: 'Sailing AL2003E',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -436,7 +437,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a566fb40f022233',
+    _id: new Types.ObjectId('41224d776a566fb40f022233'),
     sailingName: 'Sailing AL2003E',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -449,7 +450,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2004W
   {
-    _id: '41224d776a576fb40f022233',
+    _id: new Types.ObjectId('41224d776a576fb40f022233'),
     sailingName: 'Sailing AL2004W',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -461,7 +462,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a586fb40f022233',
+    _id: new Types.ObjectId('41224d776a586fb40f022233'),
     sailingName: 'Sailing AL2004W',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -473,7 +474,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a596fb40f022233',
+    _id: new Types.ObjectId('41224d776a596fb40f022233'),
     sailingName: 'Sailing AL2004W',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -485,7 +486,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a5a6fb40f022233',
+    _id: new Types.ObjectId('41224d776a5a6fb40f022233'),
     sailingName: 'Sailing AL2004W',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -497,7 +498,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a5b6fb40f022233',
+    _id: new Types.ObjectId('41224d776a5b6fb40f022233'),
     sailingName: 'Sailing AL2004W',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -509,7 +510,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a5c6fb40f022233',
+    _id: new Types.ObjectId('41224d776a5c6fb40f022233'),
     sailingName: 'Sailing AL2004W',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -522,7 +523,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2004E
   {
-    _id: '41224d776a5d6fb40f022233',
+    _id: new Types.ObjectId('41224d776a5d6fb40f022233'),
     sailingName: 'Sailing AL2004E',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -534,7 +535,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Victoria.jpg'
   },
   {
-    _id: '41224d776a5e6fb40f022233',
+    _id: new Types.ObjectId('41224d776a5e6fb40f022233'),
     sailingName: 'Sailing AL2004E',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -546,7 +547,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a5f6fb40f022233',
+    _id: new Types.ObjectId('41224d776a5f6fb40f022233'),
     sailingName: 'Sailing AL2004E',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -558,7 +559,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a606fb40f022233',
+    _id: new Types.ObjectId('41224d776a606fb40f022233'),
     sailingName: 'Sailing AL2004E',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -570,7 +571,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a616fb40f022233',
+    _id: new Types.ObjectId('41224d776a616fb40f022233'),
     sailingName: 'Sailing AL2004E',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -582,7 +583,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a626fb40f022233',
+    _id: new Types.ObjectId('41224d776a626fb40f022233'),
     sailingName: 'Sailing AL2004E',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -595,7 +596,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2005W
   {
-    _id: '41224d776a636fb40f022233',
+    _id: new Types.ObjectId('41224d776a636fb40f022233'),
     sailingName: 'Sailing AL2005W',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -607,7 +608,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a646fb40f022233',
+    _id: new Types.ObjectId('41224d776a646fb40f022233'),
     sailingName: 'Sailing AL2005W',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -619,7 +620,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a656fb40f022233',
+    _id: new Types.ObjectId('41224d776a656fb40f022233'),
     sailingName: 'Sailing AL2005W',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -631,7 +632,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a666fb40f022233',
+    _id: new Types.ObjectId('41224d776a666fb40f022233'),
     sailingName: 'Sailing AL2005W',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -643,7 +644,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a676fb40f022233',
+    _id: new Types.ObjectId('41224d776a676fb40f022233'),
     sailingName: 'Sailing AL2005W',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -655,7 +656,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a686fb40f022233',
+    _id: new Types.ObjectId('41224d776a686fb40f022233'),
     sailingName: 'Sailing AL2005W',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -668,7 +669,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2005E
   {
-    _id: '41224d776a696fb40f022233',
+    _id: new Types.ObjectId('41224d776a696fb40f022233'),
     sailingName: 'Sailing AL2005E',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -680,7 +681,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Victoria.jpg'
   },
   {
-    _id: '41224d776a6a6fb40f022233',
+    _id: new Types.ObjectId('41224d776a6a6fb40f022233'),
     sailingName: 'Sailing AL2005E',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -692,7 +693,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a6b6fb40f022233',
+    _id: new Types.ObjectId('41224d776a6b6fb40f022233'),
     sailingName: 'Sailing AL2005E',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -704,7 +705,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a6c6fb40f022233',
+    _id: new Types.ObjectId('41224d776a6c6fb40f022233'),
     sailingName: 'Sailing AL2005E',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -716,7 +717,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a6d6fb40f022233',
+    _id: new Types.ObjectId('41224d776a6d6fb40f022233'),
     sailingName: 'Sailing AL2005E',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -728,7 +729,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a6e6fb40f022233',
+    _id: new Types.ObjectId('41224d776a6e6fb40f022233'),
     sailingName: 'Sailing AL2005E',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -741,7 +742,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2006W
   {
-    _id: '41224d776a6f6fb40f022233',
+    _id: new Types.ObjectId('41224d776a6f6fb40f022233'),
     sailingName: 'Sailing AL2006W',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -753,7 +754,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a706fb40f022233',
+    _id: new Types.ObjectId('41224d776a706fb40f022233'),
     sailingName: 'Sailing AL2006W',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -765,7 +766,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a716fb40f022233',
+    _id: new Types.ObjectId('41224d776a716fb40f022233'),
     sailingName: 'Sailing AL2006W',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -777,7 +778,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a726fb40f022233',
+    _id: new Types.ObjectId('41224d776a726fb40f022233'),
     sailingName: 'Sailing AL2006W',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -789,7 +790,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a736fb40f022233',
+    _id: new Types.ObjectId('41224d776a736fb40f022233'),
     sailingName: 'Sailing AL2006W',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -801,7 +802,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a746fb40f022233',
+    _id: new Types.ObjectId('41224d776a746fb40f022233'),
     sailingName: 'Sailing AL2006W',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -814,7 +815,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2006E
   {
-    _id: '41224d776a756fb40f022233',
+    _id: new Types.ObjectId('41224d776a756fb40f022233'),
     sailingName: 'Sailing AL2006E',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,
@@ -826,7 +827,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Victoria.jpg'
   },
   {
-    _id: '41224d776a766fb40f022233',
+    _id: new Types.ObjectId('41224d776a766fb40f022233'),
     sailingName: 'Sailing AL2006E',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -838,7 +839,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a776fb40f022233',
+    _id: new Types.ObjectId('41224d776a776fb40f022233'),
     sailingName: 'Sailing AL2006E',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -850,7 +851,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a786fb40f022233',
+    _id: new Types.ObjectId('41224d776a786fb40f022233'),
     sailingName: 'Sailing AL2006E',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -862,7 +863,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a796fb40f022233',
+    _id: new Types.ObjectId('41224d776a796fb40f022233'),
     sailingName: 'Sailing AL2006E',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -874,7 +875,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a7a6fb40f022233',
+    _id: new Types.ObjectId('41224d776a7a6fb40f022233'),
     sailingName: 'Sailing AL2006E',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -887,7 +888,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
   },
   // Sailing AL2007W
   {
-    _id: '41224d776a7b6fb40f022233',
+    _id: new Types.ObjectId('41224d776a7b6fb40f022233'),
     sailingName: 'Sailing AL2007W',
     portId: palmBeachPortId,
     shipId: industrialGuideShipId,
@@ -899,7 +900,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a7c6fb40f022233',
+    _id: new Types.ObjectId('41224d776a7c6fb40f022233'),
     sailingName: 'Sailing AL2007W',
     portId: colonPortId,
     shipId: industrialGuideShipId,
@@ -911,7 +912,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a7d6fb40f022233',
+    _id: new Types.ObjectId('41224d776a7d6fb40f022233'),
     sailingName: 'Sailing AL2007W',
     portId: golfitoPortId,
     shipId: industrialGuideShipId,
@@ -923,7 +924,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a7e6fb40f022233',
+    _id: new Types.ObjectId('41224d776a7e6fb40f022233'),
     sailingName: 'Sailing AL2007W',
     portId: laPazPortId,
     shipId: industrialGuideShipId,
@@ -935,7 +936,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a7f6fb40f022233',
+    _id: new Types.ObjectId('41224d776a7f6fb40f022233'),
     sailingName: 'Sailing AL2007W',
     portId: ensenadaPortId,
     shipId: industrialGuideShipId,
@@ -947,7 +948,7 @@ export const JULY_2020_JULY_2021_V1_2 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a806fb40f022233',
+    _id: new Types.ObjectId('41224d776a806fb40f022233'),
     sailingName: 'Sailing AL2007W',
     portId: victoriaPortId,
     shipId: industrialGuideShipId,

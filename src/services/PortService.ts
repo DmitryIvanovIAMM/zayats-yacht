@@ -1,5 +1,4 @@
 import { Port, PortModel } from '@/models/Port';
-import dbConnect from '@/modules/mongoose/mongoose';
 
 export default class PortService {
   private static instance: PortService;
@@ -14,9 +13,7 @@ export default class PortService {
 
   public getAllPorts = async (): Promise<Port[]> => {
     try {
-      //await dbConnect();
-
-      return PortModel.find({}); //.lean<Port[]>();
+      return PortModel.find({}).lean<Port[]>();
     } catch {
       return [];
     }

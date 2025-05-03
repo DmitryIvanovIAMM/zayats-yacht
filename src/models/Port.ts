@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({
   schemaOptions: { timestamps: true, collection: 'ports' }

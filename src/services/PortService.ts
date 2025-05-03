@@ -14,7 +14,7 @@ export default class PortService {
 
   public getAllPorts = async (): Promise<Port[]> => {
     try {
-      return PortModel.find({});
+      return PortModel.find({}).lean();
     } catch {
       return [];
     }

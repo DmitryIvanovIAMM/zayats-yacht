@@ -18,7 +18,7 @@ export const USERS = [
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
   {
-    _id: '41224d776a326fb40f000003',
+    _id: new Types.ObjectId('41224d776a326fb40f000003'),
     name: 'Customer2',
     email: 'customer2@email.com',
     role: 'user',
@@ -30,7 +30,7 @@ export const USERS = [
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
   {
-    _id: '41224d776a326fb40f000004',
+    _id: new Types.ObjectId('41224d776a326fb40f000004'),
     name: 'Customer3',
     email: 'customer3@email.com',
     role: 'user',
@@ -42,7 +42,7 @@ export const USERS = [
     updatedAt: '2025-04-24T07:37:29.411+00:00'
   },
   {
-    _id: '41224d776a326fb40f000005',
+    _id: new Types.ObjectId('41224d776a326fb40f000005'),
     name: 'Customer4',
     email: 'customer4@email.com',
     role: 'user',

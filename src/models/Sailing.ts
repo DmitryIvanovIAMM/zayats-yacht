@@ -6,6 +6,8 @@ export class Sailing {
   _id: mongoose.Types.ObjectId;
   @prop({ required: true })
   name: string;
+  @prop({ required: true })
+  isActive: boolean;
   @prop({ required: false })
   deletedAt?: Date;
 }

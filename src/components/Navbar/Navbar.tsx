@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     return getMenuLinksForRole(session?.user?.image as Roles);
   }, [session?.user?.image]);
   // eslint-disable-next-line no-console
-  console.log('menuLinksForUser: ', menuLinksForUser);
+  //console.log('menuLinksForUser: ', menuLinksForUser);
 
   const handleDrawerToggle = () => {
     setMenuOpen((prevState) => !prevState);

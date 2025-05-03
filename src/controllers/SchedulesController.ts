@@ -9,8 +9,6 @@ import { ShipsParametersFlat } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
-  // eslint-disable-next-line no-console
-  console.log('getSchedules().  shipData: ', shipData);
   try {
     const shipStops: ShipStop[] =
       await scheduleService.queryAllActiveShipStopsWithPortsAndSailings();
@@ -52,8 +50,6 @@ export const getSchedules = async (shipData: ShipsParametersFlat) => {
 };
 
 export const queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
-  // eslint-disable-next-line no-console
-  console.log('queryNearestShippings().  date: ', date);
   try {
     const startShippingDate = schedulesUtils.isDate(date) ? new Date(date) : new Date();
 

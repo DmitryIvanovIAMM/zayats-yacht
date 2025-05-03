@@ -1,7 +1,6 @@
 import * as ids from './ids';
 
-const montAgo = new Date().setMonth(new Date().getMonth() - 3);
-const montAgoDate = new Date(montAgo);
+const montAgo = new Date().setMonth(new Date().getMonth() - 1);
 
 export const REGULAR_SHIP_STOPS_2020 = [
   {
@@ -9,10 +8,10 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.grandPrixSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: montAgoDate,
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 4)),
+    arrivalOn: new Date(montAgo),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 4)),
     miles: 0,
-    daysAtSea: 0,
+    daysAtSea: 777,
     daysInPort: 4
   },
   {
@@ -20,8 +19,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.grandPrixSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 18)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 20)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 18)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 20)),
     miles: 4262,
     daysAtSea: 14,
     daysInPort: 2
@@ -31,8 +30,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.grandPrixSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 21)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 24)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 21)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 24)),
     miles: 441,
     daysAtSea: 1,
     daysInPort: 3
@@ -42,8 +41,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 37)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 42)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 37)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 42)),
     miles: 4659,
     daysAtSea: 16,
     daysInPort: 5
@@ -53,8 +52,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 56)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 58)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 56)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 58)),
     miles: 4262,
     daysAtSea: 14,
     daysInPort: 2
@@ -64,8 +63,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 59)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 63)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 59)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 63)),
     miles: 441,
     daysAtSea: 1,
     daysInPort: 4
@@ -75,8 +74,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.fethiyePortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 67)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 70)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 67)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 70)),
     miles: 1169,
     daysAtSea: 4,
     daysInPort: 3
@@ -86,8 +85,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.europeToAsiaSailingId,
     portId: ids.hongKongPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 93)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 95)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 93)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 95)),
     miles: 6843,
     daysAtSea: 23,
     daysInPort: 2
@@ -97,8 +96,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.asiaToNorthAmericaSummerSailingId,
     portId: ids.victoriaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 114)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 116)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 114)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 116)),
     miles: 5680,
     daysAtSea: 19,
     daysInPort: 2
@@ -108,8 +107,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.northAmericaEastboundSummerSailingId,
     portId: ids.ensenadaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 120)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 122)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 120)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 122)),
     miles: 1201,
     daysAtSea: 4,
     daysInPort: 2
@@ -119,8 +118,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.northAmericaEastboundSummerSailingId,
     portId: ids.golfitoPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 130)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 132)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 130)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 132)),
     miles: 2494,
     daysAtSea: 8,
     daysInPort: 2
@@ -130,8 +129,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.northAmericaEastboundSummerSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 137)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 138)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 137)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 138)),
     miles: 1605,
     daysAtSea: 5,
     daysInPort: 1
@@ -141,8 +140,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.fortLauderdaleBoatShowSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 170)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 172)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 170)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 172)),
     miles: 4659,
     daysAtSea: 32,
     daysInPort: 2
@@ -152,8 +151,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.fortLauderdaleBoatShowSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 173)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 177)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 173)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 177)),
     miles: 441,
     daysAtSea: 1,
     daysInPort: 4
@@ -163,8 +162,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.fortLauderdaleBoatShowSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 191)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 193)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 191)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 193)),
     miles: 4262,
     daysAtSea: 14,
     daysInPort: 2
@@ -174,8 +173,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.christmasSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 209)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 212)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 209)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 212)),
     miles: 4659,
     daysAtSea: 16,
     daysInPort: 3
@@ -185,8 +184,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.christmasSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 213)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 215)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 213)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 215)),
     miles: 441,
     daysAtSea: 1,
     daysInPort: 2
@@ -196,8 +195,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.christmasSailingId,
     portId: ids.tortolaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 228)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 231)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 228)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 231)),
     miles: 3757,
     daysAtSea: 13,
     daysInPort: 3
@@ -207,8 +206,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 234)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 239)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 234)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 239)),
     miles: 974,
     daysAtSea: 3,
     daysInPort: 5
@@ -218,8 +217,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.golfitoPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 244)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 246)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 244)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 246)),
     miles: 1600,
     daysAtSea: 5,
     daysInPort: 2
@@ -229,8 +228,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.ensenadaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 254)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 256)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 254)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 256)),
     miles: 2500,
     daysAtSea: 8,
     daysInPort: 2
@@ -240,8 +239,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.victoriaPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 260)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 262)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 260)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 262)),
     miles: 1200,
     daysAtSea: 4,
     daysInPort: 2
@@ -251,8 +250,8 @@ export const REGULAR_SHIP_STOPS_2020 = [
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.hongKongPortId,
     shipId: ids.industrialGuideShipId,
-    arrivalOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 281)),
-    departureOn: new Date(montAgoDate.setDate(montAgoDate.getDate() + 283)),
+    arrivalOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 281)),
+    departureOn: new Date(new Date(montAgo).setDate(new Date(montAgo).getDate() + 283)),
     miles: 5680,
     daysAtSea: 19,
     daysInPort: 2

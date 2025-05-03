@@ -1,10 +1,12 @@
+import { Types } from 'mongoose';
+
 export const AUTUMN_2020_SUMMER_2021 = [
   // Westbound AL2002W
   {
-    _id: '41224d776a336fb41f022233',
+    _id: new Types.ObjectId('41224d776a336fb41f022233'),
     sailingName: 'Westbound AL2002W',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-09-30'),
     departureOn: new Date('2020-10-02'),
     miles: 0,
@@ -13,10 +15,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'PalmBeach.jpg'
   },
   {
-    _id: '41224d776a336fb42f022233',
+    _id: new Types.ObjectId('41224d776a336fb42f022233'),
     sailingName: 'Westbound AL2002W',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-10-07'),
     departureOn: new Date('2020-10-09'),
     miles: 1250,
@@ -25,10 +27,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb43f022233',
+    _id: new Types.ObjectId('41224d776a336fb43f022233'),
     sailingName: 'Westbound AL2002W',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-10-10'),
     departureOn: new Date('2020-10-11'),
     miles: 400,
@@ -37,10 +39,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb44f022233',
+    _id: new Types.ObjectId('41224d776a336fb44f022233'),
     sailingName: 'Westbound AL2002W',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-10-18'),
     departureOn: new Date('2020-10-19'),
     miles: 1930,
@@ -49,10 +51,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb45f022233',
+    _id: new Types.ObjectId('41224d776a336fb45f022233'),
     sailingName: 'Westbound AL2002W',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-10-22'),
     departureOn: new Date('2020-10-23'),
     miles: 930,
@@ -61,10 +63,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb46f022233',
+    _id: new Types.ObjectId('41224d776a336fb46f022233'),
     sailingName: 'Westbound AL2002W',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-10-28'),
     departureOn: new Date('2020-11-01'),
     miles: 1350,
@@ -74,10 +76,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Eastbound AL2002E
   /*{
-    _id: '41224d776a336fb47f022233',
+    _id: new Types.ObjectId('41224d776a336fb47f022233'),
     sailingName: 'Eastbound AL2002E',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.c('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-10-30'),
     departureOn: new Date('2020-11-01'),
     miles: 0,
@@ -86,10 +88,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Victoria.jpg'
   },*/
   {
-    _id: '41224d776a336fb48f022233',
+    _id: new Types.ObjectId('41224d776a336fb48f022233'),
     sailingName: 'Eastbound AL2002E',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-11-06'),
     departureOn: new Date('2020-11-07'),
     miles: 1350,
@@ -98,10 +100,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb49f022233',
+    _id: new Types.ObjectId('41224d776a336fb49f022233'),
     sailingName: 'Eastbound AL2002E',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-11-10'),
     departureOn: new Date('2020-11-11'),
     miles: 930,
@@ -110,10 +112,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb4af022233',
+    _id: new Types.ObjectId('41224d776a336fb4af022233'),
     sailingName: 'Eastbound AL2002E',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-11-18'),
     departureOn: new Date('2020-11-19'),
     miles: 1930,
@@ -122,10 +124,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb4bf022233',
+    _id: new Types.ObjectId('41224d776a336fb4bf022233'),
     sailingName: 'Eastbound AL2002E',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-11-20'),
     departureOn: new Date('2020-11-21'),
     miles: 400,
@@ -134,10 +136,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb4cf022233',
+    _id: new Types.ObjectId('41224d776a336fb4cf022233'),
     sailingName: 'Eastbound AL2002E',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-11-26'),
     departureOn: new Date('2020-12-01'),
     miles: 1250,
@@ -147,10 +149,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Westbound AL2003W
   /*{
-    _id: '41224d776a336fb4df022233',
+    _id: new Types.ObjectId('41224d776a336fb4df022233'),
     sailingName: 'Westbound AL2003W',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-11-28'),
     departureOn: new Date('2020-12-01'),
     miles: 0,
@@ -159,10 +161,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'PalmBeach.jpg'
   },*/
   {
-    _id: '41224d776a336fb4ef022233',
+    _id: new Types.ObjectId('41224d776a336fb4ef022233'),
     sailingName: 'Westbound AL2003W',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-12-05'),
     departureOn: new Date('2020-12-06'),
     miles: 1250,
@@ -171,10 +173,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb4ff022233',
+    _id: new Types.ObjectId('41224d776a336fb4ff022233'),
     sailingName: 'Westbound AL2003W',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-12-07'),
     departureOn: new Date('2020-12-08'),
     miles: 400,
@@ -183,10 +185,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb50f022233',
+    _id: new Types.ObjectId('41224d776a336fb50f022233'),
     sailingName: 'Westbound AL2003W',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-12-15'),
     departureOn: new Date('2020-12-16'),
     miles: 1930,
@@ -195,10 +197,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb51f022233',
+    _id: new Types.ObjectId('41224d776a336fb51f022233'),
     sailingName: 'Westbound AL2003W',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-12-20'),
     departureOn: new Date('2020-12-21'),
     miles: 930,
@@ -207,10 +209,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb52f022233',
+    _id: new Types.ObjectId('41224d776a336fb52f022233'),
     sailingName: 'Westbound AL2003W',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-12-25'),
     departureOn: new Date('2020-12-29'),
     miles: 1350,
@@ -220,10 +222,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Eastbound AL2003E
   /*{
-    _id: '41224d776a336fb53f022233',
+    _id: new Types.ObjectId('41224d776a336fb53f022233'),
     sailingName: 'Eastbound AL2003E',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2020-12-27'),
     departureOn: new Date('2020-12-29'),
     miles: 0,
@@ -232,10 +234,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Victoria.jpg'
   },*/
   {
-    _id: '41224d776a336fb54f022233',
+    _id: new Types.ObjectId('41224d776a336fb54f022233'),
     sailingName: 'Eastbound AL2003E',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-01-03'),
     departureOn: new Date('2021-01-04'),
     miles: 1350,
@@ -244,10 +246,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb55f022233',
+    _id: new Types.ObjectId('41224d776a336fb55f022233'),
     sailingName: 'Eastbound AL2003E',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-01-08'),
     departureOn: new Date('2021-01-09'),
     miles: 930,
@@ -256,10 +258,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb56f022233',
+    _id: new Types.ObjectId('41224d776a336fb56f022233'),
     sailingName: 'Eastbound AL2003E',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-01-15'),
     departureOn: new Date('2021-01-16'),
     miles: 1930,
@@ -268,10 +270,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb57f022233',
+    _id: new Types.ObjectId('41224d776a336fb57f022233'),
     sailingName: 'Eastbound AL2003E',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-01-18'),
     departureOn: new Date('2021-01-19'),
     miles: 400,
@@ -280,10 +282,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb58f022233',
+    _id: new Types.ObjectId('41224d776a336fb58f022233'),
     sailingName: 'Eastbound AL2003E',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-01-23'),
     departureOn: new Date('2021-01-28'),
     miles: 1250,
@@ -293,10 +295,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Westbound AL2101W
   /*{
-    _id: '41224d776a336fb59f022233',
+    _id: new Types.ObjectId('41224d776a336fb59f022233'),
     sailingName: 'Westbound AL2101W',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-01-25'),
     departureOn: new Date('2021-01-28'),
     miles: 0,
@@ -305,10 +307,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'PalmBeach.jpg'
   },*/
   {
-    _id: '41224d776a336fb5af022233',
+    _id: new Types.ObjectId('41224d776a336fb5af022233'),
     sailingName: 'Westbound AL2101W',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-02-02'),
     departureOn: new Date('2021-02-03'),
     miles: 1250,
@@ -317,10 +319,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb5bf022233',
+    _id: new Types.ObjectId('41224d776a336fb5bf022233'),
     sailingName: 'Westbound AL2101W',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-02-04'),
     departureOn: new Date('2021-02-05'),
     miles: 400,
@@ -329,10 +331,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb5cf022233',
+    _id: new Types.ObjectId('41224d776a336fb5cf022233'),
     sailingName: 'Westbound AL2101W',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-02-12'),
     departureOn: new Date('2021-02-13'),
     miles: 1930,
@@ -341,10 +343,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb5df022233',
+    _id: new Types.ObjectId('41224d776a336fb5df022233'),
     sailingName: 'Westbound AL2101W',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-02-16'),
     departureOn: new Date('2021-02-17'),
     miles: 930,
@@ -353,10 +355,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb5ef022233',
+    _id: new Types.ObjectId('41224d776a336fb5ef022233'),
     sailingName: 'Westbound AL2101W',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-02-22'),
     departureOn: new Date('2021-02-26'),
     miles: 1350,
@@ -366,10 +368,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Eastbound AL2101E
   /*{
-    _id: '41224d776a336fb5ff022233',
+    _id: new Types.ObjectId('41224d776a336fb5ff022233'),
     sailingName: 'Eastbound AL2101E',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-02-24'),
     departureOn: new Date('2021-02-26'),
     miles: 0,
@@ -378,10 +380,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Victoria.jpg'
   },*/
   {
-    _id: '41224d776a336fb60f022233',
+    _id: new Types.ObjectId('41224d776a336fb60f022233'),
     sailingName: 'Eastbound AL2101E',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-03-03'),
     departureOn: new Date('2021-03-04'),
     miles: 1350,
@@ -390,10 +392,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb61f022233',
+    _id: new Types.ObjectId('41224d776a336fb61f022233'),
     sailingName: 'Eastbound AL2101E',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-03-07'),
     departureOn: new Date('2021-03-08'),
     miles: 930,
@@ -402,10 +404,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb62f022233',
+    _id: new Types.ObjectId('41224d776a336fb62f022233'),
     sailingName: 'Eastbound AL2101E',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-03-15'),
     departureOn: new Date('2021-03-16'),
     miles: 1930,
@@ -414,10 +416,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb63f022233',
+    _id: new Types.ObjectId('41224d776a336fb63f022233'),
     sailingName: 'Eastbound AL2101E',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-03-17'),
     departureOn: new Date('2021-03-18'),
     miles: 400,
@@ -426,10 +428,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb64f022233',
+    _id: new Types.ObjectId('41224d776a336fb64f022233'),
     sailingName: 'Eastbound AL2101E',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-03-23'),
     departureOn: new Date('2021-03-28'),
     miles: 1250,
@@ -439,10 +441,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Westbound AL2102W
   /*{
-    _id: '41224d776a336fb65f022233',
+    _id: new Types.ObjectId('41224d776a336fb65f022233'),
     sailingName: 'Westbound AL2102W',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-03-25'),
     departureOn: new Date('2021-03-28'),
     miles: 0,
@@ -451,10 +453,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'PalmBeach.jpg'
   },*/
   {
-    _id: '41224d776a336fb66f022233',
+    _id: new Types.ObjectId('41224d776a336fb66f022233'),
     sailingName: 'Westbound AL2102W',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-04-01'),
     departureOn: new Date('2021-04-02'),
     miles: 1250,
@@ -463,10 +465,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb67f022233',
+    _id: new Types.ObjectId('41224d776a336fb67f022233'),
     sailingName: 'Westbound AL2102W',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-04-03'),
     departureOn: new Date('2021-04-04'),
     miles: 400,
@@ -475,10 +477,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb68f022233',
+    _id: new Types.ObjectId('41224d776a336fb68f022233'),
     sailingName: 'Westbound AL2102W',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-04-11'),
     departureOn: new Date('2021-04-12'),
     miles: 1930,
@@ -487,10 +489,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb69f022233',
+    _id: new Types.ObjectId('41224d776a336fb69f022233'),
     sailingName: 'Westbound AL2102W',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-04-16'),
     departureOn: new Date('2021-04-17'),
     miles: 930,
@@ -499,10 +501,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb6af022233',
+    _id: new Types.ObjectId('41224d776a336fb6af022233'),
     sailingName: 'Westbound AL2102W',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-04-21'),
     departureOn: new Date('2021-04-25'),
     miles: 1350,
@@ -512,10 +514,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Eastbound AL2102E
   /*{
-    _id: '41224d776a336fb6bf022233',
+    _id: new Types.ObjectId('41224d776a336fb6bf022233'),
     sailingName: 'Eastbound AL2102E',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-04-23'),
     departureOn: new Date('2021-04-25'),
     miles: 0,
@@ -524,10 +526,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Victoria.jpg'
   },*/
   {
-    _id: '41224d776a336fb6cf022233',
+    _id: new Types.ObjectId('41224d776a336fb6cf022233'),
     sailingName: 'Eastbound AL2102E',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-04-30'),
     departureOn: new Date('2021-05-01'),
     miles: 1350,
@@ -536,10 +538,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb6df022233',
+    _id: new Types.ObjectId('41224d776a336fb6df022233'),
     sailingName: 'Eastbound AL2102E',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-05-05'),
     departureOn: new Date('2021-05-06'),
     miles: 930,
@@ -548,10 +550,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb6ef022233',
+    _id: new Types.ObjectId('41224d776a336fb6ef022233'),
     sailingName: 'Eastbound AL2102E',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-05-12'),
     departureOn: new Date('2021-05-13'),
     miles: 1930,
@@ -560,10 +562,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb6ff022233',
+    _id: new Types.ObjectId('41224d776a336fb6ff022233'),
     sailingName: 'Eastbound AL2102E',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-05-15'),
     departureOn: new Date('2021-05-16'),
     miles: 400,
@@ -572,10 +574,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb70f022233',
+    _id: new Types.ObjectId('41224d776a336fb70f022233'),
     sailingName: 'Eastbound AL2102E',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-05-20'),
     departureOn: new Date('2021-05-25'),
     miles: 1250,
@@ -585,10 +587,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
   },
   // Westbound AL2103W
   /*{
-    _id: '41224d776a336fb71f022233',
+    _id: new Types.ObjectId('41224d776a336fb71f022233'),
     sailingName: 'Westbound AL2103W',
-    portId: '41224d776a326fb40f001111',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001111'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-05-22'),
     departureOn: new Date('2021-05-25'),
     miles: 0,
@@ -597,10 +599,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'PalmBeach.jpg'
   },*/
   {
-    _id: '41224d776a336fb72f022233',
+    _id: new Types.ObjectId('41224d776a336fb72f022233'),
     sailingName: 'Westbound AL2103W',
-    portId: '41224d776a326fb40f001110',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001110'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-05-30'),
     departureOn: new Date('2021-05-31'),
     miles: 1250,
@@ -609,10 +611,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Colon.jpg'
   },
   {
-    _id: '41224d776a336fb73f022233',
+    _id: new Types.ObjectId('41224d776a336fb73f022233'),
     sailingName: 'Westbound AL2103W',
-    portId: '41224d776a326fb40f001108',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001108'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-06-01'),
     departureOn: new Date('2021-06-02'),
     miles: 400,
@@ -621,10 +623,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Golfito.jpg'
   },
   {
-    _id: '41224d776a336fb74f022233',
+    _id: new Types.ObjectId('41224d776a336fb74f022233'),
     sailingName: 'Westbound AL2103W',
-    portId: '41224d776a326fb40f001112',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001112'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-06-09'),
     departureOn: new Date('2021-06-10'),
     miles: 1930,
@@ -633,10 +635,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'LaPaz.jpg'
   },
   {
-    _id: '41224d776a336fb75f022233',
+    _id: new Types.ObjectId('41224d776a336fb75f022233'),
     sailingName: 'Westbound AL2103W',
-    portId: '41224d776a326fb40f001107',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001107'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-06-13'),
     departureOn: new Date('2021-06-14'),
     miles: 930,
@@ -645,10 +647,10 @@ export const AUTUMN_2020_SUMMER_2021 = [
     imageFileName: 'Ensenada.jpg'
   },
   {
-    _id: '41224d776a336fb76f022233',
+    _id: new Types.ObjectId('41224d776a336fb76f022233'),
     sailingName: 'Westbound AL2103W',
-    portId: '41224d776a326fb40f001106',
-    shipId: '41224d776a326fb40f012210',
+    portId: new Types.ObjectId('41224d776a326fb40f001106'),
+    shipId: new Types.ObjectId('41224d776a326fb40f012210'),
     arrivalOn: new Date('2021-06-19'),
     departureOn: new Date('2021-06-21'),
     miles: 1350,

@@ -1,8 +1,9 @@
 import * as ids from './ids';
+import { Types } from 'mongoose';
 
 export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
   {
-    _id: '41224d776a326fb40f022233',
+    _id: new Types.ObjectId('41224d776a326fb40f022233'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -13,7 +14,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 10
   },
   {
-    _id: '41224d776a326fb40f022234',
+    _id: new Types.ObjectId('41224d776a326fb40f022234'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.colonPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -24,7 +25,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 1
   },
   {
-    _id: '41224d776a326fb40f022235',
+    _id: new Types.ObjectId('41224d776a326fb40f022235'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.golfitoPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -35,7 +36,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 1
   },
   {
-    _id: '41224d776a326fb40f022236',
+    _id: new Types.ObjectId('41224d776a326fb40f022236'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.ensenadaPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -46,7 +47,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022237',
+    _id: new Types.ObjectId('41224d776a326fb40f022237'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.victoriaPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -57,7 +58,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022238',
+    _id: new Types.ObjectId('41224d776a326fb40f022238'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.victoriaPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -68,7 +69,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 5
   },
   {
-    _id: '41224d776a326fb40f022239',
+    _id: new Types.ObjectId('41224d776a326fb40f022239'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.ensenadaPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -79,7 +80,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022240',
+    _id: new Types.ObjectId('41224d776a326fb40f022240'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.golfitoPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -90,7 +91,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 1
   },
   {
-    _id: '41224d776a326fb40f022241',
+    _id: new Types.ObjectId('41224d776a326fb40f022241'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.colonPortId,
     shipId: ids.mVIndustrialGraceShipId,
@@ -101,7 +102,7 @@ export const ALASKA_YACHTING_SHIP_STOPS_2020 = [
     daysInPort: 1
   },
   {
-    _id: '41224d776a326fb40f022242',
+    _id: new Types.ObjectId('41224d776a326fb40f022242'),
     sailingId: ids.alaskaYachtingAdventureId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.mVIndustrialGraceShipId,

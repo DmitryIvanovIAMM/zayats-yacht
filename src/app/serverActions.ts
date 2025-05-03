@@ -14,6 +14,8 @@ import { sendQuoteRequest } from '@/controllers/EmailController';
 export async function getActivePortsAction(): Promise<LongActionData<PortFrontend[]>> {
   try {
     const ports = await getActivePorts();
+    // eslint-disable-next-line no-console
+    console.log('getActivePortsAction(). ports: ', ports);
     // force
     return {
       success: true,

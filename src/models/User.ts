@@ -1,7 +1,10 @@
 import * as mongoose from 'mongoose';
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 import { Roles } from '@/utils/types';
 
+@modelOptions({
+  schemaOptions: { timestamps: true, collection: 'users' }
+})
 export class User {
   @prop({ required: true })
   _id: mongoose.Types.ObjectId;
@@ -21,8 +24,7 @@ export class User {
   emailValidated: boolean;
 }
 
-export const UserModel =
-  mongoose.models?.User || getModelForClass(User, { schemaOptions: { timestamps: true } });
+export const UserModel = mongoose.models?.User || getModelForClass(User);
 
 export const userFrontendFields = ['_id', 'name', 'email', 'role'];
 

@@ -6,7 +6,7 @@ import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typeg
 
 @modelOptions({
   options: { allowMixed: Severity.ALLOW },
-  schemaOptions: { timestamps: true }
+  schemaOptions: { timestamps: true, collection: 'shipstops' }
 })
 export class ShipStop {
   @prop({ required: true })

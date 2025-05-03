@@ -1,6 +1,9 @@
 import * as mongoose from 'mongoose';
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
+@modelOptions({
+  schemaOptions: { timestamps: true, collection: 'quotarequests' }
+})
 export class QuoteRequest {
   @prop({ required: true })
   _id: mongoose.Types.ObjectId;
@@ -12,6 +15,4 @@ export class QuoteRequest {
   requestData: string;
 }
 
-export const QuoteRequestModel =
-  mongoose.models?.QuoteRequest ||
-  getModelForClass(QuoteRequest, { schemaOptions: { timestamps: true } });
+export const QuoteRequestModel = mongoose.models?.QuoteRequest || getModelForClass(QuoteRequest);

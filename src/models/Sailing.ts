@@ -1,6 +1,9 @@
 import * as mongoose from 'mongoose';
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
+@modelOptions({
+  schemaOptions: { timestamps: true, collection: 'sailings' }
+})
 export class Sailing {
   @prop({ required: true })
   _id: mongoose.Types.ObjectId;
@@ -12,8 +15,7 @@ export class Sailing {
   deletedAt?: Date;
 }
 
-export const SailingModel =
-  mongoose.models?.Sailing || getModelForClass(Sailing, { schemaOptions: { timestamps: true } });
+export const SailingModel = mongoose.models?.Sailing || getModelForClass(Sailing);
 
 export interface SailingFrontend {
   _id: string | null;

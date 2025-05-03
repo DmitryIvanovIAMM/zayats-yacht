@@ -1,6 +1,9 @@
 import * as mongoose from 'mongoose';
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
 
+@modelOptions({
+  schemaOptions: { timestamps: true, collection: 'ports' }
+})
 export class Port {
   @prop({ required: true })
   _id: mongoose.Types.ObjectId;
@@ -15,8 +18,7 @@ export class Port {
   imageFileName: string;
 }
 
-export const PortModel =
-  mongoose.models?.Port || getModelForClass(Port, { schemaOptions: { timestamps: true } });
+export const PortModel = mongoose.models?.Port || getModelForClass(Port);
 
 export interface PortFrontend {
   _id: string | null;

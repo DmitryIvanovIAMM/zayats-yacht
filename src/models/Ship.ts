@@ -1,6 +1,9 @@
 import * as mongoose from 'mongoose';
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
+@modelOptions({
+  schemaOptions: { timestamps: true, collection: 'ships' }
+})
 export class Ship {
   @prop({ required: true })
   _id: mongoose.Types.ObjectId;
@@ -22,8 +25,7 @@ export class Ship {
   callSign: string;
 }
 
-export const ShipModel =
-  mongoose.models?.Ship || getModelForClass(Ship, { schemaOptions: { timestamps: true } });
+export const ShipModel = mongoose.models?.Ship || getModelForClass(Ship);
 
 export const shipFields = [
   '_id',

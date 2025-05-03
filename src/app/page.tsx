@@ -12,10 +12,10 @@ import { getActivePortsAction, queryNearestShippingsAction } from '@/app/serverA
 export default async function Home() {
   const ports = await getActivePortsAction();
   // eslint-disable-next-line no-console
-  //console.log('Home().  ports: ', ports);
+  console.log('Home().  ports: ', ports);
   const schedules = await queryNearestShippingsAction(new Date());
   // eslint-disable-next-line no-console
-  //console.log('schedules: ', schedules);
+  console.log('Home(). schedules: ', schedules);
 
   return (
     <div className={styles.main}>

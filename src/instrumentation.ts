@@ -10,7 +10,7 @@ export async function register() {
   if (APP_ENV === AppEnv.DEV || APP_ENV === AppEnv.CI) {
     // eslint-disable-next-line no-console
     console.log('Load test data in development mode...');
-    //await testDataLoader();
+    await testDataLoader();
   } else {
     // eslint-disable-next-line no-console
     console.log('Do not load test data in production mode.');

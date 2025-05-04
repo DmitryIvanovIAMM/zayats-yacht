@@ -62,5 +62,7 @@ export async function getSchedulesAction(
 export async function sendQuoteRequestAction(
   quoteRequest: QuoteRequestForm
 ): Promise<LongActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('sendQuoteRequestAction().  quoteRequest: ', quoteRequest);
   return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }

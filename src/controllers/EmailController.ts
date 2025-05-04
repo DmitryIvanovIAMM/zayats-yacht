@@ -1,6 +1,6 @@
 'use server';
 
-//import { sesMailTransport } from '@/modules/mailer/nodemailer';
+import { sesMailTransport } from '@/modules/mailer/nodemailer';
 import * as quoteRequestUtils from '../utils/quoteRequest';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequest } from '@/models/QuoteRequest';
@@ -49,13 +49,13 @@ export const sendQuoteRequest = async (
   try {
     await storeQuoteRequest(quoteRequest.email, emailMessage.text);
 
-    // const sendToEmail = process.env.SEND_EMAIL;
-    // if (sendToEmail === 'true') {
-    //   // eslint-disable-next-line no-console
-    //   console.log(`Sending email message: ${emailMessage}`);
-    //   //logger.info(`Sending email message: ${emailMessage}`);
-    //   await sesMailTransport.sendMail(emailMessage);
-    // }
+    const sendToEmail = process.env.SEND_EMAIL;
+    if (sendToEmail === 'true') {
+      // eslint-disable-next-line no-console
+      console.log(`Sending email message: ${emailMessage}`);
+      //logger.info(`Sending email message: ${emailMessage}`);
+      await sesMailTransport.sendMail(emailMessage);
+    }
     return { success: true, message: Messages.QuoteRequestSent };
   } catch (err: any) {
     const errorResult = {

@@ -14,7 +14,5 @@ export class QuoteRequest {
   @prop({ required: true })
   requestData: string;
 }
-// eslint-disable-next-line no-console
-console.log('mongoose.models?.QuoteRequest: ', mongoose.models?.QuoteRequest);
 
 export const QuoteRequestModel = mongoose.models?.QuoteRequest || getModelForClass(QuoteRequest);

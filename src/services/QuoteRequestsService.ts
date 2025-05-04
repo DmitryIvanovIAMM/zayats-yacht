@@ -1,13 +1,13 @@
 import { QuoteRequest, QuoteRequestModel } from '@/models/QuoteRequest';
 
-export default class QuotaRequestsService {
-  private static instance: QuotaRequestsService;
+export default class QuoteRequestsService {
+  private static instance: QuoteRequestsService;
   private constructor() {}
   static getInstance() {
     if (this.instance) {
       return this.instance;
     }
-    this.instance = new QuotaRequestsService();
+    this.instance = new QuoteRequestsService();
     return this.instance;
   }
 
@@ -22,4 +22,4 @@ export default class QuotaRequestsService {
   };
 }
 
-export const quoteRequestService = QuotaRequestsService.getInstance();
+export const quoteRequestService = QuoteRequestsService.getInstance();

@@ -7,7 +7,7 @@ import { QuoteRequest } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
 import { LongActionResult } from '@/utils/types';
-import { quoteRequestService } from '@/services/QuotaRequestsService';
+import { quoteRequestService } from '@/services/QuoteRequestsService';
 
 export const sendQuoteRequest = async (
   quoteRequest: QuoteRequestForm

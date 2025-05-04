@@ -18,6 +18,8 @@ export const sendQuoteRequest = async (
 
   const emailMessage = quoteRequestUtils.getQuoteRequestEmail(quoteRequest);
   // eslint-disable-next-line no-console
+  console.log('emailMessage: ', emailMessage);
+  // eslint-disable-next-line no-console
   console.log(`emailMessage: ${emailMessage}`);
   //logger.info(`emailMessage: ${emailMessage}`);
 
@@ -28,6 +30,8 @@ export const sendQuoteRequest = async (
       receivedAt: new Date().toLocaleString('us-Us'),
       requestData: message
     };
+    // eslint-disable-next-line no-console
+    console.log('quoteRequest to be stored: ', newQuoteRequest);
 
     try {
       const result = await quoteRequestService.create(newQuoteRequest);

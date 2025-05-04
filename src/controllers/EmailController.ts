@@ -1,6 +1,6 @@
 'use server';
 
-import { sesMailTransport } from '@/modules/mailer/nodemailer';
+//import { sesMailTransport } from '@/modules/mailer/nodemailer';
 import * as quoteRequestUtils from '../utils/quoteRequest';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequest } from '@/models/QuoteRequest';

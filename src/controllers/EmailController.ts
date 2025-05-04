@@ -3,10 +3,11 @@
 import { sesMailTransport } from '@/modules/mailer/nodemailer';
 import * as quoteRequestUtils from '../utils/quoteRequest';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
-import { QuoteRequestModel } from '@/models/QuoteRequest';
+import { QuoteRequest } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
 import { LongActionResult } from '@/utils/types';
+import { quoteRequestService } from '@/services/QuotaRequestsService';
 
 export const sendQuoteRequest = async (
   quoteRequest: QuoteRequestForm
@@ -21,15 +22,15 @@ export const sendQuoteRequest = async (
   //logger.info(`emailMessage: ${emailMessage}`);
 
   const storeQuoteRequest = async (fromEmail: string, message: string) => {
-    const newQuoteRequest = new QuoteRequestModel({
+    const newQuoteRequest: QuoteRequest = {
       _id: new Types.ObjectId(),
       fromEmail: fromEmail,
       receivedAt: new Date().toLocaleString('us-Us'),
       requestData: message
-    });
+    };
 
     try {
-      const result = await QuoteRequestModel.create(newQuoteRequest);
+      const result = await quoteRequestService.create(newQuoteRequest);
       // eslint-disable-next-line no-console
       console.log('result: ', result);
       return result;
@@ -44,18 +45,18 @@ export const sendQuoteRequest = async (
   try {
     await storeQuoteRequest(quoteRequest.email, emailMessage.text);
 
-    // const sendToEmail = process.env.SEND_EMAIL;
-    // if (sendToEmail === 'true') {
-    //   // eslint-disable-next-line no-console
-    //   console.log(`Sending email message: ${emailMessage}`);
-    //   //logger.info(`Sending email message: ${emailMessage}`);
-    //   await sesMailTransport.sendMail(emailMessage);
-    // }
+    const sendToEmail = process.env.SEND_EMAIL;
+    if (sendToEmail === 'true') {
+      // eslint-disable-next-line no-console
+      console.log(`Sending email message: ${emailMessage}`);
+      //logger.info(`Sending email message: ${emailMessage}`);
+      await sesMailTransport.sendMail(emailMessage);
+    }
     return { success: true, message: Messages.QuoteRequestSent };
-  } catch (err: any) {
+  } catch (err) {
     const errorResult = {
       success: false,
-      message: err?.message?.toString() || Messages.QuoteRequestFailed
+      message: Messages.QuoteRequestFailed
     };
     // eslint-disable-next-line no-console
     console.log(`Error sending email: ${err}`);

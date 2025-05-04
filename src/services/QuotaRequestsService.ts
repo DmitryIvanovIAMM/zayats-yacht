@@ -13,8 +13,7 @@ export default class QuotaRequestsService {
 
   public create = async (quoteRequest: QuoteRequest): Promise<QuoteRequest> => {
     try {
-      const newQuotaRequest = new QuoteRequestModel(quoteRequest);
-      return await newQuotaRequest.save();
+      return await QuoteRequestModel.create(quoteRequest);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error creating quota request:', error);

@@ -18,8 +18,6 @@ export const sendQuoteRequest = async (
 
   const emailMessage = quoteRequestUtils.getQuoteRequestEmail(quoteRequest);
   // eslint-disable-next-line no-console
-  console.log('emailMessage: ', emailMessage);
-  // eslint-disable-next-line no-console
   console.log(`emailMessage: ${emailMessage}`);
   //logger.info(`emailMessage: ${emailMessage}`);
 

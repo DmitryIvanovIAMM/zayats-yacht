@@ -32,6 +32,7 @@ import React, { ChangeEvent, MouseEvent, ReactElement, useMemo, useState } from 
 import useSWR from 'swr';
 import { DataFetcher, DataFetcherArgs, DataFetcherData, MutableTableRefObject } from './types';
 import { replaceUnderlinesInSortingState, replaceUnderlinesInFilterStates } from './filtersUtils';
+import { AppEnv } from '@/utils/appEnv';
 
 export const oddRowsGrayColor = {
   '&:nth-of-type(odd)': {
@@ -166,7 +167,7 @@ export function Table<TableData extends { _id: string }>({
     },
     getCoreRowModel: getCoreRowModel(),
     sortDescFirst: false,
-    debugTable: process.env.NODE_ENV === 'development',
+    debugTable: process.env.APP_ENV === AppEnv.DEV,
     manualFiltering: manualFiltering,
     getFilteredRowModel: manualFiltering ? undefined : getFilteredRowModel(), // needed for client-side filtering
     manualSorting: manualSorting,

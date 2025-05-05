@@ -16,10 +16,10 @@ export const removeDateOffsetFromFilters = (
 ) => {
   return allFilters.map((filter) => {
     if (dateFilterIds.includes(filter.id) && isDateValue(filter.value)) {
-      const dateOffset = filter.value.getTimezoneOffset();
+      const dateOffset = (filter?.value as Date)?.getTimezoneOffset();
       return {
         ...filter,
-        value: addMinutes(filter.value, -dateOffset)
+        value: addMinutes(filter.value as Date, -dateOffset)
       };
     }
 

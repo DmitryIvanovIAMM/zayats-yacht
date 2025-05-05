@@ -166,7 +166,7 @@ export function Table<TableData extends { _id: string }>({
     },
     getCoreRowModel: getCoreRowModel(),
     sortDescFirst: false,
-    debugTable: true,
+    debugTable: process.env.NODE_ENV === 'development',
     manualFiltering: manualFiltering,
     getFilteredRowModel: manualFiltering ? undefined : getFilteredRowModel(), // needed for client-side filtering
     manualSorting: manualSorting,

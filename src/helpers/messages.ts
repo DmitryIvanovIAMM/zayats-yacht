@@ -9,5 +9,6 @@ export enum Messages {
   FailedGetNearestShippings = 'Failed to get nearest shippings',
   FailedGetSchedules = 'Failed to get schedules',
   NotAuthenticated = 'Not authenticated',
-  NotAuthorized = 'Not authorized'
+  NotAuthorized = 'Not authorized',
+  FailedGetQuoteRequests = 'Failed to get quote requests'
 }

@@ -1,12 +1,12 @@
-import { LongActionResult, Roles } from '@/utils/types';
+import { LongActionData, LongActionResult, Roles } from '@/utils/types';
 import { getServerSession } from 'next-auth';
 import { Messages } from '@/helpers/messages';
 
-export async function withServerAuth<T>(
+export async function withServerAuth<T, D = undefined>(
   allowedRoles: Roles[],
-  serverAction: (props: T) => Promise<LongActionResult>,
-  props: T
-): Promise<LongActionResult> {
+  serverAction: (props?: T) => Promise<LongActionResult>,
+  props?: T
+): Promise<LongActionResult | LongActionData<D>> {
   const session = await getServerSession();
   // eslint-disable-next-line no-console
   console.log('session: ', session);

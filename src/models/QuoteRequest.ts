@@ -16,3 +16,10 @@ export class QuoteRequest {
 }
 
 export const QuoteRequestModel = mongoose.models?.QuoteRequest || getModelForClass(QuoteRequest);
+
+export interface QuoteRequestFrontend {
+  _id: string | null;
+  fromEmail: string;
+  receivedAt: string;
+  requestData: object;
+}

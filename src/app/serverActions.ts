@@ -9,7 +9,9 @@ import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesCont
 import { ShipsParametersFlat } from '@/models/types';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { withServerAuth } from '@/utils/auth/withServerAuth';
-import { sendQuoteRequest } from '@/controllers/EmailController';
+import { sendQuoteRequest } from '@/controllers/EmailsController';
+import { QuoteRequestFrontend } from '@/models/QuoteRequest';
+import { getQuoteRequests } from '@/controllers/QuoteRequestsController';
 
 export async function getActivePortsAction(): Promise<LongActionData<PortFrontend[]>> {
   try {
@@ -64,5 +66,33 @@ export async function sendQuoteRequestAction(
 ): Promise<LongActionResult> {
   // eslint-disable-next-line no-console
   console.log('sendQuoteRequestAction().  quoteRequest: ', quoteRequest);
-  return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
+  return await withServerAuth<QuoteRequestForm>(
+    [Roles.Admin, Roles.User],
+    sendQuoteRequest,
+    quoteRequest
+  );
+}
+
+export async function getQuoteRequestsAction(): Promise<LongActionData<QuoteRequestFrontend[]>> {
+  // eslint-disable-next-line no-console
+  console.log('getQuoteRequestsAction().  quoteRequest: ');
+
+  try {
+    const getQuoteRequestsFromDB = async (): Promise<LongActionData<QuoteRequestFrontend[]>> => {
+      const quoteRequests: QuoteRequestFrontend[] = await getQuoteRequests();
+      return {
+        success: true,
+        data: quoteRequests
+      };
+    };
+
+    return (await withServerAuth<undefined, QuoteRequestFrontend[]>(
+      [Roles.Admin],
+      getQuoteRequestsFromDB
+    )) as LongActionData<QuoteRequestFrontend[]>;
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('Error while fetching quote requests: ', error);
+    return { success: false, data: [], message: error?.message || Messages.FailedGetQuoteRequests };
+  }
 }

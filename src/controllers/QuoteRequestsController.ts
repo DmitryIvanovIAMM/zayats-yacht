@@ -5,8 +5,11 @@ export const getQuoteRequests = async () => {
 
   return quoteRequests.map((quoteRequest) => ({
     _id: quoteRequest._id.toString(),
+    fromUserId: quoteRequest?.fromUserId?.toString() || '[n/a]',
+    fromName: quoteRequest?.fromName || '[n/a]',
     fromEmail: quoteRequest.fromEmail,
     receivedAt: quoteRequest.receivedAt,
-    requestData: quoteRequest.requestData
+    requestData: quoteRequest.requestData,
+    requestObject: quoteRequest?.requestObject || {}
   }));
 };

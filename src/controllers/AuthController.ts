@@ -43,7 +43,7 @@ export const LoginOrRegister = async (user: UserFrontend) => {
   };
 };
 
-const findUserByEmail = async (email: string): Promise<User | null> => {
+export const findUserByEmail = async (email: string): Promise<User | null> => {
   const mayBeUser = await UserModel.findOne({
     email: email.toLowerCase()
   });

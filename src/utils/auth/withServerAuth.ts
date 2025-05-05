@@ -1,13 +1,15 @@
 import { LongActionData, LongActionResult, Roles } from '@/utils/types';
-import { getServerSession } from 'next-auth';
+import { getServerSession, Session } from 'next-auth';
 import { Messages } from '@/helpers/messages';
+import { findUserByEmail } from '@/controllers/AuthController';
+import { User } from '@/models/User';
 
 export async function withServerAuth<T, D = undefined>(
   allowedRoles: Roles[],
-  serverAction: (props?: T) => Promise<LongActionResult>,
+  serverAction: (props?: T, user?: User | null) => Promise<LongActionResult>,
   props?: T
 ): Promise<LongActionResult | LongActionData<D>> {
-  const session = await getServerSession();
+  const session: Session | null = await getServerSession();
   // eslint-disable-next-line no-console
   console.log('session: ', session);
   if (!session) {
@@ -20,7 +22,10 @@ export async function withServerAuth<T, D = undefined>(
   }
 
   try {
-    return await serverAction(props);
+    const adminUser = await findUserByEmail(session?.user?.email as string);
+    if (!adminUser) return { success: false, message: Messages.UserNotFound };
+
+    return await serverAction(props, adminUser);
   } catch (error: any) {
     return { success: false, message: error?.message || Messages.NotAuthenticated };
   }

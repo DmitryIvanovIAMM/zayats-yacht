@@ -1,5 +1,3 @@
-import mongoose from 'mongoose';
-
 export interface PortFrontend {
   _id: string | null;
   portName: string;
@@ -10,5 +8,5 @@ export const portFrontendFields = ['_id', 'portName', 'destinationName', 'imageF
 
 export interface Destination {
   destinationName: string;
-  ports: { _id: mongoose.Types.ObjectId; portName: string }[];
+  ports: { _id: string; portName: string }[];
 }

@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose';
+import { models, Types } from 'mongoose';
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({
@@ -6,7 +6,7 @@ import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 })
 export class Ship {
   @prop({ required: true })
-  _id: mongoose.Types.ObjectId;
+  _id: Types.ObjectId;
   @prop({ required: true })
   name: string;
   @prop({ required: true })
@@ -25,4 +25,4 @@ export class Ship {
   callSign: string;
 }
 
-export const ShipModel = mongoose.models?.Ship || getModelForClass(Ship);
+export const ShipModel = models?.Ship || getModelForClass(Ship);

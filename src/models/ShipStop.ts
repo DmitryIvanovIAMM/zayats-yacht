@@ -1,4 +1,4 @@
-import mongoose, { Types } from 'mongoose';
+import { models, Types } from 'mongoose';
 import { Port } from '@/models/Port';
 import { Ship } from '@/models/Ship';
 import { Sailing } from '@/models/Sailing';
@@ -33,4 +33,4 @@ export class ShipStop {
   sailing?: Sailing;
 }
 
-export const ShipStopModel = mongoose.models?.ShipStop || getModelForClass(ShipStop);
+export const ShipStopModel = models?.ShipStop || getModelForClass(ShipStop);

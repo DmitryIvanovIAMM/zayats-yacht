@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose';
+import { models, Types } from 'mongoose';
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({
@@ -6,9 +6,9 @@ import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 })
 export class QuoteRequest {
   @prop({ required: true })
-  _id: mongoose.Types.ObjectId;
+  _id: Types.ObjectId;
   @prop({ required: true })
-  fromUserId: mongoose.Types.ObjectId;
+  fromUserId: Types.ObjectId;
   @prop({ required: true })
   fromName: string;
   @prop({ required: true })
@@ -21,4 +21,4 @@ export class QuoteRequest {
   requestObject: object;
 }
 
-export const QuoteRequestModel = mongoose.models?.QuoteRequest || getModelForClass(QuoteRequest);
+export const QuoteRequestModel = models?.QuoteRequest || getModelForClass(QuoteRequest);

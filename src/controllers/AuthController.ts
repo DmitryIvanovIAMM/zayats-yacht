@@ -1,6 +1,7 @@
 'use server';
 
-import { User, UserFrontend, userFrontendFields, UserModel } from '@/models/User';
+import { User, UserModel } from '@/models/User';
+import { UserFrontend, userFrontendFields } from '@/models/UserFrontend';
 import * as bcrypt from 'bcryptjs';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';

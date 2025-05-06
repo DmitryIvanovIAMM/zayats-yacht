@@ -1,12 +1,12 @@
-import * as mongoose from 'mongoose';
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
+import { models, Types } from 'mongoose';
 
 @modelOptions({
   schemaOptions: { timestamps: true, collection: 'ports' }
 })
 export class Port {
   @prop({ required: true })
-  _id: mongoose.Types.ObjectId;
+  _id: Types.ObjectId;
 
   @prop({ required: true })
   portName: string;
@@ -18,4 +18,4 @@ export class Port {
   imageFileName: string;
 }
 
-export const PortModel = mongoose.models?.Port || getModelForClass(Port);
+export const PortModel = models?.Port || getModelForClass(Port);

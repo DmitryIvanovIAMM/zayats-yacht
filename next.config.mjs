@@ -16,6 +16,8 @@ const nextConfig = {
     silenceDeprecations: ['legacy-js-api']
   },
   webpack: (config) => {
+    // https://typegoose.github.io/typegoose/docs/guides/known-issues
+    // without this typegoose will create models and collections with minified names
     config.optimization.minimize = false;
     return config;
   }

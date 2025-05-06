@@ -1,7 +1,7 @@
 'use server';
 
 import { getActivePorts } from '@/controllers/PortsController';
-import { LongActionData, LongActionResult, Roles } from '@/utils/types';
+import { LongActionData, LongActionResult, LongActionTableData, Roles } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
@@ -69,26 +69,30 @@ export async function sendQuoteRequestAction(
   return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }
 
-export async function getQuoteRequestsAction(): Promise<LongActionData<QuoteRequestFrontend[]>> {
+export async function getQuoteRequestsAction(): Promise<LongActionTableData<QuoteRequestFrontend>> {
   // eslint-disable-next-line no-console
-  console.log('getQuoteRequestsAction().  quoteRequest: ');
+  console.log('getQuoteRequestsAction().');
 
   try {
-    const getQuoteRequestsFromDB = async (): Promise<LongActionData<QuoteRequestFrontend[]>> => {
-      const quoteRequests: QuoteRequestFrontend[] = await getQuoteRequests();
+    const getQuoteRequestsFromDB = async (): Promise<LongActionTableData<QuoteRequestFrontend>> => {
+      const quoteRequests = await getQuoteRequests();
       return {
         success: true,
         data: quoteRequests
       };
     };
 
-    return (await withServerAuth<QuoteRequestFrontend[]>(
+    return (await withServerAuth<QuoteRequestFrontend>(
       [Roles.Admin],
       getQuoteRequestsFromDB
-    )) as LongActionData<QuoteRequestFrontend[]>;
+    )) as LongActionTableData<QuoteRequestFrontend>;
   } catch (error: any) {
     // eslint-disable-next-line no-console
     console.log('Error while fetching quote requests: ', error);
-    return { success: false, data: [], message: error?.message || Messages.FailedGetQuoteRequests };
+    return {
+      success: false,
+      data: { data: [], total: 0 },
+      message: error?.message || Messages.FailedGetQuoteRequests
+    };
   }
 }

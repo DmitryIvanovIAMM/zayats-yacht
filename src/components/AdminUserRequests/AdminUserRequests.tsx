@@ -2,22 +2,30 @@
 
 import { useQuoteRequests } from '@/components/AdminUserRequests/useQuoteRequests';
 import { useEffect } from 'react';
+import { useUserQuoteRequestsColumns } from '@/components/AdminUserRequests/useUserQuoteRequestsColumns';
+import { Table } from '@/components/Table/Table';
+import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 
 export const AdminUserRequests = () => {
   // eslint-disable-next-line no-console
   console.log('AdminUserRequests()');
   const { quoteRequestsState, getQuoteRequests } = useQuoteRequests();
 
+  const columnDefs = useUserQuoteRequestsColumns();
+
   useEffect(() => {
     getQuoteRequests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // eslint-disable-next-line no-console
-  console.log('quoteRequestsState: ', quoteRequestsState);
 
   return (
     <div>
-      <h1>User Requests</h1>
+      <h2>User Requests</h2>
+      <Table<QuoteRequestFrontend>
+        columnDefs={columnDefs}
+        data={quoteRequestsState.data}
+        isLoading={quoteRequestsState.isLoading}
+      />
     </div>
   );
 };

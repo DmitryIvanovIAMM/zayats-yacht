@@ -1,5 +1,5 @@
 export interface QuoteRequestFrontend {
-  _id: string | null;
+  _id: string;
   fromUserId: string;
   fromName: string;
   fromEmail: string;

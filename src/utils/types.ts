@@ -9,6 +9,15 @@ export interface LongActionData<T> {
   message?: string;
 }
 
+export interface LongActionTableData<T> {
+  success: boolean;
+  data: {
+    data: T[];
+    total: number;
+  };
+  message?: string;
+}
+
 export interface LongActionResult {
   success: boolean;
   message?: string;

@@ -1,5 +1,5 @@
 import { models, Types } from 'mongoose';
-import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({
   options: { customName: 'Sailing' },

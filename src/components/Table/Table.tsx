@@ -29,9 +29,7 @@ import {
 } from '@tanstack/react-table';
 import uniq from 'lodash/uniq';
 import React, { ChangeEvent, MouseEvent, ReactElement, useMemo, useState } from 'react';
-import useSWR from 'swr';
-import { DataFetcher, DataFetcherArgs, DataFetcherData, MutableTableRefObject } from './types';
-import { replaceUnderlinesInSortingState, replaceUnderlinesInFilterStates } from './filtersUtils';
+import { MutableTableRefObject } from './types';
 import { AppEnv } from '@/utils/appEnv';
 
 export const oddRowsGrayColor = {
@@ -41,9 +39,11 @@ export const oddRowsGrayColor = {
 };
 
 interface TableProps<TableData extends { _id: string }> extends MutableTableRefObject<TableData> {
-  dataFetcherUrl: string;
+  //dataFetcherUrl: string;
+  data: any;
+  isLoading: boolean;
   columnDefs: ColumnDef<TableData, string>[];
-  dataFetcher: DataFetcher<TableData>;
+  //dataFetcher: DataFetcher<TableData>;
   noDataText?: string;
   initialPageSize?: number;
   initialFilters?: ColumnFiltersState;
@@ -63,14 +63,11 @@ const getRowsLabel = ({ from, to, count }: { from: number; to: number; count: nu
 export const rowsPerPageOptions = [10, 50, 100];
 
 /**
- * @param tableRef - ref to table. Object which has some useful functions, like refetchTableData
  * @param columnDefs - column definitions created with [columnHelpers](https://tanstack.com/table/v8/docs/guide/column-defs#column-helpers)
- * @param dataFetcher - function which will be passed to [useSwr](https://swr.vercel.app/) and will return table data.
+ * @param data - data to show in the table, should be in the format:
+ * `{ data: [], total: 0 }`
  * Function will receive all needed arguments (e.g. pagination related data, filtering related data, etc.)
- * @param dataFetcherUrl - base url for fetching the data **without** search params.
- * **Correct:** `/schools`
- * **Incorrect:** `/schools?page=0` - pagination and search variables will be passed to fetcher function as argument
- * and can be easily used after, e.g. with axios `params`: apiService.get(url, params)
+ * @param isLoading - show that data is loading just now.
  * @param noDataText - text to show when there is no data
  * @param initialPageSize - how many items to show on each page.
  * @param initialFilters - initial filter to apply
@@ -82,11 +79,10 @@ export const rowsPerPageOptions = [10, 50, 100];
  * @param stripedRows - if true, odd rows will have gray background
  */
 export function Table<TableData extends { _id: string }>({
-  tableRef,
   columnDefs,
-  dataFetcher,
+  data,
+  isLoading,
   noDataText = 'No Records...',
-  dataFetcherUrl,
   initialPageSize = 50,
   initialFilters = [],
   initialSortBy = [],
@@ -102,32 +98,6 @@ export function Table<TableData extends { _id: string }>({
   });
   const [columnFiltersState, setColumnFilters] = useState<ColumnFiltersState>(initialFilters);
   const [sortingState, setSortingState] = useState<SortingState>(initialSortBy);
-
-  const { data, isLoading, mutate } = useSWR<
-    DataFetcherData<TableData>,
-    undefined,
-    DataFetcherArgs
-  >(
-    {
-      url: dataFetcherUrl,
-      pagination: { pageIndex, pageSize },
-      columnFilters: manualFiltering ? replaceUnderlinesInFilterStates(columnFiltersState) : [],
-      sorting: manualSorting ? replaceUnderlinesInSortingState(sortingState) : []
-    },
-    dataFetcher
-  );
-
-  if (tableRef) {
-    tableRef.current = {
-      refetchTableData: mutate,
-      dataFetcherArgs: {
-        url: dataFetcherUrl,
-        pagination: { pageIndex, pageSize },
-        columnFilters: replaceUnderlinesInFilterStates(columnFiltersState),
-        sorting: replaceUnderlinesInSortingState(sortingState)
-      }
-    };
-  }
 
   const total = data?.total ?? 0;
   const rowPerPageOptions = uniq([initialPageSize, ...rowsPerPageOptions]).sort((a, b) => a - b);

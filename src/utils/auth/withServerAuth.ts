@@ -1,4 +1,4 @@
-import { LongActionData, LongActionResult, Roles } from '@/utils/types';
+import { LongActionData, LongActionResult, LongActionTableData, Roles } from '@/utils/types';
 import { getServerSession, Session } from 'next-auth';
 import { Messages } from '@/helpers/messages';
 import { findUserByEmail } from '@/controllers/AuthController';
@@ -8,7 +8,7 @@ export async function withServerAuth<D = undefined>(
   allowedRoles: Roles[],
   serverAction: (user: User, props: any) => Promise<LongActionResult>,
   props: any = {}
-): Promise<LongActionResult | LongActionData<D>> {
+): Promise<LongActionResult | LongActionData<D> | LongActionTableData<D>> {
   const session: Session | null = await getServerSession();
   // eslint-disable-next-line no-console
   console.log('session: ', session);

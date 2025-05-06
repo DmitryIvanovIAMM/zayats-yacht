@@ -11,8 +11,8 @@ import { quoteRequestService } from '@/services/QuoteRequestsService';
 import { User } from '@/models/User';
 
 export const sendQuoteRequest = async (
-  quoteRequest: QuoteRequestForm,
-  adminUser: User
+  adminUser: User,
+  quoteRequest: QuoteRequestForm
 ): Promise<LongActionResult> => {
   // eslint-disable-next-line no-console
   console.log(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);

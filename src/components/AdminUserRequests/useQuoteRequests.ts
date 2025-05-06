@@ -21,7 +21,7 @@ export const useQuoteRequests = () => {
   const [quoteRequestsState, setQuoteRequestsState] =
     useState<QuoteRequestsState>(defaultQuoteRequestState);
 
-  const getQuoteRequests = async () => {
+  const getQuoteRequests = async (): Promise<void> => {
     setQuoteRequestsState((state) => ({ ...state, isLoading: true }));
 
     try {
@@ -43,10 +43,10 @@ export const useQuoteRequests = () => {
       setQuoteRequestsState({
         quoteRequests: [],
         isLoading: false,
-        error: c
+        error: error?.message || Messages.QuoteRequestFailed
       });
     }
   };
 
-  return [quoteRequestsState, getQuoteRequests];
+  return { quoteRequestsState, getQuoteRequests };
 };

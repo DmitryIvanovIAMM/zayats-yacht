@@ -66,11 +66,7 @@ export async function sendQuoteRequestAction(
 ): Promise<LongActionResult> {
   // eslint-disable-next-line no-console
   console.log('sendQuoteRequestAction().  quoteRequest: ', quoteRequest);
-  return await withServerAuth<QuoteRequestForm>(
-    [Roles.Admin, Roles.User],
-    sendQuoteRequest,
-    quoteRequest
-  );
+  return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }
 
 export async function getQuoteRequestsAction(): Promise<LongActionData<QuoteRequestFrontend[]>> {
@@ -86,7 +82,7 @@ export async function getQuoteRequestsAction(): Promise<LongActionData<QuoteRequ
       };
     };
 
-    return (await withServerAuth<undefined, QuoteRequestFrontend[]>(
+    return (await withServerAuth<QuoteRequestFrontend[]>(
       [Roles.Admin],
       getQuoteRequestsFromDB
     )) as LongActionData<QuoteRequestFrontend[]>;

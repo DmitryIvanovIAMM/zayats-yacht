@@ -4,10 +4,10 @@ import { Messages } from '@/helpers/messages';
 import { findUserByEmail } from '@/controllers/AuthController';
 import { User } from '@/models/User';
 
-export async function withServerAuth<T, D = undefined>(
+export async function withServerAuth<D = undefined>(
   allowedRoles: Roles[],
-  serverAction: (props?: T, user?: User | null) => Promise<LongActionResult>,
-  props?: T
+  serverAction: (user: User, props: any) => Promise<LongActionResult>,
+  props: any = {}
 ): Promise<LongActionResult | LongActionData<D>> {
   const session: Session | null = await getServerSession();
   // eslint-disable-next-line no-console
@@ -25,7 +25,7 @@ export async function withServerAuth<T, D = undefined>(
     const adminUser = await findUserByEmail(session?.user?.email as string);
     if (!adminUser) return { success: false, message: Messages.UserNotFound };
 
-    return await serverAction(props, adminUser);
+    return await serverAction(adminUser, props);
   } catch (error: any) {
     return { success: false, message: error?.message || Messages.NotAuthenticated };
   }

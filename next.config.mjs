@@ -14,6 +14,10 @@ const nextConfig = {
     // temporary silent warning for legacy-js-api
     // https://github.com/vercel/next.js/issues/71638
     silenceDeprecations: ['legacy-js-api']
+  },
+  webpack: (config) => {
+    config.optimization.minimize = false;
+    return config;
   }
 };
 

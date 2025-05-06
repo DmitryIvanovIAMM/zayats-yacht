@@ -1,7 +1,7 @@
 import { getQuoteRequestsAction } from '@/app/serverActions';
 import { useState } from 'react';
 import { LongActionData } from '@/utils/types';
-import { QuoteRequestFrontend } from '@/models/QuoteRequest';
+import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { Messages } from '@/helpers/messages';
 import { showNotification } from '@/modules/notifications/notificatios';
 

@@ -26,15 +26,3 @@ export class Ship {
 }
 
 export const ShipModel = mongoose.models?.Ship || getModelForClass(Ship);
-
-export const shipFields = [
-  '_id',
-  'name',
-  'type',
-  'builder',
-  'flag',
-  'homePort',
-  'class',
-  'imoNo',
-  'callSign'
-];

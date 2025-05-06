@@ -16,10 +16,3 @@ export class Sailing {
 }
 
 export const SailingModel = mongoose.models?.Sailing || getModelForClass(Sailing);
-
-export interface SailingFrontend {
-  _id: string | null;
-  name: string;
-}
-
-export const sailingFrontendFields = ['_id', 'name'];

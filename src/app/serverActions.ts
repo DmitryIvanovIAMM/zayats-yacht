@@ -2,15 +2,15 @@
 
 import { getActivePorts } from '@/controllers/PortsController';
 import { LongActionData, LongActionResult, Roles } from '@/utils/types';
-import { PortFrontend } from '@/models/Port';
+import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
-import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
 import { ShipsParametersFlat } from '@/models/types';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
-import { QuoteRequestFrontend } from '@/models/QuoteRequest';
+import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { getQuoteRequests } from '@/controllers/QuoteRequestsController';
 
 export async function getActivePortsAction(): Promise<LongActionData<PortFrontend[]>> {

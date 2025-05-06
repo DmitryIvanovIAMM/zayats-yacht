@@ -3,6 +3,7 @@ import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 import { Roles } from '@/utils/types';
 
 @modelOptions({
+  options: { customName: 'User' },
   schemaOptions: { timestamps: true, collection: 'users' }
 })
 export class User {

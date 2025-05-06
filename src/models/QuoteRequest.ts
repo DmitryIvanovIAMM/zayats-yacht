@@ -2,7 +2,7 @@ import { models, Types } from 'mongoose';
 import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
 
 @modelOptions({
-  options: { allowMixed: Severity.ALLOW },
+  options: { allowMixed: Severity.ALLOW, customName: 'QuoteRequest' },
   schemaOptions: { timestamps: true, collection: 'quoterequests' }
 })
 export class QuoteRequest {

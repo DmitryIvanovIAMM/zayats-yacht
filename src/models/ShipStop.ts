@@ -5,7 +5,7 @@ import { Sailing } from '@/models/Sailing';
 import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
 
 @modelOptions({
-  options: { allowMixed: Severity.ALLOW },
+  options: { allowMixed: Severity.ALLOW, customName: 'ShipStop' },
   schemaOptions: { timestamps: true, collection: 'shipstops' }
 })
 export class ShipStop {

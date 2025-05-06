@@ -2,6 +2,7 @@ import { models, Types } from 'mongoose';
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({
+  options: { customName: 'Ship' },
   schemaOptions: { timestamps: true, collection: 'ships' }
 })
 export class Ship {

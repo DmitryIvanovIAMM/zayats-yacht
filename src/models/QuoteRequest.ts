@@ -1,7 +1,8 @@
 import { models, Types } from 'mongoose';
-import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions, Severity } from '@typegoose/typegoose';
 
 @modelOptions({
+  options: { allowMixed: Severity.ALLOW },
   schemaOptions: { timestamps: true, collection: 'quoterequests' }
 })
 export class QuoteRequest {

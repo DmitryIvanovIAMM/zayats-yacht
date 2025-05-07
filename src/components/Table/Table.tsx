@@ -95,7 +95,6 @@ export function Table<TableData extends { _id: string }>({
   getRowStyles = () => ({}),
   stripedRows = true
 }: TableProps<TableData>) {
-  console.log('manualSorting: ', manualSorting);
   const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: initialPageSize
@@ -115,8 +114,8 @@ export function Table<TableData extends { _id: string }>({
   );
 
   const sorting = useMemo(() => sortingState, [sortingState]);
-  console.log('sorting:', sorting);
   const columnFilters = useMemo(() => columnFiltersState, [columnFiltersState]);
+  console.log(columnFilters, columnFilters);
   const tableData = useMemo(() => {
     return data?.data ?? [];
   }, [data?.data]);
@@ -174,7 +173,7 @@ export function Table<TableData extends { _id: string }>({
     //fetchData,
     pagination.pageIndex,
     pagination.pageSize,
-    // columnFilters,
+    columnFilters,
     sorting
     // manualFiltering,
     // manualSorting
@@ -199,7 +198,7 @@ export function Table<TableData extends { _id: string }>({
               return (
                 <TableRow
                   key={headerGroup.id}
-                  sx={{ borderTop: '1px solid rgba(224, 224, 224, 1)', background: '#F5F6FA' }}
+                  sx={{ borderTop: '1px solid rgba(224, 224, 224, 1)', background: '#ecf9f2' }}
                 >
                   {headerGroup.headers.map((header) => {
                     const headerLabel = header.column.columnDef.header;

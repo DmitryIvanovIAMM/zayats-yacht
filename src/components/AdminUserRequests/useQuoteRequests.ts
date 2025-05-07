@@ -28,7 +28,6 @@ export const useQuoteRequests = () => {
     useState<QuoteRequestsState>(defaultQuoteRequestState);
 
   const getQuoteRequests = async (dataFetcherArgs: DataFetcherArgs): Promise<void> => {
-    console.log('getQuoteRequests().  dataFetcherArgs: ', dataFetcherArgs);
     setQuoteRequestsState((state) => ({ ...state, isLoading: true }));
 
     const { pagination, sorting, columnFilters } = dataFetcherArgs;
@@ -36,10 +35,10 @@ export const useQuoteRequests = () => {
       page: pagination.pageIndex,
       perPage: pagination.pageSize,
       sortBy: mapReactTableSortToApiSort(sorting ?? []),
-      ...getFiltersQueryParameters(removeDateOffsetFromFilters(columnFilters, ['receivedAt']))
+      filters: {
+        ...getFiltersQueryParameters(removeDateOffsetFromFilters(columnFilters, ['receivedAt']))
+      }
     };
-    // eslint-disable-next-line no-console
-    console.log('backendFetchParams: ', backendFetchParams);
 
     try {
       const result: ActionTableData<QuoteRequestFrontend> =

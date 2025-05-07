@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
 
 export const useUserQuoteRequestsColumns = () => {
   return useMemo(() => {
@@ -10,46 +11,46 @@ export const useUserQuoteRequestsColumns = () => {
         _id: 'fromName',
         header: 'From Name',
         accessor: 'fromName',
-        accessorKey: 'firstName',
-        enableColumnFilter: false,
-        enableSorting: true,
+        accessorKey: 'fromName',
         cell: ({ row }: { row: any }) => (
           <div data-testid="quote-request-from-name">{row.original.fromName}</div>
         ),
         meta: {
-          columnSx: { verticalAlign: 'top' }
+          columnSx: { verticalAlign: 'top' },
+          filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
       {
         header: 'From Email',
         accessor: 'fromEmail',
         accessorKey: 'fromEmail',
-        enableSorting: true,
         cell: ({ row }: { row: any }) => (
           <div data-testid="quote-request-from-email">
             <a href={`mailto:${row.original.fromEmail}`}>{row.original.fromEmail}</a>
           </div>
         ),
         meta: {
-          columnSx: { verticalAlign: 'top' }
+          columnSx: { verticalAlign: 'top' },
+          filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
       {
         header: 'Received At',
         accessor: 'receivedAt',
         accessorKey: 'receivedAt',
-        enableSorting: true,
         cell: ({ row }: { row: any }) => (
           <div data-testid="quote-request-received-at">{row.original.receivedAt}</div>
         ),
         meta: {
-          columnSx: { verticalAlign: 'top' }
+          columnSx: { verticalAlign: 'top' },
+          filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
       {
         header: 'Request',
         accessor: 'requestObject',
         enableSorting: false,
+        enableColumnFilter: false,
         cell: ({ row }: { row: any }) => {
           // eslint-disable-next-line react-hooks/rules-of-hooks
           const [isExpanded, setIsExpanded] = useState(false);

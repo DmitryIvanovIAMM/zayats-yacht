@@ -51,3 +51,9 @@ export const replaceUnderlinesInSortingState = (sortingState: SortingState) => {
     };
   });
 };
+
+export const mapReactTableSortToApiSort = (sortItems: SortingState) => {
+  return sortItems.map((sortItem) => {
+    return `${sortItem.id}.${sortItem.desc ? 'desc' : 'asc'}`;
+  });
+};

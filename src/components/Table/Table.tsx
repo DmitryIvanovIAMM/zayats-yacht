@@ -28,8 +28,8 @@ import {
   getFacetedUniqueValues
 } from '@tanstack/react-table';
 import uniq from 'lodash/uniq';
-import React, { ChangeEvent, MouseEvent, ReactElement, useMemo, useState } from 'react';
-import { MutableTableRefObject } from './types';
+import React, { ChangeEvent, MouseEvent, ReactElement, useMemo, useState, useEffect } from 'react';
+import { DataFetcherArgs, MutableTableRefObject } from './types';
 import { AppEnv } from '@/utils/appEnv';
 
 export const oddRowsGrayColor = {
@@ -42,6 +42,7 @@ interface TableProps<TableData extends { _id: string }> extends MutableTableRefO
   //dataFetcherUrl: string;
   data: any;
   isLoading: boolean;
+  fetchData: (dataFetcherArgs: DataFetcherArgs) => void;
   columnDefs: ColumnDef<TableData, string>[];
   //dataFetcher: DataFetcher<TableData>;
   noDataText?: string;
@@ -68,6 +69,7 @@ export const rowsPerPageOptions = [10, 50, 100];
  * `{ data: [], total: 0 }`
  * Function will receive all needed arguments (e.g. pagination related data, filtering related data, etc.)
  * @param isLoading - show that data is loading just now.
+ * @param fetchData - the functions to update table data
  * @param noDataText - text to show when there is no data
  * @param initialPageSize - how many items to show on each page.
  * @param initialFilters - initial filter to apply
@@ -82,6 +84,7 @@ export function Table<TableData extends { _id: string }>({
   columnDefs,
   data,
   isLoading,
+  fetchData,
   noDataText = 'No Records...',
   initialPageSize = 50,
   initialFilters = [],
@@ -153,6 +156,26 @@ export function Table<TableData extends { _id: string }>({
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     table.setPageSize(Number(event.target.value));
   };
+
+  useEffect(() => {
+    // for PaginationTypes.ClientSide used to store filters state if fetchData is provided
+    // for PaginationTypes.ServerSide used to fetch data
+    if (fetchData) {
+      fetchData({
+        pagination,
+        filters: columnFilters,
+        sortBy: sorting
+      });
+    }
+  }, [
+    //fetchData,
+    pagination.pageIndex,
+    pagination.pageSize
+    // columnFilters,
+    // sorting,
+    // manualFiltering,
+    // manualSorting
+  ]);
   const tableBodyProps = isLoading
     ? {
         role: 'progressbar',

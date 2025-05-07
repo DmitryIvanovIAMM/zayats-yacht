@@ -4,6 +4,12 @@ import { ActionTableData, emptyTableData, TableData } from '@/utils/types';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { Messages } from '@/helpers/messages';
 import { showNotification } from '@/modules/notifications/notificatios';
+import { DataFetcherArgs } from '@/components/Table/types';
+import {
+  getFiltersQueryParameters,
+  mapReactTableSortToApiSort,
+  removeDateOffsetFromFilters
+} from '@/components/Table/tableUtils';
 
 export interface QuoteRequestsState {
   data: TableData<QuoteRequestFrontend>;
@@ -21,11 +27,23 @@ export const useQuoteRequests = () => {
   const [quoteRequestsState, setQuoteRequestsState] =
     useState<QuoteRequestsState>(defaultQuoteRequestState);
 
-  const getQuoteRequests = async (): Promise<void> => {
+  const getQuoteRequests = async (dataFetcherArgs: DataFetcherArgs): Promise<void> => {
+    console.log('getQuoteRequests().  dataFetcherArgs: ', dataFetcherArgs);
     setQuoteRequestsState((state) => ({ ...state, isLoading: true }));
 
+    const { pagination, sorting, columnFilters } = dataFetcherArgs;
+    const backendFetchParams = {
+      page: pagination.pageIndex,
+      perPage: pagination.pageSize,
+      sortBy: mapReactTableSortToApiSort(sorting ?? []),
+      ...getFiltersQueryParameters(removeDateOffsetFromFilters(columnFilters || [], ['receivedAt']))
+    };
+    // eslint-disable-next-line no-console
+    console.log('backendFetchParams: ', backendFetchParams);
+
     try {
-      const result: ActionTableData<QuoteRequestFrontend> = await getQuoteRequestsAction();
+      const result: ActionTableData<QuoteRequestFrontend> =
+        await getQuoteRequestsAction(backendFetchParams);
       if (!result.success) {
         showNotification(false, result?.message || Messages.QuoteRequestFailed, true);
       }

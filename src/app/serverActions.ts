@@ -1,6 +1,7 @@
 'use server';
 
 import { getActivePorts } from '@/controllers/PortsController';
+import { User } from '@/models/User';
 import { ActionData, ActionResult, ActionTableData, emptyTableData, Roles } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
@@ -12,6 +13,7 @@ import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { getQuoteRequests } from '@/controllers/QuoteRequestsController';
+import { BackendDataFetchArgs } from '@/components/Table/types';
 
 export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -69,13 +71,18 @@ export async function sendQuoteRequestAction(
   return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }
 
-export async function getQuoteRequestsAction(): Promise<ActionTableData<QuoteRequestFrontend>> {
+export async function getQuoteRequestsAction(
+  fetchParams: BackendDataFetchArgs
+): Promise<ActionTableData<QuoteRequestFrontend>> {
   // eslint-disable-next-line no-console
-  console.log('getQuoteRequestsAction().');
+  console.log('getQuoteRequestsAction().  fetchParams: ', fetchParams);
 
   try {
-    const getQuoteRequestsFromDB = async (): Promise<ActionTableData<QuoteRequestFrontend>> => {
-      const quoteRequests = await getQuoteRequests();
+    const getQuoteRequestsFromDB = async (
+      user: User,
+      fetchParams: BackendDataFetchArgs
+    ): Promise<ActionTableData<QuoteRequestFrontend>> => {
+      const quoteRequests = await getQuoteRequests(fetchParams);
       return {
         success: true,
         data: quoteRequests
@@ -84,7 +91,8 @@ export async function getQuoteRequestsAction(): Promise<ActionTableData<QuoteReq
 
     return (await withServerAuth<QuoteRequestFrontend>(
       [Roles.Admin],
-      getQuoteRequestsFromDB
+      getQuoteRequestsFromDB,
+      fetchParams
     )) as ActionTableData<QuoteRequestFrontend>;
   } catch (error: any) {
     // eslint-disable-next-line no-console

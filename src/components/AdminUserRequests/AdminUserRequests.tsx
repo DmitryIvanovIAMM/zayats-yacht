@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useUserQuoteRequestsColumns } from '@/components/AdminUserRequests/useUserQuoteRequestsColumns';
 import { Table } from '@/components/Table/Table';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
+import { initialDataFetcherArgs } from '@/components/Table/types';
 
 export const AdminUserRequests = () => {
   // eslint-disable-next-line no-console
@@ -13,11 +14,6 @@ export const AdminUserRequests = () => {
 
   const columnDefs = useUserQuoteRequestsColumns();
 
-  useEffect(() => {
-    getQuoteRequests();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div>
       <h2>User Requests</h2>
@@ -25,6 +21,7 @@ export const AdminUserRequests = () => {
         columnDefs={columnDefs}
         data={quoteRequestsState.data}
         isLoading={quoteRequestsState.isLoading}
+        fetchData={getQuoteRequests}
       />
     </div>
   );

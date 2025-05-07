@@ -115,7 +115,6 @@ export function Table<TableData extends { _id: string }>({
 
   const sorting = useMemo(() => sortingState, [sortingState]);
   const columnFilters = useMemo(() => columnFiltersState, [columnFiltersState]);
-  console.log(columnFilters, columnFilters);
   const tableData = useMemo(() => {
     return data?.data ?? [];
   }, [data?.data]);
@@ -169,15 +168,9 @@ export function Table<TableData extends { _id: string }>({
         sorting
       });
     }
-  }, [
-    //fetchData,
-    pagination.pageIndex,
-    pagination.pageSize,
-    columnFilters,
-    sorting
-    // manualFiltering,
-    // manualSorting
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pagination.pageIndex, pagination.pageSize, columnFilters, sorting]);
+
   const tableBodyProps = isLoading
     ? {
         role: 'progressbar',

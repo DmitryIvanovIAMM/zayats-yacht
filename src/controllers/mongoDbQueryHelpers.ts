@@ -22,13 +22,17 @@ export const getFiltersQuery = (filters: FiltersFromQuery, regexOptions = ''): F
       .reduce((acc, [filterKey, filter]) => {
         // do not touch dates
         if (new Date(parseInt(filter as string)).toString() !== INVALID_DATE) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
           acc[filterKey] = {
             $regex: filter,
             $options: regexOptions
           };
         } else {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
           acc[filterKey] = {
-            $regex: new RegExp('\\b' + sanitizeRegularExpression(filter)),
+            $regex: new RegExp('\\b' + sanitizeRegularExpression(filter as string)),
             $options: regexOptions
           };
         }

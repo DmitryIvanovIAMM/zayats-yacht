@@ -7,8 +7,6 @@ import {
 } from '@/controllers/mongoDbQueryHelpers';
 
 export const getQuoteRequests = async (fetchParams: BackendDataFetchArgs) => {
-  console.log('getQuoteRequests().  fetchParams: ', fetchParams);
-
   const { fromName, fromEmail, receivedAt } = fetchParams?.filters ? fetchParams.filters : {};
   const { page, perPage } = fetchParams;
 
@@ -23,7 +21,6 @@ export const getQuoteRequests = async (fetchParams: BackendDataFetchArgs) => {
   const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'receivedAt.desc');
 
   const query = { ...filters };
-  console.log('query: ', query);
 
   const totalPromise = QuoteRequestModel.countDocuments(query);
   const quoteRequestsPromise = QuoteRequestModel.find(query)
@@ -33,7 +30,6 @@ export const getQuoteRequests = async (fetchParams: BackendDataFetchArgs) => {
     .limit(perPage);
 
   const [quoteRequests, total] = await Promise.all([quoteRequestsPromise, totalPromise]);
-  console.log('total: ', total);
 
   const quoteRequestsFrontend = quoteRequests.map((quoteRequest) => ({
     _id: quoteRequest._id.toString(),
@@ -44,7 +40,6 @@ export const getQuoteRequests = async (fetchParams: BackendDataFetchArgs) => {
     requestData: quoteRequest.requestData,
     requestObject: quoteRequest?.requestObject || {}
   }));
-  console.log('quoteRequestsFrontend[0]: ', quoteRequestsFrontend[0]);
 
   return {
     data: quoteRequestsFrontend,

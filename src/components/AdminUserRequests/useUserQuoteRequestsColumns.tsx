@@ -7,8 +7,11 @@ export const useUserQuoteRequestsColumns = () => {
   return useMemo(() => {
     return [
       {
+        _id: 'fromName',
         header: 'From Name',
         accessor: 'fromName',
+        accessorKey: 'firstName',
+        enableColumnFilter: false,
         enableSorting: true,
         cell: ({ row }: { row: any }) => (
           <div data-testid="quote-request-from-name">{row.original.fromName}</div>
@@ -20,8 +23,9 @@ export const useUserQuoteRequestsColumns = () => {
       {
         header: 'From Email',
         accessor: 'fromEmail',
+        accessorKey: 'fromEmail',
         enableSorting: true,
-        cell: ({ row }) => (
+        cell: ({ row }: { row: any }) => (
           <div data-testid="quote-request-from-email">
             <a href={`mailto:${row.original.fromEmail}`}>{row.original.fromEmail}</a>
           </div>
@@ -33,8 +37,9 @@ export const useUserQuoteRequestsColumns = () => {
       {
         header: 'Received At',
         accessor: 'receivedAt',
+        accessorKey: 'receivedAt',
         enableSorting: true,
-        cell: ({ row }) => (
+        cell: ({ row }: { row: any }) => (
           <div data-testid="quote-request-received-at">{row.original.receivedAt}</div>
         ),
         meta: {
@@ -44,8 +49,8 @@ export const useUserQuoteRequestsColumns = () => {
       {
         header: 'Request',
         accessor: 'requestObject',
-        enableSorting: true,
-        cell: ({ row }) => {
+        enableSorting: false,
+        cell: ({ row }: { row: any }) => {
           // eslint-disable-next-line react-hooks/rules-of-hooks
           const [isExpanded, setIsExpanded] = useState(false);
 

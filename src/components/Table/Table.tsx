@@ -95,6 +95,7 @@ export function Table<TableData extends { _id: string }>({
   getRowStyles = () => ({}),
   stripedRows = true
 }: TableProps<TableData>) {
+  console.log('manualSorting: ', manualSorting);
   const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: initialPageSize
@@ -114,6 +115,7 @@ export function Table<TableData extends { _id: string }>({
   );
 
   const sorting = useMemo(() => sortingState, [sortingState]);
+  console.log('sorting:', sorting);
   const columnFilters = useMemo(() => columnFiltersState, [columnFiltersState]);
   const tableData = useMemo(() => {
     return data?.data ?? [];
@@ -171,9 +173,9 @@ export function Table<TableData extends { _id: string }>({
   }, [
     //fetchData,
     pagination.pageIndex,
-    pagination.pageSize
+    pagination.pageSize,
     // columnFilters,
-    // sorting,
+    sorting
     // manualFiltering,
     // manualSorting
   ]);
@@ -227,7 +229,9 @@ export function Table<TableData extends { _id: string }>({
                           }
                           onClick={header.column.getToggleSortingHandler()}
                         >
-                          <Box>{flexRender(headerLabel, header.getContext())}</Box>
+                          <Box sx={{ fontWeight: '600' }}>
+                            {flexRender(headerLabel, header.getContext())}
+                          </Box>
                           {header.column.getIsSorted() ? (
                             <Box component="span" sx={visuallyHidden}>
                               {(header.column.getIsSorted() as TableSortLabelOwnProps['direction']) ===
@@ -251,7 +255,9 @@ export function Table<TableData extends { _id: string }>({
                           ...(header.column.columnDef.meta?.headerSx ?? {})
                         }}
                       >
-                        <Box>{flexRender(headerLabel, header.getContext())}</Box>
+                        <Box sx={{ fontWeight: '600' }}>
+                          {flexRender(headerLabel, header.getContext())}
+                        </Box>
                         <Box>{header.column.getCanFilter() ? filter?.(header.column) : null}</Box>
                       </TableCell>
                     );

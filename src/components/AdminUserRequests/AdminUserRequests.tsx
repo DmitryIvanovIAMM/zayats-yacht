@@ -22,6 +22,7 @@ export const AdminUserRequests = () => {
         data={quoteRequestsState.data}
         isLoading={quoteRequestsState.isLoading}
         fetchData={getQuoteRequests}
+        initialSortBy={[{ id: 'receivedAt', desc: true }]}
       />
     </div>
   );

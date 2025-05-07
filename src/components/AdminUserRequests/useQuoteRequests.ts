@@ -36,7 +36,7 @@ export const useQuoteRequests = () => {
       page: pagination.pageIndex,
       perPage: pagination.pageSize,
       sortBy: mapReactTableSortToApiSort(sorting ?? []),
-      ...getFiltersQueryParameters(removeDateOffsetFromFilters(columnFilters || [], ['receivedAt']))
+      ...getFiltersQueryParameters(removeDateOffsetFromFilters(columnFilters, ['receivedAt']))
     };
     // eslint-disable-next-line no-console
     console.log('backendFetchParams: ', backendFetchParams);

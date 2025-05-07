@@ -86,7 +86,7 @@ export function Table<TableData extends { _id: string }>({
   isLoading,
   fetchData,
   noDataText = 'No Records...',
-  initialPageSize = 50,
+  initialPageSize = 10,
   initialFilters = [],
   initialSortBy = [],
   manualFiltering = true,
@@ -162,9 +162,10 @@ export function Table<TableData extends { _id: string }>({
     // for PaginationTypes.ServerSide used to fetch data
     if (fetchData) {
       fetchData({
+        url: '',
         pagination,
-        filters: columnFilters,
-        sortBy: sorting
+        columnFilters,
+        sorting
       });
     }
   }, [

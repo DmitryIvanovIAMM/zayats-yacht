@@ -21,7 +21,7 @@ export const getFiltersQuery = (filters: FiltersFromQuery, regexOptions = ''): F
       .filter(([_, filterValue]) => !!filterValue)
       .reduce((acc, [filterKey, filter]) => {
         // do not touch dates
-        if (new Date(parseInt(filter)).toString() !== INVALID_DATE) {
+        if (new Date(parseInt(filter as string)).toString() !== INVALID_DATE) {
           acc[filterKey] = {
             $regex: filter,
             $options: regexOptions

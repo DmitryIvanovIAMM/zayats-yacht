@@ -1,6 +1,6 @@
 import { getQuoteRequestsAction } from '@/app/serverActions';
 import { useState } from 'react';
-import { LongActionTableData } from '@/utils/types';
+import { ActionTableData } from '@/utils/types';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { Messages } from '@/helpers/messages';
 import { showNotification } from '@/modules/notifications/notificatios';
@@ -31,7 +31,7 @@ export const useQuoteRequests = () => {
     setQuoteRequestsState((state) => ({ ...state, isLoading: true }));
 
     try {
-      const result: LongActionTableData<QuoteRequestFrontend> = await getQuoteRequestsAction();
+      const result: ActionTableData<QuoteRequestFrontend> = await getQuoteRequestsAction();
       if (!result.success) {
         showNotification(false, result?.message || Messages.QuoteRequestFailed, true);
       }

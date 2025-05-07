@@ -1,7 +1,7 @@
 'use server';
 
 import { getActivePorts } from '@/controllers/PortsController';
-import { LongActionData, LongActionResult, LongActionTableData, Roles } from '@/utils/types';
+import { ActionData, ActionResult, ActionTableData, Roles } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
@@ -13,7 +13,7 @@ import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { getQuoteRequests } from '@/controllers/QuoteRequestsController';
 
-export async function getActivePortsAction(): Promise<LongActionData<PortFrontend[]>> {
+export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
     const ports = await getActivePorts();
     // eslint-disable-next-line no-console
@@ -32,7 +32,7 @@ export async function getActivePortsAction(): Promise<LongActionData<PortFronten
 
 export async function queryNearestShippingsAction(
   date: Date | string
-): Promise<LongActionData<ShipStopWithSailingAndPort[][]>> {
+): Promise<ActionData<ShipStopWithSailingAndPort[][]>> {
   try {
     const schedule = await queryNearestShippings(date);
     return {
@@ -48,7 +48,7 @@ export async function queryNearestShippingsAction(
 
 export async function getSchedulesAction(
   shipData: ShipsParametersFlat
-): Promise<LongActionData<ShipStopWithSailingAndPort[][]>> {
+): Promise<ActionData<ShipStopWithSailingAndPort[][]>> {
   try {
     const schedules = await getSchedules(shipData);
     return {
@@ -63,18 +63,18 @@ export async function getSchedulesAction(
 }
 export async function sendQuoteRequestAction(
   quoteRequest: QuoteRequestForm
-): Promise<LongActionResult> {
+): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('sendQuoteRequestAction().  quoteRequest: ', quoteRequest);
   return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }
 
-export async function getQuoteRequestsAction(): Promise<LongActionTableData<QuoteRequestFrontend>> {
+export async function getQuoteRequestsAction(): Promise<ActionTableData<QuoteRequestFrontend>> {
   // eslint-disable-next-line no-console
   console.log('getQuoteRequestsAction().');
 
   try {
-    const getQuoteRequestsFromDB = async (): Promise<LongActionTableData<QuoteRequestFrontend>> => {
+    const getQuoteRequestsFromDB = async (): Promise<ActionTableData<QuoteRequestFrontend>> => {
       const quoteRequests = await getQuoteRequests();
       return {
         success: true,
@@ -85,7 +85,7 @@ export async function getQuoteRequestsAction(): Promise<LongActionTableData<Quot
     return (await withServerAuth<QuoteRequestFrontend>(
       [Roles.Admin],
       getQuoteRequestsFromDB
-    )) as LongActionTableData<QuoteRequestFrontend>;
+    )) as ActionTableData<QuoteRequestFrontend>;
   } catch (error: any) {
     // eslint-disable-next-line no-console
     console.log('Error while fetching quote requests: ', error);

@@ -6,14 +6,14 @@ import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequest } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
-import { LongActionResult } from '@/utils/types';
+import { ActionResult } from '@/utils/types';
 import { quoteRequestService } from '@/services/QuoteRequestsService';
 import { User } from '@/models/User';
 
 export const sendQuoteRequest = async (
   adminUser: User,
   quoteRequest: QuoteRequestForm
-): Promise<LongActionResult> => {
+): Promise<ActionResult> => {
   // eslint-disable-next-line no-console
   console.log(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
   //logger.info(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);

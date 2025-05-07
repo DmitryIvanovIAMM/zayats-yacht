@@ -8,6 +8,11 @@ export interface TableData<T> {
   total: number;
 }
 
+export const emptyTableData = {
+  data: [],
+  total: 0
+};
+
 export interface ActionData<T> extends ActionResult {
   data: T;
 }

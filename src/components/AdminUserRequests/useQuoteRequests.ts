@@ -1,24 +1,18 @@
 import { getQuoteRequestsAction } from '@/app/serverActions';
 import { useState } from 'react';
-import { ActionTableData } from '@/utils/types';
+import { ActionTableData, emptyTableData, TableData } from '@/utils/types';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { Messages } from '@/helpers/messages';
 import { showNotification } from '@/modules/notifications/notificatios';
 
 export interface QuoteRequestsState {
-  data: {
-    data: QuoteRequestFrontend[];
-    total: number;
-  };
+  data: TableData<QuoteRequestFrontend>;
   isLoading: boolean;
   error: string | null;
 }
 
 export const defaultQuoteRequestState: QuoteRequestsState = {
-  data: {
-    data: [],
-    total: 0
-  },
+  data: emptyTableData,
   isLoading: false,
   error: null
 };
@@ -47,10 +41,7 @@ export const useQuoteRequests = () => {
       showNotification(false, error?.message || Messages.QuoteRequestFailed, true);
 
       setQuoteRequestsState({
-        data: {
-          data: [],
-          total: 0
-        },
+        data: emptyTableData,
         isLoading: false,
         error: error?.message || Messages.QuoteRequestFailed
       });

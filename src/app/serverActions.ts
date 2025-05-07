@@ -1,7 +1,7 @@
 'use server';
 
 import { getActivePorts } from '@/controllers/PortsController';
-import { ActionData, ActionResult, ActionTableData, Roles } from '@/utils/types';
+import { ActionData, ActionResult, ActionTableData, emptyTableData, Roles } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
@@ -91,7 +91,7 @@ export async function getQuoteRequestsAction(): Promise<ActionTableData<QuoteReq
     console.log('Error while fetching quote requests: ', error);
     return {
       success: false,
-      data: { data: [], total: 0 },
+      data: emptyTableData,
       message: error?.message || Messages.FailedGetQuoteRequests
     };
   }

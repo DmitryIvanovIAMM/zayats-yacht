@@ -1,4 +1,5 @@
 import { Port, PortModel } from '@/models/Port';
+import logger from '@/modules/logger/logger';
 
 export default class PortService {
   private static instance: PortService;
@@ -12,6 +13,7 @@ export default class PortService {
   }
 
   public getAllPorts = async (): Promise<Port[]> => {
+    logger.info('getAllPorts()');
     try {
       return PortModel.find({}).lean<Port[]>();
     } catch {

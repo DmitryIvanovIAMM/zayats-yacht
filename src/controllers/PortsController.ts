@@ -4,9 +4,11 @@ import { scheduleService } from '@/services/ScheduleService';
 import { portService } from '@/services/PortService';
 import { Port } from '@/models/Port';
 import { ShipStop } from '@/models/ShipStop';
+import logger from '@/modules/logger/logger';
 
 export const getActivePorts = async () => {
   try {
+    logger.info('getActivePorts()');
     const ports: Port[] = await portService.getAllPorts();
     const shipStops: ShipStop[] = await scheduleService.getActiveShipStops();
     const usedPortsId: string[] = shipStops.map((shipStop) => shipStop.portId.toString());

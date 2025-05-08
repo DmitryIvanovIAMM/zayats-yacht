@@ -1,7 +1,6 @@
 import dbConnect from '@/modules/mongoose/mongoose';
 import { AppEnv } from '@/utils/appEnv';
 import testDataLoader from '@/test-data/testDataLoader';
-import 'pino';
 
 export async function register() {
   await dbConnect();

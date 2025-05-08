@@ -13,7 +13,7 @@ import pino from 'pino';
 //         level: 'debug'
 //       });
 
-const isProduction = process.env.APP_ENV === 'prod';
+const isProduction = process.env.APP_ENV === 'prod' || process.env.APP_ENV === 'test';
 
 const logger = pino({
   level: isProduction ? 'info' : 'debug',

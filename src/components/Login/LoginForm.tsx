@@ -81,7 +81,6 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
               data-testid="password"
               slotProps={{
                 input: {
-                  style: { marginBottom: -30 },
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton

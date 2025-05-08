@@ -265,7 +265,11 @@ export function Table<TableData extends { _id: string }>({
               Array.from(new Array(pagination.pageSize)).map((_, index) => (
                 <TableRow style={{ height: 60 }} key={index} sx={oddRowsGrayColor}>
                   <TableCell colSpan={table.getAllColumns().length} align="center" size="small">
-                    <Skeleton variant="rectangular" data-testid="loading-skeleton" />
+                    <Skeleton
+                      variant="rectangular"
+                      animation="wave"
+                      data-testid="loading-skeleton"
+                    />
                   </TableCell>
                 </TableRow>
               ))}

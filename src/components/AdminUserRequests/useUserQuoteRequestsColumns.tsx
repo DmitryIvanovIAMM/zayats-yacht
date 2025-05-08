@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
+import { displayMdUp, displaySmUp } from '@/components/Table/Filters/styles';
 
 export const useUserQuoteRequestsColumns = () => {
   return useMemo(() => {
@@ -16,8 +17,8 @@ export const useUserQuoteRequestsColumns = () => {
           <div data-testid="quote-request-from-name">{row.original.fromName}</div>
         ),
         meta: {
-          headerSx: { width: '20%' },
-          columnSx: { verticalAlign: 'top', width: '20%' },
+          headerSx: { ...displayMdUp, width: '20%' },
+          columnSx: { ...displayMdUp, verticalAlign: 'top', width: '20%' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
@@ -44,8 +45,8 @@ export const useUserQuoteRequestsColumns = () => {
           <div data-testid="quote-request-received-at">{row.original.receivedAt}</div>
         ),
         meta: {
-          headerSx: { width: '20%' },
-          columnSx: { verticalAlign: 'top', width: '20%' },
+          headerSx: { ...displaySmUp, width: '20%' },
+          columnSx: { ...displaySmUp, verticalAlign: 'top', width: '20%' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },

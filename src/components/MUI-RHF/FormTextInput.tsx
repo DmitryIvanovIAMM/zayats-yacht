@@ -50,7 +50,7 @@ export const FormTextInput: FC<FormInputTextProps> = ({
   helperText = '',
   onValueChange = null,
   rows,
-  inputProps,
+  slotProps,
   ...otherProps
 }) => {
   const { control } = useFormContext();
@@ -74,10 +74,16 @@ export const FormTextInput: FC<FormInputTextProps> = ({
               {...otherProps}
               error={!!error}
               helperText={(error?.message as unknown as string) || helperText}
-              inputProps={{
-                'data-testid': `${name}-form-text-input`,
-                onChange: (event) => onValueChange && onValueChange(name, event),
-                ...inputProps
+              slotProps={{
+                htmlInput: {
+                  'data-testid': `${name}-form-text-input`,
+                  onChange: (event: FormEvent) => onValueChange && onValueChange(name, event),
+                  style: { marginBottom: -3 }
+                },
+                formHelperText: {
+                  style: { marginTop: '7px' }
+                },
+                ...slotProps
               }}
               multiline={!!rows}
               rows={rows ?? 1}

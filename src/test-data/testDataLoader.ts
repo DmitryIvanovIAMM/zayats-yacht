@@ -18,6 +18,8 @@ export default async function testDataLoader(appEnv: AppEnv = AppEnv.DEV) {
     .then(() => console.log('Current User collection was removed.'))
     .catch((err) => console.log('Error removing User collection: ' + err));
 
+  logger.info(`seedData.USERS: ${seedData.USERS}`);
+  logger.info(seedData.USERS);
   await UserModel.insertMany(seedData.USERS.map((item) => new UserModel(item)))
     .then(() => console.log('New Users inserted into DB.'))
     .catch((err) => console.log('Failed to save new Users into test data.  Error: ' + err));

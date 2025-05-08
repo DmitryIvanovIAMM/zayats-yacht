@@ -1,15 +1,18 @@
 import * as seedData from './seedData';
+import { USERS } from './seedData';
 import { SAILINGS_2020 } from './sailings';
 import { UserModel } from '@/models/User';
 import { ShipModel } from '@/models/Ship';
 import { ShipStopModel } from '@/models/ShipStop';
 import { PortModel } from '@/models/Port';
 import { SailingModel } from '@/models/Sailing';
-import { USERS } from './seedData';
+import logger from '../modules/logger/logger';
+import { AppEnv } from '@/utils/appEnv';
 
 /* eslint-disable no-console */
-export default async function testDataLoader() {
-  console.log('Loading Test Data mode...');
+export default async function testDataLoader(appEnv: AppEnv = AppEnv.DEV) {
+  console.log(`Loading Test Data in ${appEnv} mode...`);
+  logger.info(`Loading Test Data in ${appEnv} mode...`);
 
   await UserModel.deleteMany({})
     .then(() => console.log('Current User collection was removed.'))

@@ -8,6 +8,7 @@ import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';
 import { getActivePortsAction, queryNearestShippingsAction } from '@/app/serverActions';
+import logger from '../modules/logger/logger';
 
 export default async function Home() {
   const ports = await getActivePortsAction();
@@ -15,7 +16,7 @@ export default async function Home() {
   console.log('Home().  ports: ', ports);
   const schedules = await queryNearestShippingsAction(new Date());
   // eslint-disable-next-line no-console
-  console.log('Home(). schedules: ', schedules);
+  logger.info('Home(). schedules: ', schedules);
 
   return (
     <div className={styles.main}>

@@ -14,7 +14,8 @@ const nextConfig = {
     // temporary silent warning for legacy-js-api
     // https://github.com/vercel/next.js/issues/71638
     silenceDeprecations: ['legacy-js-api']
-  }
+  },
+  serverExternalPackages: ['pino', 'pino-pretty']
 };
 
 export default nextConfig;

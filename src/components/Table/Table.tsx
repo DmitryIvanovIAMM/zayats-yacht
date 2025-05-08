@@ -62,6 +62,7 @@ const getRowsLabel = ({ from, to, count }: { from: number; to: number; count: nu
 };
 
 export const rowsPerPageOptions = [10, 50, 100];
+const defaultPageSIze = rowsPerPageOptions[0];
 
 /**
  * @param columnDefs - column definitions created with [columnHelpers](https://tanstack.com/table/v8/docs/guide/column-defs#column-helpers)
@@ -86,7 +87,7 @@ export function Table<TableData extends { _id: string }>({
   isLoading,
   fetchData,
   noDataText = 'No Records...',
-  initialPageSize = 10,
+  initialPageSize = defaultPageSIze,
   initialFilters = [],
   initialSortBy = [],
   manualFiltering = true,
@@ -262,7 +263,7 @@ export function Table<TableData extends { _id: string }>({
           <TableBody aria-busy={isLoading} {...tableBodyProps}>
             {isLoading &&
               Array.from(new Array(pagination.pageSize)).map((_, index) => (
-                <TableRow style={{ height: 40 }} key={index} sx={oddRowsGrayColor}>
+                <TableRow style={{ height: 60 }} key={index} sx={oddRowsGrayColor}>
                   <TableCell colSpan={table.getAllColumns().length} align="center" size="small">
                     <Skeleton variant="rectangular" data-testid="loading-skeleton" />
                   </TableCell>

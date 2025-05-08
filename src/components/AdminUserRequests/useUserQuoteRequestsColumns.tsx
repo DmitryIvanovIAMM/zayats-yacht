@@ -16,7 +16,8 @@ export const useUserQuoteRequestsColumns = () => {
           <div data-testid="quote-request-from-name">{row.original.fromName}</div>
         ),
         meta: {
-          columnSx: { verticalAlign: 'top' },
+          headerSx: { width: '20%' },
+          columnSx: { verticalAlign: 'top', width: '20%' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
@@ -30,7 +31,8 @@ export const useUserQuoteRequestsColumns = () => {
           </div>
         ),
         meta: {
-          columnSx: { verticalAlign: 'top' },
+          headerSx: { width: '20%' },
+          columnSx: { verticalAlign: 'top', width: '20%' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
@@ -42,7 +44,8 @@ export const useUserQuoteRequestsColumns = () => {
           <div data-testid="quote-request-received-at">{row.original.receivedAt}</div>
         ),
         meta: {
-          columnSx: { verticalAlign: 'top' },
+          headerSx: { width: '20%' },
+          columnSx: { verticalAlign: 'top', width: '20%' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
@@ -60,16 +63,14 @@ export const useUserQuoteRequestsColumns = () => {
               {isExpanded ? (
                 <div style={{ width: '100%' }}>
                   {row.original?.requestObject && (
-                    <div style={{ whiteSpace: 'pre-wrap' }}>
-                      {JSON.stringify(row.original.requestObject, null, 2)}
-                    </div>
+                    <div style={{ whiteSpace: 'pre-wrap' }}>{row.original.requestData}</div>
                   )}
                 </div>
               ) : (
                 <div style={{ width: '100%' }}>
                   {row.original?.requestObject && (
                     <div style={{ whiteSpace: 'pre-wrap' }}>
-                      {JSON.stringify(row.original.requestObject, null, 2).slice(0, 50)}...
+                      {row.original.requestData.slice(0, 50)}...
                     </div>
                   )}
                 </div>

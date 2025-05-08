@@ -1,7 +1,7 @@
 import dbConnect from '@/modules/mongoose/mongoose';
 import { AppEnv } from '@/utils/appEnv';
 import testDataLoader from '@/test-data/testDataLoader';
-import logger from '@/modules/logger/logger';
+import 'pino';
 
 export async function register() {
   await dbConnect();
@@ -15,6 +15,5 @@ export async function register() {
   } else {
     // eslint-disable-next-line no-console
     console.log('Do not load test data in production mode.');
-    logger.info('Do not load test data in production mode.');
   }
 }

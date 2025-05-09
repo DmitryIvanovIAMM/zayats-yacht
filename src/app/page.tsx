@@ -16,7 +16,7 @@ export default async function Home() {
   console.log('Home().  ports: ', ports);
   const schedules = await queryNearestShippingsAction(new Date());
   // eslint-disable-next-line no-console
-  logger.info('Home(). schedules: ', schedules);
+  //logger.info('Home(). schedules: ', schedules);
 
   return (
     <div className={styles.main}>

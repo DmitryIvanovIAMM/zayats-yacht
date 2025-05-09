@@ -52,6 +52,18 @@ export const USERS = [
     emailValidated: false,
     createdAt: '2025-04-24T07:37:29.411+00:00',
     updatedAt: '2025-04-24T07:37:29.411+00:00'
+  },
+  {
+    _id: new Types.ObjectId('6809ea399a784e46a366d791'),
+    name: 'Yacht Admin',
+    email: 'yacht.admin@gmail.com',
+    role: 'admin',
+    hashedPassword: '$2b$10$9C3tM1F.mfZP.Q492ai2aOPMu3duSoLqgy0go/f4qz2REwbVmQx9q', // Yacht123
+    salt: 10,
+    isActive: true,
+    emailValidated: true,
+    createdAt: '2025-04-24T07:37:29.411+00:00',
+    updatedAt: '2025-04-24T07:37:29.411+00:00'
   }
 ];
 

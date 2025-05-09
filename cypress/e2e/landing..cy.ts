@@ -1,5 +1,5 @@
 describe('Landing Page', () => {
-  it('displays all 3 products on the home page', () => {
+  it('should render correctly', () => {
     cy.visit('/');
     cy.get('[alt="Allied-Yacht logo"]').should('be.visible');
   });

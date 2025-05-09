@@ -1,5 +1,5 @@
 describe('Landing Page', () => {
-  it('should render correctly', () => {
+  it('c', () => {
     cy.visit('/sign-in');
     cy.get('[alt="Allied-Yacht logo"]').should('be.visible');
     //cy.get('button:contains("Get Quote")').should('be.visible');
@@ -8,9 +8,9 @@ describe('Landing Page', () => {
     cy.get('[data-testid="login-form-button"]').should('be.disabled');
     cy.contains('Login Form');
 
-    cy.get('[data-testid="user-name"]').should('be.visible');
-    cy.get('[data-testid="email"]').should('be.visible');
-    cy.get('[data-testid="password"]').should('be.visible');
+    cy.get('[data-testid="name-form-text-input"]').should('be.visible');
+    cy.get('[data-testid="email-form-text-input"]').should('be.visible');
+    cy.get('[data-testid="password-form-text-input"]').should('be.visible');
     cy.get('[data-testid="password-eye"]').should('be.visible');
   });
 

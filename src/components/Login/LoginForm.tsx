@@ -69,16 +69,14 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
             <FormTextInput
               name={'name'}
               type="text"
-              data-testid="user-name"
               label={'Full Name (optional)'}
               fullWidth={true}
             />
-            <FormTextInput name={'email'} type="email" data-testid="email" label={'Email *'} />
+            <FormTextInput name={'email'} type="email" label={'Email *'} />
             <FormTextInput
               name={'password'}
               label={'Password *'}
               type={showPassword ? 'text' : 'password'}
-              data-testid="password"
               slotProps={{
                 input: {
                   endAdornment: (

@@ -27,6 +27,10 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     handleDestinationPortSelected,
     handleLoadingDateSelected
   } = useSchedulesLoader({ ports, schedules });
+  // eslint-disable-next-line no-console
+  console.log('ScheduleSection().  ports: ', ports);
+  // eslint-disable-next-line no-console
+  console.log('ScheduleSection().  schedules: ', schedules);
 
   const departurePortsVariants: PortFrontend[] = schedulesState.ports.filter(
     (port) => port._id !== schedulesState.destinationPortId

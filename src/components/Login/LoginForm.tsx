@@ -107,6 +107,7 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
             <Button
               type="submit"
               variant="contained"
+              data-testid="login-form-button"
               startIcon={
                 <div
                   style={{
@@ -124,7 +125,7 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
                 </div>
               }
               style={{ backgroundColor: `${secondary.dark}` }}
-              disabled={formState.isSubmitting}
+              disabled={formState.isSubmitting || !formState.isValid}
             >
               LogIn
             </Button>

@@ -17,13 +17,13 @@ const isProduction = process.env.APP_ENV === 'prod' || process.env.APP_ENV === '
 
 const logger = pino({
   level: isProduction ? 'info' : 'debug',
-  browser: {
+  /*browser: {
     asObject: true,
     write: (o) => {
       // eslint-disable-next-line no-console
       console.log(JSON.stringify(o));
     }
-  },
+  },*/
   // Configure for both environments without worker threads
   transport: {
     //target: isProduction ? 'pino' : 'pino-pretty',

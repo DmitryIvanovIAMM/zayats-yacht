@@ -6,7 +6,13 @@ import { primary, secondary } from './colors';
 export const customTheme = createTheme({
   palette: {
     primary: primary,
-    secondary: secondary
+    secondary: secondary,
+    error: {
+      main: '#f44336'
+    },
+    action: {
+      disabled: secondary.light
+    }
   },
   breakpoints: {
     values: {

@@ -2,7 +2,7 @@
 
 import Box from '@mui/material/Box';
 import { FormTextInput } from '@/components/MUI-RHF/FormTextInput';
-import React from 'react';
+import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { defaultLoginValues, LoginFormValues, loginSchema } from '@/components/Login/types';
@@ -13,6 +13,10 @@ import LoginIcon from '@mui/icons-material/Login';
 import { signIn } from 'next-auth/react';
 import { PATHS } from '@/helpers/paths';
 import { useRouter } from 'next/navigation';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from '@mui/icons-material/Visibility';
 
 export interface LoginFormProps {
   loginRedirectUrl?: string;
@@ -22,6 +26,11 @@ export interface LoginFormProps {
 const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormProps) => {
   const [loginError, setLoginError] = React.useState<string>(error);
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const methods = useForm<LoginFormValues>({
     resolver: yupResolver(loginSchema),
     mode: 'onBlur',
@@ -64,7 +73,30 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
               fullWidth={true}
             />
             <FormTextInput name={'email'} type="email" label={'Email *'} />
-            <FormTextInput name={'password'} label={'Password *'} />
+            <FormTextInput
+              name={'password'}
+              label={'Password *'}
+              type={showPassword ? 'text' : 'password'}
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                        data-testid="password-eye"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                },
+                formHelperText: {
+                  style: { marginTop: '12px' }
+                }
+              }}
+            />
           </Box>
           <h3 style={{ color: 'red', marginTop: '20px' }}>
             {loginError?.length > 0 ? loginError : '\u00A0'}{' '}
@@ -73,6 +105,7 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
             <Button
               type="submit"
               variant="contained"
+              data-testid="login-form-button"
               startIcon={
                 <div
                   style={{
@@ -90,7 +123,7 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
                 </div>
               }
               style={{ backgroundColor: `${secondary.dark}` }}
-              disabled={formState.isSubmitting}
+              disabled={formState.isSubmitting || !formState.isValid}
             >
               LogIn
             </Button>

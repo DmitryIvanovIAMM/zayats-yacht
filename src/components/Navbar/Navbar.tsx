@@ -183,6 +183,7 @@ const Navbar: React.FC<NavbarProps> = (props) => {
             <Box sx={{ flexGrow: 0 }}>
               <Button
                 variant={'contained'}
+                data-testid="navbar-login-button"
                 sx={{ backgroundColor: 'secondary.dark' }}
                 size={'small'}
                 onClick={session?.user ? () => signOut() : () => signIn()}

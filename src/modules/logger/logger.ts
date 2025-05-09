@@ -26,7 +26,8 @@ const logger = pino({
   },
   // Configure for both environments without worker threads
   transport: {
-    target: isProduction ? 'pino' : 'pino-pretty',
+    //target: isProduction ? 'pino' : 'pino-pretty',
+    target: 'pino-pretty',
     options: {
       colorize: !isProduction,
       translateTime: 'SYS:standard',

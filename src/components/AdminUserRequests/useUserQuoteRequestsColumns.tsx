@@ -71,7 +71,14 @@ export const useUserQuoteRequestsColumns = () => {
                 <div style={{ width: '100%' }}>
                   {row.original?.requestObject && (
                     <div style={{ whiteSpace: 'pre-wrap' }}>
-                      {row.original.requestData.slice(0, 50)}...
+                      {row.original.requestData.slice(
+                        0,
+                        row.original.requestData.indexOf(
+                          '\n',
+                          row.original.requestData.indexOf('\n') + 1
+                        )
+                      )}
+                      &nbsp;...
                     </div>
                   )}
                 </div>

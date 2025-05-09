@@ -69,6 +69,7 @@ exports[`Navbar component should render correctly 1`] = `
             >
               <button
                 class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+                data-testid="navbar-login-button"
                 style="width: 78px; height: 31px;"
                 tabindex="0"
                 type="button"
@@ -423,6 +424,7 @@ exports[`Navbar component should render correctly 1`] = `
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+              data-testid="navbar-login-button"
               style="width: 78px; height: 31px;"
               tabindex="0"
               type="button"

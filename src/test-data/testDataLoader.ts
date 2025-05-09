@@ -5,7 +5,8 @@ import { ShipModel } from '@/models/Ship';
 import { ShipStopModel } from '@/models/ShipStop';
 import { PortModel } from '@/models/Port';
 import { SailingModel } from '@/models/Sailing';
-import { USERS } from './seedData';
+import { QUOTE_REQUESTS, USERS } from './seedData';
+import { QuoteRequestModel } from '@/models/QuoteRequest';
 
 /* eslint-disable no-console */
 export default async function testDataLoader() {
@@ -62,6 +63,17 @@ export default async function testDataLoader() {
     .then(() => console.log('New Users inserted into DB.'))
     .catch((err) => {
       console.log('Failed to save new Users into test data.  Error: ' + err);
+    });
+
+  // remove existed test data in QuoteRequestModel collection
+  await QuoteRequestModel.deleteMany({})
+    .then(() => console.log('Current QuoteRequests collection was removed.'))
+    .catch((err) => console.log('Error removing QuoteRequests collection: ' + err));
+
+  await QuoteRequestModel.insertMany(QUOTE_REQUESTS.map((item) => new QuoteRequestModel(item)))
+    .then(() => console.log('New QuoteRequests inserted into DB.'))
+    .catch((err) => {
+      console.log('Failed to save new QuoteRequests into test data.  Error: ' + err);
     });
 
   console.log('Test Data loaded successfully.');

@@ -1,6 +1,6 @@
 'use server';
 
-import { getActivePorts } from '@/controllers/PortsController';
+import { getActivePorts, getFilteredPorts } from '@/controllers/PortsController';
 import { User } from '@/models/User';
 import { ActionData, ActionResult, ActionTableData, emptyTableData, Roles } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
@@ -63,6 +63,7 @@ export async function getSchedulesAction(
     return { success: false, data: [], message: Messages.FailedGetSchedules };
   }
 }
+
 export async function sendQuoteRequestAction(
   quoteRequest: QuoteRequestForm
 ): Promise<ActionResult> {
@@ -101,6 +102,40 @@ export async function getQuoteRequestsAction(
       success: false,
       data: emptyTableData,
       message: error?.message || Messages.FailedGetQuoteRequests
+    };
+  }
+}
+
+export async function getPortsAction(
+  fetchParams: BackendDataFetchArgs
+): Promise<ActionTableData<PortFrontend>> {
+  // eslint-disable-next-line no-console
+  console.log('getPortsAction().  fetchParams: ', fetchParams);
+
+  try {
+    const getPortsFromDB = async (
+      user: User,
+      fetchParams: BackendDataFetchArgs
+    ): Promise<ActionTableData<PortFrontend>> => {
+      const ports = await getFilteredPorts(fetchParams);
+      return {
+        success: true,
+        data: ports
+      };
+    };
+
+    return (await withServerAuth<PortFrontend>(
+      [Roles.Admin],
+      getPortsFromDB,
+      fetchParams
+    )) as ActionTableData<PortFrontend>;
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('Error while fetching ports: ', error);
+    return {
+      success: false,
+      data: emptyTableData,
+      message: error?.message || Messages.FailedGetPorts
     };
   }
 }

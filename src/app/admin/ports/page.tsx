@@ -1,5 +1,10 @@
 import React from 'react';
+import { AdminPorts } from '@/components/AdminPorts/AdminPorts';
 
 export default async function Home() {
-  return <div>Ports management for admin only</div>;
+  return (
+    <div>
+      <AdminPorts />
+    </div>
+  );
 }

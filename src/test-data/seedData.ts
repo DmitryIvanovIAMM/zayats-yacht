@@ -247,5 +247,31 @@ export const QUOTE_REQUESTS = [
       when: '-',
       notes: '-'
     }
+  },
+  {
+    _id: new Types.ObjectId('68172cdb804ec21af191d530'),
+    fromUserId: USERS[4]._id,
+    fromName: USERS[4].name,
+    fromEmail: USERS[4].email,
+    receivedAt: '5/4/2025, 12:01:12 PM',
+    requestData:
+      'Yacht Name: Supper-Pupper_5\nName: Yacht Admin\nPhone: 6106600013\nEmail: yacht.admin@gmail.com\nBest Time to Contact: -\nYacht Make and Model: -\nInsured Value in USD: -\nLength: -\nBeam: -\nWeight: -\nPurpose of Transport: -\nForm Where: -\nTo Where: -\nWhen: -\nNotes: -',
+    requestObject: {
+      yachtName: 'Supper-Pupper_5',
+      name: USERS[4].name,
+      phone: '6106600013',
+      email: USERS[4].email,
+      bestTimeToContact: '-',
+      yachtMakeAndModel: '-',
+      insuredValueInUSD: '-',
+      length: '-',
+      beam: '-',
+      weight: '-',
+      purposeOfTransport: '-',
+      formWhere: '-',
+      toWhere: '-',
+      when: '-',
+      notes: '-'
+    }
   }
 ];

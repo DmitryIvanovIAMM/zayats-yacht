@@ -60,15 +60,18 @@ export const useUserQuoteRequestsColumns = () => {
           const [isExpanded, setIsExpanded] = useState(false);
 
           return (
-            <div style={{ display: 'flex', justifyContent: 'end' }}>
+            <div
+              style={{ display: 'flex', justifyContent: 'end' }}
+              data-testid="quote-request-request-data"
+            >
               {isExpanded ? (
-                <div style={{ width: '100%' }}>
+                <div style={{ width: '100%' }} data-testid="quote-request-request-data-expanded">
                   {row.original?.requestObject && (
                     <div style={{ whiteSpace: 'pre-wrap' }}>{row.original.requestData}</div>
                   )}
                 </div>
               ) : (
-                <div style={{ width: '100%' }}>
+                <div style={{ width: '100%' }} data-testid="quote-request-request-data-collapsed">
                   {row.original?.requestObject && (
                     <div style={{ whiteSpace: 'pre-wrap' }}>
                       {row.original.requestData.slice(

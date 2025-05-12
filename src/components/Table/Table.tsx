@@ -39,12 +39,10 @@ export const oddRowsGrayColor = {
 };
 
 interface TableProps<TableData extends { _id: string }> extends MutableTableRefObject<TableData> {
-  //dataFetcherUrl: string;
   data: any;
   isLoading: boolean;
   fetchData: (dataFetcherArgs: DataFetcherArgs) => void;
   columnDefs: ColumnDef<TableData, string>[];
-  //dataFetcher: DataFetcher<TableData>;
   noDataText?: string;
   initialPageSize?: number;
   initialFilters?: ColumnFiltersState;

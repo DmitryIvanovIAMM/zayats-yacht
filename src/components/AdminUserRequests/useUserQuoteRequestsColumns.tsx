@@ -91,7 +91,7 @@ export const useUserQuoteRequestsColumns = () => {
                   aria-label="expand row"
                   size="small"
                   onClick={() => setIsExpanded(!isExpanded)}
-                  data-testid="collapseButton"
+                  data-testid="collapse-button"
                   style={{ marginTop: -10 }}
                 >
                   {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}

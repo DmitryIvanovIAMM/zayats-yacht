@@ -25,6 +25,11 @@ export async function withServerAuth<D = undefined>(
     const adminUser = await findUserByEmail(session?.user?.email as string);
     if (!adminUser) return { success: false, message: Messages.UserNotFound };
 
+    const foundUserHasAccess = adminUser.role && allowedRoles.includes(adminUser.role);
+    if (!foundUserHasAccess) {
+      return { success: false, message: Messages.NotAuthorized };
+    }
+
     return await serverAction(adminUser, props);
   } catch (error: any) {
     return { success: false, message: error?.message || Messages.NotAuthenticated };

@@ -60,7 +60,7 @@ const getRowsLabel = ({ from, to, count }: { from: number; to: number; count: nu
 };
 
 export const rowsPerPageOptions = [10, 50, 100];
-const defaultPageSIze = rowsPerPageOptions[0];
+const defaultPageSize = rowsPerPageOptions[0];
 
 /**
  * @param columnDefs - column definitions created with [columnHelpers](https://tanstack.com/table/v8/docs/guide/column-defs#column-helpers)
@@ -85,7 +85,7 @@ export function Table<TableData extends { _id: string }>({
   isLoading,
   fetchData,
   noDataText = 'No Records...',
-  initialPageSize = defaultPageSIze,
+  initialPageSize = defaultPageSize,
   initialFilters = [],
   initialSortBy = [],
   manualFiltering = true,

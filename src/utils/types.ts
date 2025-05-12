@@ -3,13 +3,25 @@ export enum Roles {
   User = 'user'
 }
 
-export interface LongActionData<T> {
-  success: boolean;
-  data: T;
-  message?: string;
+export interface TableData<T> {
+  data: T[];
+  total: number;
 }
 
-export interface LongActionResult {
+export const emptyTableData = {
+  data: [],
+  total: 0
+};
+
+export interface ActionData<T> extends ActionResult {
+  data: T;
+}
+
+export interface ActionTableData<T> extends ActionData<{ data: T[]; total: number }> {
+  data: TableData<T>;
+}
+
+export interface ActionResult {
   success: boolean;
   message?: string;
 }

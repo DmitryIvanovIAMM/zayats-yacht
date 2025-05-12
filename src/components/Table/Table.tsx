@@ -28,10 +28,8 @@ import {
   getFacetedUniqueValues
 } from '@tanstack/react-table';
 import uniq from 'lodash/uniq';
-import React, { ChangeEvent, MouseEvent, ReactElement, useMemo, useState } from 'react';
-import useSWR from 'swr';
-import { DataFetcher, DataFetcherArgs, DataFetcherData, MutableTableRefObject } from './types';
-import { replaceUnderlinesInSortingState, replaceUnderlinesInFilterStates } from './filtersUtils';
+import React, { ChangeEvent, MouseEvent, ReactElement, useMemo, useState, useEffect } from 'react';
+import { DataFetcherArgs, MutableTableRefObject } from './types';
 import { AppEnv } from '@/utils/appEnv';
 
 export const oddRowsGrayColor = {
@@ -41,9 +39,10 @@ export const oddRowsGrayColor = {
 };
 
 interface TableProps<TableData extends { _id: string }> extends MutableTableRefObject<TableData> {
-  dataFetcherUrl: string;
+  data: any;
+  isLoading: boolean;
+  fetchData: (dataFetcherArgs: DataFetcherArgs) => void;
   columnDefs: ColumnDef<TableData, string>[];
-  dataFetcher: DataFetcher<TableData>;
   noDataText?: string;
   initialPageSize?: number;
   initialFilters?: ColumnFiltersState;
@@ -61,16 +60,15 @@ const getRowsLabel = ({ from, to, count }: { from: number; to: number; count: nu
 };
 
 export const rowsPerPageOptions = [10, 50, 100];
+const defaultPageSize = rowsPerPageOptions[0];
 
 /**
- * @param tableRef - ref to table. Object which has some useful functions, like refetchTableData
  * @param columnDefs - column definitions created with [columnHelpers](https://tanstack.com/table/v8/docs/guide/column-defs#column-helpers)
- * @param dataFetcher - function which will be passed to [useSwr](https://swr.vercel.app/) and will return table data.
+ * @param data - data to show in the table, should be in the format:
+ * `{ data: [], total: 0 }`
  * Function will receive all needed arguments (e.g. pagination related data, filtering related data, etc.)
- * @param dataFetcherUrl - base url for fetching the data **without** search params.
- * **Correct:** `/schools`
- * **Incorrect:** `/schools?page=0` - pagination and search variables will be passed to fetcher function as argument
- * and can be easily used after, e.g. with axios `params`: apiService.get(url, params)
+ * @param isLoading - show that data is loading just now.
+ * @param fetchData - the functions to update table data
  * @param noDataText - text to show when there is no data
  * @param initialPageSize - how many items to show on each page.
  * @param initialFilters - initial filter to apply
@@ -82,12 +80,12 @@ export const rowsPerPageOptions = [10, 50, 100];
  * @param stripedRows - if true, odd rows will have gray background
  */
 export function Table<TableData extends { _id: string }>({
-  tableRef,
   columnDefs,
-  dataFetcher,
+  data,
+  isLoading,
+  fetchData,
   noDataText = 'No Records...',
-  dataFetcherUrl,
-  initialPageSize = 50,
+  initialPageSize = defaultPageSize,
   initialFilters = [],
   initialSortBy = [],
   manualFiltering = true,
@@ -102,32 +100,6 @@ export function Table<TableData extends { _id: string }>({
   });
   const [columnFiltersState, setColumnFilters] = useState<ColumnFiltersState>(initialFilters);
   const [sortingState, setSortingState] = useState<SortingState>(initialSortBy);
-
-  const { data, isLoading, mutate } = useSWR<
-    DataFetcherData<TableData>,
-    undefined,
-    DataFetcherArgs
-  >(
-    {
-      url: dataFetcherUrl,
-      pagination: { pageIndex, pageSize },
-      columnFilters: manualFiltering ? replaceUnderlinesInFilterStates(columnFiltersState) : [],
-      sorting: manualSorting ? replaceUnderlinesInSortingState(sortingState) : []
-    },
-    dataFetcher
-  );
-
-  if (tableRef) {
-    tableRef.current = {
-      refetchTableData: mutate,
-      dataFetcherArgs: {
-        url: dataFetcherUrl,
-        pagination: { pageIndex, pageSize },
-        columnFilters: replaceUnderlinesInFilterStates(columnFiltersState),
-        sorting: replaceUnderlinesInSortingState(sortingState)
-      }
-    };
-  }
 
   const total = data?.total ?? 0;
   const rowPerPageOptions = uniq([initialPageSize, ...rowsPerPageOptions]).sort((a, b) => a - b);
@@ -183,6 +155,21 @@ export function Table<TableData extends { _id: string }>({
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     table.setPageSize(Number(event.target.value));
   };
+
+  useEffect(() => {
+    // for PaginationTypes.ClientSide used to store filters state if fetchData is provided
+    // for PaginationTypes.ServerSide used to fetch data
+    if (fetchData) {
+      fetchData({
+        url: '',
+        pagination,
+        columnFilters,
+        sorting
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pagination.pageIndex, pagination.pageSize, columnFilters, sorting]);
+
   const tableBodyProps = isLoading
     ? {
         role: 'progressbar',
@@ -203,7 +190,7 @@ export function Table<TableData extends { _id: string }>({
               return (
                 <TableRow
                   key={headerGroup.id}
-                  sx={{ borderTop: '1px solid rgba(224, 224, 224, 1)', background: '#F5F6FA' }}
+                  sx={{ borderTop: '1px solid rgba(224, 224, 224, 1)', background: '#ecf9f2' }}
                 >
                   {headerGroup.headers.map((header) => {
                     const headerLabel = header.column.columnDef.header;
@@ -233,7 +220,9 @@ export function Table<TableData extends { _id: string }>({
                           }
                           onClick={header.column.getToggleSortingHandler()}
                         >
-                          <Box>{flexRender(headerLabel, header.getContext())}</Box>
+                          <Box sx={{ fontWeight: '600' }}>
+                            {flexRender(headerLabel, header.getContext())}
+                          </Box>
                           {header.column.getIsSorted() ? (
                             <Box component="span" sx={visuallyHidden}>
                               {(header.column.getIsSorted() as TableSortLabelOwnProps['direction']) ===
@@ -257,7 +246,9 @@ export function Table<TableData extends { _id: string }>({
                           ...(header.column.columnDef.meta?.headerSx ?? {})
                         }}
                       >
-                        <Box>{flexRender(headerLabel, header.getContext())}</Box>
+                        <Box sx={{ fontWeight: '600' }}>
+                          {flexRender(headerLabel, header.getContext())}
+                        </Box>
                         <Box>{header.column.getCanFilter() ? filter?.(header.column) : null}</Box>
                       </TableCell>
                     );
@@ -270,9 +261,13 @@ export function Table<TableData extends { _id: string }>({
           <TableBody aria-busy={isLoading} {...tableBodyProps}>
             {isLoading &&
               Array.from(new Array(pagination.pageSize)).map((_, index) => (
-                <TableRow style={{ height: 40 }} key={index} sx={oddRowsGrayColor}>
+                <TableRow style={{ height: 60 }} key={index} sx={oddRowsGrayColor}>
                   <TableCell colSpan={table.getAllColumns().length} align="center" size="small">
-                    <Skeleton variant="rectangular" data-testid="loading-skeleton" />
+                    <Skeleton
+                      variant="rectangular"
+                      animation="wave"
+                      data-testid="loading-skeleton"
+                    />
                   </TableCell>
                 </TableRow>
               ))}

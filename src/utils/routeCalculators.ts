@@ -1,4 +1,4 @@
-import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 
 export const calculateMilesForRoute = (routes: ShipStopWithSailingAndPort[]) => {
   return routes.reduce((acc: number, item) => acc + item.miles, 0);

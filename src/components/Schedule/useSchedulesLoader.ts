@@ -1,7 +1,7 @@
-import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 import { useEffect, useState } from 'react';
 import { addMinutes, MonthDateRange } from '@/utils/date-time';
-import { Destination, PortFrontend } from '@/models/Port';
+import { Destination, PortFrontend } from '@/models/PortFrontend';
 import { Types } from 'mongoose';
 import { ScheduleSectionProps } from '@/components/Schedule/Schedule';
 import { ShipsParametersFlat } from '@/models/types';

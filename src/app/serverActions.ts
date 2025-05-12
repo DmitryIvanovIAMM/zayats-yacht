@@ -1,17 +1,21 @@
 'use server';
 
 import { getActivePorts } from '@/controllers/PortsController';
-import { LongActionData, LongActionResult, Roles } from '@/utils/types';
-import { PortFrontend } from '@/models/Port';
+import { User } from '@/models/User';
+import { ActionData, ActionResult, ActionTableData, emptyTableData, Roles } from '@/utils/types';
+import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
-import { ShipStopWithSailingAndPort } from '@/models/ShipStop';
+import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
 import { ShipsParametersFlat } from '@/models/types';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { withServerAuth } from '@/utils/auth/withServerAuth';
-import { sendQuoteRequest } from '@/controllers/EmailController';
+import { sendQuoteRequest } from '@/controllers/EmailsController';
+import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
+import { getQuoteRequests } from '@/controllers/QuoteRequestsController';
+import { BackendDataFetchArgs } from '@/components/Table/types';
 
-export async function getActivePortsAction(): Promise<LongActionData<PortFrontend[]>> {
+export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
     const ports = await getActivePorts();
     // eslint-disable-next-line no-console
@@ -30,7 +34,7 @@ export async function getActivePortsAction(): Promise<LongActionData<PortFronten
 
 export async function queryNearestShippingsAction(
   date: Date | string
-): Promise<LongActionData<ShipStopWithSailingAndPort[][]>> {
+): Promise<ActionData<ShipStopWithSailingAndPort[][]>> {
   try {
     const schedule = await queryNearestShippings(date);
     return {
@@ -46,7 +50,7 @@ export async function queryNearestShippingsAction(
 
 export async function getSchedulesAction(
   shipData: ShipsParametersFlat
-): Promise<LongActionData<ShipStopWithSailingAndPort[][]>> {
+): Promise<ActionData<ShipStopWithSailingAndPort[][]>> {
   try {
     const schedules = await getSchedules(shipData);
     return {
@@ -61,8 +65,42 @@ export async function getSchedulesAction(
 }
 export async function sendQuoteRequestAction(
   quoteRequest: QuoteRequestForm
-): Promise<LongActionResult> {
+): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('sendQuoteRequestAction().  quoteRequest: ', quoteRequest);
   return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
+}
+
+export async function getQuoteRequestsAction(
+  fetchParams: BackendDataFetchArgs
+): Promise<ActionTableData<QuoteRequestFrontend>> {
+  // eslint-disable-next-line no-console
+  console.log('getQuoteRequestsAction().  fetchParams: ', fetchParams);
+
+  try {
+    const getQuoteRequestsFromDB = async (
+      user: User,
+      fetchParams: BackendDataFetchArgs
+    ): Promise<ActionTableData<QuoteRequestFrontend>> => {
+      const quoteRequests = await getQuoteRequests(fetchParams);
+      return {
+        success: true,
+        data: quoteRequests
+      };
+    };
+
+    return (await withServerAuth<QuoteRequestFrontend>(
+      [Roles.Admin],
+      getQuoteRequestsFromDB,
+      fetchParams
+    )) as ActionTableData<QuoteRequestFrontend>;
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('Error while fetching quote requests: ', error);
+    return {
+      success: false,
+      data: emptyTableData,
+      message: error?.message || Messages.FailedGetQuoteRequests
+    };
+  }
 }

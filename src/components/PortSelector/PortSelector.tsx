@@ -7,7 +7,7 @@ import {
   Select,
   SelectChangeEvent
 } from '@mui/material';
-import { PortFrontend } from '@/models/Port';
+import { PortFrontend } from '@/models/PortFrontend';
 
 const formControlSx = {
   margin: 'auto',
@@ -65,7 +65,7 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
       >
         {props.ports.map((port, index) => (
           <MenuItem
-            value={(port._id ?? "").toString()}
+            value={(port._id ?? '').toString()}
             key={`portSelectorKey${index}`}
             data-testid="menu-item"
           >

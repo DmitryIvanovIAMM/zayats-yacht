@@ -6,12 +6,14 @@ import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { QuoteRequest } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
-import { LongActionResult } from '@/utils/types';
+import { ActionResult } from '@/utils/types';
 import { quoteRequestService } from '@/services/QuoteRequestsService';
+import { User } from '@/models/User';
 
 export const sendQuoteRequest = async (
+  adminUser: User,
   quoteRequest: QuoteRequestForm
-): Promise<LongActionResult> => {
+): Promise<ActionResult> => {
   // eslint-disable-next-line no-console
   console.log(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
   //logger.info(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
@@ -24,9 +26,12 @@ export const sendQuoteRequest = async (
   const storeQuoteRequest = async (fromEmail: string, message: string) => {
     const newQuoteRequest: QuoteRequest = {
       _id: new Types.ObjectId(),
+      fromUserId: adminUser._id,
+      fromName: adminUser.name,
       fromEmail: fromEmail,
       receivedAt: new Date().toLocaleString('us-Us'),
-      requestData: message
+      requestData: message,
+      requestObject: quoteRequest
     };
     // eslint-disable-next-line no-console
     console.log('quoteRequest to be stored: ', newQuoteRequest);

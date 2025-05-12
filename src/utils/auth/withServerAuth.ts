@@ -1,13 +1,15 @@
-import { LongActionResult, Roles } from '@/utils/types';
-import { getServerSession } from 'next-auth';
+import { ActionData, ActionResult, ActionTableData, Roles } from '@/utils/types';
+import { getServerSession, Session } from 'next-auth';
 import { Messages } from '@/helpers/messages';
+import { findUserByEmail } from '@/controllers/AuthController';
+import { User } from '@/models/User';
 
-export async function withServerAuth<T>(
+export async function withServerAuth<D = undefined>(
   allowedRoles: Roles[],
-  serverAction: (props: T) => Promise<LongActionResult>,
-  props: T
-): Promise<LongActionResult> {
-  const session = await getServerSession();
+  serverAction: (user: User, props: any) => Promise<ActionResult>,
+  props: any = {}
+): Promise<ActionResult | ActionData<D> | ActionTableData<D>> {
+  const session: Session | null = await getServerSession();
   // eslint-disable-next-line no-console
   console.log('session: ', session);
   if (!session) {
@@ -20,7 +22,15 @@ export async function withServerAuth<T>(
   }
 
   try {
-    return await serverAction(props);
+    const adminUser = await findUserByEmail(session?.user?.email as string);
+    if (!adminUser) return { success: false, message: Messages.UserNotFound };
+
+    const foundUserHasAccess = adminUser.role && allowedRoles.includes(adminUser.role);
+    if (!foundUserHasAccess) {
+      return { success: false, message: Messages.NotAuthorized };
+    }
+
+    return await serverAction(adminUser, props);
   } catch (error: any) {
     return { success: false, message: error?.message || Messages.NotAuthenticated };
   }

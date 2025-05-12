@@ -1,6 +1,7 @@
 'use server';
 
-import { User, UserFrontend, userFrontendFields, UserModel } from '@/models/User';
+import { User, UserModel } from '@/models/User';
+import { UserFrontend, userFrontendFields } from '@/models/UserFrontend';
 import * as bcrypt from 'bcryptjs';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
@@ -43,7 +44,7 @@ export const LoginOrRegister = async (user: UserFrontend) => {
   };
 };
 
-const findUserByEmail = async (email: string): Promise<User | null> => {
+export const findUserByEmail = async (email: string): Promise<User | null> => {
   const mayBeUser = await UserModel.findOne({
     email: email.toLowerCase()
   });

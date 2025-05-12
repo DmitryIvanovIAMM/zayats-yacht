@@ -1,12 +1,13 @@
-import * as mongoose from 'mongoose';
+import { models, Types } from 'mongoose';
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({
+  options: { customName: 'Sailing' },
   schemaOptions: { timestamps: true, collection: 'sailings' }
 })
 export class Sailing {
   @prop({ required: true })
-  _id: mongoose.Types.ObjectId;
+  _id: Types.ObjectId;
   @prop({ required: true })
   name: string;
   @prop({ required: true })
@@ -15,11 +16,4 @@ export class Sailing {
   deletedAt?: Date;
 }
 
-export const SailingModel = mongoose.models?.Sailing || getModelForClass(Sailing);
-
-export interface SailingFrontend {
-  _id: string | null;
-  name: string;
-}
-
-export const sailingFrontendFields = ['_id', 'name'];
+export const SailingModel = models?.Sailing || getModelForClass(Sailing);

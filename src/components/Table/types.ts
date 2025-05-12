@@ -9,6 +9,13 @@ export interface DataFetcherArgs {
   sorting?: SortingState;
 }
 
+export interface BackendDataFetchArgs {
+  page: number;
+  perPage: number;
+  sortBy?: string[];
+  filters?: Record<string, string>;
+}
+
 export const initialDataFetcherArgs: DataFetcherArgs = {
   url: '',
   pagination: { pageIndex: 0, pageSize: 50 },

@@ -1,4 +1,5 @@
 export const maxComputerDate = new Date(2037, 11, 31, 23, 59, 59);
+export const INVALID_DATE = 'Invalid Date';
 
 export const nowUTC = () => {
   const date = new Date();

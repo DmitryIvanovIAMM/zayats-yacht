@@ -1,7 +1,7 @@
 import type { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { LoginOrRegister } from '@/controllers/AuthController';
-import { UserFrontend } from '@/models/User';
+import { UserFrontend } from '@/models/UserFrontend';
 import { cloneDeep } from 'lodash';
 import { Messages } from '@/helpers/messages';
 

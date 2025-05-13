@@ -96,7 +96,7 @@ export async function getBackendDataAction<T>(
       };
     };
 
-    return (await withServerAuth<PortFrontend>(
+    return (await withServerAuth<T>(
       [Roles.Admin],
       queryDataFromDB,
       fetchParams

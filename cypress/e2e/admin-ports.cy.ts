@@ -381,4 +381,57 @@ describe('Admin on Ports page', () => {
         cy.get('[data-testid="ports-destination-name"]').should('contain', 'Central America');
       });
   });
+
+  it('should allow filtering', () => {
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 10);
+    });
+    // check filtering by port name
+    cy.get('[aria-label="Filter by Port Name"]').type('Fort Lauderdale');
+
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 1);
+    });
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Fort Lauderdale, Florida');
+      });
+
+    cy.get('[aria-label="Filter by Port Name"]').clear();
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 10);
+    });
+
+    // check filtering by destination name
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 10);
+    });
+    cy.get('[aria-label="Filter by Destination Name"]').type('Mediterranean');
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 3);
+    });
+
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+
+    // clear filter
+    cy.get('[aria-label="Filter by Destination Name"]').clear();
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 10);
+    });
+  });
 });

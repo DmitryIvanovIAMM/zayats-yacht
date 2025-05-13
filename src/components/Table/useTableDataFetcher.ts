@@ -6,7 +6,7 @@ import {
   mapReactTableSortToApiSort,
   removeDateOffsetFromFilters
 } from '@/components/Table/tableUtils';
-import { showNotification } from '@/modules/notifications/notificatios';
+import { showNotification } from '@/modules/notifications/notifications';
 import { Messages } from '@/helpers/messages';
 import { getBackendDataAction } from '@/app/serverActions';
 

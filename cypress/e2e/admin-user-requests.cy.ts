@@ -214,8 +214,7 @@ describe('Admin on User Requests Page', () => {
       .first()
       .within(() => {
         cy.get('[data-testid="quote-request-from-name"]').should('contain', 'Customer2');
-      })
-      .get('tbody tr');
+      });
     cy.get('tbody tr')
       .eq(1)
       .within(() => {

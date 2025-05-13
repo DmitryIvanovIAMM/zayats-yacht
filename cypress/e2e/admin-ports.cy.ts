@@ -106,7 +106,7 @@ describe('Admin on Ports page', () => {
       });
   });
 
-  it.only('should allow forward and backward page navigation', () => {
+  it('should allow forward and backward page navigation', () => {
     cy.contains('1-10 of 12 rows');
     cy.get('[aria-label="Go to next page"]').should('be.enabled').click();
 
@@ -136,5 +136,249 @@ describe('Admin on Ports page', () => {
     // goto back on first page
     cy.get('[aria-label="Go to previous page"]').should('be.enabled').click();
     cy.contains('1-10 of 12 rows');
+  });
+
+  it('should allow sorting', () => {
+    // sorting by port name
+    // first click reverse order of ports
+    cy.contains('Port Name').click();
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Victoria, British Columbia');
+      });
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should(
+          'contain',
+          'Tortola, British Virgin Islands'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Palma de Mallorca, Spain');
+      });
+    cy.get('tbody tr')
+      .eq(3)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Palm Beach, Florida');
+      });
+    cy.get('tbody tr')
+      .eq(4)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'La Paz, Mexico');
+      });
+    cy.get('tbody tr')
+      .eq(5)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Hong Kong');
+      });
+    cy.get('tbody tr')
+      .eq(6)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Golfito, Costa Rica');
+      });
+    cy.get('tbody tr')
+      .eq(7)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Genoa, Italy');
+      });
+    cy.get('tbody tr')
+      .eq(8)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Fort Lauderdale, Florida');
+      });
+    cy.get('tbody tr')
+      .eq(9)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Fethiye, Turkey');
+      });
+
+    // second sort by port name restore initial order
+    cy.contains('Port Name').click();
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Colon, Panama');
+      });
+    cy.get('tbody tr');
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Ensenada, Mexico');
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Fethiye, Turkey');
+      });
+    cy.get('tbody tr')
+      .eq(3)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Fort Lauderdale, Florida');
+      });
+    cy.get('tbody tr')
+      .eq(4)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Genoa, Italy');
+      });
+    cy.get('tbody tr')
+      .eq(5)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Golfito, Costa Rica');
+      });
+    cy.get('tbody tr')
+      .eq(6)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Hong Kong');
+      });
+    cy.get('tbody tr')
+      .eq(7)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'La Paz, Mexico');
+      });
+    cy.get('tbody tr')
+      .eq(8)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Palm Beach, Florida');
+      });
+    cy.get('tbody tr')
+      .eq(9)
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Palma de Mallorca, Spain');
+      });
+
+    // sorting by destination name
+    // first click order in forward order
+    cy.contains('Destination Name').click();
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Asia');
+      });
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Caribbean');
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Central America');
+      });
+    cy.get('tbody tr')
+      .eq(3)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Central America');
+      });
+    cy.get('tbody tr')
+      .eq(4)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'East Coast North America'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(5)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'East Coast North America'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(6)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(7)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(8)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(9)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'West Coast North America'
+        );
+      });
+
+    // second click order in reverse order
+    cy.contains('Destination Name').click();
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'West Coast North America'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'West Coast North America'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'West Coast North America'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(3)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(4)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(5)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Mediterranean');
+      });
+    cy.get('tbody tr')
+      .eq(6)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'East Coast North America'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(7)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'East Coast North America'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(8)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Central America');
+      });
+    cy.get('tbody tr')
+      .eq(9)
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Central America');
+      });
   });
 });

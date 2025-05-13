@@ -1,11 +1,13 @@
 describe('Admin on User Requests Page', () => {
-  it('should see data grid', () => {
+  beforeEach(() => {
     cy.visit('/sign-in?callbackUrl=/admin/users-requests');
     cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
     cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
     cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
     cy.contains('User Requests', { timeout: 25000 });
+  });
 
+  it('should see data grid', () => {
     // table header
     cy.get('thead').within(() => {
       cy.contains('From Name');
@@ -129,12 +131,6 @@ describe('Admin on User Requests Page', () => {
   });
 
   it('should allow expand quote request cell', () => {
-    cy.visit('/sign-in?callbackUrl=/admin/users-requests');
-    cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
-    cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
-    cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
-    cy.contains('User Requests', { timeout: 25000 });
-
     // expand data in the second row
     cy.get('tbody tr')
       .eq(1)
@@ -210,12 +206,6 @@ describe('Admin on User Requests Page', () => {
 
   // allow sorting
   it('should allow sorting', () => {
-    cy.visit('/sign-in?callbackUrl=/admin/users-requests');
-    cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
-    cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
-    cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
-    cy.contains('User Requests', { timeout: 25000 });
-
     // sort by From Name column
     cy.contains('From Name').click().click();
 
@@ -394,12 +384,6 @@ describe('Admin on User Requests Page', () => {
   });
 
   it('should allow filtering', () => {
-    cy.visit('/sign-in?callbackUrl=/admin/users-requests');
-    cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
-    cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
-    cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
-    cy.contains('User Requests', { timeout: 25000 });
-
     // check the filter for From Name column
     cy.get('thead tr th')
       .eq(0)

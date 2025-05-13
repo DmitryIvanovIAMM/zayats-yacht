@@ -19,7 +19,7 @@ export const AdminPorts = () => {
         data={dataState.data}
         isLoading={dataState.isLoading}
         fetchData={fetchDataFromServer}
-        initialSortBy={[{ id: 'receivedAt', desc: true }]}
+        initialSortBy={[{ id: 'portName', desc: false }]}
       />
     </div>
   );

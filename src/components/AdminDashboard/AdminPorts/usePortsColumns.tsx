@@ -29,7 +29,7 @@ export const usePortsColumns = () => {
         ),
         meta: {
           headerSx: { ...displaySmUp },
-          columnSx: { ...displaySmUp, erticalAlign: 'top' },
+          columnSx: { ...displaySmUp, verticalAlign: 'top' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },

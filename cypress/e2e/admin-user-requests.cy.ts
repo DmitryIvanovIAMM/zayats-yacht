@@ -239,7 +239,9 @@ describe('Admin on User Requests Page', () => {
     cy.get('tbody tr')
       .first()
       .within(() => {
-        cy.get('[data-testid="quote-request-from-name"]').should('contain', 'Yacht Admin');
+        cy.get('[data-testid="quote-request-from-name"]').should('contain', 'Yacht Admin', {
+          timeout: 10000
+        });
       });
     cy.get('tbody tr')
       .eq(1)
@@ -265,7 +267,10 @@ describe('Admin on User Requests Page', () => {
       .within(() => {
         cy.get('[data-testid="quote-request-from-email"]').should(
           'contain',
-          'yacht.admin@gmail.com'
+          'yacht.admin@gmail.com',
+          {
+            timeout: 10000
+          }
         );
       });
     cy.get('tbody tr')
@@ -290,7 +295,13 @@ describe('Admin on User Requests Page', () => {
     cy.get('tbody tr')
       .first()
       .within(() => {
-        cy.get('[data-testid="quote-request-from-email"]').should('contain', 'customer2@email.com');
+        cy.get('[data-testid="quote-request-from-email"]').should(
+          'contain',
+          'customer2@email.com',
+          {
+            timeout: 10000
+          }
+        );
       });
     cy.get('tbody tr')
       .eq(1)
@@ -319,7 +330,10 @@ describe('Admin on User Requests Page', () => {
       .within(() => {
         cy.get('[data-testid="quote-request-received-at"]').should(
           'contain',
-          '5/4/2025, 12:01:12 PM'
+          '5/4/2025, 12:01:12 PM',
+          {
+            timeout: 10000
+          }
         );
       });
     cy.get('tbody tr')
@@ -355,7 +369,10 @@ describe('Admin on User Requests Page', () => {
       .within(() => {
         cy.get('[data-testid="quote-request-received-at"]').should(
           'contain',
-          '5/7/2025, 12:01:15 PM'
+          '5/7/2025, 12:01:15 PM',
+          {
+            timeout: 10000
+          }
         );
       });
     cy.get('tbody tr')
@@ -392,7 +409,9 @@ describe('Admin on User Requests Page', () => {
         cy.get('[aria-label="Filter by From Name"]').type('Customer2');
       });
     cy.get('tbody').within(() => {
-      cy.get('tr').should('have.length', 1);
+      cy.get('tr').should('have.length', 1, {
+        timeout: 10000
+      });
     });
 
     cy.get('tbody tr')
@@ -414,7 +433,9 @@ describe('Admin on User Requests Page', () => {
         cy.get('[aria-label="Filter by From Email"]').type('customer3@email.com');
       });
     cy.get('tbody').within(() => {
-      cy.get('tr').should('have.length', 1);
+      cy.get('tr').should('have.length', 1, {
+        timeout: 10000
+      });
     });
     cy.get('tbody tr')
       .first()

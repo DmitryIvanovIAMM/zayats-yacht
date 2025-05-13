@@ -434,4 +434,14 @@ describe('Admin on Ports page', () => {
       cy.get('tr').should('have.length', 10);
     });
   });
+
+  it('should show only "Port Name" and "Image" columns on small screens', () => {
+    cy.viewport('iphone-x');
+
+    cy.get('thead').within(() => {
+      cy.contains('Port Name').should('exist').should('be.visible');
+      cy.contains('Destination Name').should('exist').should('not.be.visible');
+      cy.contains('Image').should('exist').should('be.visible');
+    });
+  });
 });

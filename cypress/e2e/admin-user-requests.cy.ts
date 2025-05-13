@@ -1,5 +1,7 @@
 describe('Admin on User Requests Page', () => {
   beforeEach(() => {
+    cy.viewport('macbook-15');
+
     cy.visit('/sign-in?callbackUrl=/admin/users-requests');
     cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
     cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
@@ -207,7 +209,7 @@ describe('Admin on User Requests Page', () => {
   // allow sorting
   it('should allow sorting', () => {
     // sort by From Name column
-    cy.contains('From Name').click().click();
+    cy.contains('From Name').click();
 
     // check only the first column with names
     cy.get('tbody tr')
@@ -447,5 +449,16 @@ describe('Admin on User Requests Page', () => {
       .within(() => {
         cy.get('[aria-label="Filter by Received At"]').clear();
       });
+  });
+
+  it('should show only "From Name" and "Request" columns on small screens', () => {
+    cy.viewport('iphone-x');
+
+    cy.get('thead').within(() => {
+      cy.contains('From Name').should('exist').should('not.be.visible');
+      cy.contains('From Email').should('exist').should('be.visible');
+      cy.contains('Received At').should('exist').should('not.be.visible');
+      cy.contains('Request').should('exist').should('be.visible');
+    });
   });
 });

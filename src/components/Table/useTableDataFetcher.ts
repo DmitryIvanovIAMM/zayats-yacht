@@ -1,7 +1,6 @@
 import { ActionTableData, emptyTableData, TableData } from '@/utils/types';
-import { PortFrontend } from '@/models/PortFrontend';
 import { useState } from 'react';
-import { DataFetcherArgs } from '@/components/Table/types';
+import { BackendDataFetchArgs, DataFetcherArgs } from '@/components/Table/types';
 import {
   getFiltersQueryParameters,
   mapReactTableSortToApiSort,
@@ -9,24 +8,27 @@ import {
 } from '@/components/Table/tableUtils';
 import { showNotification } from '@/modules/notifications/notificatios';
 import { Messages } from '@/helpers/messages';
-import { getPortsAction } from '@/app/serverActions';
+import { getBackendDataAction } from '@/app/serverActions';
 
-export interface PortState {
-  data: TableData<PortFrontend>;
+export interface DataState<D> {
+  data: TableData<D>;
   isLoading: boolean;
   error: string | null;
 }
-const defaultPortState: PortState = {
+const defaultDataState = {
   data: emptyTableData,
   isLoading: false,
   error: null
 };
 
-export const usePorts = () => {
-  const [portsState, setPortsState] = useState<PortState>(defaultPortState);
+export const useTableDataFetcher = <T>(
+  getterFunction: (fetchParams: BackendDataFetchArgs) => Promise<TableData<T>>,
+  dateColumns: string[] = []
+) => {
+  const [dataState, setDataState] = useState<DataState<T>>(defaultDataState);
 
-  const getPorts = async (dataFetcherArgs: DataFetcherArgs): Promise<void> => {
-    setPortsState((state) => ({ ...state, isLoading: true }));
+  const fetchDataFromServer = async (dataFetcherArgs: DataFetcherArgs): Promise<void> => {
+    setDataState((state) => ({ ...state, isLoading: true }));
 
     const { pagination, sorting, columnFilters } = dataFetcherArgs;
     const backendFetchParams = {
@@ -34,17 +36,20 @@ export const usePorts = () => {
       perPage: pagination.pageSize,
       sortBy: mapReactTableSortToApiSort(sorting ?? []),
       filters: {
-        ...getFiltersQueryParameters(removeDateOffsetFromFilters(columnFilters, ['receivedAt']))
+        ...getFiltersQueryParameters(removeDateOffsetFromFilters(columnFilters, dateColumns))
       }
     };
 
     try {
-      const result: ActionTableData<PortFrontend> = await getPortsAction(backendFetchParams);
+      const result: ActionTableData<T> = await getBackendDataAction<T>(
+        backendFetchParams,
+        getterFunction
+      );
       if (!result.success) {
         showNotification(false, result?.message || Messages.FailedGetPorts, true);
       }
 
-      setPortsState({
+      setDataState({
         data: result.data,
         isLoading: false,
         error: result.success ? null : result?.message || null
@@ -54,7 +59,7 @@ export const usePorts = () => {
       console.log('getPorts() failed. Error: ', error);
       showNotification(false, error?.message || Messages.FailedGetPorts, true);
 
-      setPortsState({
+      setDataState({
         data: emptyTableData,
         isLoading: false,
         error: error?.message || null
@@ -62,5 +67,5 @@ export const usePorts = () => {
     }
   };
 
-  return { portsState, getPorts };
+  return { dataState, fetchDataFromServer };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdminPorts } from '@/components/AdminPorts/AdminPorts';
+import { AdminPorts } from '@/components/AdminDashboard/AdminPorts/AdminPorts';
 
 export default async function Home() {
   return (

@@ -1,8 +1,7 @@
 import { useMemo } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
-import { displayMdUp, displaySmUp } from '@/components/Table/Filters/styles';
+import { displaySmUp } from '@/components/Table/Filters/styles';
 import Image from 'next/image';
-import { PortFrontend } from '@/models/PortFrontend';
 
 export const usePortsColumns = () => {
   return useMemo(() => {

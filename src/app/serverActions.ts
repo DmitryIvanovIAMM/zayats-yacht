@@ -1,8 +1,15 @@
 'use server';
 
-import { getActivePorts, getFilteredPorts } from '@/controllers/PortsController';
+import { getActivePorts } from '@/controllers/PortsController';
 import { User } from '@/models/User';
-import { ActionData, ActionResult, ActionTableData, emptyTableData, Roles } from '@/utils/types';
+import {
+  ActionData,
+  ActionResult,
+  ActionTableData,
+  emptyTableData,
+  Roles,
+  TableData
+} from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
@@ -11,8 +18,6 @@ import { ShipsParametersFlat } from '@/models/types';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
-import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
-import { getQuoteRequests } from '@/controllers/QuoteRequestsController';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 
 export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
@@ -72,66 +77,33 @@ export async function sendQuoteRequestAction(
   return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }
 
-export async function getQuoteRequestsAction(
-  fetchParams: BackendDataFetchArgs
-): Promise<ActionTableData<QuoteRequestFrontend>> {
+export async function getBackendDataAction<T>(
+  fetchParams: BackendDataFetchArgs,
+  getFunction: (fetchParams: BackendDataFetchArgs) => Promise<TableData<T>>
+): Promise<ActionTableData<T>> {
   // eslint-disable-next-line no-console
-  console.log('getQuoteRequestsAction().  fetchParams: ', fetchParams);
+  console.log('getBackendDataAction().  fetchParams: ', fetchParams);
 
   try {
-    const getQuoteRequestsFromDB = async (
+    const queryDataFromDB = async (
       user: User,
       fetchParams: BackendDataFetchArgs
-    ): Promise<ActionTableData<QuoteRequestFrontend>> => {
-      const quoteRequests = await getQuoteRequests(fetchParams);
+    ): Promise<ActionTableData<T>> => {
+      const dataFromDB = await getFunction(fetchParams);
       return {
         success: true,
-        data: quoteRequests
-      };
-    };
-
-    return (await withServerAuth<QuoteRequestFrontend>(
-      [Roles.Admin],
-      getQuoteRequestsFromDB,
-      fetchParams
-    )) as ActionTableData<QuoteRequestFrontend>;
-  } catch (error: any) {
-    // eslint-disable-next-line no-console
-    console.log('Error while fetching quote requests: ', error);
-    return {
-      success: false,
-      data: emptyTableData,
-      message: error?.message || Messages.FailedGetQuoteRequests
-    };
-  }
-}
-
-export async function getPortsAction(
-  fetchParams: BackendDataFetchArgs
-): Promise<ActionTableData<PortFrontend>> {
-  // eslint-disable-next-line no-console
-  console.log('getPortsAction().  fetchParams: ', fetchParams);
-
-  try {
-    const getPortsFromDB = async (
-      user: User,
-      fetchParams: BackendDataFetchArgs
-    ): Promise<ActionTableData<PortFrontend>> => {
-      const ports = await getFilteredPorts(fetchParams);
-      return {
-        success: true,
-        data: ports
+        data: dataFromDB
       };
     };
 
     return (await withServerAuth<PortFrontend>(
       [Roles.Admin],
-      getPortsFromDB,
+      queryDataFromDB,
       fetchParams
-    )) as ActionTableData<PortFrontend>;
+    )) as ActionTableData<T>;
   } catch (error: any) {
     // eslint-disable-next-line no-console
-    console.log('Error while fetching ports: ', error);
+    console.log('Error while fetching backend data: ', error);
     return {
       success: false,
       data: emptyTableData,

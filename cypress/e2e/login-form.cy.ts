@@ -1,5 +1,5 @@
 describe('Landing Page', () => {
-  it('c', () => {
+  it('should render correctly', () => {
     cy.visit('/sign-in');
     cy.get('[alt="Allied-Yacht logo"]').should('be.visible');
     //cy.get('button:contains("Get Quote")').should('be.visible');

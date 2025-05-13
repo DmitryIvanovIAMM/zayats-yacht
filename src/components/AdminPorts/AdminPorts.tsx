@@ -1,28 +1,27 @@
 'use client';
 
-import { useUserQuoteRequestsColumns } from '@/components/AdminUserRequests/useUserQuoteRequestsColumns';
 import { Table } from '@/components/Table/Table';
 import { usePorts } from '@/components/AdminPorts/usePorts';
-import { initialDataFetcherArgs } from '@/components/Table/types';
+import { usePortsColumns } from '@/components/AdminPorts/usePortsColumns';
+import { PortFrontend } from '@/models/PortFrontend';
 
 export const AdminPorts = () => {
   console.log('AdminUserRequests()');
   const { portsState, getPorts } = usePorts();
   console.log(' portsState: ', portsState);
-  getPorts(initialDataFetcherArgs);
 
-  const columnDefs = useUserQuoteRequestsColumns();
+  const columnDefs = usePortsColumns();
 
   return (
     <div>
       <h2>Ports</h2>
-      {/*<Table<QuoteRequestFrontend>*/}
-      {/*  columnDefs={columnDefs}*/}
-      {/*  data={quoteRequestsState.data}*/}
-      {/*  isLoading={quoteRequestsState.isLoading}*/}
-      {/*  fetchData={getQuoteRequests}*/}
-      {/*  initialSortBy={[{ id: 'receivedAt', desc: true }]}*/}
-      {/*/>*/}
+      <Table<PortFrontend & { _id: string }>
+        columnDefs={columnDefs}
+        data={portsState.data}
+        isLoading={portsState.isLoading}
+        fetchData={getPorts}
+        initialSortBy={[{ id: 'receivedAt', desc: true }]}
+      />
     </div>
   );
 };

@@ -35,20 +35,20 @@ export const getActivePorts = async () => {
 
 export const getFilteredPorts = async (fetchParams: BackendDataFetchArgs) => {
   console.log('getFilteredPorts().  fetchParams: ', fetchParams);
-  const { fromName, fromEmail, receivedAt } = fetchParams?.filters ? fetchParams.filters : {};
+  const { portName, destinationName } = fetchParams?.filters ? fetchParams.filters : {};
   const { page, perPage } = fetchParams;
 
   const filters = getFiltersQuery(
     {
-      fromName: fromName,
-      fromEmail: fromEmail,
-      receivedAt: receivedAt
+      portName: portName,
+      destinationName: destinationName
     } as FiltersFromQuery,
     'i'
   );
   const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'receivedAt.desc');
 
   const query = { ...filters };
+  console.log('query: ', query);
 
   const totalPromise = PortModel.countDocuments(query);
   const portsPromise = PortModel.find(query)

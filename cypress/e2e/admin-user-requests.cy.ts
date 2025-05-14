@@ -209,7 +209,7 @@ describe('Admin on User Requests Page', () => {
   // allow sorting
   it('should allow sorting', () => {
     // sort by From Name column
-    cy.contains('From Name').click(); //.click();
+    cy.contains('From Name').click();
 
     // check only the first column with names
     cy.get('tbody tr')
@@ -474,7 +474,7 @@ describe('Admin on User Requests Page', () => {
       });
   });
 
-  it('should show only "From Name" and "Request" columns on small screens', () => {
+  it('should show only "From Email" and "Request" columns on small screens', () => {
     cy.viewport('iphone-x');
 
     cy.get('thead').within(() => {

@@ -69,3 +69,11 @@ export const getFilteredPorts = async (fetchParams: BackendDataFetchArgs) => {
     total: total
   };
 };
+
+export const getAllPorts = async (): Promise<Port[]> => {
+  try {
+    return PortModel.find({}).lean<Port[]>();
+  } catch {
+    return [];
+  }
+};

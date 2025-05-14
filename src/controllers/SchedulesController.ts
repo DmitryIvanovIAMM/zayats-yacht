@@ -7,6 +7,10 @@ import { shipService } from '@/services/ShipService';
 import { ShipStop } from '@/models/ShipStop';
 import { ShipsParametersFlat } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
+import { SailingModel } from '@/models/Sailing';
+import { sortShipStopsByDate } from '../utils/schedules';
+import { getAllShips } from '@/controllers/ShipsController';
+import { getAllPorts } from '@/controllers/PortsController';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -84,6 +88,92 @@ export const queryNearestShippings = async (date: Date | string): Promise<ShipSt
     console.error('queryNearestShippings().  err: ', err);
     return [];
   }
+};
+
+export const queryAllSailingsPortsShips = async () => {
+  const sailingsWithShipStopsAndPorts = querySailingsWithRoutesAndPorts();
+  const ships = await getAllShips();
+  console.log('ships: ', ships);
+  const ports = await getAllPorts();
+  console.log('ports: ', ports);
+
+  return {
+    sailings: sailingsWithShipStopsAndPorts,
+    ships: ships,
+    ports: ports
+  };
+};
+
+export const querySailingsWithRoutesAndPorts = async () => {
+  const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
+    {
+      $match: { deletedAt: { $exists: false } }
+    },
+    {
+      $lookup: {
+        from: 'shipstops',
+        localField: '_id',
+        foreignField: 'sailingId',
+        as: 'shipStops'
+      }
+    },
+    {
+      $unwind: '$shipStops'
+    },
+    {
+      $lookup: {
+        from: 'ports',
+        localField: 'shipStops.portId',
+        foreignField: '_id',
+        as: 'shipStops.port'
+      }
+    },
+    {
+      $unwind: '$shipStops.port'
+    },
+    {
+      $group: {
+        _id: '$_id',
+        root: {
+          $mergeObjects: '$$ROOT'
+        },
+        shipStops: {
+          $push: '$shipStops'
+        }
+      }
+    },
+    {
+      $replaceRoot: {
+        newRoot: {
+          $mergeObjects: ['$root', '$$ROOT']
+        }
+      }
+    },
+    {
+      $project: {
+        root: 0
+      }
+    }
+  ]);
+  sailingsWithShipStopsAndPorts.forEach((sailing) => {
+    sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)];
+  });
+  console.log('sailingsWithShipStopsAndPorts: ', sailingsWithShipStopsAndPorts);
+  const sailings = JSON.parse(
+    JSON.stringify(
+      sailingsWithShipStopsAndPorts.sort(function (a, b) {
+        return (
+          new Date(a.shipStops[0].departureOn).getTime() -
+          new Date(b.shipStops[0].departureOn).getTime()
+        );
+      })
+    )
+  );
+
+  return {
+    data: sailings,
+    total: sailings.length
+  };
 };
 
 /*public getSailing = async (req, res) => {

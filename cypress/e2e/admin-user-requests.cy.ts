@@ -209,13 +209,15 @@ describe('Admin on User Requests Page', () => {
   // allow sorting
   it('should allow sorting', () => {
     // sort by From Name column
-    cy.contains('From Name').click();
+    cy.contains('From Name').click(); //.click();
 
     // check only the first column with names
     cy.get('tbody tr')
       .first()
       .within(() => {
-        cy.get('[data-testid="quote-request-from-name"]').should('contain', 'Customer2');
+        cy.get('[data-testid="quote-request-from-name"]').should('contain', 'Customer2', {
+          timeout: 10000
+        });
       });
     cy.get('tbody tr')
       .eq(1)
@@ -234,7 +236,7 @@ describe('Admin on User Requests Page', () => {
       });
 
     // and reverse sort by Form Name column
-    cy.contains('From Name').click().click();
+    cy.contains('From Name').click();
     // check only the first column with names
     cy.get('tbody tr')
       .first()

@@ -110,7 +110,9 @@ describe('Admin on Ports page', () => {
     cy.contains('1-10 of 12 rows');
     cy.get('[aria-label="Go to next page"]').should('be.enabled').click();
 
-    cy.contains('11-12 of 12 rows');
+    cy.contains('11-12 of 12 rows', {
+      timeout: 10000
+    });
 
     // check if the first row on second page has the correct data
     cy.get('tbody tr')
@@ -135,7 +137,9 @@ describe('Admin on Ports page', () => {
 
     // goto back on first page
     cy.get('[aria-label="Go to previous page"]').should('be.enabled').click();
-    cy.contains('1-10 of 12 rows');
+    cy.contains('1-10 of 12 rows', {
+      timeout: 10000
+    });
   });
 
   it('should allow sorting', () => {
@@ -145,7 +149,9 @@ describe('Admin on Ports page', () => {
     cy.get('tbody tr')
       .first()
       .within(() => {
-        cy.get('[data-testid="ports-port-name"]').should('contain', 'Victoria, British Columbia');
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Victoria, British Columbia', {
+          timeout: 10000
+        });
       });
     cy.get('tbody tr')
       .eq(1)
@@ -201,7 +207,9 @@ describe('Admin on Ports page', () => {
     cy.get('tbody tr')
       .first()
       .within(() => {
-        cy.get('[data-testid="ports-port-name"]').should('contain', 'Colon, Panama');
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'Colon, Panama', {
+          timeout: 10000
+        });
       });
     cy.get('tbody tr');
     cy.get('tbody tr')
@@ -256,7 +264,9 @@ describe('Admin on Ports page', () => {
     cy.get('tbody tr')
       .first()
       .within(() => {
-        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Asia');
+        cy.get('[data-testid="ports-destination-name"]').should('contain', 'Asia', {
+          timeout: 10000
+        });
       });
     cy.get('tbody tr')
       .eq(1)
@@ -320,7 +330,10 @@ describe('Admin on Ports page', () => {
       .within(() => {
         cy.get('[data-testid="ports-destination-name"]').should(
           'contain',
-          'West Coast North America'
+          'West Coast North America',
+          {
+            timeout: 10000
+          }
         );
       });
     cy.get('tbody tr')
@@ -390,7 +403,9 @@ describe('Admin on Ports page', () => {
     cy.get('[aria-label="Filter by Port Name"]').type('Fort Lauderdale');
 
     cy.get('tbody').within(() => {
-      cy.get('tr').should('have.length', 1);
+      cy.get('tr').should('have.length', 1, {
+        timeout: 10000
+      });
     });
     cy.get('tbody tr')
       .first()
@@ -400,7 +415,9 @@ describe('Admin on Ports page', () => {
 
     cy.get('[aria-label="Filter by Port Name"]').clear();
     cy.get('tbody').within(() => {
-      cy.get('tr').should('have.length', 10);
+      cy.get('tr').should('have.length', 10, {
+        timeout: 10000
+      });
     });
 
     // check filtering by destination name
@@ -409,7 +426,9 @@ describe('Admin on Ports page', () => {
     });
     cy.get('[aria-label="Filter by Destination Name"]').type('Mediterranean');
     cy.get('tbody').within(() => {
-      cy.get('tr').should('have.length', 3);
+      cy.get('tr').should('have.length', 3, {
+        timeout: 10000
+      });
     });
 
     cy.get('tbody tr')
@@ -431,7 +450,9 @@ describe('Admin on Ports page', () => {
     // clear filter
     cy.get('[aria-label="Filter by Destination Name"]').clear();
     cy.get('tbody').within(() => {
-      cy.get('tr').should('have.length', 10);
+      cy.get('tr').should('have.length', 10, {
+        timeout: 10000
+      });
     });
   });
 

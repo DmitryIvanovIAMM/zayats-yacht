@@ -44,7 +44,7 @@ export const getFilteredPorts = async (fetchParams: BackendDataFetchArgs) => {
     } as FiltersFromQuery,
     'i'
   );
-  const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'receivedAt.desc');
+  const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'portName.asc');
 
   const query = { ...filters };
 

@@ -58,7 +58,7 @@ export const useTableDataFetcher = <T>(
       });
     } catch (error: any) {
       // eslint-disable-next-line no-console
-      console.log('getPorts() failed. Error: ', error);
+      console.log('useTableDataFetcher() failed. Error: ', error);
       showNotification(false, error?.message || errorMessage, true);
 
       setDataState({

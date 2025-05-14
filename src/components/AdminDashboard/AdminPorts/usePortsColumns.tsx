@@ -46,7 +46,7 @@ export const usePortsColumns = () => {
               src={`/images/${row.original.imageFileName}`}
               width={100}
               height={100}
-              alt="Picture of the author"
+              alt={`Image of ${row.original.portName}`}
             />
           </div>
         ),

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdminUserRequests } from '@/components/AdminUserRequests/AdminUserRequests';
+import { AdminUserRequests } from '@/components/AdminDashboard/AdminUserRequests/AdminUserRequests';
 
 export default async function Home() {
   return (

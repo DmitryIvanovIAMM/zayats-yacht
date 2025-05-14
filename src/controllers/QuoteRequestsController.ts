@@ -1,3 +1,5 @@
+'use server';
+
 import { QuoteRequestModel } from '@/models/QuoteRequest';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import {
@@ -6,7 +8,7 @@ import {
   getSortingQuery
 } from '@/controllers/mongoDbQueryHelpers';
 
-export const getQuoteRequests = async (fetchParams: BackendDataFetchArgs) => {
+export const getFilteredQuoteRequests = async (fetchParams: BackendDataFetchArgs) => {
   const { fromName, fromEmail, receivedAt } = fetchParams?.filters ? fetchParams.filters : {};
   const { page, perPage } = fetchParams;
 

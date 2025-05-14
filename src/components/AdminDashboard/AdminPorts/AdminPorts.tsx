@@ -5,9 +5,14 @@ import { usePortsColumns } from '@/components/AdminDashboard/AdminPorts/usePorts
 import { PortFrontend } from '@/models/PortFrontend';
 import { useTableDataFetcher } from '@/components/Table/useTableDataFetcher';
 import { getFilteredPorts } from '@/controllers/PortsController';
+import { Messages } from '@/helpers/messages';
 
 export const AdminPorts = () => {
-  const { dataState, fetchDataFromServer } = useTableDataFetcher<PortFrontend>(getFilteredPorts);
+  const { dataState, fetchDataFromServer } = useTableDataFetcher<PortFrontend>(
+    getFilteredPorts,
+    [],
+    Messages.FailedGetPorts
+  );
 
   const columnDefs = usePortsColumns();
 

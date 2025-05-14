@@ -23,7 +23,8 @@ const defaultDataState = {
 
 export const useTableDataFetcher = <T>(
   getterFunction: (fetchParams: BackendDataFetchArgs) => Promise<TableData<T>>,
-  dateColumns: string[] = []
+  dateColumns: string[] = [],
+  errorMessage: string = Messages.FailedGetData
 ) => {
   const [dataState, setDataState] = useState<DataState<T>>(defaultDataState);
 
@@ -43,10 +44,11 @@ export const useTableDataFetcher = <T>(
     try {
       const result: ActionTableData<T> = await getBackendDataAction<T>(
         backendFetchParams,
-        getterFunction
+        getterFunction,
+        errorMessage
       );
       if (!result.success) {
-        showNotification(false, result?.message || Messages.FailedGetPorts, true);
+        showNotification(false, result?.message || Messages.FailedGetData, true);
       }
 
       setDataState({
@@ -57,12 +59,12 @@ export const useTableDataFetcher = <T>(
     } catch (error: any) {
       // eslint-disable-next-line no-console
       console.log('getPorts() failed. Error: ', error);
-      showNotification(false, error?.message || Messages.FailedGetPorts, true);
+      showNotification(false, error?.message || errorMessage, true);
 
       setDataState({
         data: emptyTableData,
         isLoading: false,
-        error: error?.message || null
+        error: error?.message || errorMessage
       });
     }
   };

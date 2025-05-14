@@ -6,6 +6,7 @@ export enum Messages {
   AuthenticationFailed = 'Authentication failed',
   NewUserCreated = 'New user created successfully',
   FailedGetPorts = 'Failed to get ports',
+  FailedGetData = 'Failed to get data',
   FailedGetNearestShippings = 'Failed to get nearest shippings',
   FailedGetSchedules = 'Failed to get schedules',
   NotAuthenticated = 'Not authenticated',

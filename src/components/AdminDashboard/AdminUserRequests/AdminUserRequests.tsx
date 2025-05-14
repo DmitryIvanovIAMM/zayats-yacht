@@ -5,11 +5,13 @@ import { Table } from '@/components/Table/Table';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { useTableDataFetcher } from '@/components/Table/useTableDataFetcher';
 import { getFilteredQuoteRequests } from '@/controllers/QuoteRequestsController';
+import { Messages } from '@/helpers/messages';
 
 export const AdminUserRequests = () => {
   const { dataState, fetchDataFromServer } = useTableDataFetcher<QuoteRequestFrontend>(
     getFilteredQuoteRequests,
-    ['receivedAt']
+    ['receivedAt'],
+    Messages.FailedGetQuoteRequests
   );
 
   const columnDefs = useUserQuoteRequestsColumns();

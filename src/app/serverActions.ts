@@ -79,7 +79,8 @@ export async function sendQuoteRequestAction(
 
 export async function getBackendDataAction<T>(
   fetchParams: BackendDataFetchArgs,
-  getFunction: (fetchParams: BackendDataFetchArgs) => Promise<TableData<T>>
+  getFunction: (fetchParams: BackendDataFetchArgs) => Promise<TableData<T>>,
+  message: string = Messages.FailedGetData
 ): Promise<ActionTableData<T>> {
   // eslint-disable-next-line no-console
   console.log('getBackendDataAction().  fetchParams: ', fetchParams);
@@ -107,7 +108,7 @@ export async function getBackendDataAction<T>(
     return {
       success: false,
       data: emptyTableData,
-      message: error?.message || Messages.FailedGetPorts
+      message: error?.message || message
     };
   }
 }

@@ -1,4 +1,6 @@
 import { ShipStop, ShipStopModel } from '@/models/ShipStop';
+import { sortShipStopsByDate } from '@/utils/schedules';
+import { SailingModel, SailingWithShipStopAndPort } from '@/models/Sailing';
 
 export default class ScheduleService {
   private static instance: ScheduleService;
@@ -107,7 +109,7 @@ export default class ScheduleService {
     return shipStops;
   };
 
-  /*public querySailingsWithRoutesAndPorts = async () => {
+  public querySailingsWithRoutesAndPorts = async (): Promise<SailingWithShipStopAndPort[]> => {
     const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
       {
         $match: { deletedAt: { $exists: false } }
@@ -161,6 +163,7 @@ export default class ScheduleService {
     sailingsWithShipStopsAndPorts.forEach((sailing) => {
       sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)];
     });
+
     return sailingsWithShipStopsAndPorts.sort(function (a, b) {
       return (
         new Date(a.shipStops[0].departureOn).getTime() -
@@ -169,7 +172,7 @@ export default class ScheduleService {
     });
   };
 
-  createSailingByName(name: string) {
+  /*createSailingByName(name: string) {
     const newSailing = {
       name: name
     };

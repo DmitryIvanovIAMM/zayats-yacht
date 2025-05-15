@@ -1,7 +1,5 @@
 import { useMemo } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
-import { displaySmUp } from '@/components/Table/Filters/styles';
-import Image from 'next/image';
 
 export const useScheduleColumns = () => {
   return useMemo(() => {

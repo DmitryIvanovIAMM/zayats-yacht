@@ -1,50 +1,14 @@
 'use server';
 
-import { QuoteRequestModel } from '@/models/QuoteRequest';
 import { BackendDataFetchArgs } from '@/components/Table/types';
-import {
-  FiltersFromQuery,
-  getFiltersQuery,
-  getSortingQuery
-} from '@/controllers/mongoDbQueryHelpers';
+import { mapQuoteRequestsToFrontend } from '@/models/mappers.';
+import { quoteRequestService } from '@/services/QuoteRequestsService';
 
 export const getFilteredQuoteRequests = async (fetchParams: BackendDataFetchArgs) => {
-  const { fromName, fromEmail, receivedAt } = fetchParams?.filters ? fetchParams.filters : {};
-  const { page, perPage } = fetchParams;
-
-  const filters = getFiltersQuery(
-    {
-      fromName: fromName,
-      fromEmail: fromEmail,
-      receivedAt: receivedAt
-    } as FiltersFromQuery,
-    'i'
-  );
-  const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'receivedAt.desc');
-
-  const query = { ...filters };
-
-  const totalPromise = QuoteRequestModel.countDocuments(query);
-  const quoteRequestsPromise = QuoteRequestModel.find(query)
-    .collation({ locale: 'en' })
-    .sort(sortingQuery)
-    .skip(perPage * page)
-    .limit(perPage);
-
-  const [quoteRequests, total] = await Promise.all([quoteRequestsPromise, totalPromise]);
-
-  const quoteRequestsFrontend = quoteRequests.map((quoteRequest) => ({
-    _id: quoteRequest._id.toString(),
-    fromUserId: quoteRequest?.fromUserId?.toString() || '[n/a]',
-    fromName: quoteRequest?.fromName || '[n/a]',
-    fromEmail: quoteRequest.fromEmail,
-    receivedAt: quoteRequest.receivedAt,
-    requestData: quoteRequest.requestData,
-    requestObject: quoteRequest?.requestObject || {}
-  }));
+  const { data, total } = await quoteRequestService.getFilteredQuoteRequests(fetchParams);
 
   return {
-    data: quoteRequestsFrontend,
+    data: mapQuoteRequestsToFrontend(data),
     total: total
   };
 };

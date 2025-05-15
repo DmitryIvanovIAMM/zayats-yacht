@@ -9,19 +9,17 @@ import { type SailingWithShipStopAndPortsFrontend } from '@/models/SailingFronte
 
 export const ScheduleManagement = () => {
   const { dataState, fetchDataFromServer } = useTableDataFetcher(
-    querySailingsWithRoutesAndPorts<SailingWithShipStopAndPortsFrontend>,
+    querySailingsWithRoutesAndPorts,
     [],
     Messages.FailedGetSchedule
   );
-  console.log('dataState: ', dataState);
 
   const columnDefs = useScheduleColumns();
-  console.log('columnDefs: ', columnDefs);
 
   return (
     <div>
       <h2>Schedule</h2>
-      <Table<SailingWithShipStopAndPortsFrontend>
+      <Table<SailingWithShipStopAndPortsFrontend & { _id: string }>
         columnDefs={columnDefs}
         data={dataState.data}
         isLoading={dataState.isLoading}

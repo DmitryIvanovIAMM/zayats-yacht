@@ -34,3 +34,7 @@ export class ShipStop {
 }
 
 export const ShipStopModel = models?.ShipStop || getModelForClass(ShipStop);
+
+export class ShipStopWithPort extends ShipStop {
+  port: Port;
+}

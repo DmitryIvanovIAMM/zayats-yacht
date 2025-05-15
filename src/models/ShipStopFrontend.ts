@@ -13,6 +13,7 @@ export const shipStopsFields = [
 ];
 
 export interface ShipStopFrontend {
+  _id: string | null;
   sailingId: string;
   portId: string;
   shipId: string;
@@ -26,6 +27,7 @@ export interface ShipStopFrontend {
 }
 
 export interface ShipStopWithPortFrontend {
+  _id: string | null;
   sailingId: string;
   portId: string;
   port: PortFrontend;
@@ -38,6 +40,7 @@ export interface ShipStopWithPortFrontend {
   departurePort?: PortFrontend;
   sailing?: SailingFrontend;
 }
+
 export interface ShipStopWithSailingAndPort extends ShipStopFrontend {
   sailing: SailingFrontend;
   port: PortFrontend;

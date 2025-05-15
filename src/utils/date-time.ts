@@ -1,6 +1,8 @@
 export const maxComputerDate = new Date(2037, 11, 31, 23, 59, 59);
 export const INVALID_DATE = 'Invalid Date';
 
+export const monthDayYearDateFormat = 'MMM d, yyyy';
+
 export const nowUTC = () => {
   const date = new Date();
   const nowUtc = Date.UTC(
@@ -52,4 +54,15 @@ export interface MonthDateRange {
 
 export function addMinutes(date: Date, minutes: number) {
   return new Date(date.getTime() + minutes * 60000);
+}
+
+export function formatInMonthDayYear(date: Date | string): string {
+  if (date === undefined || date === '') {
+    return '-';
+  }
+  return new Date(date).toLocaleString(undefined, {
+    month: 'long',
+    day: '2-digit',
+    year: 'numeric'
+  }); // 'Wednesday, 14/06/2023, 13:43:57'
 }

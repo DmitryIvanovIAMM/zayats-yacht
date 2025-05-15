@@ -1,36 +1,78 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
+import { RouteTable } from '@/components/AdminDashboard/ScheduleManagment/RouteTable';
+import IconButton from '@mui/material/IconButton';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { displaySmUp } from '@/components/Table/Filters/styles';
+import type { SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
+import { createColumnHelper } from '@tanstack/table-core';
+import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
+import { formatInMonthDayYear } from '@/utils/date-time';
+
+const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend>();
 
 export const useScheduleColumns = () => {
   return useMemo(() => {
     return [
-      {
-        _id: 'name',
+      columnHelper.accessor('name', {
         header: 'Sailing Name',
-        accessor: 'name',
-        accessorKey: 'name',
         cell: ({ row }: { row: any }) => (
-          <div data-testid="ports-port-name">{row.original.name}</div>
+          <div data-testid="schedule-sailing-name" style={{ fontWeight: 'bold' }}>
+            {row.original.name}
+          </div>
         ),
         meta: {
           columnSx: { verticalAlign: 'top' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
-      } /*,
+      }),
       {
-        _id: 'destinationName',
-        header: 'Destination Name',
-        accessor: 'destinationName',
-        accessorKey: 'destinationName',
-        cell: ({ row }: { row: any }) => (
-          <div data-testid="ports-destination-name">{row.original.destinationName}</div>
-        ),
+        _id: 'route',
+        header: 'Route',
+        accessor: 'shipStops',
+        accessorKey: 'shipStops',
+        enableColumnFilter: false,
+        enableSorting: false,
+        cell: ({ row }: { row: any }) => {
+          // eslint-disable-next-line react-hooks/rules-of-hooks
+          const [isExpanded, setIsExpanded] = useState(false);
+
+          return (
+            <div
+              style={{ display: 'flex', justifyContent: 'space-between' }}
+              data-testid="schedules-sailing-route-data"
+            >
+              {isExpanded ? (
+                <RouteTable
+                  shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
+                />
+              ) : (
+                <div style={{ padding: '5px' }}>
+                  {`${formatInMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
+                  -
+                  {` ${formatInMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}
+                </div>
+              )}
+              <div>
+                <IconButton
+                  aria-label="expand row"
+                  size="small"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  data-testid="collapse-button"
+                  style={{ marginTop: -10 }}
+                >
+                  {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                </IconButton>
+              </div>
+            </div>
+          );
+        },
         meta: {
-          headerSx: { ...displaySmUp },
-          columnSx: { ...displaySmUp, verticalAlign: 'top' },
-          filter: (column: any) => <TextColumnFilter column={column} />
+          headerSx: { ...displaySmUp, width: '60%', maxWidth: '60%' },
+          columnSx: { ...displaySmUp, verticalAlign: 'top', width: '60%', maxWidth: '60%' }
         }
-      },
+      } /*,
       {
         _id: 'imageFileName',
         header: 'Image',

@@ -10,7 +10,7 @@ import { createColumnHelper } from '@tanstack/table-core';
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInMonthDayYear } from '@/utils/date-time';
 
-const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend>();
+const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend & { _id: string }>();
 
 export const useScheduleColumns = () => {
   return useMemo(() => {

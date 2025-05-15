@@ -24,7 +24,8 @@ export const ScheduleManagement = () => {
         data={dataState.data}
         isLoading={dataState.isLoading}
         fetchData={fetchDataFromServer}
-        initialSortBy={[{ id: 'portName', desc: false }]}
+        initialSortBy={[{ id: 'shipStops.0.arrivalOn', desc: true }]}
+        stripedRows={false}
       />
     </div>
   );

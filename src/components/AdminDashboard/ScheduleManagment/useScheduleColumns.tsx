@@ -28,6 +28,14 @@ export const useScheduleColumns = () => {
         }
       }),
       {
+        _id: 'shipStops[0].arrivalOn',
+        header: 'Starts On',
+        accessorKey: 'shipStops.0.arrivalOn',
+        cell: ({ row }: { row: any }) => {
+          return <>{`${formatInMonthDayYear(row.original.shipStops[0].arrivalOn)}`}</>;
+        }
+      },
+      {
         _id: 'route',
         header: 'Route',
         accessor: 'shipStops',
@@ -48,7 +56,7 @@ export const useScheduleColumns = () => {
                   shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
                 />
               ) : (
-                <div style={{ padding: '5px' }}>
+                <div>
                   {`${formatInMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
                   -
                   {` ${formatInMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}

@@ -7,14 +7,8 @@ import { shipService } from '@/services/ShipService';
 import { ShipStop } from '@/models/ShipStop';
 import { ShipsParametersFlat } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
-import {
-  mapPortsToFrontend,
-  mapSailingsWithShipStopAndPortsToFrontend,
-  mapShipsToFrontend
-} from '@/models/mappers.';
-import { SailingWithShipStopAndPort } from '@/models/Sailing';
-import { SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
-import { portService } from '@/services/PortService';
+import { mapSailingsWithShipStopAndPortsToFrontend } from '@/models/mappers.';
+import { BackendDataFetchArgs } from '@/components/Table/types';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -85,7 +79,6 @@ export const queryNearestShippings = async (date: Date | string): Promise<ShipSt
       } while (addedShippings < 3 && currentShipStop < shipStopsSortedByArrivalTime.length);
     }
 
-    //return JSON.parse(JSON.stringify(firstThreeRoutes));
     return JSON.parse(JSON.stringify(firstThreeRoutes));
   } catch (err) {
     // eslint-disable-next-line no-console
@@ -94,7 +87,7 @@ export const queryNearestShippings = async (date: Date | string): Promise<ShipSt
   }
 };
 
-export const queryAllSailingsPortsShips = async () => {
+/*export const queryAllSailingsPortsShips = async () => {
   const sailingsWithShipStopsAndPorts: SailingWithShipStopAndPort[] =
     await scheduleService.querySailingsWithRoutesAndPorts();
   const ships = await shipService.getAllShips();
@@ -105,87 +98,16 @@ export const queryAllSailingsPortsShips = async () => {
     ships: mapShipsToFrontend(ships),
     ports: mapPortsToFrontend(ports)
   };
-};
+};*/
 
-export const querySailingsWithRoutesAndPorts = async () => {
-  const sailingsWithShipStopsAndPorts: SailingWithShipStopAndPort[] =
-    await scheduleService.querySailingsWithRoutesAndPorts();
-  const sailingsFrontend: SailingWithShipStopAndPortsFrontend[] =
-    mapSailingsWithShipStopAndPortsToFrontend(sailingsWithShipStopsAndPorts);
+export const querySailingsWithRoutesAndPorts = async (fetchParams: BackendDataFetchArgs) => {
+  const sailingsWithShipStopsAndPorts =
+    await scheduleService.querySailingsWithRoutesAndPorts(fetchParams);
 
   return {
-    data: sailingsFrontend,
-    total: sailingsFrontend.length
+    data: mapSailingsWithShipStopAndPortsToFrontend(sailingsWithShipStopsAndPorts.data),
+    total: sailingsWithShipStopsAndPorts.total
   };
-  // const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
-  //   {
-  //     $match: { deletedAt: { $exists: false } }
-  //   },
-  //   {
-  //     $lookup: {
-  //       from: 'shipstops',
-  //       localField: '_id',
-  //       foreignField: 'sailingId',
-  //       as: 'shipStops'
-  //     }
-  //   },
-  //   {
-  //     $unwind: '$shipStops'
-  //   },
-  //   {
-  //     $lookup: {
-  //       from: 'ports',
-  //       localField: 'shipStops.portId',
-  //       foreignField: '_id',
-  //       as: 'shipStops.port'
-  //     }
-  //   },
-  //   {
-  //     $unwind: '$shipStops.port'
-  //   },
-  //   {
-  //     $group: {
-  //       _id: '$_id',
-  //       root: {
-  //         $mergeObjects: '$$ROOT'
-  //       },
-  //       shipStops: {
-  //         $push: '$shipStops'
-  //       }
-  //     }
-  //   },
-  //   {
-  //     $replaceRoot: {
-  //       newRoot: {
-  //         $mergeObjects: ['$root', '$$ROOT']
-  //       }
-  //     }
-  //   },
-  //   {
-  //     $project: {
-  //       root: 0
-  //     }
-  //   }
-  // ]);
-  // sailingsWithShipStopsAndPorts.forEach((sailing) => {
-  //   sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)];
-  // });
-  // console.log('sailingsWithShipStopsAndPorts: ', sailingsWithShipStopsAndPorts);
-  // const sailings = JSON.parse(
-  //   JSON.stringify(
-  //     sailingsWithShipStopsAndPorts.sort(function (a, b) {
-  //       return (
-  //         new Date(a.shipStops[0].departureOn).getTime() -
-  //         new Date(b.shipStops[0].departureOn).getTime()
-  //       );
-  //     })
-  //   )
-  // );
-  //
-  // return {
-  //   data: sailings,
-  //   total: sailings.length
-  // };
 };
 
 /*public getSailing = async (req, res) => {

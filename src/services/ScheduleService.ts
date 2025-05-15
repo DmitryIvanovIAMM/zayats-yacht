@@ -1,6 +1,11 @@
 import { ShipStop, ShipStopModel } from '@/models/ShipStop';
-import { sortShipStopsByDate } from '@/utils/schedules';
 import { SailingModel, SailingWithShipStopAndPort } from '@/models/Sailing';
+import { BackendDataFetchArgs } from '@/components/Table/types';
+import {
+  FiltersFromQuery,
+  getFiltersQuery,
+  getSortingQuery
+} from '@/controllers/mongoDbQueryHelpers';
 
 export default class ScheduleService {
   private static instance: ScheduleService;
@@ -109,10 +114,35 @@ export default class ScheduleService {
     return shipStops;
   };
 
-  public querySailingsWithRoutesAndPorts = async (): Promise<SailingWithShipStopAndPort[]> => {
-    const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
+  public querySailingsWithRoutesAndPorts = async (
+    fetchParams: BackendDataFetchArgs
+  ): Promise<{ data: SailingWithShipStopAndPort[]; total: number }> => {
+    const { name } = fetchParams?.filters ? fetchParams.filters : {};
+    const { page, perPage } = fetchParams;
+
+    const filters = getFiltersQuery(
       {
-        $match: { deletedAt: { $exists: false } }
+        name: name
+      } as FiltersFromQuery,
+      'i'
+    );
+    const sortingQuery = getSortingQuery(
+      fetchParams.sortBy as string | string[],
+      'shipStops.0.arrivalOn.desc'
+    );
+
+    const baseQuery = {
+      deletedAt: { $exists: false },
+      ...filters
+    };
+
+    const totalPromise = SailingModel.countDocuments(baseQuery);
+
+    const sailingsWithShipStopsAndPortsPromise = SailingModel.aggregate([
+      {
+        $match: {
+          ...baseQuery
+        }
       },
       {
         $lookup: {
@@ -120,6 +150,13 @@ export default class ScheduleService {
           localField: '_id',
           foreignField: 'sailingId',
           as: 'shipStops'
+        }
+      },
+      {
+        $set: {
+          shipStops: {
+            $sortArray: { input: '$shipStops', sortBy: { arrivalOn: 1 } }
+          }
         }
       },
       {
@@ -158,18 +195,25 @@ export default class ScheduleService {
         $project: {
           root: 0
         }
+      },
+      { $sort: sortingQuery },
+      {
+        $skip: page * perPage
+      },
+      {
+        $limit: perPage
       }
     ]);
-    sailingsWithShipStopsAndPorts.forEach((sailing) => {
-      sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)];
-    });
 
-    return sailingsWithShipStopsAndPorts.sort(function (a, b) {
-      return (
-        new Date(a.shipStops[0].departureOn).getTime() -
-        new Date(b.shipStops[0].departureOn).getTime()
-      );
-    });
+    const [sailingsWithShipStopsAndPorts, total] = await Promise.all([
+      sailingsWithShipStopsAndPortsPromise,
+      totalPromise
+    ]);
+
+    return {
+      data: sailingsWithShipStopsAndPorts,
+      total: total
+    };
   };
 
   /*createSailingByName(name: string) {

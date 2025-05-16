@@ -52,11 +52,13 @@ export const useScheduleColumns = () => {
               data-testid="schedules-sailing-route-data"
             >
               {isExpanded ? (
-                <RouteTable
-                  shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
-                />
+                <div data-testid="scheule-sailingt-data-expanded" style={{ width: '100%' }}>
+                  <RouteTable
+                    shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
+                  />
+                </div>
               ) : (
-                <div>
+                <div data-testid="scheule-sailingt-data-collapsed">
                   {`${formatInLongMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
                   -
                   {` ${formatInLongMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}

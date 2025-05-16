@@ -155,6 +155,35 @@ describe('Admin on Schedule Page', () => {
       });
   });
 
+  it('should allow to expand route data', () => {
+    // expand data in the second row
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="collapse-button"]').click();
+        cy.get('[data-testid="scheule-sailingt-data-expanded"]').should('be.visible');
+        cy.get('[data-testid="scheule-sailingt-data-collapsed"]').should('not.exist');
+        //cy.get('[data-testid="quote-request-request-data-expanded"]').should('contain', 'Arrival');
+        cy.contains('Arrival');
+        cy.contains('Departure');
+        cy.contains('Port');
+        cy.contains('Genoa, Italy');
+        cy.contains('Palma de Mallorca, Spain');
+        cy.contains('Tortola, British Virgin Islands');
+      });
+
+    // second click hide additional route data
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="collapse-button"]').click();
+        cy.get('[data-testid="scheule-sailingt-data-collapsed"]').should('be.visible');
+        cy.get('[data-testid="scheule-sailingt-data-expanded"]').should('not.exist');
+        cy.contains('Genoa, Italy');
+        cy.contains('Tortola, British Virgin Islands');
+      });
+  });
+
   it('should allow sorting', () => {
     cy.contains('Sailing Name').click();
 

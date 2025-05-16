@@ -10,6 +10,11 @@ import { createColumnHelper } from '@tanstack/table-core';
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
 
+const transformSx = {
+  transform: 'rotateX(360deg)',
+  transition: '1000ms ease-in-out'
+};
+
 const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend & { _id: string }>();
 
 export const useScheduleColumns = () => {
@@ -52,7 +57,10 @@ export const useScheduleColumns = () => {
               data-testid="schedules-sailing-route-data"
             >
               {isExpanded ? (
-                <div data-testid="scheule-sailingt-data-expanded" style={{ width: '100%' }}>
+                <div
+                  data-testid="scheule-sailingt-data-expanded"
+                  style={{ width: '100%', ...transformSx }}
+                >
                   <RouteTable
                     shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
                   />

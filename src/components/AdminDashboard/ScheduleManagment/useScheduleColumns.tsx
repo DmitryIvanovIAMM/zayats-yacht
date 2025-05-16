@@ -9,15 +9,24 @@ import type { SailingWithShipStopAndPortsFrontend } from '@/models/SailingFronte
 import { createColumnHelper } from '@tanstack/table-core';
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
+import Checkbox from '@mui/material/Checkbox';
 
 const transformSx = {
   transform: 'rotateX(360deg)',
   transition: '1000ms ease-in-out'
 };
 
+export interface ScheduleColumnsProps {
+  disableActions?: boolean;
+  onSailingStatusChange: (sailingId: string, status: boolean) => void;
+}
+
 const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend & { _id: string }>();
 
-export const useScheduleColumns = () => {
+export const useScheduleColumns = ({
+  disableActions = false,
+  onSailingStatusChange
+}: ScheduleColumnsProps) => {
   return useMemo(() => {
     return [
       columnHelper.accessor('name', {
@@ -28,7 +37,7 @@ export const useScheduleColumns = () => {
           </div>
         ),
         meta: {
-          columnSx: { verticalAlign: 'top' },
+          columnSx: { verticalAlign: 'top', paddingTop: '10px' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       }),
@@ -38,6 +47,9 @@ export const useScheduleColumns = () => {
         accessorKey: 'shipStops.0.arrivalOn',
         cell: ({ row }: { row: any }) => {
           return <>{`${formatInMonthDayYear(row.original.shipStops[0].arrivalOn)}`}</>;
+        },
+        meta: {
+          columnSx: { verticalAlign: 'top', paddingTop: '10px' }
         }
       },
       {
@@ -88,32 +100,35 @@ export const useScheduleColumns = () => {
         },
         meta: {
           headerSx: { ...displaySmUp, width: '60%', maxWidth: '60%' },
-          columnSx: { ...displaySmUp, verticalAlign: 'top', width: '60%', maxWidth: '60%' }
+          columnSx: {
+            ...displaySmUp,
+            verticalAlign: 'top',
+            width: '60%',
+            maxWidth: '60%',
+            paddingTop: '10px'
+          }
         }
-      } /*,
+      },
       {
-        _id: 'imageFileName',
-        header: 'Image',
-        accessor: 'imageFileName',
-        accessorKey: 'imageFileName',
+        _id: 'actionCCell',
+        header: '',
+        accessorKey: 'actionCCell',
         enableSorting: false,
-        enableColumnFilter: false,
-        cell: ({ row }: { row: any }) => (
-          <div data-testid="ports-image-file-name">
-            <Image
-              src={`/images/${row.original.imageFileName}`}
-              width={100}
-              height={100}
-              alt={`Image of ${row.original.portName}`}
-            />
-          </div>
-        ),
-        meta: {
-          headerSx: { width: '140px' },
-          columnSx: { verticalAlign: 'top', width: '140px' },
-          filter: (column: any) => <TextColumnFilter column={column} />
+        cell: ({ row }: { row: any }) => {
+          return (
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Checkbox
+                checked={row.original.isActive}
+                onChange={() => onSailingStatusChange(row.original._id, !row.original.isActive)}
+                disabled={disableActions}
+                data-testid="schedule-sailing-active-checkbox"
+                color={'secondary'}
+              />
+            </div>
+          );
         }
-      }*/
+      }
     ];
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onSailingStatusChange]);
 };

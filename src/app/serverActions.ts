@@ -8,12 +8,17 @@ import {
   ActionTableData,
   emptyTableData,
   Roles,
+  SailingStatusParams,
   TableData
 } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
-import { getSchedules, queryNearestShippings } from '@/controllers/SchedulesController';
+import {
+  getSchedules,
+  queryNearestShippings,
+  updateSailingActivityStatus
+} from '@/controllers/SchedulesController';
 import { ShipsParametersFlat } from '@/models/types';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { withServerAuth } from '@/utils/auth/withServerAuth';
@@ -111,4 +116,11 @@ export async function getBackendDataAction<T>(
       message: error?.message || message
     };
   }
+}
+
+export async function setSailingActivityStatus(data: SailingStatusParams): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('changeScheduleStatusAction(). data: ', data);
+
+  return (await withServerAuth([Roles.Admin], updateSailingActivityStatus, data)) as ActionResult;
 }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { Dispatch, useMemo, useState } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
 import { RouteTable } from '@/components/AdminDashboard/ScheduleManagment/RouteTable';
 import IconButton from '@mui/material/IconButton';
@@ -13,10 +13,12 @@ import Checkbox from '@mui/material/Checkbox';
 
 const transformSx = {
   transform: 'rotateX(360deg)',
-  transition: '1000ms ease-in-out'
+  transition: '3000ms ease-in-out'
 };
 
 export interface ScheduleColumnsProps {
+  expandedSailings: string[];
+  handleExpandSailing: (sailingId: string) => void;
   disableActions?: boolean;
   onSailingStatusChange: (sailingId: string, status: boolean) => void;
 }
@@ -24,6 +26,8 @@ export interface ScheduleColumnsProps {
 const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend & { _id: string }>();
 
 export const useScheduleColumns = ({
+  expandedSailings,
+  handleExpandSailing,
   disableActions = false,
   onSailingStatusChange
 }: ScheduleColumnsProps) => {
@@ -61,14 +65,15 @@ export const useScheduleColumns = ({
         enableSorting: false,
         cell: ({ row }: { row: any }) => {
           // eslint-disable-next-line react-hooks/rules-of-hooks
-          const [isExpanded, setIsExpanded] = useState(false);
+          //const [isExpanded, setIsExpanded] = useState(false);
+          //const isExpanded = expandedSailings.includes(row.original._id);
 
           return (
             <div
-              style={{ display: 'flex', justifyContent: 'space-between' }}
+              style={{ display: 'flex', justifyContent: 'space-between', ...transformSx }}
               data-testid="schedules-sailing-route-data"
             >
-              {isExpanded ? (
+              {expandedSailings.includes(row.original._id) ? (
                 <div
                   data-testid="scheule-sailingt-data-expanded"
                   style={{ width: '100%', ...transformSx }}
@@ -78,7 +83,7 @@ export const useScheduleColumns = ({
                   />
                 </div>
               ) : (
-                <div data-testid="scheule-sailingt-data-collapsed">
+                <div data-testid="scheule-sailingt-data-collapsed" style={{ ...transformSx }}>
                   {`${formatInLongMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
                   -
                   {` ${formatInLongMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}
@@ -88,11 +93,15 @@ export const useScheduleColumns = ({
                 <IconButton
                   aria-label="expand row"
                   size="small"
-                  onClick={() => setIsExpanded(!isExpanded)}
+                  onClick={() => handleExpandSailing(row.original._id)}
                   data-testid="collapse-button"
                   style={{ marginTop: -10 }}
                 >
-                  {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                  {expandedSailings.includes(row.original._id) ? (
+                    <KeyboardArrowUpIcon />
+                  ) : (
+                    <KeyboardArrowDownIcon />
+                  )}
                 </IconButton>
               </div>
             </div>
@@ -130,5 +139,5 @@ export const useScheduleColumns = ({
       }
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onSailingStatusChange]);
+  }, [expandedSailings]);
 };

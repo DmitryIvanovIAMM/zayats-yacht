@@ -18,31 +18,40 @@ const oddRowsGrayColor = {
   }
 };
 
+const transformSx = {
+  transform: 'rotateX(360deg)',
+  transition: '3000ms ease-in-out'
+};
+
 export const RouteTable = ({ shipStops = [] }: RouteTableProps) => {
   return (
-    <Table style={{ width: '100%' }}>
-      <TableHead>
-        <TableRow sx={{ borderTop: '1px solid rgba(224, 224, 224, 1)', background: '#ecf9f2' }}>
-          <TableCell style={headerCellStyle}>Arrival</TableCell>
-          <TableCell style={headerCellStyle}>Departure</TableCell>
-          <TableCell style={headerCellStyle}>Port</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <>
-          {shipStops.map((shipStop, index) => (
-            <TableRow key={index} sx={oddRowsGrayColor}>
-              <TableCell style={{ ...cellStyle, width: '30%' }}>
-                {formatInLongMonthDayYear(shipStop.arrivalOn)}
-              </TableCell>
-              <TableCell style={{ ...cellStyle, width: '30%' }}>
-                {formatInLongMonthDayYear(shipStop.departureOn)}
-              </TableCell>
-              <TableCell style={{ ...cellStyle, width: '40%' }}>{shipStop.port.portName}</TableCell>
-            </TableRow>
-          ))}
-        </>
-      </TableBody>
-    </Table>
+    <div style={{ ...transformSx }}>
+      <Table style={{ width: '100%' }}>
+        <TableHead>
+          <TableRow sx={{ borderTop: '1px solid rgba(224, 224, 224, 1)', background: '#ecf9f2' }}>
+            <TableCell style={headerCellStyle}>Arrival</TableCell>
+            <TableCell style={headerCellStyle}>Departure</TableCell>
+            <TableCell style={headerCellStyle}>Port</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <>
+            {shipStops.map((shipStop, index) => (
+              <TableRow key={index} sx={oddRowsGrayColor}>
+                <TableCell style={{ ...cellStyle, width: '30%' }}>
+                  {formatInLongMonthDayYear(shipStop.arrivalOn)}
+                </TableCell>
+                <TableCell style={{ ...cellStyle, width: '30%' }}>
+                  {formatInLongMonthDayYear(shipStop.departureOn)}
+                </TableCell>
+                <TableCell style={{ ...cellStyle, width: '40%' }}>
+                  {shipStop.port.portName}
+                </TableCell>
+              </TableRow>
+            ))}
+          </>
+        </TableBody>
+      </Table>
+    </div>
   );
 };

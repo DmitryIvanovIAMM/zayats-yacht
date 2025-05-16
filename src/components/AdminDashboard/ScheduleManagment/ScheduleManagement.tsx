@@ -13,6 +13,8 @@ import { useState } from 'react';
 
 export const ScheduleManagement = () => {
   const [isUpdating, setIsUpdating] = useState(false);
+  const [expandedSailings, setExpandedSailings] = useState<string[]>([]);
+
   const { dataState, fetchDataFromServer } = useTableDataFetcher(
     querySailingsWithRoutesAndPorts,
     [],
@@ -43,7 +45,17 @@ export const ScheduleManagement = () => {
     }
   };
 
+  const handleExpandSailing = (sailingId: string) => {
+    if (expandedSailings.includes(sailingId)) {
+      setExpandedSailings((prev: string[]) => prev.filter((id) => id !== sailingId));
+    } else {
+      setExpandedSailings((prev: string[]) => [...prev, sailingId]);
+    }
+  };
+
   const columnDefs = useScheduleColumns({
+    expandedSailings,
+    handleExpandSailing,
     disableActions: dataState.isLoading || isUpdating,
     onSailingStatusChange
   });

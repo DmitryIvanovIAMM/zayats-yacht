@@ -4,5 +4,6 @@ export interface QuoteRequestFrontend {
   fromName: string;
   fromEmail: string;
   receivedAt: string;
-  requestData: object;
+  requestData: string;
+  requestObject: object;
 }

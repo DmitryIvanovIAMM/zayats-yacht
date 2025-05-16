@@ -7,6 +7,8 @@ import { shipService } from '@/services/ShipService';
 import { ShipStop } from '@/models/ShipStop';
 import { ShipsParametersFlat } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
+import { mapSailingsWithShipStopAndPortsToFrontend } from '@/models/mappers';
+import { BackendDataFetchArgs } from '@/components/Table/types';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -77,13 +79,35 @@ export const queryNearestShippings = async (date: Date | string): Promise<ShipSt
       } while (addedShippings < 3 && currentShipStop < shipStopsSortedByArrivalTime.length);
     }
 
-    //return JSON.parse(JSON.stringify(firstThreeRoutes));
     return JSON.parse(JSON.stringify(firstThreeRoutes));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('queryNearestShippings().  err: ', err);
     return [];
   }
+};
+
+/*export const queryAllSailingsPortsShips = async () => {
+  const sailingsWithShipStopsAndPorts: SailingWithShipStopAndPort[] =
+    await scheduleService.querySailingsWithRoutesAndPorts();
+  const ships = await shipService.getAllShips();
+  const ports = await portService.getAllPorts();
+
+  return {
+    sailings: mapSailingsWithShipStopAndPortsToFrontend(sailingsWithShipStopsAndPorts),
+    ships: mapShipsToFrontend(ships),
+    ports: mapPortsToFrontend(ports)
+  };
+};*/
+
+export const querySailingsWithRoutesAndPorts = async (fetchParams: BackendDataFetchArgs) => {
+  const sailingsWithShipStopsAndPorts =
+    await scheduleService.querySailingsWithRoutesAndPorts(fetchParams);
+
+  return {
+    data: mapSailingsWithShipStopAndPortsToFrontend(sailingsWithShipStopsAndPorts.data),
+    total: sailingsWithShipStopsAndPorts.total
+  };
 };
 
 /*public getSailing = async (req, res) => {

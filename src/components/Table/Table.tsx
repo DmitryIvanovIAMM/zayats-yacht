@@ -31,6 +31,10 @@ import uniq from 'lodash/uniq';
 import React, { ChangeEvent, MouseEvent, ReactElement, useMemo, useState, useEffect } from 'react';
 import { DataFetcherArgs, MutableTableRefObject } from './types';
 import { AppEnv } from '@/utils/appEnv';
+import {
+  replaceUnderlinesInFilterStates,
+  replaceUnderlinesInSortingState
+} from '@/components/Table/tableUtils';
 
 export const oddRowsGrayColor = {
   '&:nth-of-type(odd)': {
@@ -163,8 +167,8 @@ export function Table<TableData extends { _id: string }>({
       fetchData({
         url: '',
         pagination,
-        columnFilters,
-        sorting
+        columnFilters: replaceUnderlinesInFilterStates(columnFilters),
+        sorting: replaceUnderlinesInSortingState(sorting)
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

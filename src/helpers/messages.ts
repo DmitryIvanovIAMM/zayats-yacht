@@ -12,5 +12,6 @@ export enum Messages {
   NotAuthenticated = 'Not authenticated',
   UserNotFound = 'User not found',
   NotAuthorized = 'Not authorized',
-  FailedGetQuoteRequests = 'Failed to get quote requests'
+  FailedGetQuoteRequests = 'Failed to get quote requests',
+  FailedGetSchedule = 'Failed to get schedule'
 }

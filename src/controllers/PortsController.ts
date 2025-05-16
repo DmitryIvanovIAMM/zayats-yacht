@@ -2,14 +2,10 @@
 
 import { scheduleService } from '@/services/ScheduleService';
 import { portService } from '@/services/PortService';
-import { Port, PortModel } from '@/models/Port';
+import { Port } from '@/models/Port';
 import { ShipStop } from '@/models/ShipStop';
 import { BackendDataFetchArgs } from '@/components/Table/types';
-import {
-  FiltersFromQuery,
-  getFiltersQuery,
-  getSortingQuery
-} from '@/controllers/mongoDbQueryHelpers';
+import { mapPortsToFrontend } from '@/models/mappers';
 
 export const getActivePorts = async () => {
   try {
@@ -22,7 +18,7 @@ export const getActivePorts = async () => {
     );
 
     return {
-      ports: JSON.parse(JSON.stringify(usedPorts)),
+      ports: mapPortsToFrontend(usedPorts),
       message: null
     };
   } catch (err) {
@@ -34,38 +30,10 @@ export const getActivePorts = async () => {
 };
 
 export const getFilteredPorts = async (fetchParams: BackendDataFetchArgs) => {
-  const { portName, destinationName } = fetchParams?.filters ? fetchParams.filters : {};
-  const { page, perPage } = fetchParams;
-
-  const filters = getFiltersQuery(
-    {
-      portName: portName,
-      destinationName: destinationName
-    } as FiltersFromQuery,
-    'i'
-  );
-  const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'portName.asc');
-
-  const query = { ...filters };
-
-  const totalPromise = PortModel.countDocuments(query);
-  const portsPromise = PortModel.find(query)
-    .collation({ locale: 'en' })
-    .sort(sortingQuery)
-    .skip(perPage * page)
-    .limit(perPage);
-
-  const [ports, total] = await Promise.all([portsPromise, totalPromise]);
-
-  const portsFrontend = ports.map((port) => ({
-    _id: port._id.toString(),
-    portName: port.portName,
-    destinationName: port.destinationName,
-    imageFileName: port.imageFileName
-  }));
+  const { data, total } = await portService.getFilteredPorts(fetchParams);
 
   return {
-    data: portsFrontend,
+    data: mapPortsToFrontend(data),
     total: total
   };
 };

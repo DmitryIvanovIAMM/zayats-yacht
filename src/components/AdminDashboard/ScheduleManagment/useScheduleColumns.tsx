@@ -8,7 +8,7 @@ import { displaySmUp } from '@/components/Table/Filters/styles';
 import type { SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
 import { createColumnHelper } from '@tanstack/table-core';
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
-import { formatInMonthDayYear } from '@/utils/date-time';
+import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
 
 const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend & { _id: string }>();
 
@@ -57,9 +57,9 @@ export const useScheduleColumns = () => {
                 />
               ) : (
                 <div>
-                  {`${formatInMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
+                  {`${formatInLongMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
                   -
-                  {` ${formatInMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}
+                  {` ${formatInLongMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}
                 </div>
               )}
               <div>

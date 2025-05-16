@@ -1,5 +1,5 @@
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
-import { formatInMonthDayYear } from '@/utils/date-time';
+import { formatInLongMonthDayYear } from '@/utils/date-time';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 
 const cellStyle = {
@@ -12,27 +12,32 @@ const headerCellStyle = {
 export interface RouteTableProps {
   shipStops: ShipStopWithPortFrontend[];
 }
+const oddRowsGrayColor = {
+  '&:nth-of-type(odd)': {
+    backgroundColor: 'action.hover'
+  }
+};
 
 export const RouteTable = ({ shipStops = [] }: RouteTableProps) => {
   return (
     <div style={{ width: '100%' }}>
       <Table style={{ width: '100%' }}>
         <TableHead>
-          <TableRow>
+          <TableRow sx={{ borderTop: '1px solid rgba(224, 224, 224, 1)', background: '#ecf9f2' }}>
             <TableCell style={headerCellStyle}>Arrival</TableCell>
             <TableCell style={headerCellStyle}>Departure</TableCell>
-            <TableCell style={headerCellStyle}>Ports</TableCell>
+            <TableCell style={headerCellStyle}>Port</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <>
             {shipStops.map((shipStop, index) => (
-              <TableRow key={index}>
+              <TableRow key={index} sx={oddRowsGrayColor}>
                 <TableCell style={{ ...cellStyle, width: '30%' }}>
-                  {formatInMonthDayYear(shipStop.arrivalOn)}
+                  {formatInLongMonthDayYear(shipStop.arrivalOn)}
                 </TableCell>
                 <TableCell style={{ ...cellStyle, width: '30%' }}>
-                  {formatInMonthDayYear(shipStop.departureOn)}
+                  {formatInLongMonthDayYear(shipStop.departureOn)}
                 </TableCell>
                 <TableCell style={{ ...cellStyle, width: '40%' }}>
                   {shipStop.port.portName}

@@ -56,7 +56,7 @@ export function addMinutes(date: Date, minutes: number) {
   return new Date(date.getTime() + minutes * 60000);
 }
 
-export function formatInMonthDayYear(date: Date | string): string {
+export function formatInLongMonthDayYear(date: Date | string): string {
   if (date === undefined || date === '') {
     return '-';
   }
@@ -64,5 +64,15 @@ export function formatInMonthDayYear(date: Date | string): string {
     month: 'long',
     day: '2-digit',
     year: 'numeric'
-  }); // 'Wednesday, 14/06/2023, 13:43:57'
+  }); // December 06, 2025
+}
+export function formatInMonthDayYear(date: Date | string): string {
+  if (date === undefined || date === '') {
+    return '-';
+  }
+  return new Date(date).toLocaleString('en-US', {
+    month: 'numeric',
+    day: '2-digit',
+    year: 'numeric'
+  }); // 12/06/2025
 }

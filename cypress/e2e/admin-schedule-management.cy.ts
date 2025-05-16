@@ -131,7 +131,7 @@ describe('Admin on Schedule Page', () => {
         cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Grand Prix Sailing');
         cy.get('[data-testid="schedules-sailing-route-data"]').should(
           'contain',
-          'Fort Lauderdale, Florid'
+          'Fort Lauderdale, Florida'
         );
         cy.get('[data-testid="schedules-sailing-route-data"]').should('contain', 'Genoa, Italy');
       });

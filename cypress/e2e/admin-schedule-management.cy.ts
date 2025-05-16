@@ -154,4 +154,180 @@ describe('Admin on Schedule Page', () => {
         );
       });
   });
+
+  it('should allow sorting', () => {
+    cy.contains('Sailing Name').click();
+
+    // sort by sailing name
+    // first click - in sailing name ascending order
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Alaska Yachting Adventure',
+          { timeout: 10000 }
+        ); // add timeouts after click to wait backend
+      });
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Asia to North America Summer Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Christmas Sailing');
+      });
+    cy.get('tbody tr')
+      .eq(3)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Europe to Asia Sailing');
+      });
+    cy.get('tbody tr')
+      .eq(4)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Fort Lauderdale Boat Show Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(5)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Grand Prix Sailing');
+      });
+    cy.get('tbody tr')
+      .eq(6)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'North America Eastbound Summer Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(7)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Summer Mediterranean Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(8)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Westbound North America and Asia Christmas Sailing'
+        );
+      });
+
+    // second click - in sailing name descending order
+    cy.contains('Sailing Name').click();
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Westbound North America and Asia Christmas Sailing',
+          { timeout: 10000 }
+        );
+      });
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Summer Mediterranean Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'North America Eastbound Summer Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(3)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Grand Prix Sailing');
+      });
+    cy.get('tbody tr')
+      .eq(4)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Fort Lauderdale Boat Show Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(5)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Europe to Asia Sailing');
+      });
+    cy.get('tbody tr')
+      .eq(6)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Christmas Sailing');
+      });
+    cy.get('tbody tr')
+      .eq(7)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Asia to North America Summer Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(8)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Alaska Yachting Adventure'
+        );
+      });
+  });
+
+  it('should allow filtering', () => {
+    cy.get('thead tr th')
+      .eq(0)
+      .within(() => {
+        cy.get('[aria-label="Filter by Sailing Name"]').type('America');
+      });
+
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 3, {
+        timeout: 10000
+      });
+    });
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Westbound North America and Asia Christmas Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'North America Eastbound Summer Sailing'
+        );
+      });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Asia to North America Summer Sailing'
+        );
+      });
+  });
 });

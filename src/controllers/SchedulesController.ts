@@ -7,7 +7,7 @@ import { shipService } from '@/services/ShipService';
 import { ShipStop } from '@/models/ShipStop';
 import { ShipsParametersFlat } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
-import { mapSailingsWithShipStopAndPortsToFrontend } from '@/models/mappers.';
+import { mapSailingsWithShipStopAndPortsToFrontend } from '@/models/mappers';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {

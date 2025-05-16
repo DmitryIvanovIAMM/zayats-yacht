@@ -5,7 +5,7 @@ import { portService } from '@/services/PortService';
 import { Port } from '@/models/Port';
 import { ShipStop } from '@/models/ShipStop';
 import { BackendDataFetchArgs } from '@/components/Table/types';
-import { mapPortsToFrontend } from '@/models/mappers.';
+import { mapPortsToFrontend } from '@/models/mappers';
 
 export const getActivePorts = async () => {
   try {

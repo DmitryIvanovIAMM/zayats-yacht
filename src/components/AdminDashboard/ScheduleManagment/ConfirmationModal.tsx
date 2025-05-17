@@ -19,7 +19,12 @@ export const ConfirmationModal = ({
   message: string;
 }) => {
   return (
-    <Dialog open={open} onClose={onClose} aria-labelledby="sailing-delete-modal">
+    <Dialog
+      open={open}
+      onClose={onClose}
+      aria-labelledby="confirmation-modal"
+      data-testid="confirmation-modal"
+    >
       <DialogTitle id="alert-dialog-title" style={{ color: secondary.dark, fontSize: '16p' }}>
         {title}
       </DialogTitle>
@@ -30,7 +35,12 @@ export const ConfirmationModal = ({
         <Button onClick={onClose} style={{ color: secondary.dark }}>
           Cancel
         </Button>
-        <Button variant="contained" color="error" onClick={onConfirm}>
+        <Button
+          variant="contained"
+          color="error"
+          onClick={onConfirm}
+          data-testid="confirmation-modal-confirm-button"
+        >
           Confirm
         </Button>
       </DialogActions>

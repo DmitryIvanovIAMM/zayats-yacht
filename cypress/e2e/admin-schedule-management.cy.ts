@@ -360,7 +360,7 @@ describe('Admin on Schedule Page', () => {
       });
   });
 
-  it.only('should allow change active status for sailing', () => {
+  it('should allow change active status for sailing', () => {
     // select data-testid="schedule-sailing-active-checkbox" in second row in table
     // check is active and click
     cy.get('tbody tr')
@@ -391,6 +391,41 @@ describe('Admin on Schedule Page', () => {
         cy.get('[data-testid="schedule-sailing-active-checkbox-input"]', {
           timeout: 10000
         }).should('be.checked');
+      });
+  });
+
+  it('should allow delete sailing', () => {
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should(
+          'contain',
+          'Westbound North America and Asia Christmas Sailing'
+        );
+        cy.get('[data-testid="schedules-sailing-route-data"]').should(
+          'contain',
+          'Fort Lauderdale, Florida'
+        );
+        cy.get('[data-testid="schedules-sailing-route-data"]').should('contain', 'Hong Kong');
+
+        cy.get('[data-testid="schedule-sailing-delete-button"]').click();
+      });
+
+    cy.get('[data-testid="confirmation-modal"]').within(() => {
+      cy.get('[data-testid="confirmation-modal-confirm-button"]').click();
+    });
+
+    cy.reload();
+
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Christmas Sailing');
+        cy.get('[data-testid="schedules-sailing-route-data"]').should('contain', 'Genoa, Italy');
+        cy.get('[data-testid="schedules-sailing-route-data"]').should(
+          'contain',
+          'Tortola, British Virgin Islands'
+        );
       });
   });
 });

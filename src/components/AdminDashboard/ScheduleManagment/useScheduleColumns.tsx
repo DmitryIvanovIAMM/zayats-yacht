@@ -152,10 +152,15 @@ export const useScheduleColumns = ({
                 color="secondary"
                 size="medium"
                 inputProps={{
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-expect-error
                   'data-testid': 'schedule-sailing-active-checkbox-input'
                 }}
               />
-              <IconButton onClick={() => handleStartDeleteSailing(row.original._id)}>
+              <IconButton
+                onClick={() => handleStartDeleteSailing(row.original._id)}
+                data-testid="schedule-sailing-delete-button"
+              >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>
             </div>

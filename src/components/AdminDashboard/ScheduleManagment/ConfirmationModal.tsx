@@ -5,19 +5,21 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { secondary } from '@/components/colors';
 
+export interface ConfirmationModalProps {
+  open: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  title: string;
+  message: string;
+}
+
 export const ConfirmationModal = ({
   open,
   onClose,
   onConfirm,
   title,
   message
-}: {
-  open: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-  title: string;
-  message: string;
-}) => {
+}: ConfirmationModalProps) => {
   return (
     <Dialog
       open={open}

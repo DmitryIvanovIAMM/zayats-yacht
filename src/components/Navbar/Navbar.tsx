@@ -138,7 +138,9 @@ const Navbar: React.FC<NavbarProps> = (props) => {
     <div>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar sx={{ backgroundColor: 'white', color: 'secondary.dark' }}>
+        <AppBar
+          sx={{ backgroundColor: 'white', color: 'secondary.dark', paddingRight: '0 !important' }}
+        >
           <Toolbar disableGutters sx={{ padding: '0 10px 0 0px' }}>
             <Box sx={{ flexGrow: 1 }}>
               <IconButton

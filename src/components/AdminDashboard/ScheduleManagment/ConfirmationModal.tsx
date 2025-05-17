@@ -25,7 +25,7 @@ export const ConfirmationModal = ({
       aria-labelledby="confirmation-modal"
       data-testid="confirmation-modal"
     >
-      <DialogTitle id="alert-dialog-title" style={{ color: secondary.dark, fontSize: '16p' }}>
+      <DialogTitle id="alert-dialog-title" style={{ color: secondary.dark, fontSize: '16px' }}>
         {title}
       </DialogTitle>
       <DialogContent>

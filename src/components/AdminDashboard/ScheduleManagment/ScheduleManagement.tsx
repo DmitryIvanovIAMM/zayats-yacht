@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 export const ScheduleManagement = () => {
   const [isUpdating, setIsUpdating] = useState(false);
+  const [updateSailingId, setUpdateSailingId] = useState<string | null>(null);
   const [expandedSailings, setExpandedSailings] = useState<string[]>([]);
 
   const { dataState, fetchDataFromServer } = useTableDataFetcher(
@@ -23,6 +24,7 @@ export const ScheduleManagement = () => {
 
   const onSailingStatusChange = async (sailingId: string, isActive: boolean) => {
     setIsUpdating(true);
+    setUpdateSailingId(null);
     try {
       const data: SailingStatusParams = { sailingId, isActive };
       const actionResult = await setSailingActivityStatus(data);
@@ -42,13 +44,16 @@ export const ScheduleManagement = () => {
       showNotification(false, (error as Error)?.message || Messages.FailedChangeSailingStatus);
     } finally {
       setIsUpdating(false);
+      setUpdateSailingId(sailingId);
     }
   };
 
   const handleExpandSailing = (sailingId: string) => {
     if (expandedSailings.includes(sailingId)) {
       setExpandedSailings((prev: string[]) => prev.filter((id) => id !== sailingId));
+      setUpdateSailingId(null);
     } else {
+      setUpdateSailingId(sailingId);
       setExpandedSailings((prev: string[]) => [...prev, sailingId]);
     }
   };
@@ -57,7 +62,8 @@ export const ScheduleManagement = () => {
     expandedSailings,
     handleExpandSailing,
     disableActions: dataState.isLoading || isUpdating,
-    onSailingStatusChange
+    onSailingStatusChange,
+    updateSailingId
   });
 
   return (

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
 import { RouteTable } from '@/components/AdminDashboard/ScheduleManagment/RouteTable';
 import IconButton from '@mui/material/IconButton';
@@ -11,11 +11,17 @@ import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
 import Checkbox from '@mui/material/Checkbox';
 
+const transformSx = {
+  transform: 'rotateX(360deg)',
+  transition: '1500ms ease-in-out'
+};
+
 export interface ScheduleColumnsProps {
   expandedSailings: string[];
   handleExpandSailing: (sailingId: string) => void;
   disableActions?: boolean;
   onSailingStatusChange: (sailingId: string, status: boolean) => void;
+  updateSailingId?: string | null;
 }
 
 const columnHelper = createColumnHelper<SailingWithShipStopAndPortsFrontend & { _id: string }>();
@@ -24,7 +30,8 @@ export const useScheduleColumns = ({
   expandedSailings,
   handleExpandSailing,
   disableActions = false,
-  onSailingStatusChange
+  onSailingStatusChange,
+  updateSailingId = null
 }: ScheduleColumnsProps) => {
   return useMemo(() => {
     return [
@@ -60,13 +67,34 @@ export const useScheduleColumns = ({
         enableSorting: false,
         cell: ({ row }: { row: any }) => {
           const isExpanded = expandedSailings.includes(row.original._id);
+          const [isActive, setIsActive] = useState(
+            row.original._id === updateSailingId && isExpanded
+          );
+          useEffect(() => {
+            setTimeout(() => {
+              setIsActive(false);
+            }, 100);
+          }, []);
 
           return (
             <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
               {isExpanded ? (
-                <RouteTable
-                  shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
-                />
+                <div
+                  style={
+                    !isActive
+                      ? {
+                          width: '100%',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          ...transformSx
+                        }
+                      : { width: '100%', display: 'flex', justifyContent: 'space-between' }
+                  }
+                >
+                  <RouteTable
+                    shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
+                  />
+                </div>
               ) : (
                 <div data-testid="scheule-sailingt-data-collapsed">
                   {`${formatInLongMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
@@ -120,5 +148,5 @@ export const useScheduleColumns = ({
       }
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expandedSailings, disableActions]);
+  }, [expandedSailings, disableActions, updateSailingId]);
 };

@@ -1,4 +1,4 @@
-import { Dispatch, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
 import { RouteTable } from '@/components/AdminDashboard/ScheduleManagment/RouteTable';
 import IconButton from '@mui/material/IconButton';
@@ -10,11 +10,6 @@ import { createColumnHelper } from '@tanstack/table-core';
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
 import Checkbox from '@mui/material/Checkbox';
-
-const transformSx = {
-  transform: 'rotateX(360deg)',
-  transition: '3000ms ease-in-out'
-};
 
 export interface ScheduleColumnsProps {
   expandedSailings: string[];
@@ -64,26 +59,16 @@ export const useScheduleColumns = ({
         enableColumnFilter: false,
         enableSorting: false,
         cell: ({ row }: { row: any }) => {
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          //const [isExpanded, setIsExpanded] = useState(false);
-          //const isExpanded = expandedSailings.includes(row.original._id);
+          const isExpanded = expandedSailings.includes(row.original._id);
 
           return (
-            <div
-              style={{ display: 'flex', justifyContent: 'space-between', ...transformSx }}
-              data-testid="schedules-sailing-route-data"
-            >
-              {expandedSailings.includes(row.original._id) ? (
-                <div
-                  data-testid="scheule-sailingt-data-expanded"
-                  style={{ width: '100%', ...transformSx }}
-                >
-                  <RouteTable
-                    shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
-                  />
-                </div>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+              {isExpanded ? (
+                <RouteTable
+                  shipStops={(row.original.shipStops as ShipStopWithPortFrontend[]) || []}
+                />
               ) : (
-                <div data-testid="scheule-sailingt-data-collapsed" style={{ ...transformSx }}>
+                <div data-testid="scheule-sailingt-data-collapsed">
                   {`${formatInLongMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
                   -
                   {` ${formatInLongMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}
@@ -97,11 +82,7 @@ export const useScheduleColumns = ({
                   data-testid="collapse-button"
                   style={{ marginTop: -10 }}
                 >
-                  {expandedSailings.includes(row.original._id) ? (
-                    <KeyboardArrowUpIcon />
-                  ) : (
-                    <KeyboardArrowDownIcon />
-                  )}
+                  {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                 </IconButton>
               </div>
             </div>

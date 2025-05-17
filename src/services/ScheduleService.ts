@@ -6,6 +6,7 @@ import {
   getFiltersQuery,
   getSortingQuery
 } from '@/controllers/mongoDbQueryHelpers';
+import { Types } from 'mongoose';
 
 export default class ScheduleService {
   private static instance: ScheduleService;
@@ -216,6 +217,29 @@ export default class ScheduleService {
     };
   };
 
+  setSailingActivityStatus(sailingId: string, isActive: boolean) {
+    return SailingModel.findByIdAndUpdate(
+      { _id: new Types.ObjectId(sailingId) },
+      {
+        $set: {
+          isActive: isActive
+        }
+      },
+      { new: true }
+    );
+  }
+
+  softDeleteSailing(sailingId: string, userId: Types.ObjectId) {
+    return SailingModel.findByIdAndUpdate(
+      new Types.ObjectId(sailingId),
+      {
+        deletedAt: new Date(),
+        deletedBy: userId // Replace with actual user ID
+      },
+      { new: true }
+    );
+  }
+
   /*createSailingByName(name: string) {
     const newSailing = {
       name: name
@@ -237,17 +261,7 @@ export default class ScheduleService {
     return ShipStopModel.deleteMany({ sailingId: new Types.ObjectId(sailingId) });
   }
 
-  setSailingActivityStatus(sailingId: string, isActive: boolean) {
-    return SailingModel.findByIdAndUpdate(
-      { _id: sailingId },
-      {
-        $set: {
-          isActive: isActive
-        }
-      },
-      { new: true }
-    );
-  }
+
 
   public querySailingWithShipStops = async (sailingId: string) => {
     const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([

@@ -19,6 +19,8 @@ export class Sailing {
   updatedAt?: Date;
   @prop({ required: false })
   deletedAt?: Date;
+  @prop({ required: false })
+  deletedBy?: Types.ObjectId;
 }
 
 export const SailingModel = models?.Sailing || getModelForClass(Sailing);

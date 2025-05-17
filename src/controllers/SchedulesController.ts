@@ -9,6 +9,9 @@ import { ShipsParametersFlat } from '@/models/types';
 import { maxComputerDate } from '@/utils/date-time';
 import { mapSailingsWithShipStopAndPortsToFrontend } from '@/models/mappers';
 import { BackendDataFetchArgs } from '@/components/Table/types';
+import { ActionResult, SailingStatusParams } from '@/utils/types';
+import { Messages } from '@/helpers/messages';
+import { User } from '@/models/User';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -108,6 +111,33 @@ export const querySailingsWithRoutesAndPorts = async (fetchParams: BackendDataFe
     data: mapSailingsWithShipStopAndPortsToFrontend(sailingsWithShipStopsAndPorts.data),
     total: sailingsWithShipStopsAndPorts.total
   };
+};
+
+export const updateSailingActivityStatus = async (
+  user: User,
+  { sailingId, isActive }: SailingStatusParams
+): Promise<ActionResult> => {
+  try {
+    await scheduleService.setSailingActivityStatus(sailingId, isActive);
+
+    return { success: true, message: Messages.SailingStatusChangedSuccessfully };
+  } catch (error) {
+    //eslint-disable-next-line no-console
+    console.log('setSailingActivityStatus().  error: ', error);
+    return { success: false, message: Messages.FailedChangeSailingStatus };
+  }
+};
+
+export const deleteSailing = async (user: User, sailingId: string): Promise<ActionResult> => {
+  try {
+    await scheduleService.softDeleteSailing(sailingId, user._id);
+
+    return { success: true, message: Messages.SailingDeletedSuccessfully };
+  } catch (error) {
+    //eslint-disable-next-line no-console
+    console.log('deleteSailing().  error: ', error);
+    return { success: false, message: Messages.FailedDeleteSailing };
+  }
 };
 
 /*public getSailing = async (req, res) => {

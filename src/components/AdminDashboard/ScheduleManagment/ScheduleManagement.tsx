@@ -40,14 +40,18 @@ export const ScheduleManagement = () => {
   );
 
   const onSailingStatusChange = async (sailingId: string, isActive: boolean) => {
+    // eslint-disable-next-line no-console
+    console.log('onSailingStatusChange().  sailingId: ', sailingId, 'isActive: ', isActive);
     setIsUpdating(true);
     setUpdateSailingId(null);
     try {
       const data: SailingStatusParams = { sailingId, isActive };
       const actionResult = await setSailingActivityStatus(data);
+      console.log('actionResult: ', actionResult);
       if (!actionResult.success) {
         return showNotification(false, actionResult.message || Messages.FailedChangeSailingStatus);
       }
+      console.log('update status in dataState');
       // update status for sailing without re-fetching
       const updatedSailing = dataState.data.data.find(
         (sailing: SailingWithShipStopAndPortsFrontend) => sailing._id === sailingId

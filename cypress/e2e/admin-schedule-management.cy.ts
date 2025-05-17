@@ -21,7 +21,7 @@ describe('Admin on Schedule Page', () => {
     // table body
     cy.get('tbody').within(() => {
       cy.get('tr').should('have.length', 9);
-      cy.get('td').should('have.length', 27);
+      cy.get('td').should('have.length', 36);
     });
 
     // check the first row
@@ -357,6 +357,40 @@ describe('Admin on Schedule Page', () => {
           'contain',
           'Asia to North America Summer Sailing'
         );
+      });
+  });
+
+  it.only('should allow change active status for sailing', () => {
+    // select data-testid="schedule-sailing-active-checkbox" in second row in table
+    // check is active and click
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-active-checkbox-input"]')
+          .should('be.checked')
+          .click();
+      });
+
+    cy.reload();
+
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-active-checkbox-input"]', {
+          timeout: 10000
+        })
+          .should('not.be.checked')
+          .click();
+      });
+
+    cy.reload();
+
+    cy.get('tbody tr')
+      .eq(1)
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-active-checkbox-input"]', {
+          timeout: 10000
+        }).should('be.checked');
       });
   });
 });

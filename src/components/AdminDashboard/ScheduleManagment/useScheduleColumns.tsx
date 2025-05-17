@@ -82,9 +82,13 @@ export const useScheduleColumns = ({
           }, []);
 
           return (
-            <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+            <div
+              style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}
+              data-testid="schedules-sailing-route-data"
+            >
               {isExpanded ? (
                 <div
+                  data-testid="scheule-sailingt-data-expanded"
                   style={
                     !isActive
                       ? {
@@ -147,6 +151,9 @@ export const useScheduleColumns = ({
                 data-testid="schedule-sailing-active-checkbox"
                 color="secondary"
                 size="medium"
+                inputProps={{
+                  'data-testid': 'schedule-sailing-active-checkbox-input'
+                }}
               />
               <IconButton onClick={() => handleStartDeleteSailing(row.original._id)}>
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />

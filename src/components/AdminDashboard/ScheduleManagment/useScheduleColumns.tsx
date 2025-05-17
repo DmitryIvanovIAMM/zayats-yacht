@@ -137,9 +137,9 @@ export const useScheduleColumns = ({
         }
       },
       {
-        _id: 'actionCCell',
+        _id: 'actions-cell',
         header: '',
-        accessorKey: 'actionCCell',
+        accessorKey: 'actions-cell',
         enableSorting: false,
         cell: ({ row }: { row: any }) => {
           return (

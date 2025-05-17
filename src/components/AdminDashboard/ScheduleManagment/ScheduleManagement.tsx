@@ -33,7 +33,7 @@ export const ScheduleManagement = () => {
     defaultConfirmationModalProps
   );
 
-  const { dataState, fetchDataFromServer } = useTableDataFetcher(
+  const { dataState, setDataState, fetchDataFromServer } = useTableDataFetcher(
     querySailingsWithRoutesAndPorts,
     [],
     Messages.FailedGetSchedule
@@ -50,13 +50,16 @@ export const ScheduleManagement = () => {
       if (!actionResult.success) {
         return showNotification(false, actionResult.message || Messages.FailedChangeSailingStatus);
       }
-      // update status for sailing without re-fetching
-      const updatedSailing = dataState.data.data.find(
-        (sailing: SailingWithShipStopAndPortsFrontend) => sailing._id === sailingId
-      );
-      if (updatedSailing) {
-        updatedSailing.isActive = isActive;
-      }
+      // update status for sailing via setDataState() to rerender table
+      setDataState((state) => ({
+        ...state,
+        data: {
+          ...state.data,
+          data: state.data.data.map((sailing) =>
+            sailing._id === sailingId ? { ...sailing, isActive } : sailing
+          )
+        }
+      }));
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error changing sailing status:', error);

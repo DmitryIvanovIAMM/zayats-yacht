@@ -69,5 +69,5 @@ export const useTableDataFetcher = <T>(
     }
   };
 
-  return { dataState, fetchDataFromServer };
+  return { dataState, setDataState, fetchDataFromServer };
 };

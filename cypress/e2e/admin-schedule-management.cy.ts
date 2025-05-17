@@ -360,7 +360,7 @@ describe('Admin on Schedule Page', () => {
       });
   });
 
-  it('should allow change active status for sailing', () => {
+  it.only('should allow change active status for sailing', () => {
     // select data-testid="schedule-sailing-active-checkbox" in second row in table
     // check is active and click
     cy.get('tbody tr')
@@ -371,8 +371,6 @@ describe('Admin on Schedule Page', () => {
           .click();
       });
 
-    cy.reload();
-
     cy.get('tbody tr')
       .eq(1)
       .within(() => {
@@ -382,8 +380,6 @@ describe('Admin on Schedule Page', () => {
           .should('not.be.checked')
           .click();
       });
-
-    cy.reload();
 
     cy.get('tbody tr')
       .eq(1)

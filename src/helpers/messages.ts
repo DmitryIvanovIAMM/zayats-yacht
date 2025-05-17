@@ -15,5 +15,7 @@ export enum Messages {
   FailedGetQuoteRequests = 'Failed to get quote requests',
   FailedGetSchedule = 'Failed to get schedule',
   SailingStatusChangedSuccessfully = 'Sailing status changed successfully',
-  FailedChangeSailingStatus = 'Failed to change sailing status'
+  FailedChangeSailingStatus = 'Failed to change sailing status',
+  FailedDeleteSailing = 'Failed to delete sailing',
+  SailingDeletedSuccessfully = 'Sailing deleted successfully'
 }

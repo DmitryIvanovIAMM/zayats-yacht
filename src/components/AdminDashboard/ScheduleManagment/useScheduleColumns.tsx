@@ -10,6 +10,7 @@ import { createColumnHelper } from '@tanstack/table-core';
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
 import Checkbox from '@mui/material/Checkbox';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const transformSx = {
   transform: 'rotateX(360deg)',
@@ -21,6 +22,7 @@ export interface ScheduleColumnsProps {
   handleExpandSailing: (sailingId: string) => void;
   disableActions?: boolean;
   onSailingStatusChange: (sailingId: string, status: boolean) => void;
+  handleStartDeleteSailing: (sailingId: string) => void;
   updateSailingId?: string | null;
 }
 
@@ -31,6 +33,7 @@ export const useScheduleColumns = ({
   handleExpandSailing,
   disableActions = false,
   onSailingStatusChange,
+  handleStartDeleteSailing,
   updateSailingId = null
 }: ScheduleColumnsProps) => {
   return useMemo(() => {
@@ -67,9 +70,11 @@ export const useScheduleColumns = ({
         enableSorting: false,
         cell: ({ row }: { row: any }) => {
           const isExpanded = expandedSailings.includes(row.original._id);
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           const [isActive, setIsActive] = useState(
             row.original._id === updateSailingId && isExpanded
           );
+          // eslint-disable-next-line react-hooks/rules-of-hooks
           useEffect(() => {
             setTimeout(() => {
               setIsActive(false);
@@ -134,14 +139,18 @@ export const useScheduleColumns = ({
         enableSorting: false,
         cell: ({ row }: { row: any }) => {
           return (
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Checkbox
                 checked={row.original.isActive}
                 onChange={() => onSailingStatusChange(row.original._id, !row.original.isActive)}
                 disabled={disableActions}
                 data-testid="schedule-sailing-active-checkbox"
-                color={'secondary'}
+                color="secondary"
+                size="medium"
               />
+              <IconButton onClick={() => handleStartDeleteSailing(row.original._id)}>
+                <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
+              </IconButton>
             </div>
           );
         }

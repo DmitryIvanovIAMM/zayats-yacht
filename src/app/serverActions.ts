@@ -15,6 +15,7 @@ import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 import {
+  deleteSailing,
   getSchedules,
   queryNearestShippings,
   updateSailingActivityStatus
@@ -123,4 +124,11 @@ export async function setSailingActivityStatus(data: SailingStatusParams): Promi
   console.log('changeScheduleStatusAction(). data: ', data);
 
   return (await withServerAuth([Roles.Admin], updateSailingActivityStatus, data)) as ActionResult;
+}
+
+export async function deleteSailingAction(sailingId: string): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('deleteSailingAction(). sailingId: ', sailingId);
+
+  return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
 }

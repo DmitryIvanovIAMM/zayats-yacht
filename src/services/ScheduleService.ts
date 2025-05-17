@@ -229,6 +229,17 @@ export default class ScheduleService {
     );
   }
 
+  softDeleteSailing(sailingId: string, userId: Types.ObjectId) {
+    return SailingModel.findByIdAndUpdate(
+      new Types.ObjectId(sailingId),
+      {
+        deletedAt: new Date(),
+        deletedBy: userId // Replace with actual user ID
+      },
+      { new: true }
+    );
+  }
+
   /*createSailingByName(name: string) {
     const newSailing = {
       name: name

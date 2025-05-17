@@ -128,6 +128,18 @@ export const updateSailingActivityStatus = async (
   }
 };
 
+export const deleteSailing = async (user: User, sailingId: string): Promise<ActionResult> => {
+  try {
+    await scheduleService.softDeleteSailing(sailingId, user._id);
+
+    return { success: true, message: Messages.SailingDeletedSuccessfully };
+  } catch (error) {
+    //eslint-disable-next-line no-console
+    console.log('deleteSailing().  error: ', error);
+    return { success: false, message: Messages.FailedDeleteSailing };
+  }
+};
+
 /*public getSailing = async (req, res) => {
     try {
       const sailingId = req.params.sailingId;

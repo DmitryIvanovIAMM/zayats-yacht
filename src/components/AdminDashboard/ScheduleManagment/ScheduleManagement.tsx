@@ -95,8 +95,15 @@ export const ScheduleManagement = () => {
       if (!actionResult.success) {
         return showNotification(false, actionResult.message || Messages.FailedDeleteSailing);
       }
-      //delete sailing from data array without re-fetching
-      dataState.data.data = dataState.data.data.filter((sailing) => sailing._id !== sailingId);
+      // delete sailing via setDataState() to rerender table
+      setDataState((state) => ({
+        ...state,
+        data: {
+          ...state.data,
+          data: state.data.data.filter((sailing) => sailing._id !== sailingId),
+          total: state.data.total - 1
+        }
+      }));
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error delete Sailing:', error);

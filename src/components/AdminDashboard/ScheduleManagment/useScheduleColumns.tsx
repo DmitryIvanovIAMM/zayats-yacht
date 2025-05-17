@@ -120,5 +120,5 @@ export const useScheduleColumns = ({
       }
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expandedSailings]);
+  }, [expandedSailings, disableActions]);
 };

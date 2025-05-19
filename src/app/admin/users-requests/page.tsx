@@ -2,9 +2,5 @@ import React from 'react';
 import { AdminUserRequests } from '@/components/AdminDashboard/AdminUserRequests/AdminUserRequests';
 
 export default async function Home() {
-  return (
-    <div>
-      <AdminUserRequests />
-    </div>
-  );
+  return <AdminUserRequests />;
 }

@@ -58,7 +58,8 @@ export const useScheduleColumns = ({
           return <>{`${formatInMonthDayYear(row.original.shipStops[0].arrivalOn)}`}</>;
         },
         meta: {
-          columnSx: { verticalAlign: 'top', paddingTop: '10px' }
+          headerSx: { ...displaySmUp },
+          columnSx: { ...displaySmUp, verticalAlign: 'top', paddingTop: '10px' }
         }
       },
       {
@@ -126,9 +127,8 @@ export const useScheduleColumns = ({
           );
         },
         meta: {
-          headerSx: { ...displaySmUp, width: '60%', maxWidth: '60%' },
+          headerSx: { width: '60%', maxWidth: '60%' },
           columnSx: {
-            ...displaySmUp,
             verticalAlign: 'top',
             width: '60%',
             maxWidth: '60%',

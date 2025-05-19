@@ -10,12 +10,14 @@ export enum PATHS {
   privacyPolicy = '/privacy-policy',
   authCallback = '/auth-callback',
   admin = '/admin',
-  usersRequests = '/admin/users-requests',
-  scheduleManagement = '/admin/schedule-management',
+  adminUsersRequests = '/admin/users-requests',
+  adminScheduleManagement = '/admin/schedule-management',
+  adminShips = '/admin/ships',
   portsManagement = '/admin/ports',
   destination = '/destination/:id',
   loginFailed = '/login-failed',
-  addSailing = '/admin/schedule-management/sailing'
+  addSailing = '/admin/schedule-management/sailing',
+  addShip = '/admin/ships/ship'
 }
 
 /**

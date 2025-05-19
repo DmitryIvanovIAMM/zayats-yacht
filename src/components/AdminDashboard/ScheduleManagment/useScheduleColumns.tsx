@@ -4,7 +4,7 @@ import { RouteTable } from '@/components/AdminDashboard/ScheduleManagment/RouteT
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { displaySmUp } from '@/components/Table/Filters/styles';
+import { displayMdUp } from '@/components/Table/Filters/styles';
 import type { SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
 import { createColumnHelper } from '@tanstack/table-core';
 import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
@@ -58,8 +58,8 @@ export const useScheduleColumns = ({
           return <>{`${formatInMonthDayYear(row.original.shipStops[0].arrivalOn)}`}</>;
         },
         meta: {
-          headerSx: { ...displaySmUp },
-          columnSx: { ...displaySmUp, verticalAlign: 'top', paddingTop: '10px' }
+          headerSx: { ...displayMdUp },
+          columnSx: { ...displayMdUp, verticalAlign: 'top', paddingTop: '10px' }
         }
       },
       {

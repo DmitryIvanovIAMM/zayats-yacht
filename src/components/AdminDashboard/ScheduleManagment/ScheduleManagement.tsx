@@ -11,6 +11,8 @@ import { showNotification } from '@/modules/notifications/notifications';
 import { SailingStatusParams } from '@/utils/types';
 import { useState } from 'react';
 import { ConfirmationModal } from '@/components/AdminDashboard/ScheduleManagment/ConfirmationModal';
+import Button from '@mui/material/Button';
+import { PATHS } from '@/helpers/paths';
 
 export interface ConfirmationModalProps {
   open: boolean;
@@ -134,7 +136,18 @@ export const ScheduleManagement = () => {
 
   return (
     <div>
-      <h2>Schedule</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Schedule</h2>
+        <Button
+          href={PATHS.addSailing}
+          variant={'contained'}
+          sx={{ backgroundColor: 'secondary.dark', margin: '0 0 10px 0' }}
+          size={'small'}
+          style={{ height: '31px' }}
+        >
+          Add Sailing
+        </Button>
+      </div>
       <Table<SailingWithShipStopAndPortsFrontend & { _id: string }>
         columnDefs={columnDefs}
         data={dataState.data}

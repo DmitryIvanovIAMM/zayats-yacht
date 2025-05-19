@@ -14,7 +14,8 @@ export enum PATHS {
   scheduleManagement = '/admin/schedule-management',
   portsManagement = '/admin/ports',
   destination = '/destination/:id',
-  loginFailed = '/login-failed'
+  loginFailed = '/login-failed',
+  addSailing = '/admin/schedule-management/sailing'
 }
 
 /**

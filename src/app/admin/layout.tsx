@@ -30,9 +30,9 @@ export default async function RootLayout({
         paddingLeft: '10px',
         paddingRight: '10px',
         overflowX: 'auto',
-        display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: '20px'
       }}
     >
       <ProtectedLayout session={session} allowedRoles={['admin']} callbackUrl={PATHS.usersRequests}>

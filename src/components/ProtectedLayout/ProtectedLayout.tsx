@@ -23,5 +23,5 @@ export const ProtectedLayout = ({
     return redirect(`${PATHS.signIn}?callbackUrl=${callbackUrl}`);
   }
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 };

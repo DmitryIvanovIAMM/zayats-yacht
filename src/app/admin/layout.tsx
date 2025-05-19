@@ -34,8 +34,10 @@ export default async function RootLayout({
       }}
     >
       <ProtectedLayout session={session} allowedRoles={['admin']} callbackUrl={PATHS.usersRequests}>
-        <PageNavigationTabs tabs={tabs} />
-        {children}
+        <div style={{ width: '100%' }}>
+          <PageNavigationTabs tabs={tabs} />
+          {children}
+        </div>
       </ProtectedLayout>
     </div>
   );

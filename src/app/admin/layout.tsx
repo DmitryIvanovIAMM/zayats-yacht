@@ -24,27 +24,21 @@ export default async function RootLayout({
   ];
 
   return (
-    <div style={{ width: '100%', paddingLeft: '10px', paddingRight: '10px' }}>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          width: 'calc(100% - 25px)',
-          height: '100%',
-          padding: '0px',
-          margin: '0px'
-        }}
-      >
-        <ProtectedLayout
-          session={session}
-          allowedRoles={['admin']}
-          callbackUrl={PATHS.usersRequests}
-        >
-          <PageNavigationTabs tabs={tabs} />
-          {children}
-        </ProtectedLayout>
-      </div>
+    <div
+      style={{
+        width: '100%',
+        paddingLeft: '10px',
+        paddingRight: '10px',
+        overflowX: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+      }}
+    >
+      <ProtectedLayout session={session} allowedRoles={['admin']} callbackUrl={PATHS.usersRequests}>
+        <PageNavigationTabs tabs={tabs} />
+        {children}
+      </ProtectedLayout>
     </div>
   );
 }

@@ -1,16 +1,12 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import { primary, secondary } from '@/components/colors';
 import { useSnackbar } from 'notistack';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  defaultShipFormValues,
-  ShipForm,
-  shipSchema
-} from '@/components/AdminDashboard/AdminShips/Ship/types';
+import { ShipForm, shipSchema } from '@/components/AdminDashboard/AdminShips/Ship/types';
 import { FormTextInput } from '@/components/MUI-RHF/FormTextInput';
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -21,14 +17,19 @@ import { PATHS } from '@/helpers/paths';
 import { FormMode } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { FormContainer } from '@/components/FormContainer/FormContainer';
-import { addShipAction } from '@/app/serverActions';
+import { addShipAction, updateShipAction } from '@/app/serverActions';
 
 export interface ShipContainerProps {
   formMode: FormMode;
   initialValues: ShipForm;
+  _id?: string;
 }
 
-export const ShipFormContainer = ({ formMode, initialValues }: ShipContainerProps) => {
+export const ShipFormContainer = ({
+  formMode,
+  initialValues,
+  _id = undefined
+}: ShipContainerProps) => {
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
 
@@ -45,7 +46,8 @@ export const ShipFormContainer = ({ formMode, initialValues }: ShipContainerProp
   const onSubmit = async (shipForm: ShipForm) => {
     console.log('onSubmit().  shipForm: ', shipForm);
     try {
-      const result = formMode === FormMode.ADD ? await addShipAction(shipForm) : 'Ship updated';
+      const result =
+        formMode === FormMode.ADD ? await addShipAction(shipForm) : updateShipAction(_id, shipForm);
       router.push(PATHS.adminShips);
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -59,7 +61,7 @@ export const ShipFormContainer = ({ formMode, initialValues }: ShipContainerProp
 
   return (
     <FormContainer>
-      <h2>Add Ship</h2>
+      <h2>{formMode === FormMode.ADD ? 'Add Ship' : 'Edit Ship'}</h2>
       <FormProvider {...methods}>
         <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <div

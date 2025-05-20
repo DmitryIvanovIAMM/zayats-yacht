@@ -1,5 +1,5 @@
 import { Ship, ShipModel } from '@/models/Ship';
-import dbConnect from '@/modules/mongoose/mongoose';
+import { Types } from 'mongoose';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import {
   FiltersFromQuery,
@@ -66,8 +66,22 @@ export default class ShipService {
     };
   };
 
-  public addShip = async (ship: Ship) => {
+  public getShipFromDB = async (id: string) => {
+    const ship = await ShipModel.findById(new Types.ObjectId(id));
+    if (!ship) {
+      return null;
+    }
+    return ship.toObject();
+  };
+
+  public addShipInDB = async (ship: Ship) => {
     return ShipModel.create(ship);
+  };
+
+  public updateShipInDB = async (id: string, ship: Ship) => {
+    return ShipModel.findByIdAndUpdate(new Types.ObjectId(id), ship, {
+      new: true
+    });
   };
 }
 

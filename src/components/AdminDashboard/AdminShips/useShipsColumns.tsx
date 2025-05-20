@@ -3,6 +3,9 @@ import { createColumnHelper } from '@tanstack/table-core';
 import { ShipFrontend } from '@/models/ShipFrontend';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
 import { displayMdUp, displaySmUp } from '@/components/Table/Filters/styles';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
+import { PATHS, toPath } from '@/helpers/paths';
 
 const columnHelper = createColumnHelper<ShipFrontend>();
 
@@ -88,7 +91,26 @@ export const useShipsColumns = () => {
           columnSx: { ...displayMdUp, verticalAlign: 'top' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
-      })
+      }),
+      {
+        _id: 'actions-cell',
+        header: '',
+        accessorKey: 'actions-cell',
+        enableSorting: false,
+        cell: ({ row }: { row: any }) => {
+          return (
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <IconButton
+                content="href"
+                href={toPath(PATHS.editShip, { id: row.original._id })}
+                data-testid="schedule-sailing-delete-button"
+              >
+                <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
+              </IconButton>
+            </div>
+          );
+        }
+      }
     ];
   }, []);
 };

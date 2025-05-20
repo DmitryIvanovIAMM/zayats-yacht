@@ -26,7 +26,7 @@ import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
-import { addShip } from '@/controllers/ShipsController';
+import { addShip, getShip, updateShip } from '@/controllers/ShipsController';
 
 export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -135,9 +135,26 @@ export async function deleteSailingAction(sailingId: string): Promise<ActionResu
   return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
 }
 
+export async function getShipAction(id: string): Promise<ActionData<ShipForm>> {
+  // eslint-disable-next-line no-console
+  console.log('getShipAction(). id: ', id);
+
+  return (await withServerAuth([Roles.Admin], getShip, id)) as ActionData<ShipForm>;
+}
+
 export async function addShipAction(shipData: ShipForm): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('addShipAction(). shipData: ', shipData);
 
   return (await withServerAuth([Roles.Admin], addShip, shipData)) as ActionResult;
+}
+
+export async function updateShipAction(shipId: string, shipData: ShipForm): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('updateShipAction(). shipId: ', shipId, ' shipData: ', shipData);
+
+  return (await withServerAuth([Roles.Admin], updateShip, {
+    ...shipData,
+    _id: shipId
+  })) as ActionResult;
 }

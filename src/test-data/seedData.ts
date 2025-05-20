@@ -81,14 +81,14 @@ export const SHIPS = [
   },
   {
     _id: ids.mVIndustrialGraceShipId,
-    name: 'MV Industrial Grace',
-    type: 'Heavy Lift Vessel',
-    builder: 'Hudong',
-    flag: 'Liberia',
-    homePort: 'Monrovia',
-    class: 'GL + 100 A 5 E 3',
-    imoNo: '9424572',
-    callSign: 'A8XD3'
+    name: 'Tantra',
+    type: 'Intergalactic Ship',
+    builder: 'Nikolaev Ship Building',
+    flag: 'Ukraine',
+    homePort: 'Odessa',
+    class: 'Intergalactic',
+    imoNo: '8424572',
+    callSign: 'Vega'
   }
 ];
 

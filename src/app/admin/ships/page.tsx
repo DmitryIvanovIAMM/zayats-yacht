@@ -1,10 +1,6 @@
 import React from 'react';
-import { AdminShips } from '@/components/AdminDashboard/Ships/Ships';
+import { AdminShips } from '@/components/AdminDashboard/AdminShips/AdminShips';
 
 export default async function Home() {
-  return (
-    <div>
-      <AdminShips />
-    </div>
-  );
+  return <AdminShips />;
 }

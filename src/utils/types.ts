@@ -3,6 +3,11 @@ export enum Roles {
   User = 'user'
 }
 
+export enum FormMode {
+  ADD = 'add',
+  EDIT = 'edit'
+}
+
 export interface TableData<T> {
   data: T[];
   total: number;

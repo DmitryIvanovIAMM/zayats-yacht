@@ -25,6 +25,8 @@ import { QuoteRequestForm } from '@/components/QuoteRequest/types';
 import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { BackendDataFetchArgs } from '@/components/Table/types';
+import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
+import { addShip } from '@/controllers/ShipsController';
 
 export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -131,4 +133,11 @@ export async function deleteSailingAction(sailingId: string): Promise<ActionResu
   console.log('deleteSailingAction(). sailingId: ', sailingId);
 
   return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
+}
+
+export async function addShipAction(shipData: ShipForm): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('addShipAction(). shipData: ', shipData);
+
+  return (await withServerAuth([Roles.Admin], addShip, shipData)) as ActionResult;
 }

@@ -1,4 +1,4 @@
-import { ShipModel } from '@/models/Ship';
+import { Ship, ShipModel } from '@/models/Ship';
 import dbConnect from '@/modules/mongoose/mongoose';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import {
@@ -19,8 +19,6 @@ export default class ShipService {
   }
 
   public getAllShips = async () => {
-    await dbConnect();
-
     return ShipModel.find({});
   };
 
@@ -66,6 +64,10 @@ export default class ShipService {
       data: ships,
       total: total
     };
+  };
+
+  public addShip = async (ship: Ship) => {
+    return ShipModel.create(ship);
   };
 }
 

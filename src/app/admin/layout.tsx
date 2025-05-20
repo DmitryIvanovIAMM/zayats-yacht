@@ -20,7 +20,8 @@ export default async function RootLayout({
   const tabs: Tab[] = [
     { label: 'Quote Requests', link: '/admin/users-requests' },
     { label: 'Schedule Management', link: '/admin/schedule-management' },
-    { label: 'Ports', link: '/admin/ports' }
+    { label: 'Ports', link: '/admin/ports' },
+    { label: 'Ships', link: '/admin/ships' }
   ];
 
   return (
@@ -30,12 +31,16 @@ export default async function RootLayout({
         paddingLeft: '10px',
         paddingRight: '10px',
         overflowX: 'auto',
-        display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: '20px'
       }}
     >
-      <ProtectedLayout session={session} allowedRoles={['admin']} callbackUrl={PATHS.usersRequests}>
+      <ProtectedLayout
+        session={session}
+        allowedRoles={['admin']}
+        callbackUrl={PATHS.adminUsersRequests}
+      >
         <PageNavigationTabs tabs={tabs} />
         {children}
       </ProtectedLayout>

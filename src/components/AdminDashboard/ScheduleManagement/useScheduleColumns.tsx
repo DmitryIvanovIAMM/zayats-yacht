@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
-import { RouteTable } from '@/components/AdminDashboard/ScheduleManagment/RouteTable';
+import { RouteTable } from '@/components/AdminDashboard/ScheduleManagement/RouteTable';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';

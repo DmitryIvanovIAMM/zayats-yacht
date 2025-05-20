@@ -1,6 +1,6 @@
 'use server';
 
-import { Ship, ShipModel } from '@/models/Ship';
+import { Ship } from '@/models/Ship';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { mapShipsToFrontend } from '@/models/mappers';
 import { shipService } from '@/services/ShipService';
@@ -42,7 +42,6 @@ export const getShip = async (user: User, id: string): Promise<ActionData<ShipFo
 };
 
 export const addShip = async (user: User, shipForm: ShipForm): Promise<ActionResult> => {
-  console.log('addShip().  shipForm: ', shipForm);
   try {
     const Ship: Ship = {
       _id: new Types.ObjectId(),
@@ -68,7 +67,6 @@ export const updateShip = async (
   user: User,
   shipForm: ShipForm & { _id: string }
 ): Promise<ActionResult> => {
-  console.log('updateShip().  shipForm: ', shipForm);
   try {
     const Ship: Ship = {
       _id: new Types.ObjectId(shipForm._id),

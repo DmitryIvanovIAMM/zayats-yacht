@@ -44,10 +44,14 @@ export const ShipFormContainer = ({
   const { handleSubmit, formState } = methods;
 
   const onSubmit = async (shipForm: ShipForm) => {
-    console.log('onSubmit().  shipForm: ', shipForm);
     try {
       const result =
-        formMode === FormMode.ADD ? await addShipAction(shipForm) : updateShipAction(_id, shipForm);
+        formMode === FormMode.ADD
+          ? await addShipAction(shipForm)
+          : await updateShipAction(_id as string, shipForm);
+      if (!result.success) {
+        return enqueueSnackbar(result.message, { variant: 'error' });
+      }
       router.push(PATHS.adminShips);
     } catch (error) {
       // eslint-disable-next-line no-console

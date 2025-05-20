@@ -1,5 +1,4 @@
-import { object, string, number, InferType, mixed } from 'yup';
-import { quoteRequestSchema } from '@/components/QuoteRequest/types';
+import { object, string, InferType } from 'yup';
 
 export const shipSchema = object({
   //_id: string().required('ID is required'),
@@ -16,21 +15,12 @@ export const shipSchema = object({
 export type ShipForm = InferType<typeof shipSchema>;
 
 export const defaultShipFormValues: ShipForm = {
-  //_id: '',
-  // name: '',
-  // type: '',
-  // builder: '',
-  // flag: '',
-  // homePort: '',
-  // class: '',
-  // imoNo: '',
-  // callSign: ''
-  name: '11111',
-  type: '22222',
-  builder: '33333',
-  flag: '44444',
-  homePort: '55555',
-  class: '66666',
-  imoNo: '77777',
-  callSign: '88888'
+  name: '',
+  type: '',
+  builder: '',
+  flag: '',
+  homePort: '',
+  class: '',
+  imoNo: '',
+  callSign: ''
 };

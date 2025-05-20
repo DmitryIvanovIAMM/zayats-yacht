@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 type MergeFn<A, B> = (apiValues: A, blankFormValues: B) => any;
 
 export const getMergedFormValues = <M, A = Record<string, any>>(

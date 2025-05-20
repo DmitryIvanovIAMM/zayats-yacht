@@ -3,14 +3,14 @@
 import { Table } from '@/components/Table/Table';
 import { useTableDataFetcher } from '@/components/Table/useTableDataFetcher';
 import { Messages } from '@/helpers/messages';
-import { useScheduleColumns } from '@/components/AdminDashboard/ScheduleManagment/useScheduleColumns';
+import { useScheduleColumns } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 import { querySailingsWithRoutesAndPorts } from '@/controllers/SchedulesController';
 import { type SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
 import { deleteSailingAction, setSailingActivityStatus } from '@/app/serverActions';
 import { showNotification } from '@/modules/notifications/notifications';
 import { SailingStatusParams } from '@/utils/types';
 import { useState } from 'react';
-import { ConfirmationModal } from '@/components/AdminDashboard/ScheduleManagment/ConfirmationModal';
+import { ConfirmationModal } from '@/components/AdminDashboard/ScheduleManagement/ConfirmationModal';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/helpers/paths';
 

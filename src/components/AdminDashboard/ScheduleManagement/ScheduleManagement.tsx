@@ -63,7 +63,6 @@ export const ScheduleManagement = () => {
   };
 
   const handleStartDeleteSailing = (sailingId: string) => {
-    console.log('handleStartDeleteSailing(). dataState.data.data: ', dataState.data.data);
     const sailingToBeDeleted = dataState.data.data.find((sailing) => sailing._id === sailingId);
     if (!sailingToBeDeleted) {
       return;
@@ -78,9 +77,6 @@ export const ScheduleManagement = () => {
   };
 
   const handleDeleteSailing = async (sailingId: string) => {
-    // eslint-disable-next-line no-console
-    console.log('handleDeleteSailing().  sailingId: ', sailingId);
-
     setConfirmationModalState(defaultConfirmationModalProps);
     setIsUpdating(true);
     setUpdateSailingId(null);
@@ -136,6 +132,7 @@ export const ScheduleManagement = () => {
           sx={{ backgroundColor: 'secondary.dark', margin: '0 0 10px 0' }}
           size={'small'}
           style={{ height: '31px' }}
+          data-testid="add-sailing-button"
         >
           Add Sailing
         </Button>

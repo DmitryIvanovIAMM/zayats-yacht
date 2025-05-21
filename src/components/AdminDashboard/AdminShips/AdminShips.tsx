@@ -21,23 +21,16 @@ export const AdminShips = () => {
   const [confirmationModalState, setConfirmationModalState] = useState(
     defaultConfirmationModalProps
   );
-  console.log('confirmationModalState: ', confirmationModalState);
   const { dataState, setDataState, fetchDataFromServer } = useTableDataFetcher<ShipFrontend>(
     getFilteredShips,
     [],
     Messages.FailedGetShips
   );
-  console.log('dataState.data.data: ', dataState.data.data);
 
   const handleStartDeleteShip = async (shipId: string) => {
-    // eslint-disable-next-line no-console
-    console.log('handleStartDeleteShip(). shipId: ', shipId);
-    console.log('handleStartDeleteShip(). dataState.data.data: ', dataState.data.data);
     const shipToBeDeleted = dataState.data.data.find((ship) => {
-      console.log('ship: ', ship);
       return ship._id === shipId;
     });
-    console.log('shipToBeDeleted: ', shipToBeDeleted);
     if (!shipToBeDeleted) {
       return;
     }
@@ -52,8 +45,6 @@ export const AdminShips = () => {
   handleStartDeleteShip.bind(this);
 
   const handleDeleteShip = async (shipId: string) => {
-    // eslint-disable-next-line no-console
-    console.log('handleDeleteShip().  shipId: ', shipId);
     setConfirmationModalState(defaultConfirmationModalProps);
     setIsUpdating(true);
     try {
@@ -79,49 +70,6 @@ export const AdminShips = () => {
     }
   };
 
-  // const handleStartDeleteSailing = (sailingId: string) => {
-  //   const sailingToBeDeleted = dataState.data.data.find((sailing) => sailing._id === sailingId);
-  //   if (!sailingToBeDeleted) {
-  //     return;
-  //   }
-  //   setConfirmationModalState({
-  //     open: true,
-  //     onClose: () => setConfirmationModalState(defaultConfirmationModalProps),
-  //     onConfirm: () => handleDeleteSailing(sailingId),
-  //     message: `Are you sure you want to delete "${sailingToBeDeleted.name}" sailing?`
-  //   });
-  // };
-
-  // const handleDeleteSailing = async (sailingId: string) => {
-  //   // eslint-disable-next-line no-console
-  //   console.log('handleDeleteSailing().  sailingId: ', sailingId);
-  //
-  //   setConfirmationModalState(defaultConfirmationModalProps);
-  //   setIsUpdating(true);
-  //   setUpdateSailingId(null);
-  //   try {
-  //     const actionResult = await deleteSailingAction(sailingId);
-  //     if (!actionResult.success) {
-  //       return showNotification(false, actionResult.message || Messages.FailedDeleteSailing);
-  //     }
-  //     // delete sailing via setDataState() to rerender table
-  //     setDataState((state) => ({
-  //       ...state,
-  //       data: {
-  //         ...state.data,
-  //         data: state.data.data.filter((sailing) => sailing._id !== sailingId),
-  //         total: state.data.total - 1
-  //       }
-  //     }));
-  //   } catch (error) {
-  //     // eslint-disable-next-line no-console
-  //     console.error('Error delete Sailing:', error);
-  //     showNotification(false, (error as Error)?.message || Messages.FailedDeleteSailing);
-  //   } finally {
-  //     setIsUpdating(false);
-  //   }
-  // };
-
   const columnDefs = useShipsColumns({ handleStartDeleteShip, isUpdating });
 
   return (
@@ -134,6 +82,7 @@ export const AdminShips = () => {
           sx={{ backgroundColor: 'secondary.dark', margin: '0 0 10px 0' }}
           size={'small'}
           style={{ height: '31px' }}
+          data-testid="add-ship-button"
         >
           Add Ship
         </Button>

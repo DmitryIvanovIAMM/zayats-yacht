@@ -1,4 +1,4 @@
-describe('Admin on Ports page', () => {
+describe('Admin on Ports management page', () => {
   beforeEach(() => {
     cy.visit('/sign-in?callbackUrl=/admin/ports');
     cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();

@@ -56,7 +56,6 @@ export default class ShipService {
       deletedAt: { $exists: false },
       ...filters
     };
-    console.log('query:', query);
 
     const totalPromise = ShipModel.countDocuments(query);
     const shipsPromise = ShipModel.find(query)

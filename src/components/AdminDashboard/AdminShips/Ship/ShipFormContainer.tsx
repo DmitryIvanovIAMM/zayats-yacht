@@ -127,6 +127,7 @@ export const ShipFormContainer = ({
               }
               disabled={formState.isSubmitting}
               href={PATHS.adminShips}
+              data-testid="cancel-ship-button"
             >
               Cancel
             </Button>
@@ -151,6 +152,7 @@ export const ShipFormContainer = ({
               }
               style={{ backgroundColor: `${secondary.dark}` }}
               disabled={formState.isSubmitting}
+              data-testid="submit-ship-button"
             >
               Submit
             </Button>

@@ -17,7 +17,7 @@ const columnHelper = createColumnHelper<ShipFrontend>();
 
 export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColumnsProps) => {
   return useMemo(() => {
-    // use as base ShipFrontend and shipFields
+    // use as base ShipFrontend
     return [
       columnHelper.accessor('name', {
         header: 'Name',
@@ -126,5 +126,6 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
         }
       }
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleStartDeleteShip]);
 };

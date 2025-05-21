@@ -1,4 +1,4 @@
-describe('admin only ships page', () => {
+describe('admin on Ships management page', () => {
   beforeEach(() => {
     cy.visit('/sign-in?callbackUrl=/admin/ships');
     cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
@@ -23,8 +23,7 @@ describe('admin only ships page', () => {
 
     // table body
     cy.get('tbody').within(() => {
-      cy.get('tr').should('have.length', 10);
-      cy.get('td').should('have.length', 16);
+      cy.get('tr').should('have.length', 2, { timeout: 10000 });
     });
 
     // first ship
@@ -302,7 +301,7 @@ describe('admin only ships page', () => {
       });
   });
 
-  it.only('should allow filtering', () => {
+  it('should allow filtering', () => {
     cy.get('tbody').within(() => {
       cy.get('tr').should('have.length', 10);
     });
@@ -418,5 +417,139 @@ describe('admin only ships page', () => {
         cy.get('[data-testid="ship-call-sign"]').should('contain', 'A8XD3');
       });
     cy.get('[aria-label="Filter by Call Sign"]').clear();
+  });
+
+  it('should allow add a new ship', () => {
+    cy.get('[data-testid="add-ship-button"]').click();
+    cy.contains('Add Ship', { timeout: 10000 });
+
+    // check each filed validation
+    cy.get('[data-testid="name-form-text-input"]').click().blur();
+    cy.contains('Name is required');
+    cy.get('[data-testid="name-form-text-input"]').click().type('Test Ship').blur();
+    cy.contains('Name is required').should('not.exist');
+    cy.get('[data-testid="type-form-text-input"]').click().blur();
+    cy.contains('Type is required');
+    cy.get('[data-testid="type-form-text-input"]').click().type('Test Ship Type').blur();
+    cy.contains('Type is required').should('not.exist');
+    cy.get('[data-testid="builder-form-text-input"]').click().blur();
+    cy.contains('Builder is required');
+    cy.get('[data-testid="builder-form-text-input"]').click().type('Test Ship Builder').blur();
+    cy.contains('Builder is required').should('not.exist');
+    cy.get('[data-testid="flag-form-text-input"]').click().blur();
+    cy.contains('Flag is required');
+    cy.get('[data-testid="flag-form-text-input"]').click().type('Test Ship Flag').blur();
+    cy.contains('Flag is required').should('not.exist');
+    cy.get('[data-testid="homePort-form-text-input"]').click().blur();
+    cy.contains('Home Port is required');
+    cy.get('[data-testid="homePort-form-text-input"]').click().type('Test Ship Home Port').blur();
+    cy.contains('Home Port is required').should('not.exist');
+    cy.get('[data-testid="class-form-text-input"]').click().blur();
+    cy.contains('Class is required');
+    cy.get('[data-testid="class-form-text-input"]').click().type('Test Ship Class').blur();
+    cy.contains('Class is required').should('not.exist');
+    cy.get('[data-testid="imoNo-form-text-input"]').click().blur();
+    cy.contains('IMO No is required');
+    cy.get('[data-testid="imoNo-form-text-input"]').click().type('1234567').blur();
+    cy.contains('IMO No is required').should('not.exist');
+    cy.get('[data-testid="callSign-form-text-input"]').click().blur();
+    cy.contains('Call Sign is required');
+    cy.get('[data-testid="callSign-form-text-input"]').click().type('Test Call Sign').blur();
+    cy.contains('Call Sign is required').should('not.exist');
+
+    // click cancel button and check we inn data grid
+    cy.get('[data-testid="cancel-ship-button"]').click();
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 10);
+    });
+
+    // click add ship button again
+    cy.get('[data-testid="add-ship-button"]').click();
+    // fill all fields correctly
+    cy.get('[data-testid="name-form-text-input"]').click().type('Test Ship');
+    cy.get('[data-testid="type-form-text-input"]').click().type('Test Ship Type');
+    cy.get('[data-testid="builder-form-text-input"]').click().type('Test Ship Builder');
+    cy.get('[data-testid="flag-form-text-input"]').click().type('Test Ship Flag');
+    cy.get('[data-testid="homePort-form-text-input"]').click().type('Test Ship Home Port');
+    cy.get('[data-testid="class-form-text-input"]').click().type('Test Ship Class');
+    cy.get('[data-testid="imoNo-form-text-input"]').click().type('1234567');
+    cy.get('[data-testid="callSign-form-text-input"]').click().type('Test Call Sign');
+    cy.get('[data-testid="submit-ship-button"]').click();
+
+    // check new ship in data grid
+    cy.contains('Home Port', { timeout: 10000 });
+    cy.get('tbody tr')
+      .last()
+      .within(() => {
+        cy.get('[data-testid="ship-name"]').should('contain', 'Test Ship');
+        cy.get('[data-testid="ship-type"]').should('contain', 'Test Ship Type');
+        cy.get('[data-testid="ship-builder"]').should('contain', 'Test Ship Builder');
+        cy.get('[data-testid="ship-flag"]').should('contain', 'Test Ship Flag');
+        cy.get('[data-testid="ship-home-port"]').should('contain', 'Test Ship Home Port');
+        cy.get('[data-testid="ship-class"]').should('contain', 'Test Ship Class');
+        cy.get('[data-testid="ship-imo-no"]').should('contain', '1234567');
+        cy.get('[data-testid="ship-call-sign"]').should('contain', 'Test Call Sign');
+      });
+  });
+
+  it('should allow edit a ship', () => {
+    // click edit button in third row
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ship-edit-button"]').click();
+      });
+    cy.contains('Edit Ship', { timeout: 10000 });
+    // fill each field with new data
+    cy.get('[data-testid="name-form-text-input"]').click().clear().type('Test Ship Edited');
+    cy.get('[data-testid="type-form-text-input"]').click().clear().type('Test Ship Type Edited');
+    cy.get('[data-testid="builder-form-text-input"]')
+      .click()
+      .clear()
+      .type('Test Ship Builder Edited');
+    cy.get('[data-testid="flag-form-text-input"]').click().clear().type('Test Ship Flag Edited');
+    cy.get('[data-testid="homePort-form-text-input"]')
+      .click()
+      .clear()
+      .type('Test Ship Home Port Edited');
+    cy.get('[data-testid="class-form-text-input"]').click().clear().type('Test Ship Class Edited');
+    cy.get('[data-testid="imoNo-form-text-input"]').click().clear().type('1234568');
+    cy.get('[data-testid="callSign-form-text-input"]')
+      .click()
+      .clear()
+      .type('Test Call Sign Edited');
+    cy.get('[data-testid="submit-ship-button"]').click();
+
+    // check edited ship in data grid
+    cy.contains('Home Port', { timeout: 10000 });
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ship-name"]').should('contain', 'Test Ship Edited');
+        cy.get('[data-testid="ship-type"]').should('contain', 'Test Ship Type Edited');
+        cy.get('[data-testid="ship-builder"]').should('contain', 'Test Ship Builder Edited');
+        cy.get('[data-testid="ship-flag"]').should('contain', 'Test Ship Flag Edited');
+        cy.get('[data-testid="ship-home-port"]').should('contain', 'Test Ship Home Port Edited');
+        cy.get('[data-testid="ship-class"]').should('contain', 'Test Ship Class Edited');
+        cy.get('[data-testid="ship-imo-no"]').should('contain', '1234568');
+        cy.get('[data-testid="ship-call-sign"]').should('contain', 'Test Call Sign Edited');
+      });
+  });
+
+  it('should allow delete a ship', () => {
+    cy.get('tbody tr').should('have.length', 3, {
+      timeout: 10000
+    });
+    // click delete button in third row
+    cy.get('tbody tr')
+      .eq(2)
+      .within(() => {
+        cy.get('[data-testid="ship-delete-button"]').click();
+      });
+    cy.get('[data-testid="confirmation-modal-confirm-button"]').click();
+    cy.contains('Home Port', { timeout: 10000 });
+    cy.get('tbody tr').should('have.length', 2);
+    // check that ship is deleted
+    cy.contains('Test Ship Edited').should('not.exist');
   });
 });

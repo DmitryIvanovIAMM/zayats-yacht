@@ -33,7 +33,9 @@ export default async function RootLayout({
         overflowX: 'auto',
         flexDirection: 'column',
         justifyContent: 'center',
-        marginTop: '20px'
+        marginTop: '20px',
+        alignItems: 'start',
+        height: '100%'
       }}
     >
       <ProtectedLayout

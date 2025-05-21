@@ -1,15 +1,18 @@
-import { ShipModel } from '@/models/Ship';
-import dbConnect from '@/modules/mongoose/mongoose';
+import { Ship, ShipModel } from '@/models/Ship';
+import { Types } from 'mongoose';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import {
   FiltersFromQuery,
   getFiltersQuery,
   getSortingQuery
 } from '@/controllers/mongoDbQueryHelpers';
+import { User } from '@/models/User';
 
 export default class ShipService {
   private static instance: ShipService;
+
   private constructor() {}
+
   static getInstance() {
     if (this.instance) {
       return this.instance;
@@ -19,8 +22,6 @@ export default class ShipService {
   }
 
   public getAllShips = async () => {
-    await dbConnect();
-
     return ShipModel.find({});
   };
 
@@ -51,7 +52,10 @@ export default class ShipService {
       'i'
     );
     const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'name.asc');
-    const query = { ...filters };
+    const query = {
+      deletedAt: { $exists: false },
+      ...filters
+    };
 
     const totalPromise = ShipModel.countDocuments(query);
     const shipsPromise = ShipModel.find(query)
@@ -66,6 +70,35 @@ export default class ShipService {
       data: ships,
       total: total
     };
+  };
+
+  public getShipFromDB = async (_id: string) => {
+    const ship = await ShipModel.findById(new Types.ObjectId(_id));
+    if (!ship) {
+      return null;
+    }
+    return ship.toObject();
+  };
+
+  public addShipInDB = async (ship: Ship) => {
+    return ShipModel.create(ship);
+  };
+
+  public updateShipInDB = async (id: string, ship: Ship) => {
+    return ShipModel.findByIdAndUpdate(new Types.ObjectId(id), ship, {
+      new: true
+    });
+  };
+
+  public softDeleteShipFromDB = async (id: string, user: User) => {
+    return ShipModel.findByIdAndUpdate(
+      new Types.ObjectId(id),
+      {
+        deletedAt: new Date(),
+        deletedBy: user._id
+      },
+      { new: true }
+    );
   };
 }
 

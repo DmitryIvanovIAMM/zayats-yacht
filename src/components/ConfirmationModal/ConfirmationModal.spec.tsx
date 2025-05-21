@@ -3,7 +3,7 @@ import React from 'react';
 import {
   ConfirmationModal,
   ConfirmationModalProps
-} from '@/components/AdminDashboard/ScheduleManagement/ConfirmationModal';
+} from '@/components/ConfirmationModal/ConfirmationModal';
 
 const setup = (propsOverrides?: Partial<ConfirmationModalProps>) => {
   const props: ConfirmationModalProps = {

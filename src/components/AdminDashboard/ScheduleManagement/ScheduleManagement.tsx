@@ -6,26 +6,16 @@ import { Messages } from '@/helpers/messages';
 import { useScheduleColumns } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 import { querySailingsWithRoutesAndPorts } from '@/controllers/SchedulesController';
 import { type SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
-import { deleteSailingAction, setSailingActivityStatus } from '@/app/serverActions';
+import { deleteSailingByAdminAction, setSailingActivityByAdminStatus } from '@/app/serverActions';
 import { showNotification } from '@/modules/notifications/notifications';
 import { SailingStatusParams } from '@/utils/types';
 import { useState } from 'react';
-import { ConfirmationModal } from '@/components/AdminDashboard/ScheduleManagement/ConfirmationModal';
+import {
+  ConfirmationModal,
+  defaultConfirmationModalProps
+} from '@/components/ConfirmationModal/ConfirmationModal';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/helpers/paths';
-
-export interface ConfirmationModalProps {
-  open: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-  message: string;
-}
-export const defaultConfirmationModalProps: ConfirmationModalProps = {
-  open: false,
-  onClose: () => {},
-  onConfirm: () => {},
-  message: ''
-};
 
 export const ScheduleManagement = () => {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -48,7 +38,7 @@ export const ScheduleManagement = () => {
     setUpdateSailingId(null);
     try {
       const data: SailingStatusParams = { sailingId, isActive };
-      const actionResult = await setSailingActivityStatus(data);
+      const actionResult = await setSailingActivityByAdminStatus(data);
       if (!actionResult.success) {
         return showNotification(false, actionResult.message || Messages.FailedChangeSailingStatus);
       }
@@ -81,19 +71,17 @@ export const ScheduleManagement = () => {
       open: true,
       onClose: () => setConfirmationModalState(defaultConfirmationModalProps),
       onConfirm: () => handleDeleteSailing(sailingId),
+      title: 'Confirm Action',
       message: `Are you sure you want to delete "${sailingToBeDeleted.name}" sailing?`
     });
   };
 
   const handleDeleteSailing = async (sailingId: string) => {
-    // eslint-disable-next-line no-console
-    console.log('handleDeleteSailing().  sailingId: ', sailingId);
-
     setConfirmationModalState(defaultConfirmationModalProps);
     setIsUpdating(true);
     setUpdateSailingId(null);
     try {
-      const actionResult = await deleteSailingAction(sailingId);
+      const actionResult = await deleteSailingByAdminAction(sailingId);
       if (!actionResult.success) {
         return showNotification(false, actionResult.message || Messages.FailedDeleteSailing);
       }
@@ -144,6 +132,7 @@ export const ScheduleManagement = () => {
           sx={{ backgroundColor: 'secondary.dark', margin: '0 0 10px 0' }}
           size={'small'}
           style={{ height: '31px' }}
+          data-testid="add-sailing-button"
         >
           Add Sailing
         </Button>
@@ -162,7 +151,7 @@ export const ScheduleManagement = () => {
           onClose={confirmationModalState.onClose}
           onConfirm={confirmationModalState.onConfirm}
           message={confirmationModalState.message}
-          title="Confirm Action"
+          title={confirmationModalState.title}
         />
       )}
     </div>

@@ -17,7 +17,8 @@ export enum PATHS {
   destination = '/destination/:id',
   loginFailed = '/login-failed',
   addSailing = '/admin/schedule-management/sailing',
-  addShip = '/admin/ships/ship'
+  addShip = '/admin/ships/ship',
+  editShip = '/admin/ships/ship/:id'
 }
 
 /**

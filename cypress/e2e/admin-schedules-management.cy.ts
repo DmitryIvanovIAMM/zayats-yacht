@@ -1,4 +1,4 @@
-describe('Admin on Schedule Page', () => {
+describe('Admin on Schedules management page', () => {
   beforeEach(() => {
     cy.viewport('macbook-15');
 

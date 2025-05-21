@@ -8,7 +8,7 @@ import {
 } from '@/components/Table/tableUtils';
 import { showNotification } from '@/modules/notifications/notifications';
 import { Messages } from '@/helpers/messages';
-import { getBackendDataAction } from '@/app/serverActions';
+import { getBackendDataByAdminAction } from '@/app/serverActions';
 
 export interface DataState<D> {
   data: TableData<D>;
@@ -42,7 +42,7 @@ export const useTableDataFetcher = <T>(
     };
 
     try {
-      const result: ActionTableData<T> = await getBackendDataAction<T>(
+      const result: ActionTableData<T> = await getBackendDataByAdminAction<T>(
         backendFetchParams,
         getterFunction,
         errorMessage

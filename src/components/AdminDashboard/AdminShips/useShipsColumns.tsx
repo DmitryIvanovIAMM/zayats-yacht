@@ -3,12 +3,21 @@ import { createColumnHelper } from '@tanstack/table-core';
 import { ShipFrontend } from '@/models/ShipFrontend';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
 import { displayMdUp, displaySmUp } from '@/components/Table/Filters/styles';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
+import { PATHS, toPath } from '@/helpers/paths';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
+export interface ShipsColumnsProps {
+  handleStartDeleteShip: (shipId: string) => void;
+  isUpdating: boolean;
+}
 
 const columnHelper = createColumnHelper<ShipFrontend>();
 
-export const useShipsColumns = () => {
+export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColumnsProps) => {
   return useMemo(() => {
-    // use as base ShipFrontend and shipFields
+    // use as base ShipFrontend
     return [
       columnHelper.accessor('name', {
         header: 'Name',
@@ -88,7 +97,35 @@ export const useShipsColumns = () => {
           columnSx: { ...displayMdUp, verticalAlign: 'top' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
-      })
+      }),
+      {
+        _id: 'actions-cell',
+        header: '',
+        accessorKey: 'actions-cell',
+        enableSorting: false,
+        cell: ({ row }: { row: any }) => {
+          return (
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <IconButton
+                component="a"
+                href={toPath(PATHS.editShip, { id: row.original._id })}
+                data-testid="ship-edit-button"
+                disabled={isUpdating}
+              >
+                <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
+              </IconButton>
+              <IconButton
+                onClick={() => handleStartDeleteShip(row.original._id)}
+                data-testid="ship-delete-button"
+                disabled={isUpdating}
+              >
+                <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
+              </IconButton>
+            </div>
+          );
+        }
+      }
     ];
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleStartDeleteShip]);
 };

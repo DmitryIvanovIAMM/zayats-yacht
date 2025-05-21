@@ -24,6 +24,10 @@ export class Ship {
   imoNo: string;
   @prop({ required: true })
   callSign: string;
+  @prop({ required: false })
+  deletedAt?: Date;
+  @prop({ required: false })
+  deletedBy?: Types.ObjectId;
 }
 
 export const ShipModel = models?.Ship || getModelForClass(Ship);

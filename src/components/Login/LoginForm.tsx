@@ -56,8 +56,8 @@ const LoginForm = ({ loginRedirectUrl = PATHS.landing, error = '' }: LoginFormPr
   };
 
   return (
-    <Box id="login-form" style={{ width: '100%', textAlign: 'center' }}>
-      <h2 style={{ textAlign: 'center' }}>Login Form</h2>
+    <Box id="login-form" style={{ width: '100%', textAlign: 'center', paddingTop: '20px' }}>
+      <h2 style={{ textAlign: 'center', color: `${secondary.dark}` }}>Login Form</h2>
       <FormProvider {...methods}>
         <form
           noValidate

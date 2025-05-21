@@ -26,7 +26,7 @@ import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
-import { addShip, getShip, updateShip } from '@/controllers/ShipsController';
+import { addShip, deleteShip, getShip, updateShip } from '@/controllers/ShipsController';
 
 export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -85,7 +85,7 @@ export async function sendQuoteRequestAction(
   return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }
 
-export async function getBackendDataAction<T>(
+export async function getBackendDataByAdminAction<T>(
   fetchParams: BackendDataFetchArgs,
   getFunction: (fetchParams: BackendDataFetchArgs) => Promise<TableData<T>>,
   message: string = Messages.FailedGetData
@@ -121,35 +121,40 @@ export async function getBackendDataAction<T>(
   }
 }
 
-export async function setSailingActivityStatus(data: SailingStatusParams): Promise<ActionResult> {
+export async function setSailingActivityByAdminStatus(
+  data: SailingStatusParams
+): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('changeScheduleStatusAction(). data: ', data);
 
   return (await withServerAuth([Roles.Admin], updateSailingActivityStatus, data)) as ActionResult;
 }
 
-export async function deleteSailingAction(sailingId: string): Promise<ActionResult> {
+export async function deleteSailingByAdminAction(sailingId: string): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('deleteSailingAction(). sailingId: ', sailingId);
 
   return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
 }
 
-export async function getShipAction(id: string): Promise<ActionData<ShipForm>> {
+export async function getShipByAdminAction(id: string): Promise<ActionData<ShipForm>> {
   // eslint-disable-next-line no-console
   console.log('getShipAction(). id: ', id);
 
   return (await withServerAuth([Roles.Admin], getShip, id)) as ActionData<ShipForm>;
 }
 
-export async function addShipAction(shipData: ShipForm): Promise<ActionResult> {
+export async function addShipByAdminAction(shipData: ShipForm): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('addShipAction(). shipData: ', shipData);
 
   return (await withServerAuth([Roles.Admin], addShip, shipData)) as ActionResult;
 }
 
-export async function updateShipAction(shipId: string, shipData: ShipForm): Promise<ActionResult> {
+export async function updateShipByAdminAction(
+  shipId: string,
+  shipData: ShipForm
+): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('updateShipAction(). shipId: ', shipId, ' shipData: ', shipData);
 
@@ -157,4 +162,11 @@ export async function updateShipAction(shipId: string, shipData: ShipForm): Prom
     ...shipData,
     _id: shipId
   })) as ActionResult;
+}
+
+export async function deleteShipByAdminAction(shipId: string): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('deleteShipAction(). shipId: ', shipId);
+
+  return (await withServerAuth([Roles.Admin], deleteShip, shipId)) as ActionResult;
 }

@@ -6,10 +6,13 @@ import {
   getFiltersQuery,
   getSortingQuery
 } from '@/controllers/mongoDbQueryHelpers';
+import { User } from '@/models/User';
 
 export default class ShipService {
   private static instance: ShipService;
+
   private constructor() {}
+
   static getInstance() {
     if (this.instance) {
       return this.instance;
@@ -49,7 +52,11 @@ export default class ShipService {
       'i'
     );
     const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'name.asc');
-    const query = { ...filters };
+    const query = {
+      deletedAt: { $exists: false },
+      ...filters
+    };
+    console.log('query:', query);
 
     const totalPromise = ShipModel.countDocuments(query);
     const shipsPromise = ShipModel.find(query)
@@ -66,8 +73,8 @@ export default class ShipService {
     };
   };
 
-  public getShipFromDB = async (id: string) => {
-    const ship = await ShipModel.findById(new Types.ObjectId(id));
+  public getShipFromDB = async (_id: string) => {
+    const ship = await ShipModel.findById(new Types.ObjectId(_id));
     if (!ship) {
       return null;
     }
@@ -82,6 +89,17 @@ export default class ShipService {
     return ShipModel.findByIdAndUpdate(new Types.ObjectId(id), ship, {
       new: true
     });
+  };
+
+  public softDeleteShipFromDB = async (id: string, user: User) => {
+    return ShipModel.findByIdAndUpdate(
+      new Types.ObjectId(id),
+      {
+        deletedAt: new Date(),
+        deletedBy: user._id
+      },
+      { new: true }
+    );
   };
 }
 

@@ -6,10 +6,16 @@ import { displayMdUp, displaySmUp } from '@/components/Table/Filters/styles';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import { PATHS, toPath } from '@/helpers/paths';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
+export interface ShipsColumnsProps {
+  handleStartDeleteShip: (shipId: string) => void;
+  isUpdating: boolean;
+}
 
 const columnHelper = createColumnHelper<ShipFrontend>();
 
-export const useShipsColumns = () => {
+export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColumnsProps) => {
   return useMemo(() => {
     // use as base ShipFrontend and shipFields
     return [
@@ -103,14 +109,22 @@ export const useShipsColumns = () => {
               <IconButton
                 content="href"
                 href={toPath(PATHS.editShip, { id: row.original._id })}
-                data-testid="schedule-sailing-delete-button"
+                data-testid="ship-edit-button"
+                disabled={isUpdating}
               >
                 <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
+              </IconButton>
+              <IconButton
+                onClick={() => handleStartDeleteShip(row.original._id)}
+                data-testid="ship-delete-button"
+                disabled={isUpdating}
+              >
+                <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>
             </div>
           );
         }
       }
     ];
-  }, []);
+  }, [handleStartDeleteShip]);
 };

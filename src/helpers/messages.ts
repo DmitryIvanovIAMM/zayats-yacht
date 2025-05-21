@@ -10,6 +10,8 @@ export enum Messages {
   FailedAddShip = 'Failed to add ship',
   ShipAddedSuccessfully = 'Ship added successfully',
   ShipUpdatedSuccessfully = 'Ship updated successfully',
+  ShipDeletedSuccessfully = 'Ship deleted successfully',
+  FailedDeleteShip = 'Failed to delete ship',
   FailedGetShip = 'Failed to get ship',
   ShipNotFound = 'Ship not found',
   FailedUpdateShip = 'Failed to update ship',

@@ -13,6 +13,14 @@ export interface ConfirmationModalProps {
   message: string;
 }
 
+export const defaultConfirmationModalProps: ConfirmationModalProps = {
+  open: false,
+  onClose: () => {},
+  onConfirm: () => {},
+  title: 'Confirm Action',
+  message: ''
+};
+
 export const ConfirmationModal = ({
   open,
   onClose,

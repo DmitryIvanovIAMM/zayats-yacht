@@ -17,7 +17,7 @@ import { PATHS } from '@/helpers/paths';
 import { FormMode } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { FormContainer } from '@/components/FormContainer/FormContainer';
-import { addShipAction, updateShipAction } from '@/app/serverActions';
+import { addShipByAdminAction, updateShipByAdminAction } from '@/app/serverActions';
 
 export interface ShipContainerProps {
   formMode: FormMode;
@@ -47,8 +47,8 @@ export const ShipFormContainer = ({
     try {
       const result =
         formMode === FormMode.ADD
-          ? await addShipAction(shipForm)
-          : await updateShipAction(_id as string, shipForm);
+          ? await addShipByAdminAction(shipForm)
+          : await updateShipByAdminAction(_id as string, shipForm);
       if (!result.success) {
         return enqueueSnackbar(result.message, { variant: 'error' });
       }

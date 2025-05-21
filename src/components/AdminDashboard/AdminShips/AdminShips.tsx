@@ -8,15 +8,121 @@ import { useShipsColumns } from '@/components/AdminDashboard/AdminShips/useShips
 import { getFilteredShips } from '@/controllers/ShipsController';
 import Button from '@mui/material/Button';
 import { PATHS } from '@/helpers/paths';
+import { useState } from 'react';
+import { showNotification } from '@/modules/notifications/notifications';
+import {
+  ConfirmationModal,
+  defaultConfirmationModalProps
+} from '@/components/ConfirmationModal/ConfirmationModal';
+import { deleteShipByAdminAction } from '@/app/serverActions';
 
 export const AdminShips = () => {
-  const { dataState, fetchDataFromServer } = useTableDataFetcher<ShipFrontend>(
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [confirmationModalState, setConfirmationModalState] = useState(
+    defaultConfirmationModalProps
+  );
+  console.log('confirmationModalState: ', confirmationModalState);
+  const { dataState, setDataState, fetchDataFromServer } = useTableDataFetcher<ShipFrontend>(
     getFilteredShips,
     [],
     Messages.FailedGetShips
   );
+  console.log('dataState.data.data: ', dataState.data.data);
 
-  const columnDefs = useShipsColumns();
+  const handleStartDeleteShip = async (shipId: string) => {
+    // eslint-disable-next-line no-console
+    console.log('handleStartDeleteShip(). shipId: ', shipId);
+    console.log('handleStartDeleteShip(). dataState.data.data: ', dataState.data.data);
+    const shipToBeDeleted = dataState.data.data.find((ship) => {
+      console.log('ship: ', ship);
+      return ship._id === shipId;
+    });
+    console.log('shipToBeDeleted: ', shipToBeDeleted);
+    if (!shipToBeDeleted) {
+      return;
+    }
+    setConfirmationModalState({
+      open: true,
+      onClose: () => setConfirmationModalState(defaultConfirmationModalProps),
+      onConfirm: () => handleDeleteShip(shipId),
+      title: 'Confirm Action',
+      message: `Are you sure you want to delete "${shipToBeDeleted.name}" ship?`
+    });
+  };
+  handleStartDeleteShip.bind(this);
+
+  const handleDeleteShip = async (shipId: string) => {
+    // eslint-disable-next-line no-console
+    console.log('handleDeleteShip().  shipId: ', shipId);
+    setConfirmationModalState(defaultConfirmationModalProps);
+    setIsUpdating(true);
+    try {
+      const actionResult = await deleteShipByAdminAction(shipId);
+      if (!actionResult.success) {
+        return showNotification(false, actionResult.message || Messages.FailedDeleteShip);
+      }
+      // delete ship via setDataState() to rerender table
+      setDataState((state) => ({
+        ...state,
+        data: {
+          ...state.data,
+          data: state.data.data.filter((ship) => ship._id !== shipId),
+          total: state.data.total - 1
+        }
+      }));
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error delete Ship:', error);
+      showNotification(false, (error as Error)?.message || Messages.FailedDeleteShip);
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  // const handleStartDeleteSailing = (sailingId: string) => {
+  //   const sailingToBeDeleted = dataState.data.data.find((sailing) => sailing._id === sailingId);
+  //   if (!sailingToBeDeleted) {
+  //     return;
+  //   }
+  //   setConfirmationModalState({
+  //     open: true,
+  //     onClose: () => setConfirmationModalState(defaultConfirmationModalProps),
+  //     onConfirm: () => handleDeleteSailing(sailingId),
+  //     message: `Are you sure you want to delete "${sailingToBeDeleted.name}" sailing?`
+  //   });
+  // };
+
+  // const handleDeleteSailing = async (sailingId: string) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log('handleDeleteSailing().  sailingId: ', sailingId);
+  //
+  //   setConfirmationModalState(defaultConfirmationModalProps);
+  //   setIsUpdating(true);
+  //   setUpdateSailingId(null);
+  //   try {
+  //     const actionResult = await deleteSailingAction(sailingId);
+  //     if (!actionResult.success) {
+  //       return showNotification(false, actionResult.message || Messages.FailedDeleteSailing);
+  //     }
+  //     // delete sailing via setDataState() to rerender table
+  //     setDataState((state) => ({
+  //       ...state,
+  //       data: {
+  //         ...state.data,
+  //         data: state.data.data.filter((sailing) => sailing._id !== sailingId),
+  //         total: state.data.total - 1
+  //       }
+  //     }));
+  //   } catch (error) {
+  //     // eslint-disable-next-line no-console
+  //     console.error('Error delete Sailing:', error);
+  //     showNotification(false, (error as Error)?.message || Messages.FailedDeleteSailing);
+  //   } finally {
+  //     setIsUpdating(false);
+  //   }
+  // };
+
+  const columnDefs = useShipsColumns({ handleStartDeleteShip, isUpdating });
 
   return (
     <>
@@ -39,6 +145,15 @@ export const AdminShips = () => {
         fetchData={fetchDataFromServer}
         initialSortBy={[{ id: 'name', desc: false }]}
       />
+      {confirmationModalState.open && (
+        <ConfirmationModal
+          open={confirmationModalState.open}
+          onClose={confirmationModalState.onClose}
+          onConfirm={confirmationModalState.onConfirm}
+          message={confirmationModalState.message}
+          title={confirmationModalState.title}
+        />
+      )}
     </>
   );
 };

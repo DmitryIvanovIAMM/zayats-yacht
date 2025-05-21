@@ -107,7 +107,7 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
           return (
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <IconButton
-                content="href"
+                component="a"
                 href={toPath(PATHS.editShip, { id: row.original._id })}
                 data-testid="ship-edit-button"
                 disabled={isUpdating}

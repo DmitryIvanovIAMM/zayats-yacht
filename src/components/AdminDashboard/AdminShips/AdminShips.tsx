@@ -42,7 +42,6 @@ export const AdminShips = () => {
       message: `Are you sure you want to delete "${shipToBeDeleted.name}" ship?`
     });
   };
-  handleStartDeleteShip.bind(this);
 
   const handleDeleteShip = async (shipId: string) => {
     setConfirmationModalState(defaultConfirmationModalProps);

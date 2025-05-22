@@ -1,6 +1,12 @@
 'use server';
 
-import { getActivePorts } from '@/controllers/PortsController';
+import {
+  addPort,
+  deletePort,
+  getActivePorts,
+  getPort,
+  updatePort
+} from '@/controllers/PortsController';
 import { User } from '@/models/User';
 import {
   ActionData,
@@ -27,6 +33,7 @@ import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
 import { addShip, deleteShip, getShip, updateShip } from '@/controllers/ShipsController';
+import { PortForm } from '@/components/AdminDashboard/AdminPorts/Port/types';
 
 export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -169,4 +176,38 @@ export async function deleteShipByAdminAction(shipId: string): Promise<ActionRes
   console.log('deleteShipAction(). shipId: ', shipId);
 
   return (await withServerAuth([Roles.Admin], deleteShip, shipId)) as ActionResult;
+}
+
+export const getPortByAdminAction = async (id: string): Promise<ActionData<PortForm>> => {
+  // eslint-disable-next-line no-console
+  console.log('getPortAction(). id: ', id);
+
+  return (await withServerAuth([Roles.Admin], getPort, id)) as ActionData<PortForm>;
+};
+
+export async function addPortByAdminAction(portData: PortForm): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('addShipAction(). portData: ', portData);
+
+  return (await withServerAuth([Roles.Admin], addPort, portData)) as ActionResult;
+}
+
+export async function updatePortByAdminAction(
+  portId: string,
+  portData: PortForm
+): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('updateShipAction(). portId: ', portId, ' portData: ', portData);
+
+  return (await withServerAuth([Roles.Admin], updatePort, {
+    ...portData,
+    _id: portId
+  })) as ActionResult;
+}
+
+export async function deletePortByAdminAction(portId: string): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('deleteShipAction(). portId: ', portId);
+
+  return (await withServerAuth([Roles.Admin], deletePort, portId)) as ActionResult;
 }

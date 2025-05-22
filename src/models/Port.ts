@@ -17,6 +17,11 @@ export class Port {
 
   @prop({ required: true })
   imageFileName: string;
+
+  @prop({ required: false })
+  deletedAt?: Date;
+  @prop({ required: false })
+  deletedBy?: Types.ObjectId;
 }
 
 export const PortModel = models?.Port || getModelForClass(Port);

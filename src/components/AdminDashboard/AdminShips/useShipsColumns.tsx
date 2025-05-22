@@ -123,6 +123,10 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
               </IconButton>
             </div>
           );
+        },
+        meta: {
+          headerSx: { width: '102px', maxWidth: '102px' },
+          columnSx: { width: '102px', maxWidth: '102px' }
         }
       }
     ];

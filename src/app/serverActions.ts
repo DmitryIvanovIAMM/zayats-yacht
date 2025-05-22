@@ -98,7 +98,7 @@ export async function getBackendDataByAdminAction<T>(
   message: string = Messages.FailedGetData
 ): Promise<ActionTableData<T>> {
   // eslint-disable-next-line no-console
-  console.log('getBackendDataAction().  fetchParams: ', fetchParams);
+  console.log('getBackendDataByAdminAction().  fetchParams: ', fetchParams);
 
   try {
     const queryDataFromDB = async (
@@ -132,28 +132,28 @@ export async function setSailingActivityByAdminStatus(
   data: SailingStatusParams
 ): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('changeScheduleStatusAction(). data: ', data);
+  console.log('setSailingActivityByAdminStatus(). data: ', data);
 
   return (await withServerAuth([Roles.Admin], updateSailingActivityStatus, data)) as ActionResult;
 }
 
 export async function deleteSailingByAdminAction(sailingId: string): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('deleteSailingAction(). sailingId: ', sailingId);
+  console.log('deleteSailingByAdminAction(). sailingId: ', sailingId);
 
   return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
 }
 
 export async function getShipByAdminAction(id: string): Promise<ActionData<ShipForm>> {
   // eslint-disable-next-line no-console
-  console.log('getShipAction(). id: ', id);
+  console.log('getShipByAdminAction(). id: ', id);
 
   return (await withServerAuth([Roles.Admin], getShip, id)) as ActionData<ShipForm>;
 }
 
 export async function addShipByAdminAction(shipData: ShipForm): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('addShipAction(). shipData: ', shipData);
+  console.log('addShipByAdminAction(). shipData: ', shipData);
 
   return (await withServerAuth([Roles.Admin], addShip, shipData)) as ActionResult;
 }
@@ -163,7 +163,7 @@ export async function updateShipByAdminAction(
   shipData: ShipForm
 ): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('updateShipAction(). shipId: ', shipId, ' shipData: ', shipData);
+  console.log('updateShipByAdminAction(). shipId: ', shipId, ' shipData: ', shipData);
 
   return (await withServerAuth([Roles.Admin], updateShip, {
     ...shipData,
@@ -173,21 +173,21 @@ export async function updateShipByAdminAction(
 
 export async function deleteShipByAdminAction(shipId: string): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('deleteShipAction(). shipId: ', shipId);
+  console.log('deleteShipByAdminAction(). shipId: ', shipId);
 
   return (await withServerAuth([Roles.Admin], deleteShip, shipId)) as ActionResult;
 }
 
 export const getPortByAdminAction = async (id: string): Promise<ActionData<PortForm>> => {
   // eslint-disable-next-line no-console
-  console.log('getPortAction(). id: ', id);
+  console.log('getPortByAdminAction(). id: ', id);
 
   return (await withServerAuth([Roles.Admin], getPort, id)) as ActionData<PortForm>;
 };
 
 export async function addPortByAdminAction(portData: PortForm): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('addShipAction(). portData: ', portData);
+  console.log('addPortByAdminAction(). portData: ', portData);
 
   return (await withServerAuth([Roles.Admin], addPort, portData)) as ActionResult;
 }
@@ -197,7 +197,7 @@ export async function updatePortByAdminAction(
   portData: PortForm
 ): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('updateShipAction(). portId: ', portId, ' portData: ', portData);
+  console.log('updatePortByAdminAction(). portId: ', portId, ' portData: ', portData);
 
   return (await withServerAuth([Roles.Admin], updatePort, {
     ...portData,
@@ -207,7 +207,7 @@ export async function updatePortByAdminAction(
 
 export async function deletePortByAdminAction(portId: string): Promise<ActionResult> {
   // eslint-disable-next-line no-console
-  console.log('deleteShipAction(). portId: ', portId);
+  console.log('deletePortByAdminAction(). portId: ', portId);
 
   return (await withServerAuth([Roles.Admin], deletePort, portId)) as ActionResult;
 }

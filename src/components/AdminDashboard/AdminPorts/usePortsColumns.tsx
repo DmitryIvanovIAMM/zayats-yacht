@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export interface PortsColumnsProps {
-  handleStartDeletePort: (shipId: string) => void;
+  handleStartDeletePort: (portId: string) => void;
   isUpdating: boolean;
 }
 

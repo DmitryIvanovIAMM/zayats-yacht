@@ -27,9 +27,9 @@ export const AdminPorts = () => {
     Messages.FailedGetPorts
   );
 
-  const handleStartDeletePort = async (shipId: string) => {
+  const handleStartDeletePort = async (portId: string) => {
     const portToBeDeleted = dataState.data.data.find((ship) => {
-      return ship._id === shipId;
+      return ship._id === portId;
     });
     if (!portToBeDeleted) {
       return;
@@ -37,7 +37,7 @@ export const AdminPorts = () => {
     setConfirmationModalState({
       open: true,
       onClose: () => setConfirmationModalState(defaultConfirmationModalProps),
-      onConfirm: () => handleDeletePort(shipId),
+      onConfirm: () => handleDeletePort(portId),
       title: 'Confirm Action',
       message: `Are you sure you want to delete "${portToBeDeleted.portName}" port?`
     });
@@ -81,7 +81,7 @@ export const AdminPorts = () => {
           sx={{ backgroundColor: 'secondary.dark', margin: '0 0 10px 0' }}
           size={'small'}
           style={{ height: '31px' }}
-          data-testid="add-ship-button"
+          data-testid="add-port-button"
         >
           Add Port
         </Button>

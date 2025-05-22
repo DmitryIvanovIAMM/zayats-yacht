@@ -2,8 +2,17 @@ import { useMemo } from 'react';
 import { TextColumnFilter } from '@/components/Table/Filters/TextColumnFilter';
 import { displaySmUp } from '@/components/Table/Filters/styles';
 import Image from 'next/image';
+import IconButton from '@mui/material/IconButton';
+import { PATHS, toPath } from '@/helpers/paths';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-export const usePortsColumns = () => {
+export interface PortsColumnsProps {
+  handleStartDeletePort: (portId: string) => void;
+  isUpdating: boolean;
+}
+
+export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColumnsProps) => {
   return useMemo(() => {
     return [
       {
@@ -55,7 +64,39 @@ export const usePortsColumns = () => {
           columnSx: { verticalAlign: 'top', width: '140px' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
+      },
+      {
+        _id: 'actions-cell',
+        header: '',
+        accessorKey: 'actions-cell',
+        enableSorting: false,
+        cell: ({ row }: { row: any }) => {
+          return (
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <IconButton
+                component="a"
+                href={toPath(PATHS.editPort, { id: row.original._id })}
+                data-testid="port-edit-button"
+                disabled={isUpdating}
+              >
+                <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
+              </IconButton>
+              <IconButton
+                onClick={() => handleStartDeletePort(row.original._id)}
+                data-testid="port-delete-button"
+                disabled={isUpdating}
+              >
+                <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
+              </IconButton>
+            </div>
+          );
+        },
+        meta: {
+          headerSx: { width: '102px', maxWidth: '102px' },
+          columnSx: { width: '102px', maxWidth: '102px' }
+        }
       }
     ];
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleStartDeletePort]);
 };

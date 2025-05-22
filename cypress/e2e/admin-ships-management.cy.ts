@@ -458,7 +458,7 @@ describe('admin on Ships management page', () => {
     cy.contains('Call Sign is required').should('not.exist');
 
     // click cancel button and check we inn data grid
-    cy.get('[data-testid="cancel-ship-button"]').click();
+    cy.get('[data-testid="cancel-form-button"]').click();
     cy.get('tbody').within(() => {
       cy.get('tr').should('have.length', 10);
     });
@@ -474,7 +474,7 @@ describe('admin on Ships management page', () => {
     cy.get('[data-testid="class-form-text-input"]').click().type('Test Ship Class');
     cy.get('[data-testid="imoNo-form-text-input"]').click().type('1234567');
     cy.get('[data-testid="callSign-form-text-input"]').click().type('Test Call Sign');
-    cy.get('[data-testid="submit-ship-button"]').click();
+    cy.get('[data-testid="submit-form-button"]').click();
 
     // check new ship in data grid
     cy.contains('Home Port', { timeout: 10000 });
@@ -518,7 +518,7 @@ describe('admin on Ships management page', () => {
       .click()
       .clear()
       .type('Test Call Sign Edited');
-    cy.get('[data-testid="submit-ship-button"]').click();
+    cy.get('[data-testid="submit-form-button"]').click();
 
     // check edited ship in data grid
     cy.contains('Home Port', { timeout: 10000 });

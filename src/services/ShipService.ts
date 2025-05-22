@@ -84,7 +84,7 @@ export default class ShipService {
     return ShipModel.create(ship);
   };
 
-  public updateShipInDB = async (id: string, ship: Ship) => {
+  public updateShipInDB = async (id: string, ship: Partial<Ship>) => {
     return ShipModel.findByIdAndUpdate(new Types.ObjectId(id), ship, {
       new: true
     });

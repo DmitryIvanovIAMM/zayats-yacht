@@ -18,7 +18,6 @@ describe('Admin on Ports management page', () => {
     // table body
     cy.get('tbody').within(() => {
       cy.get('tr').should('have.length', 10);
-      cy.get('td').should('have.length', 30);
     });
 
     // test data  are from seedData.ts PORTS sorted in alphabetical order

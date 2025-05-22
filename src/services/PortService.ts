@@ -5,6 +5,8 @@ import {
   getFiltersQuery,
   getSortingQuery
 } from '@/controllers/mongoDbQueryHelpers';
+import { Types } from 'mongoose';
+import { User } from '@/models/User';
 
 export default class PortService {
   private static instance: PortService;
@@ -38,7 +40,10 @@ export default class PortService {
     );
     const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'portName.asc');
 
-    const query = { ...filters };
+    const query = {
+      deletedAt: { $exists: false },
+      ...filters
+    };
 
     const totalPromise = PortModel.countDocuments(query);
     const portsPromise = PortModel.find(query)
@@ -53,6 +58,33 @@ export default class PortService {
       data: ports,
       total: total
     };
+  };
+
+  public getPortFromDB = async (portId: string): Promise<Port | null> => {
+    const port = await PortModel.findById(new Types.ObjectId(portId));
+    if (!port) {
+      return null;
+    }
+    return port;
+  };
+
+  public addPortInDB = async (port: Port) => {
+    return PortModel.create(port);
+  };
+
+  public updatePortInDB = async (port: Partial<Port>) => {
+    return PortModel.findByIdAndUpdate(new Types.ObjectId(port._id), port, { new: true });
+  };
+
+  public softDeletePortFromDB = async (portId: string, user: User) => {
+    return PortModel.findByIdAndUpdate(
+      new Types.ObjectId(portId),
+      {
+        deletedAt: new Date(),
+        deletedBy: user._id
+      },
+      { new: true }
+    );
   };
 }
 

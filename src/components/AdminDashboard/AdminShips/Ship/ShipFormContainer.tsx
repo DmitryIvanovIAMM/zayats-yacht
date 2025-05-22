@@ -2,22 +2,18 @@
 
 import { useRouter } from 'next/navigation';
 import { Box } from '@mui/material';
-import { primary, secondary } from '@/components/colors';
 import { useSnackbar } from 'notistack';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ShipForm, shipSchema } from '@/components/AdminDashboard/AdminShips/Ship/types';
 import { FormTextInput } from '@/components/MUI-RHF/FormTextInput';
 import React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import SendIcon from '@mui/icons-material/Send';
-import Button from '@mui/material/Button';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { PATHS } from '@/helpers/paths';
 import { FormMode } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { FormContainer } from '@/components/FormContainer/FormContainer';
 import { addShipByAdminAction, updateShipByAdminAction } from '@/app/serverActions';
+import { SubmitCancelButtons } from '@/components/SubmitCancelButtons/SubmitCancelButtons';
 
 export interface ShipContainerProps {
   formMode: FormMode;
@@ -100,63 +96,10 @@ export const ShipFormContainer = ({
               <FormTextInput name={'callSign'} label={'Call Sign *'} />
             </Box>
           </div>
-          <Box
-            sx={{
-              display: 'flex',
-              flex: { xs: '100%' },
-              marginTop: '20px',
-              marginBottom: '20px',
-              justifyContent: 'space-around'
-            }}
-          >
-            <Button
-              type="text"
-              variant="outlined"
-              style={{ color: secondary.dark, borderColor: secondary.dark }}
-              endIcon={
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '24px',
-                    height: '24px'
-                  }}
-                >
-                  <HighlightOffIcon />
-                </div>
-              }
-              disabled={formState.isSubmitting}
-              href={PATHS.adminShips}
-              data-testid="cancel-ship-button"
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              variant="contained"
-              endIcon={
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '24px',
-                    height: '24px'
-                  }}
-                >
-                  {formState.isSubmitting ? (
-                    <CircularProgress size="20px" sx={{ color: `${primary.contrastText}` }} />
-                  ) : (
-                    <SendIcon />
-                  )}
-                </div>
-              }
-              style={{ backgroundColor: `${secondary.dark}` }}
-              disabled={formState.isSubmitting}
-              data-testid="submit-ship-button"
-            >
-              Submit
-            </Button>
-          </Box>
+          <SubmitCancelButtons
+            isSubmitting={formState.isSubmitting}
+            onCancelPath={PATHS.adminShips}
+          />
         </form>
       </FormProvider>
     </FormContainer>

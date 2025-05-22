@@ -24,21 +24,27 @@ export const getFilteredShips = async (fetchParams: BackendDataFetchArgs) => {
 };
 
 export const getShip = async (user: User, _id: string): Promise<ActionData<ShipForm | null>> => {
-  const ship = await shipService.getShipFromDB(_id);
-  if (!ship) {
-    return { success: false, message: Messages.ShipNotFound, data: null };
+  try {
+    const ship = await shipService.getShipFromDB(_id);
+    if (!ship) {
+      return { success: false, message: Messages.ShipNotFound, data: null };
+    }
+    const shipForm: ShipForm = {
+      name: ship.name,
+      type: ship.type,
+      builder: ship.builder,
+      flag: ship.flag,
+      homePort: ship.homePort,
+      class: ship.class,
+      imoNo: ship.imoNo,
+      callSign: ship.callSign
+    };
+    return { success: true, data: shipForm };
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('Error while fetching ship: ', error);
+    return { success: false, message: error?.message || Messages.FailedGetShip, data: null };
   }
-  const shipForm: ShipForm = {
-    name: ship.name,
-    type: ship.type,
-    builder: ship.builder,
-    flag: ship.flag,
-    homePort: ship.homePort,
-    class: ship.class,
-    imoNo: ship.imoNo,
-    callSign: ship.callSign
-  };
-  return { success: true, data: shipForm };
 };
 
 export const addShip = async (user: User, shipForm: ShipForm): Promise<ActionResult> => {

@@ -79,7 +79,8 @@ export const addPort = async (user: User, portFormData: FormData): Promise<Actio
       //const filePath = process.cwd() + `./public/images/uploads/${fileName}`;
       //const filePath = path.join(process.cwd(), `./public/images/${fileName}`);
       // const filePath = path.join(__dirname, `../../../../../../public/images/${fileName}`);
-      const filePath = path.join(process.cwd(), `./public/images/${fileName}`);
+      //const filePath = path.join(process.cwd(), `./public/images/${fileName}`);
+      const filePath = process.cwd() + `./public/images/${fileName}`;
       try {
         fs.writeFileSync(filePath, buffer);
       } catch (err) {

@@ -12,6 +12,7 @@ import { User } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
 import fs from 'fs';
+import path from 'path';
 import { insertRandomBeforeExtension } from '@/utils/randomString';
 
 export const getActivePorts = async () => {
@@ -73,7 +74,8 @@ export const addPort = async (user: User, portFormData: FormData): Promise<Actio
       const buffer = Buffer.from(bytes);
 
       // Save the file to the filesystem (or cloud storage)
-      const filePath = `./public/images/uploads/${fileName}`;
+      //const filePath = process.cwd() + `./public/images/uploads/${fileName}`;
+      const filePath = path.join(process.cwd(), `./public/images/uploads/${fileName}`);
       try {
         fs.writeFileSync(filePath, buffer);
       } catch (err) {

@@ -18,6 +18,7 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.815.0",
     "@aws-sdk/client-ses": "^3.799.0",
     "@emotion/cache": "^11.13.5",
     "@emotion/react": "^11.13.5",
@@ -32,6 +33,7 @@
     "@types/nodemailer": "^6.4.17",
     "@vercel/speed-insights": "^1.0.14",
     "bcryptjs": "^3.0.2",
+    "file-type": "^20.5.0",
     "firebase": "^11.2.0",
     "framer-motion": "^12.1.0",
     "jsonwebtoken": "^9.0.2",

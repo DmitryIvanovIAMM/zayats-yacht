@@ -1,5 +1,39 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+import { isObject } from 'lodash';
+import { isValidDate } from '@/utils/date-time';
+
+export const getFormAsFormData = <T>(values: T, fieldsToOmit: string[]): FormData => {
+  const formData = new FormData();
+
+  Object.entries(values).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      return value.forEach((arrayItem) => {
+        formData.append(
+          `${key}[]`,
+          typeof arrayItem === 'object' ? JSON.stringify(arrayItem) : arrayItem
+        );
+      });
+    }
+    if (isObject(value)) {
+      return formData.append(key, JSON.stringify(value));
+    }
+    if (!fieldsToOmit.includes(key)) {
+      formData.append(key, value);
+    }
+  });
+
+  return formData;
+};
+
+export const getNestedFormProperty = (fieldName: string, pathToFormObject?: string) => {
+  if (pathToFormObject) {
+    return `${pathToFormObject}.${fieldName}`;
+  } else {
+    return fieldName;
+  }
+};
+
 type MergeFn<A, B> = (apiValues: A, blankFormValues: B) => any;
 
 export const getMergedFormValues = <M, A = Record<string, any>>(
@@ -25,7 +59,7 @@ export const getMergedFormValues = <M, A = Record<string, any>>(
       blankFormValues[formKey] &&
       !mergeFnsMap[formKey] &&
       !Array.isArray(blankFormValues[formKey]) &&
-      !isDate(blankFormValues[formKey])
+      !isValidDate(blankFormValues[formKey])
     ) {
       accumulator[formKey] = getMergedFormValues(
         blankFormValues[formKey],

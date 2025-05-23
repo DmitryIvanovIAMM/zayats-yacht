@@ -76,3 +76,9 @@ export function formatInMonthDayYear(date: Date | string): string {
     year: 'numeric'
   }); // 12/06/2025
 }
+
+// this function checks only incoming parameter is Date
+// with valid Data value
+export function isValidDate(date: Date | string): boolean {
+  return date instanceof Date && !isNaN(date.valueOf());
+}

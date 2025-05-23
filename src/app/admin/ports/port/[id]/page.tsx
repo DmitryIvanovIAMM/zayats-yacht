@@ -7,7 +7,7 @@ import { getPortByAdminAction } from '@/app/serverActions';
 import Error from '@/components/Error/Error';
 import { defaultPortFormValues } from '@/components/AdminDashboard/AdminPorts/Port/types';
 import { PortFormContainer } from '@/components/AdminDashboard/AdminPorts/Port/PortFormContainer';
-import { getMergedFormValues } from '@/utils/formHelpers/formHelpers/formHelpers';
+import { getMergedFormValues } from '@/utils/formHelpers/formHelpers';
 
 export default async function Home({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

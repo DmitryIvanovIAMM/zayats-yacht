@@ -11,6 +11,8 @@ import { ActionData, ActionResult } from '@/utils/types';
 import { User } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
+import fs from 'fs';
+import { insertRandomBeforeExtension } from '@/utils/randomString';
 
 export const getActivePorts = async () => {
   try {
@@ -61,13 +63,32 @@ export const getPort = async (User: User, _id: string): Promise<ActionData<PortF
   }
 };
 
-export const addPort = async (user: User, portForm: PortForm): Promise<ActionResult> => {
+export const addPort = async (user: User, portFormData: FormData): Promise<ActionResult> => {
   try {
+    let fileName = '';
+    const file = portFormData.get('port-image') as File;
+    if (file) {
+      fileName = insertRandomBeforeExtension(file.name as string);
+      const bytes = await file.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+
+      // Save the file to the filesystem (or cloud storage)
+      const filePath = `./public/images/uploads/${fileName}`;
+      try {
+        fs.writeFileSync(filePath, buffer);
+      } catch (err) {
+        fileName = '';
+        // eslint-disable-next-line no-console
+        console.error('Error writing file:', err);
+        throw new Error(Messages.CannotUploadMedia);
+      }
+    }
+
     const port: Port = {
       _id: new Types.ObjectId(),
-      portName: portForm.portName,
-      destinationName: portForm.destinationName,
-      imageFileName: 'FortLauderdale.jpg'
+      portName: portFormData.get('portName') as string,
+      destinationName: portFormData.get('destinationName') as string,
+      imageFileName: `./uploads/${fileName}` || 'FortLauderdale.jpg'
     };
     await portService.addPortInDB(port);
     return { success: true, message: Messages.PortAddedSuccessfully };

@@ -75,7 +75,7 @@ export const addPort = async (user: User, portFormData: FormData): Promise<Actio
 
       // Save the file to the filesystem (or cloud storage)
       //const filePath = process.cwd() + `./public/images/uploads/${fileName}`;
-      const filePath = path.join(process.cwd(), `./public/images/uploads/${fileName}`);
+      const filePath = path.join(process.cwd(), `./public/images/${fileName}`);
       try {
         fs.writeFileSync(filePath, buffer);
       } catch (err) {
@@ -90,7 +90,7 @@ export const addPort = async (user: User, portFormData: FormData): Promise<Actio
       _id: new Types.ObjectId(),
       portName: portFormData.get('portName') as string,
       destinationName: portFormData.get('destinationName') as string,
-      imageFileName: `./uploads/${fileName}` || 'FortLauderdale.jpg'
+      imageFileName: `./${fileName}` || 'FortLauderdale.jpg'
     };
     await portService.addPortInDB(port);
     return { success: true, message: Messages.PortAddedSuccessfully };

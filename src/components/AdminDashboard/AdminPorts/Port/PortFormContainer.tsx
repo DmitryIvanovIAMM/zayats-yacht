@@ -18,6 +18,7 @@ import { getFormAsFormData } from '@/utils/formHelpers/formHelpers';
 import Button from '@mui/material/Button';
 import { secondary } from '@/components/colors';
 import { getSrcImageNameByStorageName } from '@/utils/views';
+import Image from 'next/image';
 
 export const acceptableMimeTypes = 'image/x-png,image/png,image/jpeg,image/svg+xml,image/webp';
 export const allowedFileSizeInBytes = Math.pow(2, 20) * 10; // 10 megabytes
@@ -116,8 +117,7 @@ export const PortFormContainer = ({
           >
             {portImage ? (
               <div style={{ margin: '20px' }}>
-                {/* eslint-disable @next/next/no-img-element */}
-                <img src={portImage} alt="Port" />
+                <Image src={portImage} width={200} height={200} alt="Port" />
               </div>
             ) : (
               <div

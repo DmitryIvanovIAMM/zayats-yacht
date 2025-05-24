@@ -7,7 +7,8 @@ const nextConfig = {
         hostname: 'img.youtube.com',
         port: '',
         pathname: '**'
-      }
+      },
+      new URL('https://s3.amazonaws.com/**')
     ]
   },
   sassOptions: {

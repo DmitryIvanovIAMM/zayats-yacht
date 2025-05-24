@@ -6,8 +6,8 @@ import { User } from '@/models/User';
 
 export async function withServerAuth<D = undefined>(
   allowedRoles: Roles[],
-  serverAction: (user: User, props: any) => Promise<ActionResult>,
-  props: any = {}
+  serverAction: (user: User, ...args: any[]) => Promise<ActionResult>,
+  ...args: any[]
 ): Promise<ActionResult | ActionData<D> | ActionTableData<D>> {
   const session: Session | null = await getServerSession();
   // eslint-disable-next-line no-console
@@ -30,7 +30,7 @@ export async function withServerAuth<D = undefined>(
       return { success: false, message: Messages.NotAuthorized };
     }
 
-    return await serverAction(adminUser, props);
+    return await serverAction(adminUser, ...(args as []));
   } catch (error: any) {
     return { success: false, message: error?.message || Messages.NotAuthenticated };
   }

@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import { PATHS, toPath } from '@/helpers/paths';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { getSrcImageNameByStorageName } from '@/utils/views';
 
 export interface PortsColumnsProps {
   handleStartDeletePort: (portId: string) => void;
@@ -52,7 +53,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
         cell: ({ row }: { row: any }) => (
           <div data-testid="ports-image-file-name">
             <Image
-              src={`/images/${row.original.imageFileName}`}
+              src={getSrcImageNameByStorageName(row.original.imageFileName)}
               width={100}
               height={100}
               alt={`Image of ${row.original.portName}`}

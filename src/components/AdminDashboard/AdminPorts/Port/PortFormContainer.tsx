@@ -17,6 +17,7 @@ import { SubmitCancelButtons } from '@/components/SubmitCancelButtons/SubmitCanc
 import { getFormAsFormData } from '@/utils/formHelpers/formHelpers';
 import Button from '@mui/material/Button';
 import { secondary } from '@/components/colors';
+import { getSrcImageNameByStorageName } from '@/utils/views';
 
 export const acceptableMimeTypes = 'image/x-png,image/png,image/jpeg,image/svg+xml,image/webp';
 export const allowedFileSizeInBytes = Math.pow(2, 20) * 10; // 10 megabytes
@@ -37,7 +38,13 @@ export const PortFormContainer = ({
   const router = useRouter();
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [portFile, setPortFile] = React.useState<File | null>(null);
-  const [portImage, setPortImage] = React.useState<string | null>(null);
+  const [portImage, setPortImage] = React.useState<string | null>(
+    formMode === FormMode.ADD
+      ? null
+      : initialValues?.imageFileName
+        ? getSrcImageNameByStorageName(initialValues.imageFileName)
+        : null
+  );
 
   const methods = useForm<PortForm>({
     resolver: yupResolver(portSchema),

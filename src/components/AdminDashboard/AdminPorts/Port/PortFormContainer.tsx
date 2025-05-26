@@ -92,7 +92,7 @@ export const PortFormContainer = ({
       }
 
       if (!isValidFileSize) {
-        enqueueSnackbar('File size exceeds the 10MB limit. Please select a smaller file.', {
+        enqueueSnackbar('File size exceeds the 100KB limit. Please select a smaller file.', {
           variant: 'error'
         });
         return;

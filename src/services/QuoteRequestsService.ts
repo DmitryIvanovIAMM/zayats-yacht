@@ -49,17 +49,13 @@ export default class QuoteRequestsService {
       ? [fetchParams.sortBy]
       : [];
 
-    sortByArray.forEach((sortBy: string) => {
-      if (sortBy === 'receivedAt.asc' || sortBy === 'receivedAt.desc') {
-        fetchParams.sortBy = sortByArray.map((sb) =>
-          sb === 'receivedAt.asc'
-            ? 'updatedAt.asc'
-            : sb === 'receivedAt.desc'
-              ? 'updatedAt.desc'
-              : sb
-        );
-      }
-    });
+    fetchParams.sortBy = sortByArray.map((sortBy: string) =>
+      sortBy === 'receivedAt.asc'
+        ? 'updatedAt.asc'
+        : sortBy === 'receivedAt.desc'
+          ? 'updatedAt.desc'
+          : sortBy
+    );
     const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'updatedAt.desc');
 
     const query = { ...filters };

@@ -9,7 +9,8 @@ const nextConfig = {
         pathname: '**'
       },
       new URL('https://s3.amazonaws.com/**')
-    ]
+    ],
+    dangerouslyAllowSVG: true
   },
   sassOptions: {
     // temporary silent warning for legacy-js-api

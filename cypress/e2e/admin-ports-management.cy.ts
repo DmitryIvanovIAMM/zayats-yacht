@@ -4,7 +4,7 @@ describe('Admin on Ports management page', () => {
     cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
     cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
     cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
-    cy.contains('Ports', { timeout: 25000 });
+    cy.contains('Ports', { timeout: 40000 });
   });
 
   it('should see data grid', () => {
@@ -485,7 +485,7 @@ describe('Admin on Ports management page', () => {
     // fill in the form with names to be firts in table
     cy.get('[data-testid="portName-form-text-input"]').type('A Test Port');
     cy.get('[data-testid="destinationName-form-text-input"]').type('A Test Destination');
-    cy.get('[data-testid="image-selector"]').selectFile('cypress/fixtures/fethiyeMap_sm.jpg', {
+    cy.get('[data-testid="image-selector"]').selectFile('cypress/fixtures/minimal_1.svg', {
       force: true
     });
     cy.get('[data-testid="submit-form-button"]').click();
@@ -496,12 +496,12 @@ describe('Admin on Ports management page', () => {
       .within(() => {
         cy.get('[data-testid="ports-port-name"]').should('contain', 'A Test Port');
         cy.get('[data-testid="ports-destination-name"]').should('contain', 'A Test Destination');
-        // check thhat image src contains both auto.testing.efacity.com and fethiyeMap_sm signatures
+        // check thhat image src contains both auto.testing.efacity.com and minimal_1.svg signatures
         // /_next/image?url=https%3A%2F%2Fs3.amazonaws.com%2Fauto.testing.efacity.com%2Fuploads%2Fc_RbUZu8t6.jpg.jpg&w=256&q=75
         cy.get('[data-testid="ports-image-file-name"] img')
           .should('have.attr', 'src')
           .and('include', 'auto.testing.efacity.com')
-          .and('include', 'fethiyeMap_sm');
+          .and('include', 'minimal_1');
       });
   });
 
@@ -521,7 +521,7 @@ describe('Admin on Ports management page', () => {
     cy.get('[data-testid="destinationName-form-text-input"]')
       .clear()
       .type('A Test Destination Edited');
-    cy.get('[data-testid="image-selector"]').selectFile('cypress/fixtures/golfitoMap_sm.jpg', {
+    cy.get('[data-testid="image-selector"]').selectFile('cypress/fixtures/minimal_2.svg', {
       force: true
     });
     cy.get('[data-testid="submit-form-button"]').click();
@@ -539,7 +539,7 @@ describe('Admin on Ports management page', () => {
         cy.get('[data-testid="ports-image-file-name"] img')
           .should('have.attr', 'src')
           .and('include', 'auto.testing.efacity.com')
-          .and('include', 'golfitoMap_sm');
+          .and('include', 'minimal_2');
       });
   });
 

@@ -457,7 +457,7 @@ describe('admin on Ships management page', () => {
     cy.get('[data-testid="callSign-form-text-input"]').click().type('Test Call Sign').blur();
     cy.contains('Call Sign is required').should('not.exist');
 
-    // click cancel button and check we inn data grid
+    // click cancel button and check we on data grid
     cy.get('[data-testid="cancel-form-button"]').click();
     cy.get('tbody').within(() => {
       cy.get('tr').should('have.length', 10);

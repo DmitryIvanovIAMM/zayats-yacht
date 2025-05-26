@@ -142,9 +142,9 @@ export const PortFormContainer = ({
                 accept={acceptableMimeTypes || 'image/*'}
                 type="file"
                 id="image-selector"
+                data-testid="image-selector"
                 onChange={handleFileChange}
                 ref={fileInputRef}
-                //style={uploadFileBtnStyles.input}
                 style={{ display: 'none' }}
               />
               <label htmlFor="image-selector">

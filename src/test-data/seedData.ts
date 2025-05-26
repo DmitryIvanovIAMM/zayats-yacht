@@ -176,6 +176,7 @@ export const QUOTE_REQUESTS = [
     fromName: USERS[1].name,
     fromEmail: USERS[1].email,
     receivedAt: '5/7/2025, 12:01:15 PM',
+    updatedAt: new Date('5/7/2025, 12:01:15 PM'),
     requestData:
       'Yacht Name: Supper-Pupper_2\nName: Customer2\nPhone: 6106600010\nEmail: customer2@email.com\nBest Time to Contact: -\nYacht Make and Model: -\nInsured Value in USD: -\nLength: -\nBeam: -\nWeight: -\nPurpose of Transport: -\nForm Where: -\nTo Where: -\nWhen: -\nNotes: -',
     requestObject: {
@@ -202,6 +203,7 @@ export const QUOTE_REQUESTS = [
     fromName: USERS[2].name,
     fromEmail: USERS[2].email,
     receivedAt: '5/6/2025, 12:01:14 PM',
+    updatedAt: new Date('5/6/2025, 12:01:14 PM'),
     requestData:
       'Yacht Name: Supper-Pupper_3\nName: Customer3\nPhone: 6106600011\nEmail: customer3@email.com\nBest Time to Contact: -\nYacht Make and Model: -\nInsured Value in USD: -\nLength: -\nBeam: -\nWeight: -\nPurpose of Transport: -\nForm Where: -\nTo Where: -\nWhen: -\nNotes: -',
     requestObject: {
@@ -228,6 +230,7 @@ export const QUOTE_REQUESTS = [
     fromName: USERS[3].name,
     fromEmail: USERS[3].email,
     receivedAt: '5/5/2025, 12:01:13 PM',
+    updatedAt: new Date('5/5/2025, 12:01:13 PM'),
     requestData:
       'Yacht Name: Supper-Pupper_4\nName: Customer4\nPhone: 6106600012\nEmail: customer4@email.com\nBest Time to Contact: -\nYacht Make and Model: -\nInsured Value in USD: -\nLength: -\nBeam: -\nWeight: -\nPurpose of Transport: -\nForm Where: -\nTo Where: -\nWhen: -\nNotes: -',
     requestObject: {
@@ -254,6 +257,7 @@ export const QUOTE_REQUESTS = [
     fromName: USERS[4].name,
     fromEmail: USERS[4].email,
     receivedAt: '5/4/2025, 12:01:12 PM',
+    updatedAt: new Date('5/4/2025, 12:01:12 PM'),
     requestData:
       'Yacht Name: Supper-Pupper_5\nName: Yacht Admin\nPhone: 6106600013\nEmail: yacht.admin@gmail.com\nBest Time to Contact: -\nYacht Make and Model: -\nInsured Value in USD: -\nLength: -\nBeam: -\nWeight: -\nPurpose of Transport: -\nForm Where: -\nTo Where: -\nWhen: -\nNotes: -',
     requestObject: {

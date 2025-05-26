@@ -39,10 +39,22 @@ export default class QuoteRequestsService {
       } as FiltersFromQuery,
       'i'
     );
-    const sortingQuery = getSortingQuery(
-      fetchParams.sortBy as string | string[],
-      'receivedAt.desc'
-    );
+
+    // receivedAt is a string field, so sorting by it is incorrect
+    // replace receivedAt field by updatedAt in sortBy query
+    // updatedAt is automatically added by MongoDb by schemaOptions: { timestamps: true }
+    fetchParams.sortBy?.forEach((sortBy: string | string[]) => {
+      if (sortBy === 'receivedAt.asc' || sortBy === 'receivedAt.desc') {
+        fetchParams.sortBy = fetchParams.sortBy?.map((sb) =>
+          sb === 'receivedAt.asc'
+            ? 'updatedAt.asc'
+            : sb === 'receivedAt.desc'
+              ? 'updatedAt.desc'
+              : sb
+        );
+      }
+    });
+    const sortingQuery = getSortingQuery(fetchParams.sortBy as string | string[], 'updatedAt.desc');
 
     const query = { ...filters };
 

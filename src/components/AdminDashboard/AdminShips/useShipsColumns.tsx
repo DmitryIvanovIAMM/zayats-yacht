@@ -111,7 +111,7 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
                 href={toPath(PATHS.editShip, { id: row.original._id })}
                 data-testid="ship-edit-button"
                 disabled={isUpdating}
-                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
+                sx={iconButtonPaddingSx}
               >
                 <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
               </IconButton>

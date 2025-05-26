@@ -13,6 +13,8 @@ import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
 import { deleteFile, storeFileOnS3WithModifiedName } from '@/modules/aws/s3';
 
+const DEFAULT_PORT_IMAGE = 'FortLauderdale.jpg'; // Default image name for ports
+
 export const getActivePorts = async () => {
   try {
     const ports: Port[] = await portService.getAllPorts();

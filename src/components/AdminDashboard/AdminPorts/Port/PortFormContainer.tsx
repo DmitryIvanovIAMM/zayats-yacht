@@ -21,8 +21,7 @@ import { getSrcImageNameByStorageName } from '@/utils/views';
 import Image from 'next/image';
 
 export const acceptableMimeTypes = 'image/x-png,image/png,image/jpeg,image/svg+xml,image/webp';
-export const allowedFileSizeInBytes = Math.pow(2, 20) * 10; // 10 megabytes
-export const maxAllowedSizeWithoutCrop = Math.pow(2, 10) * 100; //100 kilobytes
+export const allowedFileSizeInBytes = Math.pow(2, 10) * 100; // 100 kilobytes
 
 export interface PortContainerProps {
   formMode: FormMode;
@@ -88,12 +87,14 @@ export const PortFormContainer = ({
       const isValidFileSize = file.size <= allowedFileSizeInBytes;
 
       if (!isValidMimeType) {
-        enqueueSnackbar('Invalid file type. Please upload a valid image.', { variant: 'error' });
+        enqueueSnackbar('Invalid file type. Please select a valid image.', { variant: 'error' });
         return;
       }
 
       if (!isValidFileSize) {
-        enqueueSnackbar('File size exceeds the 10MB limit. Please upload a smaller file.', { variant: 'error' });
+        enqueueSnackbar('File size exceeds the 10MB limit. Please select a smaller file.', {
+          variant: 'error'
+        });
         return;
       }
 
@@ -180,8 +181,7 @@ export const PortFormContainer = ({
                 marginBottom: '20px'
               }}
             >
-              Allowed formats: .PNG, .JPG, .SVG; Up to {maxAllowedSizeWithoutCrop / Math.pow(2, 10)}{' '}
-              kb
+              Allowed formats: .PNG, .JPG, .SVG; Up to {allowedFileSizeInBytes / Math.pow(2, 10)} kb
             </div>
           </div>
           <SubmitCancelButtons

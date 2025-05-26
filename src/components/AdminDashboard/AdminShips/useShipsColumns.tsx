@@ -7,6 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import { PATHS, toPath } from '@/helpers/paths';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { iconButtonPaddingSx } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 
 export interface ShipsColumnsProps {
   handleStartDeleteShip: (shipId: string) => void;
@@ -119,7 +120,7 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
                 onClick={() => handleStartDeleteShip(row.original._id)}
                 data-testid="ship-delete-button"
                 disabled={isUpdating}
-                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
+                sx={iconButtonPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>

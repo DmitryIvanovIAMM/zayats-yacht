@@ -16,6 +16,7 @@ const transformSx = {
   transform: 'rotateX(360deg)',
   transition: '1500ms ease-in-out'
 };
+export const iconButtonPaddingSx = { paddingLeft: '4px', paddingRight: '4px' };
 
 export interface ScheduleColumnsProps {
   expandedSailings: string[];
@@ -156,12 +157,12 @@ export const useScheduleColumns = ({
                   // @ts-expect-error
                   'data-testid': 'schedule-sailing-active-checkbox-input'
                 }}
-                sx={sharedPaddingSx}
+                sx={iconButtonPaddingSx}
               />
               <IconButton
                 onClick={() => handleStartDeleteSailing(row.original._id)}
                 data-testid="schedule-sailing-delete-button"
-                sx={sharedPaddingSx}
+                sx={iconButtonPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>

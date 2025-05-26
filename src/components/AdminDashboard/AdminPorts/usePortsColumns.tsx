@@ -7,6 +7,7 @@ import { PATHS, toPath } from '@/helpers/paths';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { getSrcImageNameByStorageName } from '@/utils/views';
+import { iconButtonPaddingSx } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 
 export interface PortsColumnsProps {
   handleStartDeletePort: (portId: string) => void;
@@ -79,7 +80,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
                 href={toPath(PATHS.editPort, { id: row.original._id })}
                 data-testid="port-edit-button"
                 disabled={isUpdating}
-                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
+                sx={iconButtonPaddingSx}
               >
                 <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
               </IconButton>
@@ -87,7 +88,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
                 onClick={() => handleStartDeletePort(row.original._id)}
                 data-testid="port-delete-button"
                 disabled={isUpdating}
-                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
+                sx={iconButtonPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>

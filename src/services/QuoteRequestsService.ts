@@ -43,9 +43,15 @@ export default class QuoteRequestsService {
     // receivedAt is a string field, so sorting by it is incorrect
     // replace receivedAt field by updatedAt in sortBy query
     // updatedAt is automatically added by MongoDb by schemaOptions: { timestamps: true }
-    fetchParams.sortBy?.forEach((sortBy: string | string[]) => {
+    const sortByArray = Array.isArray(fetchParams.sortBy)
+      ? fetchParams.sortBy
+      : fetchParams.sortBy
+      ? [fetchParams.sortBy]
+      : [];
+
+    sortByArray.forEach((sortBy: string) => {
       if (sortBy === 'receivedAt.asc' || sortBy === 'receivedAt.desc') {
-        fetchParams.sortBy = fetchParams.sortBy?.map((sb) =>
+        fetchParams.sortBy = sortByArray.map((sb) =>
           sb === 'receivedAt.asc'
             ? 'updatedAt.asc'
             : sb === 'receivedAt.desc'

@@ -1,5 +1,5 @@
 const { AWS_REGION } = process.env;
-// eslont-disable-next-line no-console
+// eslint-disable-next-line no-console
 console.log('AWS_REGION: ', AWS_REGION);
 
 // https://github.com/nodemailer/nodemailer/issues/1293

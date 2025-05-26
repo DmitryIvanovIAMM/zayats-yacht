@@ -75,7 +75,7 @@ export const addPort = async (user: User, portFormData: FormData): Promise<Actio
       _id: new Types.ObjectId(),
       portName: portFormData.get('portName') as string,
       destinationName: portFormData.get('destinationName') as string,
-      imageFileName: 'FortLauderdale.jpg' // use default port image
+      imageFileName: DEFAULT_PORT_IMAGE // use default port image
     };
     if (fileName) {
       port.imageFileName = fileName;

@@ -475,7 +475,7 @@ describe('Admin on Ports management page', () => {
     cy.get('[data-testid="destinationName-form-text-input"]').click().blur();
     cy.contains('Destination is required');
 
-    // click cancel button and check we onn data grid
+    // click cancel button and check we on data grid
     cy.get('[data-testid="cancel-form-button"]').click();
     cy.contains('Ports', { timeout: 10000 });
 

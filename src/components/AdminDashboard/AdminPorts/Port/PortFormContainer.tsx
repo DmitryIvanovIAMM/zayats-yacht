@@ -83,8 +83,22 @@ export const PortFormContainer = ({
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      setPortImage(URL.createObjectURL(event.target.files[0]));
-      setPortFile(event.target.files[0]);
+      const file = event.target.files[0];
+      const isValidMimeType = acceptableMimeTypes.split(',').includes(file.type);
+      const isValidFileSize = file.size <= allowedFileSizeInBytes;
+
+      if (!isValidMimeType) {
+        enqueueSnackbar('Invalid file type. Please upload a valid image.', { variant: 'error' });
+        return;
+      }
+
+      if (!isValidFileSize) {
+        enqueueSnackbar('File size exceeds the 10MB limit. Please upload a smaller file.', { variant: 'error' });
+        return;
+      }
+
+      setPortImage(URL.createObjectURL(file));
+      setPortFile(file);
     }
   };
 

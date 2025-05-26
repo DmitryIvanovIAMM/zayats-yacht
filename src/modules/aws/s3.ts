@@ -1,21 +1,24 @@
+'use server';
+
 import { fileTypeFromBuffer } from 'file-type';
-import { DeleteObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import {
+  DeleteObjectCommand,
+  PutObjectCommand,
+  S3Client,
+  S3ClientConfig
+} from '@aws-sdk/client-s3';
 import { Messages } from '@/helpers/messages';
 import { insertRandomBeforeExtension } from '@/utils/randomString';
+import { awsClientConfig } from '@/modules/aws/aws_config';
 
-export const DEFAULT_S3_BUCKET = 'auto.testing.efacity.com';
-export const { AWS_S3_OBJECT_BUCKET } = process.env;
+const DEFAULT_S3_BUCKET = 'auto.testing.efacity.com';
+const { AWS_S3_OBJECT_BUCKET } = process.env;
 
-const s3Client = new S3Client({
-  apiVersion: '2012-10-17'
-});
+const s3Client = new S3Client(awsClientConfig as S3ClientConfig);
 
 // https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_s3_code_examples.html
 // `https://${bucket}.s3.${region}.amazonaws.com/${key}`
-export const getUrlFromBucket = (
-  fileName: string,
-  bucket: string = AWS_S3_OBJECT_BUCKET as string
-) => {
+const getUrlFromBucket = (fileName: string, bucket: string = AWS_S3_OBJECT_BUCKET as string) => {
   return `https://s3.amazonaws.com/${bucket}/${fileName}`;
 };
 
@@ -49,7 +52,7 @@ export const uploadFileAndGetItsURL = async (
   return getUrlFromBucket(command.input.Key as string, bucket);
 };
 
-export const deleteFile = (fileKey: string, bucket = AWS_S3_OBJECT_BUCKET) => {
+export const deleteFile = async (fileKey: string, bucket = AWS_S3_OBJECT_BUCKET) => {
   const command = new DeleteObjectCommand({ Key: fileKey, Bucket: bucket });
   return s3Client.send(command);
 };

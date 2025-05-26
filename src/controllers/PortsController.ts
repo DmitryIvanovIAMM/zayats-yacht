@@ -11,7 +11,7 @@ import { ActionData, ActionResult } from '@/utils/types';
 import { User } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
-import { deleteFile, storeFileOnS3WithModifiedName } from '@/modules/aws/aws-storage';
+import { deleteFile, storeFileOnS3WithModifiedName } from '@/modules/aws/s3';
 
 export const getActivePorts = async () => {
   try {

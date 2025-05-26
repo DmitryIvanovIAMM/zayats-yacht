@@ -11,6 +11,9 @@ import { ActionData, ActionResult } from '@/utils/types';
 import { User } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
+import { deleteFile, storeFileOnS3WithModifiedName } from '@/modules/aws/s3';
+
+const DEFAULT_PORT_IMAGE = 'FortLauderdale.jpg'; // Default image name for ports
 
 export const getActivePorts = async () => {
   try {
@@ -51,7 +54,8 @@ export const getPort = async (User: User, _id: string): Promise<ActionData<PortF
     }
     const portForm: PortForm = {
       portName: port.portName,
-      destinationName: port.destinationName
+      destinationName: port.destinationName,
+      imageFileName: port.imageFileName
     };
     return { success: true, data: portForm };
   } catch (error: any) {
@@ -61,40 +65,64 @@ export const getPort = async (User: User, _id: string): Promise<ActionData<PortF
   }
 };
 
-export const addPort = async (user: User, portForm: PortForm): Promise<ActionResult> => {
+export const addPort = async (user: User, portFormData: FormData): Promise<ActionResult> => {
+  let fileName = '';
   try {
+    const file = portFormData.get('port-image') as File;
+    if (file) {
+      fileName = await storeFileOnS3WithModifiedName(file);
+    }
+
     const port: Port = {
       _id: new Types.ObjectId(),
-      portName: portForm.portName,
-      destinationName: portForm.destinationName,
-      imageFileName: 'FortLauderdale.jpg'
+      portName: portFormData.get('portName') as string,
+      destinationName: portFormData.get('destinationName') as string,
+      imageFileName: DEFAULT_PORT_IMAGE // use default port image
     };
+    if (fileName) {
+      port.imageFileName = fileName;
+    }
+
     await portService.addPortInDB(port);
     return { success: true, message: Messages.PortAddedSuccessfully };
   } catch (error: any) {
     // eslint-disable-next-line no-console
-    console.log('error: ', error);
-    return { success: false, message: Messages.FailedAddPort };
+    console.log('addPort().  Error: ', error);
+    if (fileName) {
+      // if DB action to store the file fails, but file is stored,
+      // delete the uploaded file from S3
+      await deleteFile(fileName);
+    }
+    return { success: false, message: error?.message || Messages.FailedAddPort };
   }
 };
 
 export const updatePort = async (
   user: User,
-  portForm: PortForm & { _id: string }
+  _id: string,
+  portFormData: FormData
 ): Promise<ActionResult> => {
+  let fileName = '';
   try {
-    const port: Port = {
-      _id: new Types.ObjectId(portForm._id),
-      portName: portForm.portName,
-      destinationName: portForm.destinationName,
-      imageFileName: 'FortLauderdale.jpg'
+    const file = portFormData.get('port-image') as File;
+    if (file) {
+      fileName = await storeFileOnS3WithModifiedName(file);
+    }
+    const port: Partial<Port> = {
+      portName: portFormData.get('portName') as string,
+      destinationName: portFormData.get('destinationName') as string
     };
-    await portService.updatePortInDB(port);
+    if (fileName) {
+      // update file name only if a new file is uploaded
+      port.imageFileName = fileName;
+    }
+
+    await portService.updatePortInDB(_id, port);
     return { success: true, message: Messages.PortUpdatedSuccessfully };
   } catch (error: any) {
     // eslint-disable-next-line no-console
     console.log('error: ', error);
-    return { success: false, message: Messages.FailedUpdatePort };
+    return { success: false, message: error?.message || Messages.FailedUpdatePort };
   }
 };
 

@@ -34,5 +34,6 @@ export enum Messages {
   SailingStatusChangedSuccessfully = 'Sailing status changed successfully',
   FailedChangeSailingStatus = 'Failed to change sailing status',
   FailedDeleteSailing = 'Failed to delete sailing',
-  SailingDeletedSuccessfully = 'Sailing deleted successfully'
+  SailingDeletedSuccessfully = 'Sailing deleted successfully',
+  CannotUploadMedia = 'Cannot upload media'
 }

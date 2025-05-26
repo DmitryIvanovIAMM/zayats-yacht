@@ -7,7 +7,7 @@ import { FormMode } from '@/utils/types';
 import NotFound from '@/components/NotFound/NotFound';
 import { getShipByAdminAction } from '@/app/serverActions';
 import Error from '@/components/Error/Error';
-import { getMergedFormValues } from '@/utils/formHelpers/formHelpers/formHelpers';
+import { getMergedFormValues } from '@/utils/formHelpers/formHelpers';
 
 export default async function Home({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

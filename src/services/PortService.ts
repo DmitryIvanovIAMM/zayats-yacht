@@ -72,8 +72,8 @@ export default class PortService {
     return PortModel.create(port);
   };
 
-  public updatePortInDB = async (port: Partial<Port>) => {
-    return PortModel.findByIdAndUpdate(new Types.ObjectId(port._id), port, { new: true });
+  public updatePortInDB = async (_id: string, port: Partial<Port>) => {
+    return PortModel.findByIdAndUpdate(new Types.ObjectId(_id), port, { new: true });
   };
 
   public softDeletePortFromDB = async (portId: string, user: User) => {

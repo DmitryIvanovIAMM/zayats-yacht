@@ -7,6 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import { PATHS, toPath } from '@/helpers/paths';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { iconButtonPaddingSx } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 
 export interface ShipsColumnsProps {
   handleStartDeleteShip: (shipId: string) => void;
@@ -111,6 +112,7 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
                 href={toPath(PATHS.editShip, { id: row.original._id })}
                 data-testid="ship-edit-button"
                 disabled={isUpdating}
+                sx={iconButtonPaddingSx}
               >
                 <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
               </IconButton>
@@ -118,6 +120,7 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
                 onClick={() => handleStartDeleteShip(row.original._id)}
                 data-testid="ship-delete-button"
                 disabled={isUpdating}
+                sx={iconButtonPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>
@@ -125,8 +128,8 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
           );
         },
         meta: {
-          headerSx: { width: '102px', maxWidth: '102px' },
-          columnSx: { width: '102px', maxWidth: '102px' }
+          headerSx: { width: '80px', maxWidth: '80px' },
+          columnSx: { width: '80px', maxWidth: '80px' }
         }
       }
     ];

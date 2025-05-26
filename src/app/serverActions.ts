@@ -185,7 +185,7 @@ export const getPortByAdminAction = async (id: string): Promise<ActionData<PortF
   return (await withServerAuth([Roles.Admin], getPort, id)) as ActionData<PortForm>;
 };
 
-export async function addPortByAdminAction(portData: PortForm): Promise<ActionResult> {
+export async function addPortByAdminAction(portData: FormData): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('addPortByAdminAction(). portData: ', portData);
 
@@ -194,15 +194,12 @@ export async function addPortByAdminAction(portData: PortForm): Promise<ActionRe
 
 export async function updatePortByAdminAction(
   portId: string,
-  portData: PortForm
+  portData: FormData
 ): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('updatePortByAdminAction(). portId: ', portId, ' portData: ', portData);
 
-  return (await withServerAuth([Roles.Admin], updatePort, {
-    ...portData,
-    _id: portId
-  })) as ActionResult;
+  return (await withServerAuth([Roles.Admin], updatePort, portId, portData)) as ActionResult;
 }
 
 export async function deletePortByAdminAction(portId: string): Promise<ActionResult> {

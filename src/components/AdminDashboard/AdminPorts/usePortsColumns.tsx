@@ -6,6 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import { PATHS, toPath } from '@/helpers/paths';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { getSrcImageNameByStorageName } from '@/utils/views';
+import { iconButtonPaddingSx } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 
 export interface PortsColumnsProps {
   handleStartDeletePort: (portId: string) => void;
@@ -52,7 +54,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
         cell: ({ row }: { row: any }) => (
           <div data-testid="ports-image-file-name">
             <Image
-              src={`/images/${row.original.imageFileName}`}
+              src={getSrcImageNameByStorageName(row.original.imageFileName)}
               width={100}
               height={100}
               alt={`Image of ${row.original.portName}`}
@@ -60,8 +62,8 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
           </div>
         ),
         meta: {
-          headerSx: { width: '140px' },
-          columnSx: { verticalAlign: 'top', width: '140px' },
+          headerSx: { width: '130px' },
+          columnSx: { verticalAlign: 'top', width: '130px' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
@@ -78,6 +80,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
                 href={toPath(PATHS.editPort, { id: row.original._id })}
                 data-testid="port-edit-button"
                 disabled={isUpdating}
+                sx={iconButtonPaddingSx}
               >
                 <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
               </IconButton>
@@ -85,6 +88,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
                 onClick={() => handleStartDeletePort(row.original._id)}
                 data-testid="port-delete-button"
                 disabled={isUpdating}
+                sx={iconButtonPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>
@@ -92,8 +96,8 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
           );
         },
         meta: {
-          headerSx: { width: '102px', maxWidth: '102px' },
-          columnSx: { width: '102px', maxWidth: '102px' }
+          headerSx: { width: '80px', maxWidth: '80px' },
+          columnSx: { width: '80px', maxWidth: '80px' }
         }
       }
     ];

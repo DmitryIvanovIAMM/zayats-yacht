@@ -156,12 +156,12 @@ export const useScheduleColumns = ({
                   // @ts-expect-error
                   'data-testid': 'schedule-sailing-active-checkbox-input'
                 }}
-                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
+                sx={sharedPaddingSx}
               />
               <IconButton
                 onClick={() => handleStartDeleteSailing(row.original._id)}
                 data-testid="schedule-sailing-delete-button"
-                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
+                sx={sharedPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>

@@ -469,7 +469,7 @@ describe('Admin on Ports management page', () => {
     cy.get('[data-testid="add-port-button"]').should('be.visible').click();
     cy.contains('Add Port', { timeout: 10000 });
 
-    // check each filed validation
+    // check each field validation
     cy.get('[data-testid="portName-form-text-input"]').click().blur();
     cy.contains('Name is required');
     cy.get('[data-testid="destinationName-form-text-input"]').click().blur();

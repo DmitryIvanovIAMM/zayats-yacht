@@ -61,8 +61,8 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
           </div>
         ),
         meta: {
-          headerSx: { width: '140px' },
-          columnSx: { verticalAlign: 'top', width: '140px' },
+          headerSx: { width: '130px' },
+          columnSx: { verticalAlign: 'top', width: '130px' },
           filter: (column: any) => <TextColumnFilter column={column} />
         }
       },
@@ -79,6 +79,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
                 href={toPath(PATHS.editPort, { id: row.original._id })}
                 data-testid="port-edit-button"
                 disabled={isUpdating}
+                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
               >
                 <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
               </IconButton>
@@ -86,6 +87,7 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
                 onClick={() => handleStartDeletePort(row.original._id)}
                 data-testid="port-delete-button"
                 disabled={isUpdating}
+                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>
@@ -93,8 +95,8 @@ export const usePortsColumns = ({ handleStartDeletePort, isUpdating }: PortsColu
           );
         },
         meta: {
-          headerSx: { width: '102px', maxWidth: '102px' },
-          columnSx: { width: '102px', maxWidth: '102px' }
+          headerSx: { width: '80px', maxWidth: '80px' },
+          columnSx: { width: '80px', maxWidth: '80px' }
         }
       }
     ];

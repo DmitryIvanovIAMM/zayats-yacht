@@ -156,15 +156,21 @@ export const useScheduleColumns = ({
                   // @ts-expect-error
                   'data-testid': 'schedule-sailing-active-checkbox-input'
                 }}
+                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
               />
               <IconButton
                 onClick={() => handleStartDeleteSailing(row.original._id)}
                 data-testid="schedule-sailing-delete-button"
+                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>
             </div>
           );
+        },
+        meta: {
+          headerSx: { width: '80px', maxWidth: '80px' },
+          columnSx: { width: '80px', maxWidth: '80px' }
         }
       }
     ];

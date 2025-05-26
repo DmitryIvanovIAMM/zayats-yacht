@@ -111,6 +111,7 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
                 href={toPath(PATHS.editShip, { id: row.original._id })}
                 data-testid="ship-edit-button"
                 disabled={isUpdating}
+                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
               >
                 <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
               </IconButton>
@@ -118,6 +119,7 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
                 onClick={() => handleStartDeleteShip(row.original._id)}
                 data-testid="ship-delete-button"
                 disabled={isUpdating}
+                sx={{ paddingLeft: '4px', paddingRight: '4px' }}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
               </IconButton>
@@ -125,8 +127,8 @@ export const useShipsColumns = ({ handleStartDeleteShip, isUpdating }: ShipsColu
           );
         },
         meta: {
-          headerSx: { width: '102px', maxWidth: '102px' },
-          columnSx: { width: '102px', maxWidth: '102px' }
+          headerSx: { width: '80px', maxWidth: '80px' },
+          columnSx: { width: '80px', maxWidth: '80px' }
         }
       }
     ];

@@ -166,8 +166,8 @@ export const PortFormContainer = ({
                 marginBottom: '20px'
               }}
             >
-              Allowed formats: .PNG, .JPG, .SVG; Up to {maxAllowedSizeWithoutCrop / Math.pow(2, 20)}{' '}
-              mb
+              Allowed formats: .PNG, .JPG, .SVG; Up to {maxAllowedSizeWithoutCrop / Math.pow(2, 10)}{' '}
+              kb
             </div>
           </div>
           <SubmitCancelButtons

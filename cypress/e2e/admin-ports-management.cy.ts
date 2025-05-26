@@ -465,7 +465,7 @@ describe('Admin on Ports management page', () => {
     });
   });
 
-  it.only('should allow add a new port', () => {
+  it('should allow add a new port', () => {
     cy.get('[data-testid="add-port-button"]').should('be.visible').click();
     cy.contains('Add Port', { timeout: 10000 });
 
@@ -502,6 +502,65 @@ describe('Admin on Ports management page', () => {
           .should('have.attr', 'src')
           .and('include', 'auto.testing.efacity.com')
           .and('include', 'fethiyeMap_sm');
+      });
+  });
+
+  it('should allow edit a port', () => {
+    cy.get('[data-testid="port-edit-button"]').first().click();
+    cy.contains('Edit Port', { timeout: 10000 });
+
+    // click cancel button and check we onn data grid
+    cy.get('[data-testid="cancel-form-button"]').click();
+    cy.contains('Ports', { timeout: 10000 });
+
+    // click edit port button again
+    cy.get('[data-testid="port-edit-button"]').first().click();
+
+    // fill in the form with names to be firts in table
+    cy.get('[data-testid="portName-form-text-input"]').clear().type('A Test Port Edited');
+    cy.get('[data-testid="destinationName-form-text-input"]')
+      .clear()
+      .type('A Test Destination Edited');
+    cy.get('[data-testid="image-selector"]').selectFile('cypress/fixtures/golfitoMap_sm.jpg', {
+      force: true
+    });
+    cy.get('[data-testid="submit-form-button"]').click();
+
+    // check if the new port is added to the table
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('contain', 'A Test Port Edited');
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'contain',
+          'A Test Destination Edited'
+        );
+        // check thhat image src contains both auto.testing.efacity.com and fethiyeMap_sm signatures
+        cy.get('[data-testid="ports-image-file-name"] img')
+          .should('have.attr', 'src')
+          .and('include', 'auto.testing.efacity.com')
+          .and('include', 'golfitoMap_sm');
+      });
+  });
+
+  it('should allow delete a port', () => {
+    cy.get('[data-testid="port-delete-button"]').first().click();
+    cy.contains('Are you sure you want to delete "A Test Port Edited" port?');
+    cy.get('[data-testid="confirmation-modal-confirm-button"]').click();
+
+    // check if the port is deleted
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-port-name"]').should('not.contain', 'A Test Port Edited');
+      });
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="ports-destination-name"]').should(
+          'not.contain',
+          'A Test Destination Edited'
+        );
       });
   });
 });

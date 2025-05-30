@@ -23,7 +23,7 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@hookform/resolvers": "^5.0.1",
+    "@hookform/resolvers": "^3.9.1",
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
     "@mui/material-nextjs": "^7.1.0",
@@ -57,11 +57,10 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.27.0",
+    "@eslint/js": "^9.14.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
-    "@types/eslint__js": "^9.14.0",
     "@types/jest": "^29.5.14",
     "@types/lodash": "^4.17.17",
     "@types/node": "^22.15.26",

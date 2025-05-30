@@ -10,9 +10,9 @@ import {
   TablePagination,
   TableRow,
   TableSortLabel,
-  type TableBodyProps
+  type TableBodyProps,
+  TableSortLabelOwnProps
 } from '@mui/material';
-import { TableSortLabelOwnProps } from '@mui/material/TableSortLabel/TableSortLabel';
 import { visuallyHidden } from '@mui/utils';
 import {
   ColumnDef,

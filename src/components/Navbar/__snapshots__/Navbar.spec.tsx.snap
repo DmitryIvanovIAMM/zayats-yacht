@@ -20,7 +20,7 @@ exports[`Navbar component should render correctly 1`] = `
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 aria-label="account of current user"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-1vipebp-MuiButtonBase-root-MuiIconButton-root"
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-z77o6z-MuiButtonBase-root-MuiIconButton-root"
                 data-testid="left-menu-button"
                 tabindex="0"
                 type="button"
@@ -38,7 +38,7 @@ exports[`Navbar component should render correctly 1`] = `
                 </svg>
               </button>
               <a
-                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-17bhf93-MuiButtonBase-root-MuiButton-root"
                 href="/quote-request"
                 style="height: 31px;"
                 tabindex="0"
@@ -68,7 +68,7 @@ exports[`Navbar component should render correctly 1`] = `
               class="MuiBox-root css-2uchni"
             >
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-17bhf93-MuiButtonBase-root-MuiButton-root"
                 data-testid="navbar-login-button"
                 style="width: 78px; height: 31px;"
                 tabindex="0"
@@ -108,7 +108,7 @@ exports[`Navbar component should render correctly 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="MuiDrawer-root MuiDrawer-modal MuiModal-root MuiModal-hidden css-1pdqlog-MuiModal-root-MuiDrawer-root"
+      class="MuiDrawer-root MuiDrawer-anchorLeft MuiDrawer-modal MuiModal-root MuiModal-hidden css-1pdqlog-MuiModal-root-MuiDrawer-root"
       role="presentation"
     >
       <div
@@ -375,7 +375,7 @@ exports[`Navbar component should render correctly 1`] = `
               aria-controls="menu-appbar"
               aria-haspopup="true"
               aria-label="account of current user"
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-1vipebp-MuiButtonBase-root-MuiIconButton-root"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeLarge css-z77o6z-MuiButtonBase-root-MuiIconButton-root"
               data-testid="left-menu-button"
               tabindex="0"
               type="button"
@@ -393,7 +393,7 @@ exports[`Navbar component should render correctly 1`] = `
               </svg>
             </button>
             <a
-              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-17bhf93-MuiButtonBase-root-MuiButton-root"
               href="/quote-request"
               style="height: 31px;"
               tabindex="0"
@@ -423,7 +423,7 @@ exports[`Navbar component should render correctly 1`] = `
             class="MuiBox-root css-2uchni"
           >
             <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-1ccw0ge-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-colorPrimary css-17bhf93-MuiButtonBase-root-MuiButton-root"
               data-testid="navbar-login-button"
               style="width: 78px; height: 31px;"
               tabindex="0"

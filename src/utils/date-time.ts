@@ -82,3 +82,10 @@ export function formatInMonthDayYear(date: Date | string): string {
 export function isValidDate(date: Date | string): boolean {
   return date instanceof Date && !isNaN(date.valueOf());
 }
+
+export const datesDifferenceInDays = (date1: Date | string, date2: Date | string) => {
+  const firstDay = new Date(date1).getTime();
+  const lastDay = new Date(date2).getTime();
+  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  return Math.round(Math.abs((firstDay - lastDay) / oneDay));
+};

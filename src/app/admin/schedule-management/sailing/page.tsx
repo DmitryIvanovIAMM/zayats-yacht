@@ -1,6 +1,6 @@
 import React from 'react';
-import { Sailing } from '@/components/AdminDashboard/ScheduleManagement/Sailing/Sailing';
+import { ScheduleFormContainer } from '@/components/AdminDashboard/ScheduleManagement/Schedule/ScheduleFormContainer';
 
 export default async function Home() {
-  return <Sailing />;
+  return <ScheduleFormContainer />;
 }

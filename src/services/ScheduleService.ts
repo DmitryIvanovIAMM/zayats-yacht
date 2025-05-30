@@ -1,5 +1,5 @@
 import { ShipStop, ShipStopModel } from '@/models/ShipStop';
-import { SailingModel, SailingWithShipStopAndPort } from '@/models/Sailing';
+import { Sailing, SailingModel, SailingWithShipStopAndPort } from '@/models/Sailing';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import {
   FiltersFromQuery,
@@ -240,16 +240,23 @@ export default class ScheduleService {
     );
   }
 
-  /*createSailingByName(name: string) {
-    const newSailing = {
-      name: name
+  createSailingByName(name: string) {
+    const newSailing: Sailing = {
+      _id: new Types.ObjectId(),
+      name: name,
+      isActive: true,
+      createdAt: new Date()
     };
     return SailingModel.create(newSailing);
   }
 
+  createShipStops(shipStops: ShipStop): Promise<ShipStop[]> {
+    return ShipStopModel.create(shipStops, { new: true });
+  }
+
   updateSailingName(sailingId: string, name: string) {
     return SailingModel.findByIdAndUpdate(
-      sailingId,
+      new Types.ObjectId(sailingId),
       {
         name: name
       },
@@ -261,9 +268,7 @@ export default class ScheduleService {
     return ShipStopModel.deleteMany({ sailingId: new Types.ObjectId(sailingId) });
   }
 
-
-
-  public querySailingWithShipStops = async (sailingId: string) => {
+  /*public querySailingWithShipStops = async (sailingId: string) => {
     const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
       {
         $match: {

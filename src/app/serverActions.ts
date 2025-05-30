@@ -21,6 +21,7 @@ import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 import {
+  addSchedule,
   deleteSailing,
   getSchedules,
   queryNearestShippings,
@@ -34,6 +35,7 @@ import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
 import { addShip, deleteShip, getShip, updateShip } from '@/controllers/ShipsController';
 import { PortForm } from '@/components/AdminDashboard/AdminPorts/Port/types';
+import { ScheduleForm } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 
 export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -207,4 +209,29 @@ export async function deletePortByAdminAction(portId: string): Promise<ActionRes
   console.log('deletePortByAdminAction(). portId: ', portId);
 
   return (await withServerAuth([Roles.Admin], deletePort, portId)) as ActionResult;
+}
+
+export async function addScheduleByAdminAction(scheduleForm: ScheduleForm): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('addScheduleByAdminAction(). scheduleForm: ', scheduleForm);
+
+  return (await withServerAuth([Roles.Admin], addSchedule, scheduleForm)) as ActionResult;
+}
+
+export async function updateScheduleByAdminAction(
+  scheduleId: string,
+  scheduleForm: ScheduleForm
+): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log(
+    'updateScheduleByAdminAction(). scheduleId: ',
+    scheduleId,
+    ' scheduleForm: ',
+    scheduleForm
+  );
+
+  return (await withServerAuth([Roles.Admin], updateShip, {
+    ...scheduleForm,
+    _id: scheduleId
+  })) as ActionResult;
 }

@@ -35,5 +35,18 @@ export enum Messages {
   FailedChangeSailingStatus = 'Failed to change sailing status',
   FailedDeleteSailing = 'Failed to delete sailing',
   SailingDeletedSuccessfully = 'Sailing deleted successfully',
-  CannotUploadMedia = 'Cannot upload media'
+  CannotUploadMedia = 'Cannot upload media',
+
+  SailingNameRequired = 'Sailing name is required',
+  ShipRequired = 'Ship is required',
+  PortIdRequired = 'Port ID is required',
+  ArrivalOnShouldBeBeforeDepartureOn = 'Arrival date should be before departure date',
+  DepartureOnShouldBeAfterArrivalOn = 'Departure date should be after arrival date',
+  MilesRequired = 'Miles are required',
+  NonNegativeMiles = 'Miles must be a non-negative number',
+  ShipStopsRequired = 'At least one ship stop is required',
+  FailedAddSchedule = 'Failed to add schedule',
+  ScheduleAddedSuccessfully = 'Schedule added successfully',
+  FailedUpdateSchedule = 'Failed to update schedule',
+  ScheduleUpdatedSuccessfully = 'Schedule updated successfully'
 }

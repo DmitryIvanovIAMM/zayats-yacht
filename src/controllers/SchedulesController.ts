@@ -12,7 +12,12 @@ import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ActionResult, SailingStatusParams } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { User } from '@/models/User';
-import { ScheduleForm } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
+import {
+  ScheduleForm,
+  ShipStopForm
+} from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
+import { Types } from 'mongoose';
+import { Sailing } from '@/models/Sailing';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -141,9 +146,10 @@ export const deleteSailing = async (user: User, sailingId: string): Promise<Acti
   }
 };
 
-const sortShipStopsByDepartureOn = (
-  shipStops: ScheduleForm['shipStops'] = []
-): ScheduleForm['shipStops'][] => {
+const sortShipStopsByDepartureOn = (shipStops: ShipStopForm[] = []): ShipStopForm[] => {
+  if (!shipStops || shipStops.length === 0) {
+    return [];
+  }
   return shipStops.sort((a, b) => {
     return new Date(a.departureOn).getTime() - new Date(b.departureOn).getTime();
   });
@@ -154,16 +160,20 @@ export const addSchedule = async (
   scheduleForm: ScheduleForm
 ): Promise<ActionResult> => {
   try {
-    const sortedShipStopsForm = sortShipStopsByDepartureOn(scheduleForm.shipStops);
-    const newSailing = await scheduleService.createSailingByName(scheduleForm.name);
+    const sortedShipStopsForm: ShipStopForm[] = sortShipStopsByDepartureOn(scheduleForm.shipStops);
+    console.log('sortedShipStopsForm: ', sortedShipStopsForm);
+
+    const newSailing: Sailing = await scheduleService.createSailingByName(scheduleForm.name);
+    console.log('newSailing: ', newSailing);
 
     const newShipStops: ShipStop[] = sortedShipStopsForm.map((formShipStop, index: number) => {
-      return {
+      const newShipStop: ShipStop = {
+        _id: new Types.ObjectId(),
         sailingId: newSailing._id,
-        portId: formShipStop.portId,
-        shipId: formShipStop.shipId,
-        arrivalOn: formShipStop.arrivalOn,
-        departureOn: formShipStop.departureOn,
+        portId: new Types.ObjectId(formShipStop.portId),
+        shipId: new Types.ObjectId(formShipStop.shipId),
+        arrivalOn: new Date(formShipStop.arrivalOn),
+        departureOn: new Date(formShipStop.departureOn),
         miles: formShipStop.miles,
         daysAtSea:
           index > 0
@@ -174,6 +184,8 @@ export const addSchedule = async (
             : 0,
         daysInPort: datesDifferenceInDays(formShipStop.arrivalOn, formShipStop.departureOn)
       };
+      console.log('newShipStop: ', newShipStop);
+      return newShipStop;
     });
     await scheduleService.createShipStops(newShipStops);
 

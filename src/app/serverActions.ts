@@ -3,9 +3,10 @@
 import {
   addPort,
   deletePort,
-  getActivePorts,
+  getPortsInRoutes,
   getPort,
-  updatePort
+  updatePort,
+  getActivePortsOptions
 } from '@/controllers/PortsController';
 import { User } from '@/models/User';
 import {
@@ -33,13 +34,23 @@ import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
-import { addShip, deleteShip, getShip, updateShip } from '@/controllers/ShipsController';
+import {
+  addShip,
+  deleteShip,
+  getActiveShipsOptions,
+  getShip,
+  updateShip
+} from '@/controllers/ShipsController';
 import { PortForm } from '@/components/AdminDashboard/AdminPorts/Port/types';
-import { ScheduleForm } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
+import {
+  defaultScheduleFormValues,
+  ScheduleForm
+} from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
+import { ShipFrontend } from '@/models/ShipFrontend';
 
-export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
+export async function getPortsInRoutesAction(): Promise<ActionData<PortFrontend[]>> {
   try {
-    const ports = await getActivePorts();
+    const ports = await getPortsInRoutes();
     // eslint-disable-next-line no-console
     console.log('getActivePortsAction(). ports: ', ports);
     // force
@@ -52,6 +63,26 @@ export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>
     console.log('Error while fetching ports: ', error);
     return { success: false, data: [], message: Messages.FailedGetPorts };
   }
+}
+
+export async function getActivePortsAction(): Promise<ActionData<Record<string, string>>> {
+  return getActivePortsOptions();
+}
+
+export async function getActiveShipsAction(): Promise<ActionData<Record<string, string>>> {
+  return getActiveShipsOptions();
+}
+
+export async function getScheduleAction(id: string): Promise<ActionData<ScheduleForm>> {
+  // eslint-disable-next-line no-console
+  console.log('getScheduleAction(). id: ', id);
+
+  //return (await withServerAuth([Roles.Admin], getSchedule, id)) as ActionData<ShipForm>;
+  return {
+    success: true,
+    data: defaultScheduleFormValues,
+    message: Messages.FailedGetNearestShippings
+  };
 }
 
 export async function queryNearestShippingsAction(

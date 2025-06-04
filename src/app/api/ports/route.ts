@@ -1,9 +1,9 @@
-import { getActivePortsAction } from '@/app/serverActions';
+import { getPortsInRoutesAction } from '@/app/serverActions';
 
 export async function GET() {
   // use server action to get data  from backend
   // https://nextjs-faq.com/fetch-api-in-rsc
-  const ports = await getActivePortsAction();
+  const ports = await getPortsInRoutesAction();
 
   return new Response(JSON.stringify(ports), {
     status: 200,

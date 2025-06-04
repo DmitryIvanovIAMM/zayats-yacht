@@ -7,10 +7,10 @@ import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';
-import { getActivePortsAction, queryNearestShippingsAction } from '@/app/serverActions';
+import { getPortsInRoutesAction, queryNearestShippingsAction } from '@/app/serverActions';
 
 export default async function Home() {
-  const ports = await getActivePortsAction();
+  const ports = await getPortsInRoutesAction();
   // eslint-disable-next-line no-console
   console.log('Home().  ports: ', ports);
   const schedules = await queryNearestShippingsAction(new Date());

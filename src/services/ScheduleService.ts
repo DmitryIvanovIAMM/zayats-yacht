@@ -247,11 +247,12 @@ export default class ScheduleService {
       isActive: true,
       createdAt: new Date()
     };
+    console.log('to be Sailing: ', newSailing);
     return SailingModel.create(newSailing);
   }
 
-  createShipStops(shipStops: ShipStop): Promise<ShipStop[]> {
-    return ShipStopModel.create(shipStops, { new: true });
+  createShipStops(shipStops: ShipStop[]): Promise<ShipStop[]> {
+    return ShipStopModel.create(shipStops);
   }
 
   updateSailingName(sailingId: string, name: string) {

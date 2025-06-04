@@ -36,9 +36,10 @@ export enum Messages {
   FailedDeleteSailing = 'Failed to delete sailing',
   SailingDeletedSuccessfully = 'Sailing deleted successfully',
   CannotUploadMedia = 'Cannot upload media',
-
   SailingNameRequired = 'Sailing name is required',
-  ShipRequired = 'Ship is required',
+  DateRequired = 'Date is required',
+  SelectShip = 'Select a ship',
+  SelectPort = 'Select a port',
   PortIdRequired = 'Port ID is required',
   ArrivalOnShouldBeBeforeDepartureOn = 'Arrival date should be before departure date',
   DepartureOnShouldBeAfterArrivalOn = 'Departure date should be after arrival date',

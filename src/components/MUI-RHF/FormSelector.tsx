@@ -1,13 +1,19 @@
 import React, { FC } from 'react';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
 import { WEIGHT_METRIC } from '@/components/QuoteRequest/types';
-import { FormInputTextProps, groupWrapperStyle } from '@/components/MUI-RHF/FormTextInput';
+import {
+  defaultRHFSetValueOptions,
+  FormInputTextProps,
+  groupWrapperStyle
+} from '@/components/MUI-RHF/FormTextInput';
 import { Controller, useFormContext } from 'react-hook-form';
+import { errorColor } from '@/components/colors';
 
 export const FormSelector: FC<FormInputTextProps & { options: Record<string, string> }> = ({
   name,
   label = '',
   style,
+  size = 'small',
   options
 }) => {
   const { control, setValue } = useFormContext();
@@ -17,15 +23,23 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
       control={control}
       name={name}
       defaultValue=""
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       render={({ field, fieldState: { error } }) => {
         return (
-          <div style={{ ...groupWrapperStyle, marginTop: '9px', marginLeft: '6px', ...style }}>
+          <div
+            style={{
+              ...groupWrapperStyle,
+              paddingLeft: '10px',
+              marginTop: '9px',
+              paddingRight: '2px',
+              ...style
+            }}
+          >
             <FormControl fullWidth={true} variant="standard">
               <InputLabel>{label}</InputLabel>
               <Select
+                size={size}
                 onChange={(event) => {
-                  setValue(name, event.target.value);
+                  setValue(name, event.target.value, defaultRHFSetValueOptions);
                 }}
                 defaultValue={WEIGHT_METRIC.metricTons}
                 value={field.value}
@@ -33,13 +47,30 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
                   MenuProps: { disableScrollLock: true },
                   'data-testid': 'port-selector-input'
                 }}
+                error={!!error}
               >
-                {Object.values(options).map((metric) => (
-                  <MenuItem value={metric} key={`weightMetricKey${metric}`}>
-                    {metric}
+                {/*{Object.values(options).map((metric) => (*/}
+                {Object.entries(options).map(([key, value]) => (
+                  <MenuItem value={key} key={`weightMetricKey${key}`}>
+                    {value}
                   </MenuItem>
                 ))}
               </Select>
+              {!!error && (
+                <FormHelperText
+                  style={{
+                    color: errorColor.main,
+                    position: 'absolute',
+                    top: '44px',
+                    marginLeft: '1px',
+                    whiteSpace: 'wrap',
+                    margin: '3px',
+                    textWrap: 'pretty'
+                  }}
+                >
+                  {error?.message as unknown as string}
+                </FormHelperText>
+              )}
             </FormControl>
           </div>
         );

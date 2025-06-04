@@ -25,6 +25,10 @@ export default class ShipService {
     return ShipModel.find({});
   };
 
+  public getActiveShips = async () => {
+    return ShipModel.find({ deletedAt: { $exists: false } });
+  };
+
   public getFilteredShips = async (fetchParams: BackendDataFetchArgs) => {
     const {
       name,

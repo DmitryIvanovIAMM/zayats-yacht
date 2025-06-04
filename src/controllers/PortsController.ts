@@ -12,10 +12,12 @@ import { User } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
 import { deleteFile, storeFileOnS3WithModifiedName } from '@/modules/aws/s3';
+import { PortFrontend } from '@/models/PortFrontend';
+import { getPortsInRoutesAction } from '@/app/serverActions';
 
 const DEFAULT_PORT_IMAGE = 'FortLauderdale.jpg'; // Default image name for ports
 
-export const getActivePorts = async () => {
+export const getPortsInRoutes = async () => {
   try {
     const ports: Port[] = await portService.getAllPorts();
     const shipStops: ShipStop[] = await scheduleService.getActiveShipStops();
@@ -29,11 +31,34 @@ export const getActivePorts = async () => {
       ports: mapPortsToFrontend(usedPorts),
       message: null
     };
-  } catch (err) {
+  } catch (error) {
     // eslint-disable-next-line no-console
-    console.log('Error while fetching ports: ', err);
-    //logger.info(err);
-    return { ports: [], destinations: [], message: 'Error while fetching ports' };
+    console.log('getActivePorts().  Error while fetching ports: ', error);
+    //logger.info(error);
+    return { ports: [], destinations: [], message: Messages.FailedGetPorts };
+  }
+};
+
+export const getActivePortsOptions = async (): Promise<ActionData<Record<string, string>>> => {
+  try {
+    const ports: Port[] = await portService.getActivePorts();
+    const portsOptions: Record<string, string> = {};
+    ports.forEach((port) => {
+      portsOptions[port._id.toString()] = port.portName;
+    });
+
+    return {
+      success: true,
+      data: portsOptions
+    };
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('getActivePorts().  Error while fetching ports: ', error);
+    return {
+      success: false,
+      message: error?.message || Messages.FailedGetPorts,
+      data: {}
+    };
   }
 };
 

@@ -1,15 +1,13 @@
 'use client';
 
 import { createTheme } from '@mui/material/styles';
-import { primary, secondary } from './colors';
+import { errorColor, primary, secondary } from './colors';
 
 export const customTheme = createTheme({
   palette: {
     primary: primary,
     secondary: secondary,
-    error: {
-      main: '#f44336'
-    },
+    error: errorColor,
     action: {
       disabled: secondary.light
     }

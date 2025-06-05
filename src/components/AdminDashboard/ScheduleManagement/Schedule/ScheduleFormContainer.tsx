@@ -136,7 +136,7 @@ export const ScheduleFormContainer = ({
               ) : (
                 shipStops?.map((shipStop, index) => {
                   return (
-                    <div style={stopWrapperStyle} key={`shipStopKes_${index}`}>
+                    <div style={stopWrapperStyle} key={`shipStopKey_${index}`}>
                       <Box sx={{ ...dropdownWrapperSx }}>
                         <FormSelector
                           name={`shipStops.${index}.portId`}

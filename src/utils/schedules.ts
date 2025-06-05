@@ -14,17 +14,14 @@ export const comparatorByDepartureOnDateString = (route1: ShipStop, route2: Ship
 
 export const comparatorByArrivalOnDateString = (route1: ShipStop, route2: ShipStop) => {
   return compareDate(route1.arrivalOn, route2.arrivalOn);
-  //return new Date(route1.arrivalOn) - new Date(route2.arrivalOn);
 };
 
 export const comparatorByFirstDepartureOnDateString = (route1: ShipStop[]) => {
   return compareDate(route1[0].departureOn, route1[0].departureOn);
-  //return new Date(route1[0].departureOn) - new Date(c);
 };
 
 export const isDate = (date: Date | string): boolean => {
   const d = new Date(date);
-  //return new Date(date) !== 'Invalid Date' && !isNaN(new Date(date));
   return d instanceof Date && !isNaN(d.getTime());
 };
 

@@ -164,7 +164,7 @@ export const useScheduleColumns = ({
               <IconButton
                 component="a"
                 href={toPath(PATHS.editSailing, { id: row.original._id })}
-                data-testid="port-edit-button"
+                data-testid="schedule-sailing-edit-button"
                 disabled={disableActions}
                 sx={iconButtonPaddingSx}
               >
@@ -173,6 +173,7 @@ export const useScheduleColumns = ({
               <IconButton
                 onClick={() => handleStartDeleteSailing(row.original._id)}
                 data-testid="schedule-sailing-delete-button"
+                disabled={disableActions}
                 sx={iconButtonPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />

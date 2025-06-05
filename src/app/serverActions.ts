@@ -71,18 +71,6 @@ export async function getActiveShipsOptionsAction(): Promise<ActionData<Record<s
   return getActiveShipsOptions();
 }
 
-export async function getScheduleAction(_id: string): Promise<ActionData<ScheduleForm>> {
-  // eslint-disable-next-line no-console
-  console.log('getScheduleAction(). id: ', _id);
-
-  return (await withServerAuth([Roles.Admin], getSchedule, _id)) as ActionData<ScheduleForm>;
-  // return {
-  //   success: true,
-  //   data: defaultScheduleFormValues,
-  //   message: Messages.FailedGetNearestShippings
-  // };
-}
-
 export async function queryNearestShippingsAction(
   date: Date | string
 ): Promise<ActionData<ShipStopWithSailingAndPort[][]>> {
@@ -168,13 +156,6 @@ export async function setSailingActivityByAdminStatus(
   return (await withServerAuth([Roles.Admin], updateSailingActivityStatus, data)) as ActionResult;
 }
 
-export async function deleteSailingByAdminAction(sailingId: string): Promise<ActionResult> {
-  // eslint-disable-next-line no-console
-  console.log('deleteSailingByAdminAction(). sailingId: ', sailingId);
-
-  return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
-}
-
 export async function getShipByAdminAction(id: string): Promise<ActionData<ShipForm>> {
   // eslint-disable-next-line no-console
   console.log('getShipByAdminAction(). id: ', id);
@@ -240,6 +221,13 @@ export async function deletePortByAdminAction(portId: string): Promise<ActionRes
   return (await withServerAuth([Roles.Admin], deletePort, portId)) as ActionResult;
 }
 
+export async function getScheduleByAdminAction(_id: string): Promise<ActionData<ScheduleForm>> {
+  // eslint-disable-next-line no-console
+  console.log('getScheduleAction(). id: ', _id);
+
+  return (await withServerAuth([Roles.Admin], getSchedule, _id)) as ActionData<ScheduleForm>;
+}
+
 export async function addScheduleByAdminAction(scheduleForm: ScheduleForm): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('addScheduleByAdminAction(). scheduleForm: ', scheduleForm);
@@ -265,4 +253,11 @@ export async function updateScheduleByAdminAction(
     scheduleId,
     scheduleForm
   )) as ActionResult;
+}
+
+export async function deleteScheduleByAdminAction(sailingId: string): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('deleteScheduleByAdminAction(). sailingId: ', sailingId);
+
+  return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
 }

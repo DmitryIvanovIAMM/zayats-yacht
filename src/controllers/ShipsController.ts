@@ -9,7 +9,6 @@ import { ActionData, ActionResult } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { User } from '@/models/User';
 import { Types } from 'mongoose';
-import { ShipFrontend } from '@/models/ShipFrontend';
 
 export const getAllShips = async () => {
   return shipService.getAllShips();

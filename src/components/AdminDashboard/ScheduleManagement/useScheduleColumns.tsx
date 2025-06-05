@@ -181,8 +181,8 @@ export const useScheduleColumns = ({
           );
         },
         meta: {
-          headerSx: { width: '80px', maxWidth: '80px' },
-          columnSx: { width: '80px', maxWidth: '80px' }
+          headerSx: { width: '110px', maxWidth: '110px' },
+          columnSx: { width: '110px', maxWidth: '110px' }
         }
       }
     ];

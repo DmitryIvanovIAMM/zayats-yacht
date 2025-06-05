@@ -7,7 +7,7 @@ import {
 } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/navigation';
-import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
+import { FormProvider, Resolver, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormMode } from '@/utils/types';
 import { SubmitCancelButtons } from '@/components/SubmitCancelButtons/SubmitCancelButtons';
@@ -47,15 +47,11 @@ export const ScheduleFormContainer = ({
   portsOptions = {},
   shipsOptions = {}
 }: ScheduleFormContainerProps) => {
-  console.log('ScheduleFormContainer(). formMode: ', formMode);
-  console.log('portsOptions: ', portsOptions);
-  console.log('shipsOptions: ', shipsOptions);
-
   const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
 
   const methods = useForm<ScheduleForm>({
-    resolver: yupResolver(scheduleSchema),
+    resolver: yupResolver(scheduleSchema) as Resolver<ScheduleForm, any, ScheduleForm>,
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: initialValues,
@@ -64,11 +60,8 @@ export const ScheduleFormContainer = ({
   });
   const { handleSubmit, formState, setValue, watch } = methods;
   const shipStops = watch('shipStops');
-  console.log('shipStops: ', shipStops);
-  console.log('errors: ', formState.errors);
 
   const onSubmit = async (scheduleForm: ScheduleForm) => {
-    console.log('onSubmit().  scheduleForm: ', scheduleForm);
     try {
       const result =
         formMode === FormMode.ADD
@@ -89,20 +82,15 @@ export const ScheduleFormContainer = ({
   };
 
   const handleAddStop = () => {
-    console.log('Add stop clicked');
     const shipStops = watch('shipStops') || [];
-    console.log('Current shipStops: ', shipStops);
     shipStops.push(emptyShipStop);
     setValue('shipStops', shipStops);
   };
 
   const handleRemoveStop = (index: number) => {
-    console.log('Remove stop clicked for index: ', index);
     const shipStops = watch('shipStops') || [];
-    console.log('Current shipStops before removal: ', shipStops);
     shipStops.splice(index, 1);
     setValue('shipStops', shipStops);
-    console.log('Current shipStops after removal: ', shipStops);
   };
 
   return (
@@ -198,7 +186,7 @@ export const ScheduleFormContainer = ({
           </div>
           <SubmitCancelButtons
             isSubmitting={formState.isSubmitting}
-            onCancelPath={PATHS.adminShips}
+            onCancelPath={PATHS.adminScheduleManagement}
           />
         </form>
       </FormProvider>

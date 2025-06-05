@@ -21,7 +21,7 @@ export const sendQuoteRequest = async (
 ): Promise<ActionResult> => {
   // eslint-disable-next-line no-console
   console.log(`sendQuoteRequest().  quoteRequest: `, quoteRequest);
-  //logger.info(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
+
   // replace keys in quoteRequest with string values from enums
   quoteRequest.purpose = quoteRequest?.purpose
     ? PURPOSE_OF_TRANSPORT[quoteRequest.purpose as keyof typeof PURPOSE_OF_TRANSPORT]
@@ -35,7 +35,6 @@ export const sendQuoteRequest = async (
   quoteRequest.weightUnit = quoteRequest?.weightUnit
     ? WEIGHT_METRIC[quoteRequest.weightUnit as keyof typeof WEIGHT_METRIC]
     : '';
-  console.log(`quoteRequest: `, quoteRequest);
 
   const emailMessage = quoteRequestUtils.getQuoteRequestEmail(quoteRequest);
   // eslint-disable-next-line no-console

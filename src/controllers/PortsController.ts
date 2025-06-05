@@ -12,8 +12,6 @@ import { User } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
 import { deleteFile, storeFileOnS3WithModifiedName } from '@/modules/aws/s3';
-import { PortFrontend } from '@/models/PortFrontend';
-import { getPortsInRoutesAction } from '@/app/serverActions';
 
 const DEFAULT_PORT_IMAGE = 'FortLauderdale.jpg'; // Default image name for ports
 

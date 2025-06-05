@@ -22,7 +22,6 @@ import {
 } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 import { Types } from 'mongoose';
 import { Sailing } from '@/models/Sailing';
-import { defaultShipFormValues, ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -132,10 +131,10 @@ export const updateSailingActivityStatus = async (
     await scheduleService.setSailingActivityStatus(sailingId, isActive);
 
     return { success: true, message: Messages.SailingStatusChangedSuccessfully };
-  } catch (error) {
+  } catch (error: any) {
     //eslint-disable-next-line no-console
     console.log('setSailingActivityStatus().  error: ', error);
-    return { success: false, message: Messages.FailedChangeSailingStatus };
+    return { success: false, message: error?.message || Messages.FailedChangeSailingStatus };
   }
 };
 
@@ -144,10 +143,10 @@ export const deleteSailing = async (user: User, sailingId: string): Promise<Acti
     await scheduleService.softDeleteSailing(sailingId, user._id);
 
     return { success: true, message: Messages.SailingDeletedSuccessfully };
-  } catch (error) {
+  } catch (error: any) {
     //eslint-disable-next-line no-console
     console.log('deleteSailing().  error: ', error);
-    return { success: false, message: Messages.FailedDeleteSailing };
+    return { success: false, message: error?.message || Messages.FailedDeleteSailing };
   }
 };
 
@@ -166,7 +165,6 @@ export const addSchedule = async (
 ): Promise<ActionResult> => {
   try {
     const newSailing: Sailing = await scheduleService.createSailingByName(scheduleForm.name);
-    console.log('newSailing: ', newSailing);
     await createAndStoreNewShipStops(newSailing._id, scheduleForm.shipId, scheduleForm.shipStops);
 
     return { success: true, message: Messages.ScheduleAddedSuccessfully };
@@ -202,7 +200,6 @@ const createAndStoreNewShipStops = async (
           : 0,
       daysInPort: datesDifferenceInDays(formShipStop.arrivalOn, formShipStop.departureOn)
     };
-    console.log('newShipStop: ', newShipStop);
     return newShipStop;
   });
   await scheduleService.createShipStops(newShipStops);
@@ -214,12 +211,7 @@ export const updateSchedule = async (
   scheduleForm: ScheduleForm
 ): Promise<ActionResult> => {
   try {
-    console.log('updateSchedule().  sailingId: ', sailingId);
-    console.log(' scheduleForm: ', scheduleForm);
-    const updatedSailing = await scheduleService.updateSailingNameAndShip(
-      sailingId,
-      scheduleForm.name
-    );
+    await scheduleService.updateSailingNameAndShip(sailingId, scheduleForm.name);
     await scheduleService.deleteShipStopsBySailingId(sailingId);
 
     await createAndStoreNewShipStops(
@@ -242,11 +234,9 @@ export const getSchedule = async (
 ): Promise<ActionData<ScheduleForm>> => {
   try {
     const sailingWithShipStops = await scheduleService.querySailingWithShipStops(sailingId);
-    console.log('sailingWithShipStops: ', sailingWithShipStops);
     if (!sailingWithShipStops) {
       return { success: false, data: defaultScheduleFormValues, message: Messages.SailingNotFound };
     }
-    console.log('data: ', mapSailingWithShipStopToFrontend(sailingWithShipStops));
 
     return {
       success: true,

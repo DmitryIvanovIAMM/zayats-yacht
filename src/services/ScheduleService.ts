@@ -25,14 +25,6 @@ export default class ScheduleService {
     return this.instance;
   }
 
-  /*public querySailingById = async (sailingId: string): Promise<Sailing | null> => {
-    const sailing = await SailingModel.findById(new Types.ObjectId(sailingId));
-    if (!sailing) {
-      return null;
-    }
-    return sailing;
-  };*/
-
   public getActiveShipStops = (): Promise<ShipStop[]> => {
     return ShipStopModel.aggregate([
       {
@@ -261,7 +253,6 @@ export default class ScheduleService {
       isActive: true,
       createdAt: new Date()
     };
-    console.log('to be Sailing: ', newSailing);
     return SailingModel.create(newSailing);
   }
 
@@ -294,7 +285,6 @@ export default class ScheduleService {
   }
 
   public querySailingWithShipStops = async (sailingId: string): Promise<SailingWithShipStop> => {
-    console.log('querySailingWithShipStops().  sailingId: ', sailingId);
     const queryResult = await SailingModel.aggregate([
       {
         $match: {
@@ -309,25 +299,14 @@ export default class ScheduleService {
           as: 'shipStops'
         }
       }
-      // {
-      //   $unwind: '$shipStops'
-      // }
     ]);
 
     const sailingsWithShipStops = queryResult[0];
-    console.log('sailingsWithShipStops: ', sailingsWithShipStops);
     if (sailingsWithShipStops && sailingsWithShipStops.shipStops) {
       sailingsWithShipStops.shipStops = sortShipStopsByDate(sailingsWithShipStops.shipStops);
     }
 
     return sailingsWithShipStops;
-    // if (sailingsWithShipStopsAndPorts && sailingsWithShipStopsAndPorts.length > 0) {
-    //   const sailing = sailingsWithShipStopsAndPorts[0];
-    //   sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)];
-    //   return sailing;
-    // } else {
-    //   return [];
-    // }
   };
 
   /*public querySailingWithShipStops = async (sailingId: string) => {

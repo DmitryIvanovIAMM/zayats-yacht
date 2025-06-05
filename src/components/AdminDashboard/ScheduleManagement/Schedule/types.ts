@@ -17,9 +17,6 @@ export const scheduleSchema = yup.object().shape({
             .required()
             .when('departureOn', (departureOn, schema) => {
               const departureDate = departureOn ? (departureOn[0] as string) : '';
-              console.log('departureOn: ', departureOn);
-              console.log('departureDate: ', departureDate);
-              console.log('isValidDate(departureOn): ', isValidDate(departureDate[0] as string));
               if (isValidDate(departureDate)) {
                 return (
                   departureOn &&
@@ -53,7 +50,6 @@ export const scheduleSchema = yup.object().shape({
     .min(1, Messages.ShipStopsRequired)
 });
 
-//export type ScheduleForm = yup.InferType<typeof scheduleSchema>;
 export interface ShipStopForm {
   portId: string;
   arrivalOn: Date | string;

@@ -3,7 +3,7 @@ import { ScheduleFormContainer } from '@/components/AdminDashboard/ScheduleManag
 import {
   getActivePortsOptionsAction,
   getActiveShipsOptionsAction,
-  getScheduleAction
+  getScheduleByAdminAction
 } from '@/app/serverActions';
 import { FormMode } from '@/utils/types';
 import { defaultScheduleFormValues } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
@@ -18,7 +18,7 @@ export default async function Home({ params }: { params: Promise<{ id: string }>
   const [getPortsResult, getShipsResult, getScheduleResult] = await Promise.all([
     getActivePortsOptionsAction(),
     getActiveShipsOptionsAction(),
-    getScheduleAction(id)
+    getScheduleByAdminAction(id)
   ]);
 
   const errorMessage = !getScheduleResult.success

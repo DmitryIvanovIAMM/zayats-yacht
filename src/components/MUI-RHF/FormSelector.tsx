@@ -49,7 +49,7 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
                 }}
                 error={!!error}
               >
-                {/*{Object.values(options).map((metric) => (*/}
+                
                 {Object.entries(options).map(([key, value]) => (
                   <MenuItem value={key} key={`weightMetricKey${key}`}>
                     {value}

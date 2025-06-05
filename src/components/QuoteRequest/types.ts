@@ -28,35 +28,6 @@ export const PURPOSE_OF_TRANSPORT = {
   other: 'Other',
   '': ''
 };
-export const purposeOfTransportViewConnector = {
-  [PURPOSE_OF_TRANSPORT.boatShow]: 'Boat Show',
-  [PURPOSE_OF_TRANSPORT.charter]: 'Charter',
-  [PURPOSE_OF_TRANSPORT.purchaseSale]: 'Purchase/Sale',
-  [PURPOSE_OF_TRANSPORT.yardWork]: 'Yard Work',
-  [PURPOSE_OF_TRANSPORT.fishingTournament]: 'Fishing Tournament',
-  [PURPOSE_OF_TRANSPORT.regatta]: 'Regatta',
-  [PURPOSE_OF_TRANSPORT.other]: 'Other',
-  [PURPOSE_OF_TRANSPORT['']]: 'Not specified'
-};
-
-/*
-export enum PreferredPronoun {
-  notSpecified = '',
-  male = 'Male (him)',
-  female = 'Female (her)',
-  neutral = 'Neutral (they)',
-  other = 'Other'
-}
-
-export const preferredPronounViewConnector = {
-  [PreferredPronoun.notSpecified]: 'Not specified',
-  [PreferredPronoun.male]: 'Male (him)',
-  [PreferredPronoun.female]: 'Female (her)',
-  [PreferredPronoun.neutral]: 'Neutral (they)',
-  [PreferredPronoun.other]: 'Other'
-};
-
- */
 
 export const quoteRequestSchema = object({
   firstName: string().required('First Name is required'),

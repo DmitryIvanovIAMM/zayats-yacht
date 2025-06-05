@@ -28,8 +28,6 @@ export const stopWrapperStyle: React.CSSProperties = {
   borderWidth: '1px',
   borderColor: 'black',
   borderStyle: 'dotted',
-  //marginBottom: '10px',
-  //paddingTop: '5px',
   justifyContent: 'center',
   alignItems: 'start',
   justifyItems: 'center',
@@ -44,8 +42,6 @@ export const dropdownWrapperSx: SxProps = {
   paddingRight: '5px',
   paddingLeft: '0px',
   paddingTop: '3px'
-  //paddingBottom: '2px'
-  //paddingTop: '20px'
 };
 
 export const datepickerWrapperSx: SxProps = {

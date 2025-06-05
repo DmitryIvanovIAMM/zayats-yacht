@@ -124,7 +124,7 @@ export const ScheduleFormContainer = ({
                   cursor: 'pointer'
                 }}
               >
-                <AddCircleOutlineIcon onClick={handleAddStop} />
+                <AddCircleOutlineIcon onClick={handleAddStop} data-testid="add-shipstop-button" />
               </div>
             </div>
             <div style={{ flex: '100%' }}>

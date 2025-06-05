@@ -64,6 +64,7 @@ export const DatePickerInput: FC<DatePickerInputProps> = ({ name, size, color, .
                 onChange={(date) => {
                   onChange(date);
                 }}
+                data-testid={`${name}-form-datepicker`}
                 slotProps={{
                   textField: {
                     variant: 'standard',

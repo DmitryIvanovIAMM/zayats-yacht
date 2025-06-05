@@ -6,10 +6,10 @@ describe('Admin on Schedules management page', () => {
     cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
     cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
     cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
-    cy.contains('Sailing Name', { timeout: 25000 });
+    cy.contains('Sailing Name', { timeout: 45000 });
   });
 
-  // this is efault ordering in descendant start date
+  // this is default ordering in descendant start date
   it('should see data grid', () => {
     // table header
     cy.get('thead').within(() => {
@@ -388,6 +388,39 @@ describe('Admin on Schedules management page', () => {
           timeout: 10000
         }).should('be.checked');
       });
+  });
+
+  it.only('should allow add sailing', () => {
+    cy.get('[data-testid="add-sailing-button"]').click();
+    cy.contains('Add Schedule', { timeout: 10000 });
+
+    // try submit form without data and check validation errors
+    cy.get('[data-testid="submit-form-button"]').click();
+    cy.contains('Sailing name is required');
+    cy.contains('Select a ship');
+    cy.contains('Select a port');
+    cy.contains('Date is required');
+    // cy.contains('Miles are required'); // it has default value = 0
+
+    // click Cancel button and check we on data grid
+    cy.get('[data-testid="cancel-form-button"]').click();
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 9);
+    });
+
+    // click add ship button again
+    cy.get('[data-testid="add-sailing-button"]').click();
+    // fill all fields correctly
+    cy.get('[data-testid="name-form-text-input"]').type('Test sailing');
+    //cy.get('[data-testid="shipId-form-selector-input"]').click({ force: true });
+    //cy.contains('Ship *').click({ force: true });
+    cy.get('[data-testid="shipId-form-select"]').click();
+    cy.contains('INDUSTRIAL GUIDE').click();
+    cy.get('[data-testid="shipStops.0.portId-form-select"]').click();
+    cy.contains('Fort Lauderdale, Florida').click();
+    cy.get('[data-testid="shipStops.0.miles-form-text-input"]').clear().type('111').blur();
+    //cy.get('[data-testid="shipStops.0.arrivalOn-form-datepicker"]').click();
+    //cy.get('[data-testid="shipStops.0.arrivalOn-form-date-input"]').click();
   });
 
   it('should allow delete sailing', () => {

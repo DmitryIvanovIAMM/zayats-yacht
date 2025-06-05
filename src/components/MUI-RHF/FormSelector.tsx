@@ -45,11 +45,11 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
                 value={field.value}
                 inputProps={{
                   MenuProps: { disableScrollLock: true },
-                  'data-testid': 'port-selector-input'
+                  'data-testid': `${name}-form-selector-input`
                 }}
                 error={!!error}
+                data-testid={`${name}-form-select`}
               >
-                
                 {Object.entries(options).map(([key, value]) => (
                   <MenuItem value={key} key={`weightMetricKey${key}`}>
                     {value}

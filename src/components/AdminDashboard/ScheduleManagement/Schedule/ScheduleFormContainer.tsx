@@ -62,7 +62,7 @@ export const ScheduleFormContainer = ({
     shouldFocusError: true,
     shouldUseNativeValidation: false
   });
-  const { handleSubmit, formState, getValues, setValue, watch } = methods;
+  const { handleSubmit, formState, setValue, watch } = methods;
   const shipStops = watch('shipStops');
   console.log('shipStops: ', shipStops);
   console.log('errors: ', formState.errors);
@@ -77,7 +77,7 @@ export const ScheduleFormContainer = ({
       if (!result.success) {
         return enqueueSnackbar(result?.message, { variant: 'error' });
       }
-      router.push(PATHS.adminShips);
+      router.push(PATHS.adminScheduleManagement);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log('error: ', error);

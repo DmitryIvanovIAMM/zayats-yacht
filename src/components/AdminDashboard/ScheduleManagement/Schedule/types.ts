@@ -56,8 +56,8 @@ export const scheduleSchema = yup.object().shape({
 //export type ScheduleForm = yup.InferType<typeof scheduleSchema>;
 export interface ShipStopForm {
   portId: string;
-  arrivalOn: Date;
-  departureOn: Date;
+  arrivalOn: Date | string;
+  departureOn: Date | string;
   miles: number;
 }
 export interface ScheduleForm {
@@ -66,7 +66,7 @@ export interface ScheduleForm {
   shipStops: ShipStopForm[];
 }
 
-export const emptyShipStop: ScheduleForm['shipStops'] = {
+export const emptyShipStop: ShipStopForm = {
   portId: '',
   arrivalOn: '',
   departureOn: '',

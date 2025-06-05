@@ -1,6 +1,6 @@
 import { Port } from '@/models/Port';
 import { PortFrontend } from '@/models/PortFrontend';
-import { Sailing, SailingWithShipStopAndPort } from '@/models/Sailing';
+import { Sailing, SailingWithShipStop, SailingWithShipStopAndPort } from '@/models/Sailing';
 import { ShipStop, ShipStopWithPort } from '@/models/ShipStop';
 import { ShipStopFrontend, ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { SailingFrontend, SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
@@ -8,6 +8,10 @@ import { QuoteRequest } from '@/models/QuoteRequest';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
 import { ShipFrontend } from '@/models/ShipFrontend';
 import { Ship } from '@/models/Ship';
+import {
+  ScheduleForm,
+  ShipStopForm
+} from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 
 export const mapPortToFrontend = (ports: Port): PortFrontend => {
   return {
@@ -36,6 +40,17 @@ export const mapShipStopToFrontend = (shipStop: ShipStop): ShipStopFrontend => {
 };
 export const mapShipStopsToFrontend = (shipStops: ShipStop[]): ShipStopFrontend[] => {
   return shipStops.map((shipStop) => mapShipStopToFrontend(shipStop));
+};
+export const mapShipStopToForm = (shipStop: ShipStop): ShipStopForm => {
+  return {
+    portId: shipStop.portId.toString(),
+    arrivalOn: shipStop.arrivalOn,
+    departureOn: shipStop.departureOn,
+    miles: shipStop.miles
+  };
+};
+export const mapShipStopsToForm = (shipStops: ShipStop[]): ShipStopForm[] => {
+  return shipStops.map((shipStop) => mapShipStopToForm(shipStop));
 };
 
 export const mapShipStopWithPortToFrontend = (
@@ -93,6 +108,16 @@ export const mapSailingsWithShipStopAndPortsToFrontend = (
   return sailingsWithShipStopAndPorts.map((sailing) =>
     mapSailingWithShipStopAndPortsToFrontend(sailing)
   );
+};
+
+export const mapSailingWithShipStopToFrontend = (
+  sailingWithShipStops: SailingWithShipStop
+): ScheduleForm => {
+  return {
+    name: sailingWithShipStops.name,
+    shipId: sailingWithShipStops?.shipStops[0].shipId.toString(),
+    shipStops: mapShipStopsToForm(sailingWithShipStops.shipStops)
+  };
 };
 
 export const mapQuoteRequestToFrontend = (quoteRequest: QuoteRequest): QuoteRequestFrontend => {

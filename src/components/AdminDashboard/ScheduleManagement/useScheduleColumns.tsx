@@ -11,6 +11,8 @@ import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { PATHS, toPath } from '@/helpers/paths';
+import EditIcon from '@mui/icons-material/Edit';
 
 const transformSx = {
   transform: 'rotateX(360deg)',
@@ -159,6 +161,15 @@ export const useScheduleColumns = ({
                 }}
                 sx={iconButtonPaddingSx}
               />
+              <IconButton
+                component="a"
+                href={toPath(PATHS.editSailing, { id: row.original._id })}
+                data-testid="port-edit-button"
+                disabled={disableActions}
+                sx={iconButtonPaddingSx}
+              >
+                <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
+              </IconButton>
               <IconButton
                 onClick={() => handleStartDeleteSailing(row.original._id)}
                 data-testid="schedule-sailing-delete-button"

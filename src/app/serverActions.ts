@@ -24,9 +24,11 @@ import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 import {
   addSchedule,
   deleteSailing,
+  getSchedule,
   getSchedules,
   queryNearestShippings,
-  updateSailingActivityStatus
+  updateSailingActivityStatus,
+  updateSchedule
 } from '@/controllers/SchedulesController';
 import { ShipsParametersFlat } from '@/models/types';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
@@ -42,11 +44,7 @@ import {
   updateShip
 } from '@/controllers/ShipsController';
 import { PortForm } from '@/components/AdminDashboard/AdminPorts/Port/types';
-import {
-  defaultScheduleFormValues,
-  ScheduleForm
-} from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
-import { ShipFrontend } from '@/models/ShipFrontend';
+import { ScheduleForm } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 
 export async function getPortsInRoutesAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -65,24 +63,24 @@ export async function getPortsInRoutesAction(): Promise<ActionData<PortFrontend[
   }
 }
 
-export async function getActivePortsAction(): Promise<ActionData<Record<string, string>>> {
+export async function getActivePortsOptionsAction(): Promise<ActionData<Record<string, string>>> {
   return getActivePortsOptions();
 }
 
-export async function getActiveShipsAction(): Promise<ActionData<Record<string, string>>> {
+export async function getActiveShipsOptionsAction(): Promise<ActionData<Record<string, string>>> {
   return getActiveShipsOptions();
 }
 
-export async function getScheduleAction(id: string): Promise<ActionData<ScheduleForm>> {
+export async function getScheduleAction(_id: string): Promise<ActionData<ScheduleForm>> {
   // eslint-disable-next-line no-console
-  console.log('getScheduleAction(). id: ', id);
+  console.log('getScheduleAction(). id: ', _id);
 
-  //return (await withServerAuth([Roles.Admin], getSchedule, id)) as ActionData<ShipForm>;
-  return {
-    success: true,
-    data: defaultScheduleFormValues,
-    message: Messages.FailedGetNearestShippings
-  };
+  return (await withServerAuth([Roles.Admin], getSchedule, _id)) as ActionData<ScheduleForm>;
+  // return {
+  //   success: true,
+  //   data: defaultScheduleFormValues,
+  //   message: Messages.FailedGetNearestShippings
+  // };
 }
 
 export async function queryNearestShippingsAction(
@@ -261,8 +259,10 @@ export async function updateScheduleByAdminAction(
     scheduleForm
   );
 
-  return (await withServerAuth([Roles.Admin], updateShip, {
-    ...scheduleForm,
-    _id: scheduleId
-  })) as ActionResult;
+  return (await withServerAuth(
+    [Roles.Admin],
+    updateSchedule,
+    scheduleId,
+    scheduleForm
+  )) as ActionResult;
 }

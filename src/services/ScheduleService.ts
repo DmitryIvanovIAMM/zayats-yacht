@@ -1,5 +1,10 @@
 import { ShipStop, ShipStopModel } from '@/models/ShipStop';
-import { Sailing, SailingModel, SailingWithShipStopAndPort } from '@/models/Sailing';
+import {
+  Sailing,
+  SailingModel,
+  SailingWithShipStop,
+  SailingWithShipStopAndPort
+} from '@/models/Sailing';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import {
   FiltersFromQuery,
@@ -7,6 +12,7 @@ import {
   getSortingQuery
 } from '@/controllers/mongoDbQueryHelpers';
 import { Types } from 'mongoose';
+import { sortShipStopsByDate } from '@/utils/schedules';
 
 export default class ScheduleService {
   private static instance: ScheduleService;
@@ -18,6 +24,14 @@ export default class ScheduleService {
     this.instance = new ScheduleService();
     return this.instance;
   }
+
+  /*public querySailingById = async (sailingId: string): Promise<Sailing | null> => {
+    const sailing = await SailingModel.findById(new Types.ObjectId(sailingId));
+    if (!sailing) {
+      return null;
+    }
+    return sailing;
+  };*/
 
   public getActiveShipStops = (): Promise<ShipStop[]> => {
     return ShipStopModel.aggregate([
@@ -265,9 +279,56 @@ export default class ScheduleService {
     );
   }
 
+  updateSailingNameAndShip(sailingId: string, name: string) {
+    return SailingModel.findByIdAndUpdate(
+      new Types.ObjectId(sailingId),
+      {
+        name: name
+      },
+      { new: true }
+    );
+  }
+
   deleteShipStopsBySailingId(sailingId: string) {
     return ShipStopModel.deleteMany({ sailingId: new Types.ObjectId(sailingId) });
   }
+
+  public querySailingWithShipStops = async (sailingId: string): Promise<SailingWithShipStop> => {
+    console.log('querySailingWithShipStops().  sailingId: ', sailingId);
+    const queryResult = await SailingModel.aggregate([
+      {
+        $match: {
+          $and: [{ _id: { $eq: new Types.ObjectId(sailingId) } }, { deletedAt: { $exists: false } }]
+        }
+      },
+      {
+        $lookup: {
+          from: 'shipstops',
+          localField: '_id',
+          foreignField: 'sailingId',
+          as: 'shipStops'
+        }
+      }
+      // {
+      //   $unwind: '$shipStops'
+      // }
+    ]);
+
+    const sailingsWithShipStops = queryResult[0];
+    console.log('sailingsWithShipStops: ', sailingsWithShipStops);
+    if (sailingsWithShipStops && sailingsWithShipStops.shipStops) {
+      sailingsWithShipStops.shipStops = sortShipStopsByDate(sailingsWithShipStops.shipStops);
+    }
+
+    return sailingsWithShipStops;
+    // if (sailingsWithShipStopsAndPorts && sailingsWithShipStopsAndPorts.length > 0) {
+    //   const sailing = sailingsWithShipStopsAndPorts[0];
+    //   sailing.shipStops = [...sortShipStopsByDate(sailing.shipStops)];
+    //   return sailing;
+    // } else {
+    //   return [];
+    // }
+  };
 
   /*public querySailingWithShipStops = async (sailingId: string) => {
     const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([

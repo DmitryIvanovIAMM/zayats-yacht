@@ -134,7 +134,7 @@ export const ScheduleFormContainer = ({
                   <p>Click the &#39;+&#39; icon to add a stop.</p>
                 </div>
               ) : (
-                shipStops?.map((shipStops, index) => {
+                shipStops?.map((shipStop, index) => {
                   return (
                     <div style={stopWrapperStyle} key={`shipStopKes_${index}`}>
                       <Box sx={{ ...dropdownWrapperSx }}>

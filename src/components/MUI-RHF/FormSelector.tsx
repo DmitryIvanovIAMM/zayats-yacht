@@ -63,9 +63,9 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
                     position: 'absolute',
                     top: '44px',
                     marginLeft: '1px',
-                    whiteSpace: 'wrap',
+                    whiteSpace: 'normal',
                     margin: '3px',
-                    textWrap: 'pretty'
+                    overflowWrap: 'break-word'
                   }}
                 >
                   {error?.message as unknown as string}

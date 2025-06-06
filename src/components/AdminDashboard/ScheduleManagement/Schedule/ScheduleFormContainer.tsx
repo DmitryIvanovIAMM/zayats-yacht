@@ -169,7 +169,7 @@ export const ScheduleFormContainer = ({
                       <Box sx={buttonWrapperSx}>
                         <IconButton
                           onClick={() => handleRemoveStop(index)}
-                          data-testid="port-delete-button"
+                          data-testid="stop-delete-button"
                           sx={{
                             paddingLeft: '5px',
                             paddingRight: '5px'

@@ -1,6 +1,6 @@
 import { models, Types } from 'mongoose';
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
-import { ShipStopWithPort } from '@/models/ShipStop';
+import { ShipStop, ShipStopWithPort } from '@/models/ShipStop';
 
 @modelOptions({
   options: { customName: 'Sailing' },
@@ -25,6 +25,9 @@ export class Sailing {
 
 export const SailingModel = models?.Sailing || getModelForClass(Sailing);
 
+export class SailingWithShipStop extends Sailing {
+  shipStops: ShipStop[];
+}
 export class SailingWithShipStopAndPort extends Sailing {
   shipStops: ShipStopWithPort[];
 }

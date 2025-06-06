@@ -2,7 +2,12 @@
 
 import { sesMailTransport } from '@/modules/mailer/nodemailer';
 import * as quoteRequestUtils from '../utils/quoteRequest';
-import { QuoteRequestForm } from '@/components/QuoteRequest/types';
+import {
+  LENGTH_METRIC,
+  PURPOSE_OF_TRANSPORT,
+  QuoteRequestForm,
+  WEIGHT_METRIC
+} from '@/components/QuoteRequest/types';
 import { QuoteRequest } from '@/models/QuoteRequest';
 import { Types } from 'mongoose';
 import { Messages } from '@/helpers/messages';
@@ -15,8 +20,21 @@ export const sendQuoteRequest = async (
   quoteRequest: QuoteRequestForm
 ): Promise<ActionResult> => {
   // eslint-disable-next-line no-console
-  console.log(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
-  //logger.info(`sendQuoteRequest().  quoteRequest: ${quoteRequest}`);
+  console.log(`sendQuoteRequest().  quoteRequest: `, quoteRequest);
+
+  // replace keys in quoteRequest with string values from enums
+  quoteRequest.purpose = quoteRequest?.purpose
+    ? PURPOSE_OF_TRANSPORT[quoteRequest.purpose as keyof typeof PURPOSE_OF_TRANSPORT]
+    : '';
+  quoteRequest.lengthUnit = quoteRequest?.lengthUnit
+    ? LENGTH_METRIC[quoteRequest.lengthUnit as keyof typeof LENGTH_METRIC]
+    : '';
+  quoteRequest.beamUnit = quoteRequest?.beamUnit
+    ? LENGTH_METRIC[quoteRequest.beamUnit as keyof typeof LENGTH_METRIC]
+    : '';
+  quoteRequest.weightUnit = quoteRequest?.weightUnit
+    ? WEIGHT_METRIC[quoteRequest.weightUnit as keyof typeof WEIGHT_METRIC]
+    : '';
 
   const emailMessage = quoteRequestUtils.getQuoteRequestEmail(quoteRequest);
   // eslint-disable-next-line no-console

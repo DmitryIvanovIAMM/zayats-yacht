@@ -60,6 +60,14 @@ export default class PortService {
     };
   };
 
+  public getActivePorts = async (): Promise<Port[]> => {
+    try {
+      return PortModel.find({ deletedAt: { $exists: false } }).lean<Port[]>();
+    } catch {
+      return [];
+    }
+  };
+
   public getPortFromDB = async (portId: string): Promise<Port | null> => {
     const port = await PortModel.findById(new Types.ObjectId(portId));
     if (!port) {

@@ -11,6 +11,8 @@ import { ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
 import { formatInLongMonthDayYear, formatInMonthDayYear } from '@/utils/date-time';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { PATHS, toPath } from '@/helpers/paths';
+import EditIcon from '@mui/icons-material/Edit';
 
 const transformSx = {
   transform: 'rotateX(360deg)',
@@ -160,8 +162,18 @@ export const useScheduleColumns = ({
                 sx={iconButtonPaddingSx}
               />
               <IconButton
+                component="a"
+                href={toPath(PATHS.editSailing, { id: row.original._id })}
+                data-testid="schedule-sailing-edit-button"
+                disabled={disableActions}
+                sx={iconButtonPaddingSx}
+              >
+                <EditIcon sx={{ fontSize: '28px' }} color="secondary" />
+              </IconButton>
+              <IconButton
                 onClick={() => handleStartDeleteSailing(row.original._id)}
                 data-testid="schedule-sailing-delete-button"
+                disabled={disableActions}
                 sx={iconButtonPaddingSx}
               >
                 <DeleteForeverIcon sx={{ fontSize: '28px' }} color="error" />
@@ -170,8 +182,8 @@ export const useScheduleColumns = ({
           );
         },
         meta: {
-          headerSx: { width: '80px', maxWidth: '80px' },
-          columnSx: { width: '80px', maxWidth: '80px' }
+          headerSx: { width: '110px', maxWidth: '110px' },
+          columnSx: { width: '110px', maxWidth: '110px' }
         }
       }
     ];

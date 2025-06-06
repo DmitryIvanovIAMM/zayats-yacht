@@ -13,15 +13,15 @@ export default async function Home({ params }: { params: Promise<{ id: string }>
   const { id } = await params;
   if (!id) return <NotFound />;
 
-  const getPortAction = await getPortByAdminAction(id);
-  if (!getPortAction.success) {
-    return <Error error={`500 - ${getPortAction.message || 'Server Error'}`} />;
+  const getPortResult = await getPortByAdminAction(id);
+  if (!getPortResult.success) {
+    return <Error error={`500 - ${getPortResult.message || 'Server Error'}`} />;
   }
 
   return (
     <PortFormContainer
       formMode={FormMode.EDIT}
-      initialValues={getMergedFormValues(defaultPortFormValues, getPortAction.data)}
+      initialValues={getMergedFormValues(defaultPortFormValues, getPortResult.data)}
       _id={id}
     />
   );

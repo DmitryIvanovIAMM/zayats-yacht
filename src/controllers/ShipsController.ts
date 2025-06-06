@@ -23,6 +23,29 @@ export const getFilteredShips = async (fetchParams: BackendDataFetchArgs) => {
   };
 };
 
+export const getActiveShipsOptions = async (): Promise<ActionData<Record<string, string>>> => {
+  try {
+    const ships = await shipService.getActiveShips();
+    const shipsOptions: Record<string, string> = {};
+    ships.forEach((ship) => {
+      shipsOptions[ship._id.toString()] = ship.name;
+    });
+
+    return {
+      success: true,
+      data: shipsOptions
+    };
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('getActiveShips().  Error while fetching ships: ', error);
+    return {
+      success: false,
+      message: error?.message || Messages.FailedGetShips,
+      data: {}
+    };
+  }
+};
+
 export const getShip = async (user: User, _id: string): Promise<ActionData<ShipForm | null>> => {
   try {
     const ship = await shipService.getShipFromDB(_id);

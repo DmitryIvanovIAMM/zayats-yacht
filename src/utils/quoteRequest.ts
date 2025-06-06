@@ -42,11 +42,15 @@ export function getQuoteRequestEmailText(quoteRequest: any) {
       quoteRequest.insuredValue ? moneyFormatter(quoteRequest.insuredValue) : '-'
     }\n` +
     `Length: ${
-      quoteRequest.length ? quoteRequest.length.concat(' ' + quoteRequest.lengthUnit) : '-'
+      quoteRequest.length
+        ? quoteRequest.length.toString().concat(' ' + quoteRequest.lengthUnit)
+        : '-'
     }\n` +
-    `Beam: ${quoteRequest.beam ? quoteRequest.beam.concat(' ' + quoteRequest.beamUnit) : '-'}\n` +
+    `Beam: ${quoteRequest.beam ? quoteRequest.beam.toString().concat(' ' + quoteRequest.beamUnit) : '-'}\n` +
     `Weight: ${
-      quoteRequest.weight ? quoteRequest.weight.concat(' ' + quoteRequest.weightUnit) : '-'
+      quoteRequest.weight
+        ? quoteRequest.weight.toString().concat(' ' + quoteRequest.weightUnit)
+        : '-'
     }\n` +
     `Purpose of Transport: ${quoteRequest.purpose ? quoteRequest.purpose : '-'}\n` +
     `Form Where: ${quoteRequest.fromWhere ? quoteRequest.fromWhere : '-'}\n` +
@@ -76,13 +80,17 @@ export function getQuoteRequestEmailHTMLBody(quoteRequest: any) {
       quoteRequest.insuredValue ? moneyFormatter(quoteRequest.insuredValue) : '-'
     }</td></tr>` +
     `<tr><td><strong>Length :</strong></td><td>&nbsp;${
-      quoteRequest.length ? quoteRequest.length.concat(' ' + quoteRequest.lengthUnit) : '-'
+      quoteRequest.length
+        ? quoteRequest.length.toString().concat(' ' + quoteRequest.lengthUnit)
+        : '-'
     }</td></tr>` +
     `<tr><td><strong>Beam :</strong></td><td>&nbsp;${
-      quoteRequest.beam ? quoteRequest.beam.concat(' ' + quoteRequest.beamUnit) : '-'
+      quoteRequest.beam ? quoteRequest.beam.toString().concat(' ' + quoteRequest.beamUnit) : '-'
     }</td></tr>` +
     `<tr><td><strong>Weight :</strong></td><td>&nbsp;${
-      quoteRequest.weight ? quoteRequest.weight.concat(' ' + quoteRequest.weightUnit) : '-'
+      quoteRequest.weight
+        ? quoteRequest.weight.toString().concat(' ' + quoteRequest.weightUnit)
+        : '-'
     }</td></tr>` +
     `<tr><td><strong>Purpose of Transport :</strong></td><td>&nbsp;${
       quoteRequest.purpose ? quoteRequest.purpose : '-'

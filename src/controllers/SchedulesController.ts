@@ -6,12 +6,22 @@ import { scheduleService } from '@/services/ScheduleService';
 import { shipService } from '@/services/ShipService';
 import { ShipStop } from '@/models/ShipStop';
 import { ShipsParametersFlat } from '@/models/types';
-import { maxComputerDate } from '@/utils/date-time';
-import { mapSailingsWithShipStopAndPortsToFrontend } from '@/models/mappers';
+import { datesDifferenceInDays, maxComputerDate } from '@/utils/date-time';
+import {
+  mapSailingsWithShipStopAndPortsToFrontend,
+  mapSailingWithShipStopToFrontend
+} from '@/models/mappers';
 import { BackendDataFetchArgs } from '@/components/Table/types';
-import { ActionResult, SailingStatusParams } from '@/utils/types';
+import { ActionData, ActionResult, SailingStatusParams } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { User } from '@/models/User';
+import {
+  defaultScheduleFormValues,
+  ScheduleForm,
+  ShipStopForm
+} from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
+import { Types } from 'mongoose';
+import { Sailing } from '@/models/Sailing';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -121,10 +131,10 @@ export const updateSailingActivityStatus = async (
     await scheduleService.setSailingActivityStatus(sailingId, isActive);
 
     return { success: true, message: Messages.SailingStatusChangedSuccessfully };
-  } catch (error) {
+  } catch (error: any) {
     //eslint-disable-next-line no-console
     console.log('setSailingActivityStatus().  error: ', error);
-    return { success: false, message: Messages.FailedChangeSailingStatus };
+    return { success: false, message: error?.message || Messages.FailedChangeSailingStatus };
   }
 };
 
@@ -133,10 +143,112 @@ export const deleteSailing = async (user: User, sailingId: string): Promise<Acti
     await scheduleService.softDeleteSailing(sailingId, user._id);
 
     return { success: true, message: Messages.SailingDeletedSuccessfully };
-  } catch (error) {
+  } catch (error: any) {
     //eslint-disable-next-line no-console
     console.log('deleteSailing().  error: ', error);
-    return { success: false, message: Messages.FailedDeleteSailing };
+    return { success: false, message: error?.message || Messages.FailedDeleteSailing };
+  }
+};
+
+const sortShipStopsByDepartureOn = (shipStops: ShipStopForm[] = []): ShipStopForm[] => {
+  if (!shipStops || shipStops.length === 0) {
+    return [];
+  }
+  return shipStops.sort((a, b) => {
+    return new Date(a.departureOn).getTime() - new Date(b.departureOn).getTime();
+  });
+};
+
+export const addSchedule = async (
+  user: User,
+  scheduleForm: ScheduleForm
+): Promise<ActionResult> => {
+  try {
+    const newSailing: Sailing = await scheduleService.createSailingByName(scheduleForm.name);
+    await createAndStoreNewShipStops(newSailing._id, scheduleForm.shipId, scheduleForm.shipStops);
+
+    return { success: true, message: Messages.ScheduleAddedSuccessfully };
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('Error while create schedule: ', error);
+    return { success: false, message: error?.message || Messages.FailedAddSchedule };
+  }
+};
+
+const createAndStoreNewShipStops = async (
+  sailingId: Types.ObjectId,
+  shipId: string,
+  shipStops: ShipStopForm[]
+) => {
+  const sortedShipStopsForm: ShipStopForm[] = sortShipStopsByDepartureOn(shipStops);
+
+  const newShipStops: ShipStop[] = shipStops.map((formShipStop, index: number) => {
+    const newShipStop: ShipStop = {
+      _id: new Types.ObjectId(),
+      sailingId: sailingId,
+      portId: new Types.ObjectId(formShipStop.portId),
+      shipId: new Types.ObjectId(shipId),
+      arrivalOn: new Date(formShipStop.arrivalOn),
+      departureOn: new Date(formShipStop.departureOn),
+      miles: formShipStop.miles,
+      daysAtSea:
+        index > 0
+          ? datesDifferenceInDays(
+              sortedShipStopsForm[index].arrivalOn,
+              sortedShipStopsForm[index - 1].departureOn
+            )
+          : 0,
+      daysInPort: datesDifferenceInDays(formShipStop.arrivalOn, formShipStop.departureOn)
+    };
+    return newShipStop;
+  });
+  await scheduleService.createShipStops(newShipStops);
+};
+
+export const updateSchedule = async (
+  user: User,
+  sailingId: string,
+  scheduleForm: ScheduleForm
+): Promise<ActionResult> => {
+  try {
+    await scheduleService.updateSailingNameAndShip(sailingId, scheduleForm.name);
+    await scheduleService.deleteShipStopsBySailingId(sailingId);
+
+    await createAndStoreNewShipStops(
+      new Types.ObjectId(sailingId),
+      scheduleForm.shipId,
+      scheduleForm.shipStops
+    );
+
+    return { success: true, message: Messages.ScheduleUpdatedSuccessfully };
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    console.log('Error while updating schedule: ', error);
+    return { success: false, message: error?.message || Messages.FailedUpdateSchedule };
+  }
+};
+
+export const getSchedule = async (
+  usr: User,
+  sailingId: string
+): Promise<ActionData<ScheduleForm>> => {
+  try {
+    const sailingWithShipStops = await scheduleService.querySailingWithShipStops(sailingId);
+    if (!sailingWithShipStops) {
+      return { success: false, data: defaultScheduleFormValues, message: Messages.SailingNotFound };
+    }
+
+    return {
+      success: true,
+      data: mapSailingWithShipStopToFrontend(sailingWithShipStops),
+      message: Messages.SailingNotFound
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      data: defaultScheduleFormValues,
+      message: error?.message || Messages.SailingNotFound
+    };
   }
 };
 

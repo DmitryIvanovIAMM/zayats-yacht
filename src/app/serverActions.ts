@@ -3,9 +3,10 @@
 import {
   addPort,
   deletePort,
-  getActivePorts,
+  getPortsInRoutes,
   getPort,
-  updatePort
+  updatePort,
+  getActivePortsOptions
 } from '@/controllers/PortsController';
 import { User } from '@/models/User';
 import {
@@ -21,10 +22,13 @@ import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
 import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
 import {
+  addSchedule,
   deleteSailing,
+  getSchedule,
   getSchedules,
   queryNearestShippings,
-  updateSailingActivityStatus
+  updateSailingActivityStatus,
+  updateSchedule
 } from '@/controllers/SchedulesController';
 import { ShipsParametersFlat } from '@/models/types';
 import { QuoteRequestForm } from '@/components/QuoteRequest/types';
@@ -32,12 +36,19 @@ import { withServerAuth } from '@/utils/auth/withServerAuth';
 import { sendQuoteRequest } from '@/controllers/EmailsController';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
-import { addShip, deleteShip, getShip, updateShip } from '@/controllers/ShipsController';
+import {
+  addShip,
+  deleteShip,
+  getActiveShipsOptions,
+  getShip,
+  updateShip
+} from '@/controllers/ShipsController';
 import { PortForm } from '@/components/AdminDashboard/AdminPorts/Port/types';
+import { ScheduleForm } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 
-export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>> {
+export async function getPortsInRoutesAction(): Promise<ActionData<PortFrontend[]>> {
   try {
-    const ports = await getActivePorts();
+    const ports = await getPortsInRoutes();
     // eslint-disable-next-line no-console
     console.log('getActivePortsAction(). ports: ', ports);
     // force
@@ -50,6 +61,14 @@ export async function getActivePortsAction(): Promise<ActionData<PortFrontend[]>
     console.log('Error while fetching ports: ', error);
     return { success: false, data: [], message: Messages.FailedGetPorts };
   }
+}
+
+export async function getActivePortsOptionsAction(): Promise<ActionData<Record<string, string>>> {
+  return getActivePortsOptions();
+}
+
+export async function getActiveShipsOptionsAction(): Promise<ActionData<Record<string, string>>> {
+  return getActiveShipsOptions();
 }
 
 export async function queryNearestShippingsAction(
@@ -137,13 +156,6 @@ export async function setSailingActivityByAdminStatus(
   return (await withServerAuth([Roles.Admin], updateSailingActivityStatus, data)) as ActionResult;
 }
 
-export async function deleteSailingByAdminAction(sailingId: string): Promise<ActionResult> {
-  // eslint-disable-next-line no-console
-  console.log('deleteSailingByAdminAction(). sailingId: ', sailingId);
-
-  return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
-}
-
 export async function getShipByAdminAction(id: string): Promise<ActionData<ShipForm>> {
   // eslint-disable-next-line no-console
   console.log('getShipByAdminAction(). id: ', id);
@@ -207,4 +219,45 @@ export async function deletePortByAdminAction(portId: string): Promise<ActionRes
   console.log('deletePortByAdminAction(). portId: ', portId);
 
   return (await withServerAuth([Roles.Admin], deletePort, portId)) as ActionResult;
+}
+
+export async function getScheduleByAdminAction(_id: string): Promise<ActionData<ScheduleForm>> {
+  // eslint-disable-next-line no-console
+  console.log('getScheduleAction(). id: ', _id);
+
+  return (await withServerAuth([Roles.Admin], getSchedule, _id)) as ActionData<ScheduleForm>;
+}
+
+export async function addScheduleByAdminAction(scheduleForm: ScheduleForm): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('addScheduleByAdminAction(). scheduleForm: ', scheduleForm);
+
+  return (await withServerAuth([Roles.Admin], addSchedule, scheduleForm)) as ActionResult;
+}
+
+export async function updateScheduleByAdminAction(
+  scheduleId: string,
+  scheduleForm: ScheduleForm
+): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log(
+    'updateScheduleByAdminAction(). scheduleId: ',
+    scheduleId,
+    ' scheduleForm: ',
+    scheduleForm
+  );
+
+  return (await withServerAuth(
+    [Roles.Admin],
+    updateSchedule,
+    scheduleId,
+    scheduleForm
+  )) as ActionResult;
+}
+
+export async function deleteScheduleByAdminAction(sailingId: string): Promise<ActionResult> {
+  // eslint-disable-next-line no-console
+  console.log('deleteScheduleByAdminAction(). sailingId: ', sailingId);
+
+  return (await withServerAuth([Roles.Admin], deleteSailing, sailingId)) as ActionResult;
 }

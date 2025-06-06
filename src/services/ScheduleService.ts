@@ -1,5 +1,10 @@
 import { ShipStop, ShipStopModel } from '@/models/ShipStop';
-import { SailingModel, SailingWithShipStopAndPort } from '@/models/Sailing';
+import {
+  Sailing,
+  SailingModel,
+  SailingWithShipStop,
+  SailingWithShipStopAndPort
+} from '@/models/Sailing';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import {
   FiltersFromQuery,
@@ -7,6 +12,7 @@ import {
   getSortingQuery
 } from '@/controllers/mongoDbQueryHelpers';
 import { Types } from 'mongoose';
+import { sortShipStopsByDate } from '@/utils/schedules';
 
 export default class ScheduleService {
   private static instance: ScheduleService;
@@ -240,16 +246,33 @@ export default class ScheduleService {
     );
   }
 
-  /*createSailingByName(name: string) {
-    const newSailing = {
-      name: name
+  createSailingByName(name: string) {
+    const newSailing: Sailing = {
+      _id: new Types.ObjectId(),
+      name: name,
+      isActive: true,
+      createdAt: new Date()
     };
     return SailingModel.create(newSailing);
   }
 
+  createShipStops(shipStops: ShipStop[]): Promise<ShipStop[]> {
+    return ShipStopModel.create(shipStops);
+  }
+
   updateSailingName(sailingId: string, name: string) {
     return SailingModel.findByIdAndUpdate(
-      sailingId,
+      new Types.ObjectId(sailingId),
+      {
+        name: name
+      },
+      { new: true }
+    );
+  }
+
+  updateSailingNameAndShip(sailingId: string, name: string) {
+    return SailingModel.findByIdAndUpdate(
+      new Types.ObjectId(sailingId),
       {
         name: name
       },
@@ -261,9 +284,32 @@ export default class ScheduleService {
     return ShipStopModel.deleteMany({ sailingId: new Types.ObjectId(sailingId) });
   }
 
+  public querySailingWithShipStops = async (sailingId: string): Promise<SailingWithShipStop> => {
+    const queryResult = await SailingModel.aggregate([
+      {
+        $match: {
+          $and: [{ _id: { $eq: new Types.ObjectId(sailingId) } }, { deletedAt: { $exists: false } }]
+        }
+      },
+      {
+        $lookup: {
+          from: 'shipstops',
+          localField: '_id',
+          foreignField: 'sailingId',
+          as: 'shipStops'
+        }
+      }
+    ]);
 
+    const sailingsWithShipStops = queryResult[0];
+    if (sailingsWithShipStops && sailingsWithShipStops.shipStops) {
+      sailingsWithShipStops.shipStops = sortShipStopsByDate(sailingsWithShipStops.shipStops);
+    }
 
-  public querySailingWithShipStops = async (sailingId: string) => {
+    return sailingsWithShipStops;
+  };
+
+  /*public querySailingWithShipStops = async (sailingId: string) => {
     const sailingsWithShipStopsAndPorts = await SailingModel.aggregate([
       {
         $match: {

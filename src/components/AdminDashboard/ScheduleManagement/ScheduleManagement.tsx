@@ -6,7 +6,7 @@ import { Messages } from '@/helpers/messages';
 import { useScheduleColumns } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 import { querySailingsWithRoutesAndPorts } from '@/controllers/SchedulesController';
 import { type SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
-import { deleteSailingByAdminAction, setSailingActivityByAdminStatus } from '@/app/serverActions';
+import { deleteScheduleByAdminAction, setSailingActivityByAdminStatus } from '@/app/serverActions';
 import { showNotification } from '@/modules/notifications/notifications';
 import { SailingStatusParams } from '@/utils/types';
 import { useState } from 'react';
@@ -81,7 +81,7 @@ export const ScheduleManagement = () => {
     setIsUpdating(true);
     setUpdateSailingId(null);
     try {
-      const actionResult = await deleteSailingByAdminAction(sailingId);
+      const actionResult = await deleteScheduleByAdminAction(sailingId);
       if (!actionResult.success) {
         return showNotification(false, actionResult.message || Messages.FailedDeleteSailing);
       }

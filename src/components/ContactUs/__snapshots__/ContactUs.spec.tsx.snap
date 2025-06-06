@@ -51,7 +51,7 @@ exports[`ContactUs component should render correctly 1`] = `
                 <br />
                 Allied Yacht Transport, LLC
                 <br />
-                12555 Orange Drive, Suite 228
+                12555 Orange Drive, Suite 107
                 <br />
                 Fort Lauderdale, FL, 33330, USA
               </div>
@@ -90,10 +90,10 @@ exports[`ContactUs component should render correctly 1`] = `
                 <br />
                 Tel: 
                 <a
-                  href="tel:+19543944640"
+                  href="tel:+19549186694"
                   style="text-decoration: none; color: rgb(0, 102, 102);"
                 >
-                  +1 954-394-4640
+                  +1 954-918-6694
                 </a>
                 <br />
               </div>
@@ -131,17 +131,10 @@ exports[`ContactUs component should render correctly 1`] = `
               >
                 <br />
                 <a
-                  href="mailto:sales@allied-yacht.com"
+                  href="mailto:CustomerService@allied-yacht.com"
                   style="text-decoration: none; color: rgb(0, 102, 102);"
                 >
-                  sales@allied-yacht.com
-                </a>
-                <br />
-                <a
-                  href="mailto:operations@allied-yacht.com"
-                  style="text-decoration: none; color: rgb(0, 102, 102);"
-                >
-                  operations@allied-yacht.com
+                  CustomerService@allied-yacht.com
                 </a>
               </div>
             </div>
@@ -197,7 +190,7 @@ exports[`ContactUs component should render correctly 1`] = `
               <br />
               Allied Yacht Transport, LLC
               <br />
-              12555 Orange Drive, Suite 228
+              12555 Orange Drive, Suite 107
               <br />
               Fort Lauderdale, FL, 33330, USA
             </div>
@@ -236,10 +229,10 @@ exports[`ContactUs component should render correctly 1`] = `
               <br />
               Tel: 
               <a
-                href="tel:+19543944640"
+                href="tel:+19549186694"
                 style="text-decoration: none; color: rgb(0, 102, 102);"
               >
-                +1 954-394-4640
+                +1 954-918-6694
               </a>
               <br />
             </div>
@@ -277,17 +270,10 @@ exports[`ContactUs component should render correctly 1`] = `
             >
               <br />
               <a
-                href="mailto:sales@allied-yacht.com"
+                href="mailto:CustomerService@allied-yacht.com"
                 style="text-decoration: none; color: rgb(0, 102, 102);"
               >
-                sales@allied-yacht.com
-              </a>
-              <br />
-              <a
-                href="mailto:operations@allied-yacht.com"
-                style="text-decoration: none; color: rgb(0, 102, 102);"
-              >
-                operations@allied-yacht.com
+                CustomerService@allied-yacht.com
               </a>
             </div>
           </div>

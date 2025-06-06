@@ -6,7 +6,7 @@ export default function AddressColumnContent() {
       <br />
       Allied Yacht Transport, LLC
       <br />
-      12555 Orange Drive, Suite 228
+      12555 Orange Drive, Suite 107
       <br />
       Fort Lauderdale, FL, 33330, USA
     </div>

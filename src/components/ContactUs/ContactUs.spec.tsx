@@ -20,14 +20,13 @@ describe('ContactUs component', () => {
 
     expect(container.getByText('Address')).toBeInTheDocument();
     expect(container.container).toHaveTextContent('Allied Yacht Transport');
-    expect(container.container).toHaveTextContent('12555 Orange Drive, Suite 228');
+    expect(container.container).toHaveTextContent('12555 Orange Drive, Suite 107');
     expect(container.container).toHaveTextContent('Fort Lauderdale, FL, 33330, USA');
 
     expect(container.getByText('Phone')).toBeInTheDocument();
-    expect(container.container).toHaveTextContent('+1 954-394-4640');
+    expect(container.container).toHaveTextContent('+1 954-918-6694');
 
     expect(container.getByText('Email')).toBeInTheDocument();
-    expect(container.container).toHaveTextContent('sales@allied-yacht.com');
-    expect(container.container).toHaveTextContent('operations@allied-yacht.com');
+    expect(container.container).toHaveTextContent('CustomerService@allied-yacht.com');
   });
 });

@@ -390,11 +390,25 @@ describe('Admin on Schedules management page', () => {
       });
   });
 
-  it.only('should allow add sailing', () => {
+  it('should not allow add sailing without stops', () => {
+    cy.get('[data-testid="add-sailing-button"]').click();
+    cy.contains('Add Schedule', { timeout: 10000 });
+    cy.url().should('include', 'admin/schedule-management/sailing');
+
+    // delete first stop and try to submit
+    cy.get('[data-testid="port-delete-button"]').eq(0).click();
+    cy.contains('No stops added yet.');
+    cy.contains("Click the '+' icon to add a stop.");
+
+    cy.get('[data-testid="submit-form-button"]').click();
+    cy.url().should('include', 'admin/schedule-management/sailing');
+  });
+
+  it('should allow add sailing', () => {
     cy.get('[data-testid="add-sailing-button"]').click();
     cy.contains('Add Schedule', { timeout: 10000 });
 
-    // try submit form without data and check validation errors
+    // try to submit form without data and check validation errors
     cy.get('[data-testid="submit-form-button"]').click();
     cy.contains('Sailing name is required');
     cy.contains('Select a ship');
@@ -419,8 +433,60 @@ describe('Admin on Schedules management page', () => {
     cy.get('[data-testid="shipStops.0.portId-form-select"]').click();
     cy.contains('Fort Lauderdale, Florida').click();
     cy.get('[data-testid="shipStops.0.miles-form-text-input"]').clear().type('111').blur();
-    //cy.get('[data-testid="shipStops.0.arrivalOn-form-datepicker"]').click();
-    //cy.get('[data-testid="shipStops.0.arrivalOn-form-date-input"]').click();
+    //cy.contains('label', 'Arrival Date *').click({ force: true });
+    cy.get('[aria-label="Choose date"]').eq(0).click();
+    cy.get('button:contains("1")').eq(0).click();
+    cy.get('[aria-label="Choose date"]').eq(0).click();
+    cy.get('button:contains("3")').eq(0).click();
+
+    // add second stop
+    cy.get('[data-testid="add-shipstop-button"]').click();
+    cy.get('[data-testid="shipStops.1.portId-form-select"]').click();
+    cy.contains('Palma de Mallorca, Spain').click();
+    cy.get('[data-testid="shipStops.1.miles-form-text-input"]').clear().type('333').blur();
+    //cy.contains('label', 'Arrival Date *').click({ force: true });
+    cy.get('[aria-label="Choose date"]').eq(0).click();
+    cy.get('button:contains("5")').eq(0).click();
+    cy.get('[aria-label="Choose date"]').eq(0).click();
+    cy.get('button:contains("7")').eq(0).click();
+
+    cy.get('[data-testid="submit-form-button"]').click();
+
+    // check we on date grid
+    cy.contains('Sailing Name', { timeout: 10000 });
+
+    //  filter by sailing name and check data
+    cy.get('thead tr th')
+      .eq(0)
+      .within(() => {
+        cy.get('[aria-label="Filter by Sailing Name"]').type('Test sailing');
+      });
+
+    cy.get('tbody').within(() => {
+      cy.get('tr').should('have.length', 1, {
+        timeout: 10000
+      });
+    });
+    cy.get('tbody tr')
+      .first()
+      .within(() => {
+        cy.get('[data-testid="schedule-sailing-name"]').should('contain', 'Test sailing');
+      });
+
+    // expand row and check the ports list
+    cy.get('tbody tr')
+      .eq(0)
+      .within(() => {
+        cy.get('[data-testid="collapse-button"]').click();
+        cy.get('[data-testid="scheule-sailingt-data-expanded"]').should('be.visible');
+        cy.get('[data-testid="scheule-sailingt-data-collapsed"]').should('not.exist');
+        //cy.get('[data-testid="quote-request-request-data-expanded"]').should('contain', 'Arrival');
+        cy.contains('Arrival');
+        cy.contains('Departure');
+        cy.contains('Port');
+        cy.contains('Fort Lauderdale, Florida');
+        cy.contains('Palma de Mallorca, Spain');
+      });
   });
 
   it('should allow delete sailing', () => {

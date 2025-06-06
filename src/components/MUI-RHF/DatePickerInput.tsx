@@ -21,7 +21,7 @@ export const textFieldStyle = {
     marginLeft: '1px',
     whiteSpace: 'wrap',
     margin: '3px',
-    textWrap: 'pretty'
+    overflowWrap: 'break-word'
   }
 };
 

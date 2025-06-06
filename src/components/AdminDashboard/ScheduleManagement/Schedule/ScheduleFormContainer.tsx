@@ -83,8 +83,7 @@ export const ScheduleFormContainer = ({
 
   const handleAddStop = () => {
     const shipStops = watch('shipStops') || [];
-    shipStops.push(emptyShipStop);
-    setValue('shipStops', shipStops);
+    setValue('shipStops', [...shipStops, emptyShipStop]);
   };
 
   const handleRemoveStop = (index: number) => {

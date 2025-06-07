@@ -46,7 +46,9 @@ export const mapShipStopToForm = (shipStop: ShipStop): ShipStopForm => {
     portId: shipStop.portId.toString(),
     arrivalOn: shipStop.arrivalOn,
     departureOn: shipStop.departureOn,
-    miles: shipStop.miles
+    miles: shipStop.miles,
+    spacePrice: shipStop.spacePrice,
+    insuranceCoefficient: shipStop.insuranceCoefficient
   };
 };
 export const mapShipStopsToForm = (shipStops: ShipStop[]): ShipStopForm[] => {

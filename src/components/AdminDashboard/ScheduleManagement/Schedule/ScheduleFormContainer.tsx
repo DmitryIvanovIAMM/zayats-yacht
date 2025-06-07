@@ -59,6 +59,7 @@ export const ScheduleFormContainer = ({
     shouldUseNativeValidation: false
   });
   const { handleSubmit, formState, setValue, watch } = methods;
+  console.log('errors: ', formState.errors);
   const shipStops = watch('shipStops');
 
   const onSubmit = async (scheduleForm: ScheduleForm) => {
@@ -163,6 +164,24 @@ export const ScheduleFormContainer = ({
                         <DatePickerInput
                           name={`shipStops.${index}.departureOn`}
                           label={'Departure Date *'}
+                        />
+                      </Box>
+                      <Box sx={milesWrapperSx}>
+                        <FormTextInput
+                          name={`shipStops.${index}.spacePrice`}
+                          type="number"
+                          label="Space Price *"
+                          size="small"
+                          style={{ marginTop: '3px' }}
+                        />
+                      </Box>
+                      <Box sx={milesWrapperSx}>
+                        <FormTextInput
+                          name={`shipStops.${index}.insuranceCoefficient`}
+                          type="number"
+                          label="Insurance Coefficient *"
+                          size="small"
+                          style={{ marginTop: '3px' }}
                         />
                       </Box>
                       <Box sx={buttonWrapperSx}>

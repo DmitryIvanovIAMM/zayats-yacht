@@ -31,6 +31,10 @@ export class ShipStop {
   departurePort?: Port;
   @prop({ required: false })
   sailing?: Sailing;
+  @prop({ required: true, default: 0 })
+  spacePrice: number;
+  @prop({ required: true, default: 0 })
+  insuranceCoefficient: number;
 }
 
 export const ShipStopModel = models?.ShipStop || getModelForClass(ShipStop);

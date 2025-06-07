@@ -59,7 +59,6 @@ export const ScheduleFormContainer = ({
     shouldUseNativeValidation: false
   });
   const { handleSubmit, formState, setValue, watch } = methods;
-  console.log('errors: ', formState.errors);
   const shipStops = watch('shipStops');
 
   const onSubmit = async (scheduleForm: ScheduleForm) => {

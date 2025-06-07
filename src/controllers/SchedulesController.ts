@@ -198,7 +198,9 @@ const createAndStoreNewShipStops = async (
               sortedShipStopsForm[index - 1].departureOn
             )
           : 0,
-      daysInPort: datesDifferenceInDays(formShipStop.arrivalOn, formShipStop.departureOn)
+      daysInPort: datesDifferenceInDays(formShipStop.arrivalOn, formShipStop.departureOn),
+      spacePrice: formShipStop.spacePrice,
+      insuranceCoefficient: formShipStop.insuranceCoefficient
     };
     return newShipStop;
   });

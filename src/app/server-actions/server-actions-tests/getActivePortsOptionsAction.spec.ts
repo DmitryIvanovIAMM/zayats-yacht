@@ -2,9 +2,8 @@
  * @jest-environment node
  */
 
-import { getPortsInRoutesAction } from '@/app/server-actions/serverActions';
+import { getActivePortsOptionsAction } from '@/app/server-actions/serverActions';
 import InMemoryDBRunner from '@/modules/mongoose/InMemoryDBRunner';
-import { mapPortsToFrontend } from '@/models/mappers';
 import {
   colonPort,
   ensenadaPort,
@@ -13,12 +12,14 @@ import {
   genoaPort,
   golfitoPort,
   hongKongPort,
+  laPazPort,
   palmaDeMallorcaPort,
+  palmBeachPort,
   tortolaPort,
   victoriaPort
 } from '@/test-data/seedData';
 
-describe('getPortsInRoutesAction() action', () => {
+describe('getActivePortsOptionsAction() action', () => {
   const inMemoryDBRunner = new InMemoryDBRunner();
 
   beforeAll(async () => {
@@ -31,10 +32,10 @@ describe('getPortsInRoutesAction() action', () => {
     await inMemoryDBRunner.closeDatabase();
   });
 
-  it('should return list of ports that used in active routes', async () => {
-    const result = await getPortsInRoutesAction();
+  it('should return active ports options', async () => {
+    const result = await getActivePortsOptionsAction();
 
-    const usedPorts = [
+    const ports = [
       fortLauderdalePort,
       palmaDeMallorcaPort,
       genoaPort,
@@ -44,13 +45,18 @@ describe('getPortsInRoutesAction() action', () => {
       ensenadaPort,
       golfitoPort,
       tortolaPort,
-      colonPort
+      colonPort,
+      palmBeachPort,
+      laPazPort
     ];
-    const ports = mapPortsToFrontend(usedPorts);
+    const portsOptions: Record<string, string> = {};
+    ports.forEach((port) => {
+      portsOptions[port._id.toString()] = port.portName;
+    });
 
     expect(result).toEqual({
       success: true,
-      data: ports
+      data: portsOptions
     });
   });
 });

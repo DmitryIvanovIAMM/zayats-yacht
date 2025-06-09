@@ -5,7 +5,10 @@ import { Destination, PortFrontend } from '@/models/PortFrontend';
 import { Types } from 'mongoose';
 import { ScheduleSectionProps } from '@/components/Schedule/Schedule';
 import { ShipsParametersFlat } from '@/models/types';
-import { getSchedulesAction, queryNearestShippingsAction } from '@/app/serverActions';
+import {
+  getSchedulesAction,
+  queryNearestShippingsAction
+} from '@/app/server-actions/serverActions';
 
 export const emptyPortErrors = {
   departurePortId: '',

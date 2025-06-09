@@ -14,7 +14,7 @@ import {
   ConfirmationModal,
   defaultConfirmationModalProps
 } from '@/components/ConfirmationModal/ConfirmationModal';
-import { deleteShipByAdminAction } from '@/app/serverActions';
+import { deleteShipByAdminAction } from '@/app/server-actions/serverActions';
 
 export const AdminShips = () => {
   const [isUpdating, setIsUpdating] = useState(false);

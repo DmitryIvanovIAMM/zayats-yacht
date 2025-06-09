@@ -1,4 +1,4 @@
-import { getPortsInRoutesAction } from '@/app/serverActions';
+import { getPortsInRoutesAction } from '@/app/server-actions/serverActions';
 
 export async function GET() {
   // use server action to get data  from backend

@@ -8,7 +8,7 @@ import {
 } from '@/components/Table/tableUtils';
 import { showNotification } from '@/modules/notifications/notifications';
 import { Messages } from '@/helpers/messages';
-import { getBackendDataByAdminAction } from '@/app/serverActions';
+import { getBackendDataByAdminAction } from '@/app/server-actions/serverActions';
 
 export interface DataState<D> {
   data: TableData<D>;

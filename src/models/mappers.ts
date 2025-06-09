@@ -12,6 +12,7 @@ import {
   ScheduleForm,
   ShipStopForm
 } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
+import { PortForm } from '@/components/AdminDashboard/AdminPorts/Port/types';
 
 export const mapPortToFrontend = (ports: Port): PortFrontend => {
   return {
@@ -23,6 +24,17 @@ export const mapPortToFrontend = (ports: Port): PortFrontend => {
 };
 export const mapPortsToFrontend = (ports: Port[]): PortFrontend[] => {
   return ports.map((port) => mapPortToFrontend(port));
+};
+
+export const mapPortToForm = (port: Port): PortForm => {
+  return {
+    portName: port.portName,
+    destinationName: port.destinationName,
+    imageFileName: port.imageFileName
+  };
+};
+export const mapPortsToForm = (ports: Port[]): PortForm[] => {
+  return ports.map((port) => mapPortToForm(port));
 };
 
 export const mapShipStopToFrontend = (shipStop: ShipStop): ShipStopFrontend => {

@@ -36,9 +36,9 @@ class InMemoryDBRunner {
   // https://github.com/nodkz/mongodb-memory-server#travis
   // https://github.com/integrations/slack/pull/895
   public closeDatabase = async () => {
-    await mongoose.connection.dropDatabase();
+    await mongoose.connection?.dropDatabase();
     await Promise.all(mongoose.connections.map((con) => con.close()));
-    await mongoose.connection.close();
+    await mongoose.connection?.close();
     await mongoose.disconnect();
     await this.mongod.stop();
     return;

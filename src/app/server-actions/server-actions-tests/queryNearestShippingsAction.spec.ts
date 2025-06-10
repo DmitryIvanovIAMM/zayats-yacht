@@ -81,6 +81,8 @@ describe('queryNearestShippingsAction()', () => {
   });
 
   it('should return the same 3 shippings as for current date if no date accepted', async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const result = await queryNearestShippingsAction(null);
 
     expect(result).toEqual({

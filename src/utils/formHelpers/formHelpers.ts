@@ -80,3 +80,15 @@ export const getMergedFormValues = <M, A = Record<string, any>>(
     ...filteredApiValues
   } as M;
 };
+
+export const getValidationErrorsAsObject = (yupError: yup.ValidationError[]) => {
+  const errors = {};
+
+  yupError.forEach((element) => {
+    const path = element.path;
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    errors[path] ? errors[path].push(element.message) : (errors[path] = [element.message]);
+  });
+
+  return errors;
+};

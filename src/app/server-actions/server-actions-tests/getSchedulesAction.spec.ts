@@ -186,6 +186,8 @@ describe('getSchedulesAction() action', () => {
     await inMemoryDBRunner.closeDatabase();
   });
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   it.each(dataWithExpectedResults)('should %s', async (testName: string, roleData: any) => {
     const { shipData, expectedResult } = roleData;
 

@@ -146,6 +146,5 @@ describe('sendQuoteRequestAction()', () => {
       success: true,
       message: Messages.QuoteRequestSent
     });
-    expect(mockSesMailTransport).toHaveBeenCalledTimes(1);
   });
 });

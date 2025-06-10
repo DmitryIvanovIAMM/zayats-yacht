@@ -20,7 +20,9 @@ export const comparatorByFirstDepartureOnDateString = (route1: ShipStop[]) => {
   return compareDate(route1[0].departureOn, route1[0].departureOn);
 };
 
-export const isDate = (date: Date | string): boolean => {
+export const isDate = (date: Date | string | null | undefined): boolean => {
+  if (!date) return false;
+
   const d = new Date(date);
   return d instanceof Date && !isNaN(d.getTime());
 };

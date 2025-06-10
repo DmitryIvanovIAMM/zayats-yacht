@@ -38,7 +38,9 @@ export const RouteTable = ({ shipStops = [] }: RouteTableProps) => {
               <TableCell style={{ ...cellStyle, width: '30%' }}>
                 {formatInLongMonthDayYear(shipStop.departureOn)}
               </TableCell>
-              <TableCell style={{ ...cellStyle, width: '40%' }}>{shipStop.port.portName}</TableCell>
+              <TableCell style={{ ...cellStyle, width: '40%' }}>
+                {shipStop.departurePort.portName}
+              </TableCell>
             </TableRow>
           ))}
         </>

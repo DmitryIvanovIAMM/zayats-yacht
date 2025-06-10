@@ -40,7 +40,6 @@ export const getPortsInRoutes = async () => {
 export const getActivePortsOptions = async (): Promise<ActionData<Record<string, string>>> => {
   try {
     const ports: Port[] = await portService.getActivePorts();
-    console.log('ports: ', ports);
     const portsOptions: Record<string, string> = {};
     ports.forEach((port) => {
       portsOptions[port._id.toString()] = port.portName;

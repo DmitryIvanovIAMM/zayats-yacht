@@ -1,4 +1,4 @@
-import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
+import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
 import { useEffect, useState } from 'react';
 import { addMinutes, MonthDateRange } from '@/utils/date-time';
 import { Destination, PortFrontend } from '@/models/PortFrontend';
@@ -26,7 +26,7 @@ export interface PortSchedulesState {
   isLoadingSchedule: boolean;
   destinationIndex: number | null;
   errors: any;
-  schedules: ShipStopWithSailingAndPort[][];
+  schedules: ShipStopWithSailingAndPortFrontend[][];
   errorMessage: string | null;
   isFirstRender: boolean;
 }
@@ -106,7 +106,7 @@ export const useSchedulesLoader = ({ ports, schedules }: ScheduleSectionProps) =
         const schedules = await queryNearestShippingsAction(new Date());
         return setSchedulesState((schedulesState) => ({
           ...schedulesState,
-          schedules: schedules as unknown as ShipStopWithSailingAndPort[][],
+          schedules: schedules as unknown as ShipStopWithSailingAndPortFrontend[][],
           isLoadingSchedule: false
         }));
       };

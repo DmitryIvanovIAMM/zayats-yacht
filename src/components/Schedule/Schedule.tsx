@@ -7,14 +7,14 @@ import PortSelector from '@/components/PortSelector/PortSelector';
 import { centeredSectionExtendedSx, centerItemSivStyle } from '@/components/AboutUs/AboutUs';
 import { PortFrontend } from '@/models/PortFrontend';
 import MonthPicker from '@/components/MonthPicker/MonthPicker';
-import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
+import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
 import { useSchedulesLoader } from '@/components/Schedule/useSchedulesLoader';
 import RoutesList from '@/components/RoutesList/RoutesList';
 import { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
 
 export interface ScheduleSectionProps {
   ports: PortFrontend[];
-  schedules: ShipStopWithSailingAndPort[][];
+  schedules: ShipStopWithSailingAndPortFrontend[][];
 }
 
 const ScheduleSection: React.FC<ScheduleSectionProps> = ({
@@ -39,7 +39,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
     // eslint-disable-next-line no-console
     console.log('handleStoreUserSelection().  selectedRoute: ', selectedRoute);
   };
-  const handleShareRoute = (selectedRoute: ShipStopWithSailingAndPort[]) => {
+  const handleShareRoute = (selectedRoute: ShipStopWithSailingAndPortFrontend[]) => {
     // eslint-disable-next-line no-console
     console.log('handleShareRoute().  selectedRoute: ', selectedRoute);
   };

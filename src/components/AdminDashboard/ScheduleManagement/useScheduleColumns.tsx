@@ -110,9 +110,9 @@ export const useScheduleColumns = ({
                 </div>
               ) : (
                 <div data-testid="scheule-sailingt-data-collapsed">
-                  {`${formatInLongMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].port.portName} `}
+                  {`${formatInLongMonthDayYear(row.original.shipStops[0].arrivalOn)}, ${row.original.shipStops[0].departurePort.portName} `}
                   -
-                  {` ${formatInLongMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].port.portName}`}
+                  {` ${formatInLongMonthDayYear(row.original.shipStops[row.original.shipStops.length - 1].departureOn)}, ${row.original.shipStops[row.original.shipStops.length - 1].departurePort.portName}`}
                 </div>
               )}
               <div>

@@ -20,7 +20,7 @@ import {
 } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
-import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
+import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
 import {
   addSchedule,
   deleteSailing,
@@ -73,12 +73,12 @@ export async function getActiveShipsOptionsAction(): Promise<ActionData<Record<s
 
 export async function queryNearestShippingsAction(
   date: Date | string
-): Promise<ActionData<ShipStopWithSailingAndPort[][]>> {
+): Promise<ActionData<ShipStopWithSailingAndPortFrontend[][]>> {
   try {
     const schedule = await queryNearestShippings(date);
     return {
       success: true,
-      data: schedule as unknown as ShipStopWithSailingAndPort[][]
+      data: schedule as unknown as ShipStopWithSailingAndPortFrontend[][]
     };
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -89,12 +89,12 @@ export async function queryNearestShippingsAction(
 
 export async function getSchedulesAction(
   shipData: ShipsParametersFlat
-): Promise<ActionData<ShipStopWithSailingAndPort[][]>> {
+): Promise<ActionData<ShipStopWithSailingAndPortFrontend[][]>> {
   try {
     const schedules = await getSchedules(shipData);
     return {
       success: true,
-      data: schedules as unknown as ShipStopWithSailingAndPort[][]
+      data: schedules as unknown as ShipStopWithSailingAndPortFrontend[][]
     };
   } catch (error) {
     // eslint-disable-next-line no-console

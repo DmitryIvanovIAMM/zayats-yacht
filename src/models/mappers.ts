@@ -1,8 +1,12 @@
 import { Port } from '@/models/Port';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Sailing, SailingWithShipStop, SailingWithShipStopAndPort } from '@/models/Sailing';
-import { ShipStop, ShipStopWithPort } from '@/models/ShipStop';
-import { ShipStopFrontend, ShipStopWithPortFrontend } from '@/models/ShipStopFrontend';
+import { ShipStop, ShipStopWithPort, ShipStopWithSailingAndPort } from '@/models/ShipStop';
+import {
+  ShipStopFrontend,
+  ShipStopWithPortFrontend,
+  ShipStopWithSailingAndPortFrontend
+} from '@/models/ShipStopFrontend';
 import { SailingFrontend, SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
 import { QuoteRequest } from '@/models/QuoteRequest';
 import { QuoteRequestFrontend } from '@/models/QuoteRequestFrontend';
@@ -78,7 +82,7 @@ export const mapShipStopWithPortToFrontend = (
     miles: shipStop.miles,
     daysAtSea: shipStop.daysAtSea,
     daysInPort: shipStop.daysInPort,
-    port: mapPortToFrontend(shipStop.port)
+    departurePort: mapPortToFrontend(shipStop.departurePort)
   };
 };
 export const mapShipStopsWithPortToFrontend = (
@@ -87,15 +91,45 @@ export const mapShipStopsWithPortToFrontend = (
   return shipStops.map((shipStop) => mapShipStopWithPortToFrontend(shipStop));
 };
 
+export const mapShipStopWithPortAndSailingToFrontend = (
+  shipStop: ShipStopWithSailingAndPort
+): ShipStopWithSailingAndPortFrontend => {
+  return {
+    _id: shipStop?._id.toString(),
+    sailingId: shipStop.sailingId.toString(),
+    portId: shipStop.portId.toString(),
+    shipId: shipStop.shipId.toString(),
+    arrivalOn: shipStop.arrivalOn.toISOString(),
+    departureOn: shipStop.departureOn.toISOString(),
+    miles: shipStop.miles,
+    daysAtSea: shipStop.daysAtSea,
+    daysInPort: shipStop.daysInPort,
+    departurePort: mapPortToFrontend(shipStop.departurePort),
+    sailing: mapSailingToFrontend(shipStop.sailing)
+  };
+};
+export const mapShipStopsWithPortAndSailingToFrontend = (
+  shipStops: ShipStopWithSailingAndPort[]
+): ShipStopWithSailingAndPortFrontend[] => {
+  return shipStops.map((shipStop) => mapShipStopWithPortAndSailingToFrontend(shipStop));
+};
+export const mapShipStopsArrayWithPortAndSailingToFrontend = (
+  shipStops: ShipStopWithSailingAndPort[][]
+): ShipStopWithSailingAndPortFrontend[][] => {
+  return shipStops.map((shipStopArray) =>
+    shipStopArray.map((shipStop) => mapShipStopWithPortAndSailingToFrontend(shipStop))
+  );
+};
+
 export const mapSailingToFrontend = (sailing: Sailing): SailingFrontend => {
   return {
     _id: sailing._id.toString(),
     name: sailing.name,
-    isActive: sailing.isActive,
-    createdAt: sailing?.createdAt?.toISOString() ?? null,
-    updatedAt: sailing?.updatedAt?.toISOString() ?? null,
-    deletedAt: sailing?.deletedAt?.toISOString() ?? null
-  };
+    isActive: sailing.isActive
+    //createdAt: sailing?.createdAt?.toISOString() ?? null,
+    //updatedAt: sailing?.updatedAt?.toISOString() ?? null,
+    //deletedAt: sailing?.deletedAt?.toISOString() ?? null
+  } as SailingFrontend;
 };
 export const mapSailingsToFrontend = (sailings: Sailing[]): SailingFrontend[] => {
   return sailings.map((sailing) => mapSailingToFrontend(sailing));

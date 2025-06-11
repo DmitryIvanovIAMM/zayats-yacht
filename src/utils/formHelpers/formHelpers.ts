@@ -3,6 +3,8 @@
 import { isObject } from 'lodash';
 import { isValidDate } from '@/utils/date-time';
 
+export const DEFAULT_PORT_IMAGE = 'FortLauderdale.jpg'; // Default image name for ports
+
 export const getFormAsFormData = <T>(values: T, fieldsToOmit: string[]): FormData => {
   const formData = new FormData();
 

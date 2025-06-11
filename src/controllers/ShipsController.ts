@@ -101,6 +101,18 @@ export const updateShip = async (
   shipForm: ShipForm & { _id: string }
 ): Promise<ActionResult> => {
   try {
+    await shipSchema.validate(shipForm, { abortEarly: false });
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    const errorsObject = getValidationErrorsAsObject(error.inner);
+    return {
+      success: false,
+      message: Messages.ValidationError,
+      data: errorsObject
+    };
+  }
+
+  try {
     const Ship: Ship = {
       _id: new Types.ObjectId(shipForm._id),
       name: shipForm.name,

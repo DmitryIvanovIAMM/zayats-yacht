@@ -4,11 +4,12 @@ import { Ship } from '@/models/Ship';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { mapShipsToFrontend, mapShipToForm } from '@/models/mappers';
 import { shipService } from '@/services/ShipService';
-import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
+import { ShipForm, shipSchema } from '@/components/AdminDashboard/AdminShips/Ship/types';
 import { ActionData, ActionResult } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { User } from '@/models/User';
 import { Types } from 'mongoose';
+import { getValidationErrorsAsObject } from '@/utils/formHelpers/formHelpers';
 
 export const getAllShips = async () => {
   return shipService.getAllShips();
@@ -62,6 +63,18 @@ export const getShip = async (user: User, _id: string): Promise<ActionData<ShipF
 };
 
 export const addShip = async (user: User, shipForm: ShipForm): Promise<ActionResult> => {
+  try {
+    await shipSchema.validate(shipForm, { abortEarly: false });
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    const errorsObject = getValidationErrorsAsObject(error.inner);
+    return {
+      success: false,
+      message: Messages.ValidationError,
+      data: errorsObject
+    };
+  }
+
   try {
     const Ship: Ship = {
       _id: new Types.ObjectId(),

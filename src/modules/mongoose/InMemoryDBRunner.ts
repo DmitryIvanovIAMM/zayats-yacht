@@ -20,10 +20,11 @@ class InMemoryDBRunner {
       await this.mongod.start();
       const uri = await this.mongod.getUri();
 
-      const mongooseOptions = {
-        //useNewUrlParser: true
-      };
+      const mongooseOptions = {};
       await mongoose.connect(uri, mongooseOptions);
+      // eslint-disable-next-line no-console
+      console.log('Connected to in-memory MongoDB:', uri);
+      return;
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Cannot connect to in-memory mongodb:', error);

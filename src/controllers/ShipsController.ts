@@ -87,7 +87,7 @@ export const addShip = async (user: User, shipForm: ShipForm): Promise<ActionRes
       imoNo: shipForm.imoNo,
       callSign: shipForm.callSign
     };
-    shipService.addShipInDB(Ship);
+    await shipService.addShipInDB(Ship);
     return { success: true, message: Messages.ShipAddedSuccessfully };
   } catch (error: any) {
     // eslint-disable-next-line no-console

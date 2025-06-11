@@ -199,3 +199,19 @@ export const mapShipToFrontend = (ship: Ship): ShipFrontend => {
 export const mapShipsToFrontend = (ships: Ship[]): ShipFrontend[] => {
   return ships.map((ship) => mapShipToFrontend(ship));
 };
+export const mapShipToForm = (ship: Ship): ShipFrontend => {
+  return {
+    _id: ship._id.toString(),
+    name: ship.name,
+    type: ship.type,
+    builder: ship.builder,
+    flag: ship.flag,
+    homePort: ship.homePort,
+    class: ship.class,
+    imoNo: ship.imoNo,
+    callSign: ship.callSign
+  };
+};
+export const mapShipsToForm = (ships: Ship[]): ShipFrontend[] => {
+  return ships.map((ship) => mapShipToForm(ship));
+};

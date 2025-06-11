@@ -2,7 +2,7 @@
 
 import { Ship } from '@/models/Ship';
 import { BackendDataFetchArgs } from '@/components/Table/types';
-import { mapShipsToFrontend } from '@/models/mappers';
+import { mapShipsToFrontend, mapShipToForm } from '@/models/mappers';
 import { shipService } from '@/services/ShipService';
 import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
 import { ActionData, ActionResult } from '@/utils/types';
@@ -52,17 +52,8 @@ export const getShip = async (user: User, _id: string): Promise<ActionData<ShipF
     if (!ship) {
       return { success: false, message: Messages.ShipNotFound, data: null };
     }
-    const shipForm: ShipForm = {
-      name: ship.name,
-      type: ship.type,
-      builder: ship.builder,
-      flag: ship.flag,
-      homePort: ship.homePort,
-      class: ship.class,
-      imoNo: ship.imoNo,
-      callSign: ship.callSign
-    };
-    return { success: true, data: shipForm };
+
+    return { success: true, data: mapShipToForm(ship) };
   } catch (error: any) {
     // eslint-disable-next-line no-console
     console.log('Error while fetching ship: ', error);

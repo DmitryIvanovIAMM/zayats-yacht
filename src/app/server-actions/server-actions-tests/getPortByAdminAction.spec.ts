@@ -55,23 +55,6 @@ describe('getPortByAdminAction() action', () => {
     });
   });
 
-  it('should return port data for for correct portId and admin user', async () => {
-    const portId = fortLauderdalePort._id.toString();
-
-    mockGetServerSession.mockImplementationOnce(() => {
-      return { user: mockAdminUser, expires: expiresOneHourFromNow };
-    });
-
-    const result = await getPortByAdminAction(portId);
-
-    const successResult = {
-      success: true,
-      data: mapPortToForm(fortLauderdalePort)
-    };
-
-    expect(result).toEqual(successResult);
-  });
-
   it('should return not authorized error for non-admin user', async () => {
     const nonAdminUser = {
       name: customer2.name,
@@ -105,5 +88,22 @@ describe('getPortByAdminAction() action', () => {
       message: Messages.PortNotFound,
       data: null
     });
+  });
+
+  it('should return port data for for correct portId and admin user', async () => {
+    const portId = fortLauderdalePort._id.toString();
+
+    mockGetServerSession.mockImplementationOnce(() => {
+      return { user: mockAdminUser, expires: expiresOneHourFromNow };
+    });
+
+    const result = await getPortByAdminAction(portId);
+
+    const successResult = {
+      success: true,
+      data: mapPortToForm(fortLauderdalePort)
+    };
+
+    expect(result).toEqual(successResult);
   });
 });

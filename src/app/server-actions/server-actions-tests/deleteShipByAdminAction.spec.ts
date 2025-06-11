@@ -2,10 +2,10 @@
  * @jest-environment node
  */
 
-import { addShipByAdminAction } from '@/app/server-actions/serverActions';
+import { Types } from 'mongoose';
+import { deleteShipByAdminAction } from '@/app/server-actions/serverActions';
 import InMemoryDBRunner from '@/modules/mongoose/InMemoryDBRunner';
-import { customer2, yachtAdmin } from '@/test-data/seedData';
-import { ShipForm } from '@/components/AdminDashboard/AdminShips/Ship/types';
+import { customer2, yachtAdmin, industrialShip } from '@/test-data/seedData';
 import { Messages } from '@/helpers/messages';
 
 const mockAdminUser = {
@@ -23,34 +23,13 @@ const mockGetServerSession = jest.fn(() => ({
   },
   expires: expiresOneHourFromNow
 }));
-
 jest.mock('next-auth/next', () => ({
   getServerSession: () => mockGetServerSession()
 }));
 
-const correctShipData: ShipForm = {
-  name: 'New Ship',
-  type: 'Cargo',
-  builder: 'Ship Builder Inc.',
-  flag: 'USA',
-  homePort: 'Miami',
-  class: 'Lloyds Register',
-  imoNo: '1234567',
-  callSign: 'ABC123'
-};
+const shipId = industrialShip._id.toString();
 
-const incorrectShipData: ShipForm = {
-  name: '',
-  type: '',
-  builder: '',
-  flag: '',
-  homePort: '',
-  class: '',
-  imoNo: '',
-  callSign: ''
-};
-
-describe('addShipByAdminAction() action', () => {
+describe('deleteShipByAdminAction() action', () => {
   const inMemoryDBRunner = new InMemoryDBRunner();
 
   beforeAll(async () => {
@@ -70,7 +49,7 @@ describe('addShipByAdminAction() action', () => {
     // @ts-expect-error
     mockGetServerSession.mockImplementationOnce(() => null);
 
-    const result = await addShipByAdminAction(correctShipData);
+    const result = await deleteShipByAdminAction(shipId);
 
     expect(result).toEqual({
       success: false,
@@ -84,12 +63,12 @@ describe('addShipByAdminAction() action', () => {
       email: customer2.email,
       image: customer2.role as string
     };
-    mockGetServerSession.mockImplementationOnce(() => ({
+    mockGetServerSession.mockReturnValueOnce({
       user: nonAdminUser,
       expires: expiresOneHourFromNow
-    }));
+    });
 
-    const result = await addShipByAdminAction(correctShipData);
+    const result = await deleteShipByAdminAction(new Types.ObjectId().toString());
 
     expect(result).toEqual({
       success: false,
@@ -97,42 +76,32 @@ describe('addShipByAdminAction() action', () => {
     });
   });
 
-  it('should return validation error for incorrect ship data', async () => {
-    mockGetServerSession.mockImplementationOnce(() => ({
+  it('should silently return success if ship not found', async () => {
+    const shipId = new Types.ObjectId().toString(); // Non-existing ship ID
+    mockGetServerSession.mockReturnValueOnce({
       user: mockAdminUser,
       expires: expiresOneHourFromNow
-    }));
-
-    const result = await addShipByAdminAction(incorrectShipData);
-
-    const expectedErrors = {
-      name: ['Name is required'],
-      type: ['Type is required'],
-      builder: ['Builder is required'],
-      flag: ['Flag is required'],
-      homePort: ['Home Port is required'],
-      class: ['Class is required'],
-      imoNo: ['IMO No is required'],
-      callSign: ['Call Sign is required']
-    };
-    expect(result).toEqual({
-      success: false,
-      message: Messages.ValidationError,
-      data: expectedErrors
     });
-  });
 
-  it('should successfully add a new ship for admin user', async () => {
-    mockGetServerSession.mockImplementationOnce(() => ({
-      user: mockAdminUser,
-      expires: expiresOneHourFromNow
-    }));
-
-    const result = await addShipByAdminAction(correctShipData);
+    const result = await deleteShipByAdminAction(shipId);
 
     expect(result).toEqual({
       success: true,
-      message: Messages.ShipAddedSuccessfully
+      message: Messages.ShipDeletedSuccessfully
+    });
+  });
+
+  it('should delete ship successfully for admin user', async () => {
+    mockGetServerSession.mockReturnValueOnce({
+      user: mockAdminUser,
+      expires: expiresOneHourFromNow
+    });
+
+    const result = await deleteShipByAdminAction(shipId);
+
+    expect(result).toEqual({
+      success: true,
+      message: Messages.ShipDeletedSuccessfully
     });
   });
 });

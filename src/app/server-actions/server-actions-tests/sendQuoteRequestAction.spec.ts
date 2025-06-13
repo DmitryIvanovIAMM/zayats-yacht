@@ -107,7 +107,7 @@ describe('sendQuoteRequestAction()', () => {
     });
   });
 
-  it('should send quote request successfully foe user role', async () => {
+  it('should send quote request successfully for user role', async () => {
     const nonAdminUser = {
       name: customer2.name,
       email: customer2.email,

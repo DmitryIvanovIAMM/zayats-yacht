@@ -71,7 +71,7 @@ describe('queryNearestShippingsAction()', () => {
     await inMemoryDBRunner.closeDatabase();
   });
 
-  it('should return 3 nearest shippings for daye', async () => {
+  it('should return 3 nearest shippings for date', async () => {
     const result = await queryNearestShippingsAction(new Date());
 
     expect(result).toEqual({

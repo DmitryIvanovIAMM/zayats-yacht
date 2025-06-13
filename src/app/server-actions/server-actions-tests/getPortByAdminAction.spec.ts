@@ -41,7 +41,7 @@ describe('getPortByAdminAction() action', () => {
     await inMemoryDBRunner.closeDatabase();
   });
 
-  it('should return unauthorized error for non-authenticated user', async () => {
+  it('should return error for non-authenticated user', async () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     mockGetServerSession.mockImplementationOnce(() => null);

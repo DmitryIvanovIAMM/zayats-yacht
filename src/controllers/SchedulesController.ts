@@ -239,14 +239,14 @@ export const getSchedule = async (
 ): Promise<ActionData<ScheduleForm>> => {
   try {
     const sailingWithShipStops = await scheduleService.querySailingWithShipStops(sailingId);
+    console.log('sailingWithShipStops: ', sailingWithShipStops);
     if (!sailingWithShipStops) {
       return { success: false, data: defaultScheduleFormValues, message: Messages.SailingNotFound };
     }
 
     return {
       success: true,
-      data: mapSailingWithShipStopToFrontend(sailingWithShipStops),
-      message: Messages.SailingNotFound
+      data: mapSailingWithShipStopToFrontend(sailingWithShipStops)
     };
   } catch (error: any) {
     return {

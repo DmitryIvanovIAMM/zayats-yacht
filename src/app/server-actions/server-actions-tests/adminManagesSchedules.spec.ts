@@ -479,11 +479,6 @@ describe('admin manages schedules', () => {
     });
 
     it('should return unauthorized error for non-admin user', async () => {
-      const nonAdminUser = {
-        name: customer2.name,
-        email: customer2.email,
-        image: customer2.role as string
-      };
       mockGetServerSession.mockImplementationOnce(() => ({
         user: nonAdminUser,
         expires: expiresOneHourFromNow
@@ -500,13 +495,8 @@ describe('admin manages schedules', () => {
     });
 
     it('should return error for wrong sailingUd', async () => {
-      const adminUser = {
-        name: yachtAdmin.name,
-        email: yachtAdmin.email,
-        image: yachtAdmin.role as string
-      };
       mockGetServerSession.mockImplementationOnce(() => ({
-        user: adminUser,
+        user: mockAdminUser,
         expires: expiresOneHourFromNow
       }));
 
@@ -522,13 +512,8 @@ describe('admin manages schedules', () => {
     });
 
     it('should return silently return success non-existed sailingUd', async () => {
-      const adminUser = {
-        name: yachtAdmin.name,
-        email: yachtAdmin.email,
-        image: yachtAdmin.role as string
-      };
       mockGetServerSession.mockImplementationOnce(() => ({
-        user: adminUser,
+        user: mockAdminUser,
         expires: expiresOneHourFromNow
       }));
 
@@ -547,13 +532,8 @@ describe('admin manages schedules', () => {
       const sailing = await SailingModel.findById(grandPrixSailingId);
       expect(sailing.isActive).toBe(true);
 
-      const adminUser = {
-        name: yachtAdmin.name,
-        email: yachtAdmin.email,
-        image: yachtAdmin.role as string
-      };
       mockGetServerSession.mockImplementationOnce(() => ({
-        user: adminUser,
+        user: mockAdminUser,
         expires: expiresOneHourFromNow
       }));
 

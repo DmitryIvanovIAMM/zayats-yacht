@@ -75,10 +75,10 @@ export async function queryNearestShippingsAction(
   date: Date | string
 ): Promise<ActionData<ShipStopWithSailingAndPortFrontend[][]>> {
   try {
-    const schedule = await queryNearestShippings(date);
+    const schedule: ShipStopWithSailingAndPortFrontend[][] = await queryNearestShippings(date);
     return {
       success: true,
-      data: schedule as unknown as ShipStopWithSailingAndPortFrontend[][]
+      data: schedule
     };
   } catch (error) {
     // eslint-disable-next-line no-console

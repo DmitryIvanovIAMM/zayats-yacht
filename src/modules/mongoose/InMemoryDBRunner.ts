@@ -15,6 +15,15 @@ class InMemoryDBRunner {
     }
   };
 
+  public reloadTestData = async () => {
+    try {
+      await testDataLoader();
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Failed to load test data: ', error);
+    }
+  };
+
   public connectToInMemoryDBServer = async () => {
     try {
       await this.mongod.start();

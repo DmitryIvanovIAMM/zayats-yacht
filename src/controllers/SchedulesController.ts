@@ -230,6 +230,18 @@ export const updateSchedule = async (
   scheduleForm: ScheduleForm
 ): Promise<ActionResult> => {
   try {
+    await scheduleSchema.validate(scheduleForm, { abortEarly: false });
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    const errorsObject = getValidationErrorsAsObject(error.inner);
+    return {
+      success: false,
+      message: Messages.ValidationError,
+      data: errorsObject
+    };
+  }
+
+  try {
     await scheduleService.updateSailingNameAndShip(sailingId, scheduleForm.name);
     await scheduleService.deleteShipStopsBySailingId(sailingId);
 

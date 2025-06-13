@@ -20,7 +20,7 @@ import {
 } from '@/utils/types';
 import { PortFrontend } from '@/models/PortFrontend';
 import { Messages } from '@/helpers/messages';
-import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
+import type { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
 import {
   addSchedule,
   deleteSailing,

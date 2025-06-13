@@ -25,7 +25,6 @@ import {
 import { Types } from 'mongoose';
 import { Sailing } from '@/models/Sailing';
 import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
-import { shipSchema } from '@/components/AdminDashboard/AdminShips/Ship/types';
 import { getValidationErrorsAsObject } from '@/utils/formHelpers/formHelpers';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
@@ -254,7 +253,6 @@ export const getSchedule = async (
 ): Promise<ActionData<ScheduleForm>> => {
   try {
     const sailingWithShipStops = await scheduleService.querySailingWithShipStops(sailingId);
-    console.log('sailingWithShipStops: ', sailingWithShipStops);
     if (!sailingWithShipStops) {
       return { success: false, data: defaultScheduleFormValues, message: Messages.SailingNotFound };
     }

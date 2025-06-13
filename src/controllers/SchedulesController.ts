@@ -19,11 +19,14 @@ import { User } from '@/models/User';
 import {
   defaultScheduleFormValues,
   ScheduleForm,
+  scheduleSchema,
   ShipStopForm
 } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 import { Types } from 'mongoose';
 import { Sailing } from '@/models/Sailing';
 import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
+import { shipSchema } from '@/components/AdminDashboard/AdminShips/Ship/types';
+import { getValidationErrorsAsObject } from '@/utils/formHelpers/formHelpers';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
@@ -168,6 +171,18 @@ export const addSchedule = async (
   user: User,
   scheduleForm: ScheduleForm
 ): Promise<ActionResult> => {
+  try {
+    await scheduleSchema.validate(scheduleForm, { abortEarly: false });
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    const errorsObject = getValidationErrorsAsObject(error.inner);
+    return {
+      success: false,
+      message: Messages.ValidationError,
+      data: errorsObject
+    };
+  }
+
   try {
     const newSailing: Sailing = await scheduleService.createSailingByName(scheduleForm.name);
     await createAndStoreNewShipStops(newSailing._id, scheduleForm.shipId, scheduleForm.shipStops);

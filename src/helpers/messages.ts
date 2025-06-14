@@ -50,5 +50,6 @@ export enum Messages {
   FailedAddSchedule = 'Failed to add schedule',
   ScheduleAddedSuccessfully = 'Schedule added successfully',
   FailedUpdateSchedule = 'Failed to update schedule',
-  ScheduleUpdatedSuccessfully = 'Schedule updated successfully'
+  ScheduleUpdatedSuccessfully = 'Schedule updated successfully',
+  ValidationError = 'Validation error'
 }

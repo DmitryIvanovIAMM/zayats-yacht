@@ -4,7 +4,7 @@ import {
   getActivePortsOptionsAction,
   getActiveShipsOptionsAction,
   getScheduleByAdminAction
-} from '@/app/serverActions';
+} from '@/app/server-actions/serverActions';
 import { FormMode } from '@/utils/types';
 import { defaultScheduleFormValues } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 import NotFound from '@/components/NotFound/NotFound';

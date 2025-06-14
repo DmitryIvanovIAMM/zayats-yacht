@@ -1,6 +1,6 @@
 'use server';
 
-import { fileTypeFromBuffer } from 'file-type';
+import { fromBuffer } from 'file-type';
 import {
   DeleteObjectCommand,
   PutObjectCommand,
@@ -28,7 +28,7 @@ const generatePutCommand = async (
   name: string,
   bucketDir: string
 ) => {
-  const type = await fileTypeFromBuffer(buffer);
+  const type = await fromBuffer(buffer);
   const contentType = type ? type.mime : '';
   const key = type ? `${bucketDir}/${name}.${type.ext}` : `${bucketDir}/${name}`;
 

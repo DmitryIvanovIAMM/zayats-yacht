@@ -3,6 +3,8 @@
 import { isObject } from 'lodash';
 import { isValidDate } from '@/utils/date-time';
 
+export const DEFAULT_PORT_IMAGE = 'FortLauderdale.jpg'; // Default image name for ports
+
 export const getFormAsFormData = <T>(values: T, fieldsToOmit: string[]): FormData => {
   const formData = new FormData();
 
@@ -79,4 +81,16 @@ export const getMergedFormValues = <M, A = Record<string, any>>(
     ...blankFormValues,
     ...filteredApiValues
   } as M;
+};
+
+export const getValidationErrorsAsObject = (yupError: yup.ValidationError[]) => {
+  const errors = {};
+
+  yupError.forEach((element) => {
+    const path = element.path;
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    errors[path] ? errors[path].push(element.message) : (errors[path] = [element.message]);
+  });
+
+  return errors;
 };

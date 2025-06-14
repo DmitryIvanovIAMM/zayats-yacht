@@ -22,7 +22,7 @@ import { primary, secondary } from '@/components/colors';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSnackbar } from 'notistack';
 import { Messages } from '@/helpers/messages';
-import { sendQuoteRequestAction } from '@/app/serverActions';
+import { sendQuoteRequestAction } from '@/app/server-actions/serverActions';
 
 export default function QuoteRequest() {
   const { enqueueSnackbar } = useSnackbar();

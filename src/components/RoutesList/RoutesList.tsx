@@ -2,13 +2,13 @@ import React from 'react';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import RouteWithImage, { SelectedRoute } from '@/components/RouteWithImage/RouteWithImage';
-import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
+import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
 import { getNoRoutesMessage } from '@/utils/routeCalculators';
 
 export interface RoutesListProps {
   onUserGetRouteSelect: (route: SelectedRoute) => void;
-  onShareRoute: (route: ShipStopWithSailingAndPort[]) => void;
-  routesList: ShipStopWithSailingAndPort[][];
+  onShareRoute: (route: ShipStopWithSailingAndPortFrontend[]) => void;
+  routesList: ShipStopWithSailingAndPortFrontend[][];
   isLoadingPortSelected: boolean;
   isDestinationPortSelected: boolean;
 }

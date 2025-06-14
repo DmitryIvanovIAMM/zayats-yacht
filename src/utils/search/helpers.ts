@@ -1,13 +1,13 @@
 import * as schedulesUtils from '../schedules';
 import { Ship } from '@/models/Ship';
-import { ShipStop } from '@/models/ShipStop';
+import { ShipStop, ShipStopWithSailingAndPort } from '@/models/ShipStop';
 
 export const searchRoutes = (
   ships: Ship[],
-  shipStops: ShipStop[],
+  shipStops: ShipStopWithSailingAndPort[],
   departurePortId: string,
   destinationPortId: string
-): ShipStop[][] => {
+): ShipStopWithSailingAndPort[][] => {
   const schedules = ships.map(function (ship) {
     const shipStopsForShip = shipStops
       .filter((shipStop) => shipStop.shipId.toString() === ship._id.toString())

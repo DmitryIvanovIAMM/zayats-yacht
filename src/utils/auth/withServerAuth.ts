@@ -17,15 +17,28 @@ export async function withServerAuth<D = undefined>(
   }
 
   const hasAccess = session?.user?.image && allowedRoles.includes(session.user.image as Roles);
+  // eslint-disable-next-line no-console
+  console.log(
+    'hasAccess: ',
+    hasAccess,
+    ', allowedRoles: ',
+    allowedRoles,
+    ', userRole: ',
+    session?.user?.image
+  );
   if (!hasAccess) {
     return { success: false, message: Messages.NotAuthorized };
   }
 
   try {
     const adminUser = await findUserByEmail(session?.user?.email as string);
+    // eslint-disable-next-line no-console
+    console.log('adminUser: ', adminUser);
     if (!adminUser) return { success: false, message: Messages.UserNotFound };
 
     const foundUserHasAccess = adminUser.role && allowedRoles.includes(adminUser.role);
+    // eslint-disable-next-line no-console
+    console.log('foundUserHasAccess: ', foundUserHasAccess);
     if (!foundUserHasAccess) {
       return { success: false, message: Messages.NotAuthorized };
     }

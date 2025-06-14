@@ -12,8 +12,7 @@ import { User } from '@/models/User';
 import { Messages } from '@/helpers/messages';
 import { Types } from 'mongoose';
 import { deleteFile, storeFileOnS3WithModifiedName } from '@/modules/aws/s3';
-
-const DEFAULT_PORT_IMAGE = 'FortLauderdale.jpg'; // Default image name for ports
+import { DEFAULT_PORT_IMAGE } from '@/utils/formHelpers/formHelpers';
 
 export const getPortsInRoutes = async () => {
   try {

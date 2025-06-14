@@ -3,7 +3,7 @@
 import React from 'react';
 import { FormMode } from '@/utils/types';
 import NotFound from '@/components/NotFound/NotFound';
-import { getPortByAdminAction } from '@/app/serverActions';
+import { getPortByAdminAction } from '@/app/server-actions/serverActions';
 import Error from '@/components/Error/Error';
 import { defaultPortFormValues } from '@/components/AdminDashboard/AdminPorts/Port/types';
 import { PortFormContainer } from '@/components/AdminDashboard/AdminPorts/Port/PortFormContainer';

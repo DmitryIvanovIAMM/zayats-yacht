@@ -4,12 +4,13 @@ import { searchRoutes, filteredByLoadingDate } from '@/utils/search/helpers';
 import * as schedulesUtils from '../utils/schedules';
 import { scheduleService } from '@/services/ScheduleService';
 import { shipService } from '@/services/ShipService';
-import { ShipStop } from '@/models/ShipStop';
+import { ShipStop, ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import { ShipsParametersFlat } from '@/models/types';
 import { datesDifferenceInDays, maxComputerDate } from '@/utils/date-time';
 import {
   mapSailingsWithShipStopAndPortsToFrontend,
-  mapSailingWithShipStopToFrontend
+  mapSailingWithShipStopToFrontend,
+  mapShipStopsArrayWithPortAndSailingToFrontend
 } from '@/models/mappers';
 import { BackendDataFetchArgs } from '@/components/Table/types';
 import { ActionData, ActionResult, SailingStatusParams } from '@/utils/types';
@@ -18,21 +19,24 @@ import { User } from '@/models/User';
 import {
   defaultScheduleFormValues,
   ScheduleForm,
+  scheduleSchema,
   ShipStopForm
 } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
 import { Types } from 'mongoose';
 import { Sailing } from '@/models/Sailing';
+import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
+import { getValidationErrorsAsObject } from '@/utils/formHelpers/formHelpers';
 
 export const getSchedules = async (shipData: ShipsParametersFlat) => {
   try {
-    const shipStops: ShipStop[] =
+    const shipStops: ShipStopWithSailingAndPort[] =
       await scheduleService.queryAllActiveShipStopsWithPortsAndSailings();
     const ships = await shipService.getAllShips();
 
     const shipStopsSortedByArrivalTime = [...shipStops].sort(
       schedulesUtils.comparatorByArrivalOnDateString
     );
-    const schedules: ShipStop[][] = searchRoutes(
+    const schedules: ShipStopWithSailingAndPort[][] = searchRoutes(
       ships,
       shipStopsSortedByArrivalTime,
       shipData.departurePortId as string,
@@ -54,28 +58,31 @@ export const getSchedules = async (shipData: ShipsParametersFlat) => {
           : [];
     }
 
-    const sortedByStartRouteSchedules = schedulesUtils.sortRoutesByDates(
-      filteredByLoadingDateSchedules
-    );
+    const sortedByStartRouteSchedules: ShipStopWithSailingAndPort[][] =
+      schedulesUtils.sortRoutesByDates(
+        filteredByLoadingDateSchedules
+      ) as ShipStopWithSailingAndPort[][];
 
-    return JSON.parse(JSON.stringify(sortedByStartRouteSchedules));
+    return mapShipStopsArrayWithPortAndSailingToFrontend(sortedByStartRouteSchedules);
   } catch {
     return [];
   }
 };
 
-export const queryNearestShippings = async (date: Date | string): Promise<ShipStop[][]> => {
+export const queryNearestShippings = async (
+  date: Date | string
+): Promise<ShipStopWithSailingAndPortFrontend[][]> => {
   try {
     const startShippingDate = schedulesUtils.isDate(date) ? new Date(date) : new Date();
 
-    const shipStops: ShipStop[] =
+    const shipStops: ShipStopWithSailingAndPort[] =
       await scheduleService.queryAllActiveShipStopsWithPortsAndSailingsFromDate(startShippingDate);
 
     const shipStopsSortedByArrivalTime = [...shipStops].sort(
       schedulesUtils.comparatorByArrivalOnDateString
     );
 
-    const firstThreeRoutes = [];
+    const firstThreeRoutes: ShipStopWithSailingAndPort[][] = [];
     let currentShipStop = 0;
     let addedShippings = 0;
     if (shipStopsSortedByArrivalTime.length > 0) {
@@ -92,7 +99,7 @@ export const queryNearestShippings = async (date: Date | string): Promise<ShipSt
       } while (addedShippings < 3 && currentShipStop < shipStopsSortedByArrivalTime.length);
     }
 
-    return JSON.parse(JSON.stringify(firstThreeRoutes));
+    return mapShipStopsArrayWithPortAndSailingToFrontend(firstThreeRoutes);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('queryNearestShippings().  err: ', err);
@@ -164,6 +171,18 @@ export const addSchedule = async (
   scheduleForm: ScheduleForm
 ): Promise<ActionResult> => {
   try {
+    await scheduleSchema.validate(scheduleForm, { abortEarly: false });
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    const errorsObject = getValidationErrorsAsObject(error.inner);
+    return {
+      success: false,
+      message: Messages.ValidationError,
+      data: errorsObject
+    };
+  }
+
+  try {
     const newSailing: Sailing = await scheduleService.createSailingByName(scheduleForm.name);
     await createAndStoreNewShipStops(newSailing._id, scheduleForm.shipId, scheduleForm.shipStops);
 
@@ -211,6 +230,18 @@ export const updateSchedule = async (
   scheduleForm: ScheduleForm
 ): Promise<ActionResult> => {
   try {
+    await scheduleSchema.validate(scheduleForm, { abortEarly: false });
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    const errorsObject = getValidationErrorsAsObject(error.inner);
+    return {
+      success: false,
+      message: Messages.ValidationError,
+      data: errorsObject
+    };
+  }
+
+  try {
     await scheduleService.updateSailingNameAndShip(sailingId, scheduleForm.name);
     await scheduleService.deleteShipStopsBySailingId(sailingId);
 
@@ -240,8 +271,7 @@ export const getSchedule = async (
 
     return {
       success: true,
-      data: mapSailingWithShipStopToFrontend(sailingWithShipStops),
-      message: Messages.SailingNotFound
+      data: mapSailingWithShipStopToFrontend(sailingWithShipStops)
     };
   } catch (error: any) {
     return {

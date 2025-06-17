@@ -168,6 +168,24 @@ export const ScheduleFormContainer = ({
                           label={'Departure Date *'}
                         />
                       </Box>
+                      <Box sx={milesWrapperSx}>
+                        <FormTextInput
+                          name={`shipStops.${index}.spacePrice`}
+                          type="number"
+                          label="Space Price *"
+                          size="small"
+                          style={{ marginTop: '3px' }}
+                        />
+                      </Box>
+                      <Box sx={milesWrapperSx}>
+                        <FormTextInput
+                          name={`shipStops.${index}.insuranceCoefficient`}
+                          type="number"
+                          label="Insurance Coefficient *"
+                          size="small"
+                          style={{ marginTop: '3px' }}
+                        />
+                      </Box>
                       <Box sx={buttonWrapperSx}>
                         <IconButton
                           onClick={() => handleRemoveStop(index)}

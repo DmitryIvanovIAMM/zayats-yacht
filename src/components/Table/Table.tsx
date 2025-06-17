@@ -248,9 +248,7 @@ export function Table<TableData extends { _id: string }>({
                               </Box>
                             ) : null}
                           </TableSortLabel>
-                          <Box sx={{ bottom: 0 }}>
-                            {header.column.getCanFilter() ? filter?.(header.column) : null}
-                          </Box>
+                          <Box>{header.column.getCanFilter() ? filter?.(header.column) : null}</Box>
                         </div>
                       </TableCell>
                     ) : (

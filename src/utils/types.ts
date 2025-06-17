@@ -29,6 +29,7 @@ export interface ActionTableData<T> extends ActionData<{ data: T[]; total: numbe
 export interface ActionResult {
   success: boolean;
   message?: string;
+  data?: any;
 }
 
 export interface SailingStatusParams {

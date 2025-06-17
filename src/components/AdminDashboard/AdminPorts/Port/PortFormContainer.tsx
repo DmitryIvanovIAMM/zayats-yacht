@@ -11,7 +11,7 @@ import { PATHS } from '@/helpers/paths';
 import { FormMode } from '@/utils/types';
 import { Messages } from '@/helpers/messages';
 import { FormContainer } from '@/components/FormContainer/FormContainer';
-import { addPortByAdminAction, updatePortByAdminAction } from '@/app/serverActions';
+import { addPortByAdminAction, updatePortByAdminAction } from '@/app/server-actions/serverActions';
 import { PortForm, portSchema } from '@/components/AdminDashboard/AdminPorts/Port/types';
 import { SubmitCancelButtons } from '@/components/SubmitCancelButtons/SubmitCancelButtons';
 import { getFormAsFormData } from '@/utils/formHelpers/formHelpers';

@@ -26,24 +26,13 @@ export interface ShipStopFrontend {
   sailing?: SailingFrontend;
 }
 
-export interface ShipStopWithPortFrontend {
-  _id: string | null;
-  sailingId: string;
-  portId: string;
-  port: PortFrontend;
-  shipId: string;
-  arrivalOn: string;
-  departureOn: string;
-  miles: number;
-  daysAtSea: number;
-  daysInPort: number;
-  departurePort?: PortFrontend;
-  sailing?: SailingFrontend;
+export interface ShipStopWithPortFrontend extends ShipStopFrontend {
+  departurePort: PortFrontend;
 }
 
-export interface ShipStopWithSailingAndPort extends ShipStopFrontend {
+export interface ShipStopWithSailingAndPortFrontend extends ShipStopFrontend {
   sailing: SailingFrontend;
-  port: PortFrontend;
+  departurePort: PortFrontend;
 }
 
 export const shipStopsWithPortAndSailingFields = [

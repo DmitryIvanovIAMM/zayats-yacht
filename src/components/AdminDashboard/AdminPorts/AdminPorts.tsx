@@ -11,7 +11,7 @@ import {
   ConfirmationModal,
   defaultConfirmationModalProps
 } from '@/components/ConfirmationModal/ConfirmationModal';
-import { deletePortByAdminAction } from '@/app/serverActions';
+import { deletePortByAdminAction } from '@/app/server-actions/serverActions';
 import { showNotification } from '@/modules/notifications/notifications';
 import { PATHS } from '@/helpers/paths';
 import Button from '@mui/material/Button';

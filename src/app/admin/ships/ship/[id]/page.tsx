@@ -5,7 +5,7 @@ import { defaultShipFormValues } from '@/components/AdminDashboard/AdminShips/Sh
 import { ShipFormContainer } from '@/components/AdminDashboard/AdminShips/Ship/ShipFormContainer';
 import { FormMode } from '@/utils/types';
 import NotFound from '@/components/NotFound/NotFound';
-import { getShipByAdminAction } from '@/app/serverActions';
+import { getShipByAdminAction } from '@/app/server-actions/serverActions';
 import Error from '@/components/Error/Error';
 import { getMergedFormValues } from '@/utils/formHelpers/formHelpers';
 

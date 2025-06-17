@@ -19,4 +19,14 @@ describe('isDate()', () => {
     const testDate1 = 'test date';
     expect(isDate(testDate1)).toEqual(false);
   });
+
+  it('should return false for null', () => {
+    const testDate1 = null;
+    expect(isDate(testDate1)).toEqual(false);
+  });
+
+  it('should return false for undefined', () => {
+    const testDate1 = undefined;
+    expect(isDate(testDate1)).toEqual(false);
+  });
 });

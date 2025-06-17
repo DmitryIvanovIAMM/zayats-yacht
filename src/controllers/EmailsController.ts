@@ -6,6 +6,7 @@ import {
   LENGTH_METRIC,
   PURPOSE_OF_TRANSPORT,
   QuoteRequestForm,
+  quoteRequestSchema,
   WEIGHT_METRIC
 } from '@/components/QuoteRequest/types';
 import { QuoteRequest } from '@/models/QuoteRequest';
@@ -14,6 +15,7 @@ import { Messages } from '@/helpers/messages';
 import { ActionResult } from '@/utils/types';
 import { quoteRequestService } from '@/services/QuoteRequestsService';
 import { User } from '@/models/User';
+import { getValidationErrorsAsObject } from '@/utils/formHelpers/formHelpers';
 
 export const sendQuoteRequest = async (
   adminUser: User,
@@ -21,6 +23,18 @@ export const sendQuoteRequest = async (
 ): Promise<ActionResult> => {
   // eslint-disable-next-line no-console
   console.log(`sendQuoteRequest().  quoteRequest: `, quoteRequest);
+
+  try {
+    await quoteRequestSchema.validate(quoteRequest, { abortEarly: false });
+  } catch (error: any) {
+    // eslint-disable-next-line no-console
+    const errorsObject = getValidationErrorsAsObject(error.inner);
+    return {
+      success: false,
+      message: Messages.ValidationError,
+      data: errorsObject
+    };
+  }
 
   // replace keys in quoteRequest with string values from enums
   quoteRequest.purpose = quoteRequest?.purpose

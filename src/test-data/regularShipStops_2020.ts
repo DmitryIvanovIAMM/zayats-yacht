@@ -1,10 +1,11 @@
 import * as ids from './ids';
+import { Types } from 'mongoose';
 
 const montAgo = new Date().setMonth(new Date().getMonth() - 1);
 
 export const REGULAR_SHIP_STOPS_2020 = [
   {
-    _id: '41224d776a326fb40f022210',
+    _id: new Types.ObjectId('41224d776a326fb40f022210'),
     sailingId: ids.grandPrixSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
@@ -15,7 +16,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 4
   },
   {
-    _id: '41224d776a326fb40f022211',
+    _id: new Types.ObjectId('41224d776a326fb40f022211'),
     sailingId: ids.grandPrixSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
@@ -26,7 +27,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022212',
+    _id: new Types.ObjectId('41224d776a326fb40f022212'),
     sailingId: ids.grandPrixSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
@@ -37,7 +38,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 3
   },
   {
-    _id: '41224d776a326fb40f022213',
+    _id: new Types.ObjectId('41224d776a326fb40f022213'),
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
@@ -48,7 +49,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 5
   },
   {
-    _id: '41224d776a326fb40f022214',
+    _id: new Types.ObjectId('41224d776a326fb40f022214'),
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
@@ -59,7 +60,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022215',
+    _id: new Types.ObjectId('41224d776a326fb40f022215'),
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
@@ -70,7 +71,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 4
   },
   {
-    _id: '41224d776a326fb40f022216',
+    _id: new Types.ObjectId('41224d776a326fb40f022216'),
     sailingId: ids.summerMediterraneanSailingId,
     portId: ids.fethiyePortId,
     shipId: ids.industrialGuideShipId,
@@ -81,7 +82,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 3
   },
   {
-    _id: '41224d776a326fb40f022217',
+    _id: new Types.ObjectId('41224d776a326fb40f022217'),
     sailingId: ids.europeToAsiaSailingId,
     portId: ids.hongKongPortId,
     shipId: ids.industrialGuideShipId,
@@ -92,7 +93,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022218',
+    _id: new Types.ObjectId('41224d776a326fb40f022218'),
     sailingId: ids.asiaToNorthAmericaSummerSailingId,
     portId: ids.victoriaPortId,
     shipId: ids.industrialGuideShipId,
@@ -103,7 +104,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022219',
+    _id: new Types.ObjectId('41224d776a326fb40f022219'),
     sailingId: ids.northAmericaEastboundSummerSailingId,
     portId: ids.ensenadaPortId,
     shipId: ids.industrialGuideShipId,
@@ -114,7 +115,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022220',
+    _id: new Types.ObjectId('41224d776a326fb40f022220'),
     sailingId: ids.northAmericaEastboundSummerSailingId,
     portId: ids.golfitoPortId,
     shipId: ids.industrialGuideShipId,
@@ -125,7 +126,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022221',
+    _id: new Types.ObjectId('41224d776a326fb40f022221'),
     sailingId: ids.northAmericaEastboundSummerSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
@@ -136,7 +137,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 1
   },
   {
-    _id: '41224d776a326fb40f022222',
+    _id: new Types.ObjectId('41224d776a326fb40f022222'),
     sailingId: ids.fortLauderdaleBoatShowSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
@@ -147,7 +148,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022223',
+    _id: new Types.ObjectId('41224d776a326fb40f022223'),
     sailingId: ids.fortLauderdaleBoatShowSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
@@ -158,7 +159,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 4
   },
   {
-    _id: '41224d776a326fb40f022224',
+    _id: new Types.ObjectId('41224d776a326fb40f022224'),
     sailingId: ids.fortLauderdaleBoatShowSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
@@ -169,7 +170,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022225',
+    _id: new Types.ObjectId('41224d776a326fb40f022225'),
     sailingId: ids.christmasSailingId,
     portId: ids.genoaPortId,
     shipId: ids.industrialGuideShipId,
@@ -180,7 +181,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 3
   },
   {
-    _id: '41224d776a326fb40f022226',
+    _id: new Types.ObjectId('41224d776a326fb40f022226'),
     sailingId: ids.christmasSailingId,
     portId: ids.palmaDeMallorcaPortId,
     shipId: ids.industrialGuideShipId,
@@ -191,7 +192,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022227',
+    _id: new Types.ObjectId('41224d776a326fb40f022227'),
     sailingId: ids.christmasSailingId,
     portId: ids.tortolaPortId,
     shipId: ids.industrialGuideShipId,
@@ -202,7 +203,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 3
   },
   {
-    _id: '41224d776a326fb40f022228',
+    _id: new Types.ObjectId('41224d776a326fb40f022228'),
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.fortLauderdalePortId,
     shipId: ids.industrialGuideShipId,
@@ -213,7 +214,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 5
   },
   {
-    _id: '41224d776a326fb40f022229',
+    _id: new Types.ObjectId('41224d776a326fb40f022229'),
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.golfitoPortId,
     shipId: ids.industrialGuideShipId,
@@ -224,7 +225,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022230',
+    _id: new Types.ObjectId('41224d776a326fb40f022230'),
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.ensenadaPortId,
     shipId: ids.industrialGuideShipId,
@@ -235,7 +236,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022231',
+    _id: new Types.ObjectId('41224d776a326fb40f022231'),
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.victoriaPortId,
     shipId: ids.industrialGuideShipId,
@@ -246,7 +247,7 @@ export const REGULAR_SHIP_STOPS_2020 = [
     daysInPort: 2
   },
   {
-    _id: '41224d776a326fb40f022232',
+    _id: new Types.ObjectId('41224d776a326fb40f022232'),
     sailingId: ids.westboundNorthAmericaAndAsiaChristmasSailingId,
     portId: ids.hongKongPortId,
     shipId: ids.industrialGuideShipId,

@@ -7,7 +7,10 @@ import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';
-import { getPortsInRoutesAction, queryNearestShippingsAction } from '@/app/serverActions';
+import {
+  getPortsInRoutesAction,
+  queryNearestShippingsAction
+} from '@/app/server-actions/serverActions';
 
 export default async function Home() {
   const ports = await getPortsInRoutesAction();

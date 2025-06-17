@@ -6,7 +6,10 @@ import { Messages } from '@/helpers/messages';
 import { useScheduleColumns } from '@/components/AdminDashboard/ScheduleManagement/useScheduleColumns';
 import { querySailingsWithRoutesAndPorts } from '@/controllers/SchedulesController';
 import { type SailingWithShipStopAndPortsFrontend } from '@/models/SailingFrontend';
-import { deleteScheduleByAdminAction, setSailingActivityByAdminStatus } from '@/app/serverActions';
+import {
+  deleteScheduleByAdminAction,
+  setSailingActivityByAdminStatus
+} from '@/app/server-actions/serverActions';
 import { showNotification } from '@/modules/notifications/notifications';
 import { SailingStatusParams } from '@/utils/types';
 import { useState } from 'react';

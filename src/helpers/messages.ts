@@ -52,5 +52,6 @@ export enum Messages {
   FailedUpdateSchedule = 'Failed to update schedule',
   ScheduleUpdatedSuccessfully = 'Schedule updated successfully',
   SpacePriceRequired = 'Space Price is required',
-  InsuranceCoefficientRequired = 'Insurance Coefficient is required'
+  InsuranceCoefficientRequired = 'Insurance Coefficient is required',
+  ValidationError = 'Validation error'
 }

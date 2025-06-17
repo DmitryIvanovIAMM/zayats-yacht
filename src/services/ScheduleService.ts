@@ -1,4 +1,4 @@
-import { ShipStop, ShipStopModel } from '@/models/ShipStop';
+import { ShipStop, ShipStopModel, ShipStopWithSailingAndPort } from '@/models/ShipStop';
 import {
   Sailing,
   SailingModel,
@@ -49,7 +49,9 @@ export default class ScheduleService {
     ]);
   };
 
-  public queryAllActiveShipStopsWithPortsAndSailings = async (): Promise<ShipStop[]> => {
+  public queryAllActiveShipStopsWithPortsAndSailings = async (): Promise<
+    ShipStopWithSailingAndPort[]
+  > => {
     const shipStops = await ShipStopModel.aggregate([
       {
         $lookup: {
@@ -84,7 +86,7 @@ export default class ScheduleService {
 
   public queryAllActiveShipStopsWithPortsAndSailingsFromDate = async (
     date: Date
-  ): Promise<ShipStop[]> => {
+  ): Promise<ShipStopWithSailingAndPort[]> => {
     const shipStops = await ShipStopModel.aggregate([
       {
         $match: { arrivalOn: { $gte: date } }
@@ -174,11 +176,11 @@ export default class ScheduleService {
           from: 'ports',
           localField: 'shipStops.portId',
           foreignField: '_id',
-          as: 'shipStops.port'
+          as: 'shipStops.departurePort'
         }
       },
       {
-        $unwind: '$shipStops.port'
+        $unwind: '$shipStops.departurePort'
       },
       {
         $group: {

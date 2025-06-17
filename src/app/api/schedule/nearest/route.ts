@@ -1,4 +1,4 @@
-import { queryNearestShippingsAction } from '@/app/serverActions';
+import { queryNearestShippingsAction } from '@/app/server-actions/serverActions';
 
 export async function GET() {
   const schedule = await queryNearestShippingsAction(new Date());

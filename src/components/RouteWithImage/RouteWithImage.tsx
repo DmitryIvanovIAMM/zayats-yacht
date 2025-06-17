@@ -20,7 +20,7 @@ import {
   routeWihImageBoxSx,
   titleStyle
 } from '@/components/RouteWithImage/RouteWithImage.style';
-import { ShipStopWithSailingAndPort } from '@/models/ShipStopFrontend';
+import { ShipStopWithSailingAndPortFrontend } from '@/models/ShipStopFrontend';
 import { PortFrontend } from '@/models/PortFrontend';
 import { calculateDaysInTransit, calculateMilesForRoute } from '@/utils/routeCalculators';
 import { Box } from '@mui/material';
@@ -32,8 +32,8 @@ export interface SelectedRoute {
 }
 
 export interface RouteWithImageBoxProps {
-  route: ShipStopWithSailingAndPort[];
-  onShareRoute: (route: ShipStopWithSailingAndPort[]) => void;
+  route: ShipStopWithSailingAndPortFrontend[];
+  onShareRoute: (route: ShipStopWithSailingAndPortFrontend[]) => void;
   onUserGetRouteSelect: (selectedRoute: SelectedRoute) => void;
 }
 

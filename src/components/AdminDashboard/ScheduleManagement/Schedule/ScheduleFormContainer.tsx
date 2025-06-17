@@ -14,7 +14,10 @@ import { SubmitCancelButtons } from '@/components/SubmitCancelButtons/SubmitCanc
 import { PATHS } from '@/helpers/paths';
 import { FormContainer } from '@/components/FormContainer/FormContainer';
 import React from 'react';
-import { addScheduleByAdminAction, updateScheduleByAdminAction } from '@/app/serverActions';
+import {
+  addScheduleByAdminAction,
+  updateScheduleByAdminAction
+} from '@/app/server-actions/serverActions';
 import { Messages } from '@/helpers/messages';
 import { Box } from '@mui/material';
 import { FormTextInput } from '@/components/MUI-RHF/FormTextInput';

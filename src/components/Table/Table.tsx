@@ -207,36 +207,49 @@ export function Table<TableData extends { _id: string }>({
                         component="th"
                         key={header.id}
                         sx={{
-                          verticalAlign: 'initial',
                           padding: '5px',
+                          height: '1px', // this trick allows to child div to be 100% height
                           //eslint-disable-next-line @typescript-eslint/ban-ts-comment
                           //@ts-ignore
                           ...(header.column.columnDef.meta?.headerSx ?? {})
                         }}
                       >
-                        <TableSortLabel
-                          component="div"
-                          active={!!header.column.getIsSorted()}
-                          direction={
-                            header.column.getIsSorted()
-                              ? (header.column.getIsSorted() as TableSortLabelOwnProps['direction'])
-                              : undefined
-                          }
-                          onClick={header.column.getToggleSortingHandler()}
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            height: '100%',
+                            justifyContent: 'space-between'
+                          }}
                         >
-                          <Box sx={{ fontWeight: '600' }}>
-                            {flexRender(headerLabel, header.getContext())}
-                          </Box>
-                          {header.column.getIsSorted() ? (
-                            <Box component="span" sx={visuallyHidden}>
-                              {(header.column.getIsSorted() as TableSortLabelOwnProps['direction']) ===
-                              'desc'
-                                ? 'sorted descending'
-                                : 'sorted ascending'}
+                          <TableSortLabel
+                            component="div"
+                            active={!!header.column.getIsSorted()}
+                            direction={
+                              header.column.getIsSorted()
+                                ? (header.column.getIsSorted() as TableSortLabelOwnProps['direction'])
+                                : undefined
+                            }
+                            onClick={header.column.getToggleSortingHandler()}
+                            sx={{
+                              flexDirection: 'row',
+                              textAlign: 'left'
+                            }}
+                          >
+                            <Box sx={{ fontWeight: '600' }}>
+                              {flexRender(headerLabel, header.getContext())}
                             </Box>
-                          ) : null}
-                        </TableSortLabel>
-                        <Box>{header.column.getCanFilter() ? filter?.(header.column) : null}</Box>
+                            {header.column.getIsSorted() ? (
+                              <Box component="span" sx={visuallyHidden}>
+                                {(header.column.getIsSorted() as TableSortLabelOwnProps['direction']) ===
+                                'desc'
+                                  ? 'sorted descending'
+                                  : 'sorted ascending'}
+                              </Box>
+                            ) : null}
+                          </TableSortLabel>
+                          <Box>{header.column.getCanFilter() ? filter?.(header.column) : null}</Box>
+                        </div>
                       </TableCell>
                     ) : (
                       <TableCell
@@ -245,15 +258,26 @@ export function Table<TableData extends { _id: string }>({
                         sx={{
                           verticalAlign: 'initial',
                           padding: '5px',
+                          height: '1px', // this trick allows to child div to be 100% height
                           //eslint-disable-next-line @typescript-eslint/ban-ts-comment
                           //@ts-ignore
                           ...(header.column.columnDef.meta?.headerSx ?? {})
                         }}
                       >
-                        <Box sx={{ fontWeight: '600' }}>
-                          {flexRender(headerLabel, header.getContext())}
-                        </Box>
-                        <Box>{header.column.getCanFilter() ? filter?.(header.column) : null}</Box>
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            height: '100%',
+                            justifyContent: 'space-between',
+                            textAlign: 'left'
+                          }}
+                        >
+                          <Box sx={{ fontWeight: '600' }}>
+                            {flexRender(headerLabel, header.getContext())}
+                          </Box>
+                          <Box>{header.column.getCanFilter() ? filter?.(header.column) : null}</Box>
+                        </div>
                       </TableCell>
                     );
                   })}

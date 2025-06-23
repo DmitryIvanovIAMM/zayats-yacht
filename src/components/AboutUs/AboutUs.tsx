@@ -40,8 +40,7 @@ export const centerItemSivStyle = {
 
 const AboutUs = () => {
   return (
-    <Box id="about-us-section" sx={centeredSectionSx}>
-      <SectionTitle title="About Us" />
+    <>
       <Box style={textStyle}>
         <span style={emphasizedTextStyle}>Allied Yacht Transport</span>
         <br />
@@ -124,7 +123,7 @@ const AboutUs = () => {
           />
         </picture>
       </div>
-    </Box>
+    </>
   );
 };
 

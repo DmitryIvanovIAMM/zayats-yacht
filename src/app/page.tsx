@@ -31,7 +31,9 @@ export default async function Home() {
         <VideoGallery />
       </LazyViewedSection>
       <Testimonials />
-      <AboutUs />
+      <LazyViewedSection title="About Us" id="about-us-section">
+        <AboutUs />
+      </LazyViewedSection>
     </div>
   );
 }

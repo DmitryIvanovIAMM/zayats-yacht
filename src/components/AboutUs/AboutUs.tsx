@@ -1,7 +1,6 @@
 import React from 'react';
 import { sectionContainerSx } from '@/components/ContactUs/ContactUs';
 import { Box } from '@mui/material';
-import SectionTitle from '@/components/SectionTitle/SectionTitle';
 
 const textStyle = {
   fontWeight: 400,

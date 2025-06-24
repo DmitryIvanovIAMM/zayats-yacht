@@ -69,7 +69,7 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
           'aria-labelledby': `port-selector-${props.label}`
         }}
         data-testid="port-selector"
-        aria-label={`port-selector-${props.label}`}
+        aria-labelledby={`port-selector-${props.label}`}
       >
         {props.ports.map((port, index) => (
           <MenuItem

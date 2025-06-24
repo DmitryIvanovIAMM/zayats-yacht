@@ -65,13 +65,13 @@ function MonthPicker({ value, onChange, inputLabel = 'When (optional)' }: MonthP
           style={{ borderColor: '#3365A7' }}
           slotProps={{
             input: {
-              endAdornment: (
-                <InputAdornment position="end" aria-label={'select-date-picker-button'}>
-                  <IconButton>
-                    <Event />
-                  </IconButton>
-                </InputAdornment>
-              ),
+              // endAdornment: (
+              //   <InputAdornment position="end" aria-label={'select-date-picker-button'}>
+              //     <IconButton>
+              //       <Event />
+              //     </IconButton>
+              //   </InputAdornment>
+              // ),
               readOnly: true
             }
           }}

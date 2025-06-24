@@ -39,12 +39,12 @@ exports[`ContactUs component should render correctly 1`] = `
             <div
               style="align-items: start;"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-h6 css-1fs9uky-MuiTypography-root"
+              <h5
+                class="MuiTypography-root MuiTypography-h5 css-e297f4-MuiTypography-root"
               >
                 <br />
                 Address
-              </h6>
+              </h5>
               <div
                 style="font-size: 16px; line-height: 150%;"
               >
@@ -78,12 +78,12 @@ exports[`ContactUs component should render correctly 1`] = `
             <div
               style="align-items: start;"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-h6 css-1fs9uky-MuiTypography-root"
+              <h5
+                class="MuiTypography-root MuiTypography-h5 css-e297f4-MuiTypography-root"
               >
                 <br />
                 Phone
-              </h6>
+              </h5>
               <div
                 style="font-size: 16px; line-height: 150%;"
               >
@@ -120,12 +120,12 @@ exports[`ContactUs component should render correctly 1`] = `
             <div
               style="align-items: start;"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-h6 css-1fs9uky-MuiTypography-root"
+              <h5
+                class="MuiTypography-root MuiTypography-h5 css-e297f4-MuiTypography-root"
               >
                 <br />
                 Email
-              </h6>
+              </h5>
               <div
                 style="font-size: 16px; line-height: 150%;"
               >
@@ -178,12 +178,12 @@ exports[`ContactUs component should render correctly 1`] = `
           <div
             style="align-items: start;"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-h6 css-1fs9uky-MuiTypography-root"
+            <h5
+              class="MuiTypography-root MuiTypography-h5 css-e297f4-MuiTypography-root"
             >
               <br />
               Address
-            </h6>
+            </h5>
             <div
               style="font-size: 16px; line-height: 150%;"
             >
@@ -217,12 +217,12 @@ exports[`ContactUs component should render correctly 1`] = `
           <div
             style="align-items: start;"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-h6 css-1fs9uky-MuiTypography-root"
+            <h5
+              class="MuiTypography-root MuiTypography-h5 css-e297f4-MuiTypography-root"
             >
               <br />
               Phone
-            </h6>
+            </h5>
             <div
               style="font-size: 16px; line-height: 150%;"
             >
@@ -259,12 +259,12 @@ exports[`ContactUs component should render correctly 1`] = `
           <div
             style="align-items: start;"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-h6 css-1fs9uky-MuiTypography-root"
+            <h5
+              class="MuiTypography-root MuiTypography-h5 css-e297f4-MuiTypography-root"
             >
               <br />
               Email
-            </h6>
+            </h5>
             <div
               style="font-size: 16px; line-height: 150%;"
             >

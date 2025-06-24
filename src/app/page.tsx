@@ -3,7 +3,6 @@ import styles from './page.module.css';
 import AboutUs from '@/components/AboutUs/AboutUs';
 import Testimonials from '@/components/Testimonials/Testimonials';
 import Gallery from '@/components/Gallery/Gallery';
-import EmptySection from '@/components/EmptySection';
 import VideoGallery from '@/components/VideoGallery/VideoGallery';
 import LazyViewedSection from '@/components/LazyViewedSection/LazyViewedSection';
 import ScheduleSection from '@/components/Schedule/Schedule';

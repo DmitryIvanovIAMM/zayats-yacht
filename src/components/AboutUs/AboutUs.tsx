@@ -1,7 +1,6 @@
 import React from 'react';
 import { sectionContainerSx } from '@/components/ContactUs/ContactUs';
 import { Box } from '@mui/material';
-import SectionTitle from '@/components/SectionTitle/SectionTitle';
 
 const textStyle = {
   fontWeight: 400,
@@ -40,8 +39,7 @@ export const centerItemSivStyle = {
 
 const AboutUs = () => {
   return (
-    <Box id="about-us-section" sx={centeredSectionSx}>
-      <SectionTitle title="About Us" />
+    <>
       <Box style={textStyle}>
         <span style={emphasizedTextStyle}>Allied Yacht Transport</span>
         <br />
@@ -124,7 +122,7 @@ const AboutUs = () => {
           />
         </picture>
       </div>
-    </Box>
+    </>
   );
 };
 

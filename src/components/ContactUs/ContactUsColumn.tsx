@@ -51,7 +51,7 @@ const ContactUsColumn: FC<ContactUsColumnProps> = ({
         <Icon fontSize="large" />
       </div>
       <div style={{ alignItems: 'start' }}>
-        <Typography variant="h6" component="h6" sx={titleContainerSx}>
+        <Typography variant="h5" component="h5" sx={titleContainerSx}>
           <br />
           {title}
         </Typography>

@@ -67,7 +67,7 @@ function MonthPicker({ value, onChange, inputLabel = 'When (optional)' }: MonthP
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton>
+                  <IconButton aria-label={'select-date-picker-button'}>
                     <Event />
                   </IconButton>
                 </InputAdornment>

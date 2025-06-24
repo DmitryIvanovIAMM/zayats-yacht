@@ -50,7 +50,12 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
   }
 
   return (
-    <FormControl sx={formControlSx} variant="outlined" data-testid="port-selector-for-control">
+    <FormControl
+      sx={formControlSx}
+      variant="outlined"
+      data-testid="port-selector-for-control"
+      id={`port-selector-${props.label}`}
+    >
       <InputLabel htmlFor={props.name}>{props.label}</InputLabel>
       <Select
         value={props.selectedPort}
@@ -62,6 +67,9 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
           'data-testid': 'port-selector-input'
         }}
         data-testid="port-selector"
+        SelectDisplayProps={{
+          'aria-label': `port-selector-${props.label}`
+        }}
       >
         {props.ports.map((port, index) => (
           <MenuItem

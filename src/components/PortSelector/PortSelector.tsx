@@ -55,6 +55,7 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
       variant="outlined"
       data-testid="port-selector-for-control"
       id={`port-selector-${props.label}`}
+      aria-label={`port-selector-${props.label}`}
     >
       <InputLabel htmlFor={props.name}>{props.label}</InputLabel>
       <Select
@@ -68,6 +69,7 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
           'aria-labelledby': `port-selector-${props.label}`
         }}
         data-testid="port-selector"
+        aria-label={`port-selector-${props.label}`}
       >
         {props.ports.map((port, index) => (
           <MenuItem

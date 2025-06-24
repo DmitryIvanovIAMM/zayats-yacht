@@ -45,7 +45,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   };
 
   return (
-    <Box id="schedule-section" sx={{ ...centeredSectionExtendedSx, minHeight: 'calc(100vh-81px)' }}>
+    <Box id="schedule-section" sx={{ ...centeredSectionExtendedSx, minHeight: 'calc(100%-81px)' }}>
       <SectionTitle title="Schedule" />
       <Box
         sx={{

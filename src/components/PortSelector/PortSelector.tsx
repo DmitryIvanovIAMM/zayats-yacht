@@ -65,8 +65,7 @@ const PortSelector: FC<PortSelectorProps> = (props) => {
         id={props.name}
         inputProps={{
           MenuProps: { disableScrollLock: true },
-          'data-testid': 'port-selector-input',
-          'aria-labelledby': `port-selector-${props.label}`
+          'data-testid': 'port-selector-input'
         }}
         data-testid="port-selector"
         aria-labelledby={`port-selector-${props.label}`}

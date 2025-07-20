@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`RouteBoxesList component  should render component 1`] = `
 {
@@ -46,7 +46,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Loading Port
                     </p>
@@ -56,7 +56,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <a
                       href="destination/41224d776a326fb40f001101"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                      style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                     >
                       Fort Lauderdale, Florida
                     </a>
@@ -68,7 +68,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Destination Port
                     </p>
@@ -79,7 +79,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                       data-cy="destination-port"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                      style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                     >
                       Palma de Mallorca, Spain
                     </p>
@@ -91,7 +91,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Loading Date
                     </p>
@@ -102,7 +102,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                       data-cy="loading-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                      style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                     >
                       May 16, 2020
                     </p>
@@ -114,7 +114,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Arrival Date
                     </p>
@@ -125,7 +125,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                       data-cy="arrival-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                      style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                     >
                       Jun 2, 2020
                     </p>
@@ -135,7 +135,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
             </table>
           </div>
           <hr
-            style="border: 0.5px solid #c4c4c4;"
+            style="border: 0.5px solid rgb(196, 196, 196);"
           />
           <div>
             <div
@@ -248,7 +248,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Loading Port
                     </p>
@@ -258,7 +258,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <a
                       href="destination/41224d776a326fb40f001101"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                      style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                     >
                       Fort Lauderdale, Florida
                     </a>
@@ -270,7 +270,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Destination Port
                     </p>
@@ -281,7 +281,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                       data-cy="destination-port"
-                      style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                      style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                     >
                       Palma de Mallorca, Spain
                     </p>
@@ -293,7 +293,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Loading Date
                     </p>
@@ -304,7 +304,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                       data-cy="loading-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                      style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                     >
                       May 16, 2020
                     </p>
@@ -316,7 +316,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                      style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                     >
                       Arrival Date
                     </p>
@@ -327,7 +327,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                     <p
                       class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                       data-cy="arrival-date"
-                      style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                      style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                     >
                       Jun 2, 2020
                     </p>
@@ -337,7 +337,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
             </table>
           </div>
           <hr
-            style="border: 0.5px solid #c4c4c4;"
+            style="border: 0.5px solid rgb(196, 196, 196);"
           />
           <div>
             <div
@@ -453,7 +453,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Loading Port
                   </p>
@@ -463,7 +463,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <a
                     href="destination/41224d776a326fb40f001101"
-                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                   >
                     Fort Lauderdale, Florida
                   </a>
@@ -475,7 +475,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Destination Port
                   </p>
@@ -486,7 +486,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                     data-cy="destination-port"
-                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                   >
                     Palma de Mallorca, Spain
                   </p>
@@ -498,7 +498,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Loading Date
                   </p>
@@ -509,7 +509,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                     data-cy="loading-date"
-                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                   >
                     May 16, 2020
                   </p>
@@ -521,7 +521,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Arrival Date
                   </p>
@@ -532,7 +532,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                     data-cy="arrival-date"
-                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                   >
                     Jun 2, 2020
                   </p>
@@ -542,7 +542,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
           </table>
         </div>
         <hr
-          style="border: 0.5px solid #c4c4c4;"
+          style="border: 0.5px solid rgb(196, 196, 196);"
         />
         <div>
           <div
@@ -655,7 +655,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Loading Port
                   </p>
@@ -665,7 +665,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <a
                     href="destination/41224d776a326fb40f001101"
-                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                   >
                     Fort Lauderdale, Florida
                   </a>
@@ -677,7 +677,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Destination Port
                   </p>
@@ -688,7 +688,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                     data-cy="destination-port"
-                    style="font-family: Montserrat; font-size: 18px; font-style: regular; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
+                    style="font-family: Montserrat; font-size: 18px; font-weight: 600; color: rgb(51, 101, 167); line-height: 20px; text-decoration: none;"
                   >
                     Palma de Mallorca, Spain
                   </p>
@@ -700,7 +700,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Loading Date
                   </p>
@@ -711,7 +711,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                     data-cy="loading-date"
-                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                   >
                     May 16, 2020
                   </p>
@@ -723,7 +723,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
-                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
+                    style="padding-top: 3px; display: flex; font-family: Montserrat; font-size: 16px; font-weight: 550; line-height: 20px; letter-spacing: 0.07em;"
                   >
                     Arrival Date
                   </p>
@@ -734,7 +734,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-rizt0-MuiTypography-root"
                     data-cy="arrival-date"
-                    style="font-family: Montserrat; font-size: 16px; font-style: regular; font-weight: 400; line-height: 20px;"
+                    style="font-family: Montserrat; font-size: 16px; font-weight: 400; line-height: 20px;"
                   >
                     Jun 2, 2020
                   </p>
@@ -744,7 +744,7 @@ exports[`RouteBoxesList component  should render component 1`] = `
           </table>
         </div>
         <hr
-          style="border: 0.5px solid #c4c4c4;"
+          style="border: 0.5px solid rgb(196, 196, 196);"
         />
         <div>
           <div

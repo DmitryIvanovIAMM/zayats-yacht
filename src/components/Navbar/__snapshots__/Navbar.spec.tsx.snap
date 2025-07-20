@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Navbar component should render correctly 1`] = `
 {
@@ -122,7 +122,7 @@ exports[`Navbar component should render correctly 1`] = `
       />
       <div
         class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorLeft css-cyqh1t-MuiPaper-root-MuiDrawer-paper"
-        style="--Paper-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12); visibility: hidden; webkit-transform: translateX(-0px); transform: translateX(-0px);"
+        style="--Paper-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12); visibility: hidden; -webkit-transform: translateX(-0px); transform: translateX(-0px);"
         tabindex="-1"
       >
         <div

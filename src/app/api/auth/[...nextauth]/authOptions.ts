@@ -44,6 +44,8 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         try {
+          // eslint-disable-next-line no-console
+          console.log('authorize().  credentials: ', credentials);
           const loginAction = await LoginOrRegister(credentials as UserFrontend);
           if (loginAction.isSuccessful) {
             // Any object returned will be saved in `user` property of the JWT
@@ -69,6 +71,8 @@ export const authOptions: NextAuthOptions = {
   // https://next-auth.js.org/getting-started/typescript#module-augmentation
   callbacks: {
     async signIn({ user }: { user: User & { error?: string } }) {
+      // eslint-disable-next-line no-console
+      console.log('signIn().  user: ', user);
       if (user?.error) {
         throw new Error(user.error);
       }

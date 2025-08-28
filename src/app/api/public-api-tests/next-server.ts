@@ -4,10 +4,12 @@ import InMemoryDBRunner from '@/modules/mongoose/InMemoryDBRunner';
 /* eslint-disable no-console */
 
 let nextProcess: any;
+let storedMongoUri: string | undefined;
 
 export async function startNextServer(port = 3000) {
   const inMemoryDBRunner = new InMemoryDBRunner();
   const uri = await inMemoryDBRunner.connectToInMemoryDBAndLoadTestData();
+  storedMongoUri = process.env.MONGO_URI;
 
   nextProcess = spawn('npx', ['next', 'dev', '-p', port.toString()], {
     cwd: process.cwd(),
@@ -48,6 +50,7 @@ export async function stopNextServer(inMemoryDBRunner?: InMemoryDBRunner) {
   if (inMemoryDBRunner) {
     await inMemoryDBRunner.closeDatabase();
   }
+  process.env.MONGO_URI = storedMongoUri;
 
   if (nextProcess) {
     return new Promise<void>((resolve) => {

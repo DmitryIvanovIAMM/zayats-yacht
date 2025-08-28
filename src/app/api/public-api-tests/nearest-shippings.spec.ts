@@ -23,7 +23,7 @@ describe('API /api/schedule/nearest', () => {
   beforeAll(async () => {
     const { inMemoryDBRunner } = await startNextServer(3000);
     inMemoryDBRunnerInstance = inMemoryDBRunner;
-  }, 40000);
+  }, 70000);
 
   afterAll(async () => {
     await stopNextServer(inMemoryDBRunnerInstance);

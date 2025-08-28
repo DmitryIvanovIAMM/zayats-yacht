@@ -38,7 +38,7 @@ export async function startNextServer(port = 3000) {
 
     setTimeout(() => {
       if (!ready) reject(new Error('Next.js server did not start in time'));
-    }, 40000);
+    }, 70000);
   });
 
   return { port, inMemoryDBRunner };

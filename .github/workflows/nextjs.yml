@@ -1,83 +1,20 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
-# Code started from: https://gist.github.com/alexng353/80f4457738b9f312f18ed6f5772ffeac
-# Continued with: https://dev.to/afraz33/automating-testing-in-nextjs-ensuring-code-integrity-with-jest-and-github-actions-3bbe
-name: Check NextJs build
-
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["master"]
-  # Runs on any open or reopened pull request
-  pull_request:
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
-  # Build job
-  build-and-test:
+  test-unit:
     runs-on: ubuntu-latest
-    env:
-      APP_ENV: CI
-      MONGODB_URI: 'mongodb://root:password@localhost:27019/test?authSource=admin'
-      AUTH_SECRET: 'ZAYATS-YACHT-SECRET'
-      NEXTAUTH_SECRET: 'ZAYATS-YACHT-SECRET'
-      NEXTAUTH_URL: http://localhost:3000/api/auth
-      SEND_EMAIL: 'false'
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_S3_OBJECT_BUCKET: ${{ secrets.AWS_S3_OBJECT_BUCKET }}
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager" >&2
-            exit 1
-          fi
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
-        run: npm run build
-      - name: Run Cypress tests
-        run: npm run e2e
-      - name: Run Jest tests
-        run: npm run test
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run test
+
+  test-e2e:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:6
+        ports:
+          - 27019:27017
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run build
+      - run: npm run e2e

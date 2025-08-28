@@ -71,7 +71,7 @@ export async function stopNextServer(inMemoryDBRunner?: InMemoryDBRunner) {
           nextProcess = null;
         }
         resolve();
-      }, 5000).unref(); // 👈 этот таймер не блокирует Jest
+      }, 5000).unref(); // 👈 This timer doesn't block Jest
     });
   }
 }

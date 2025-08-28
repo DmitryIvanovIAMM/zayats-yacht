@@ -65,7 +65,7 @@ const PageNavigationTabs: FC<PageNavigationTabsProps> = ({ tabs }) => {
           <Box
             display="flex"
             sx={
-              currentPath.includes(tab.link)
+              currentPath?.includes(tab.link)
                 ? { ...navigationTabsStyles.activeTabStyle, ...navigationTabsStyles.hooverSx }
                 : { ...navigationTabsStyles.tabStyle, ...navigationTabsStyles.hooverSx }
             }

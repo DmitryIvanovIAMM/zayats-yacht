@@ -119,7 +119,7 @@ jobs:
         run: tar -xzf next-build.tar.gz
 
       - name: Start Next.js
-        run: npm run start &
+        run: npx next start -p 3000 &
 
       - name: Wait for Next.js
         run: npx wait-on http://localhost:3000

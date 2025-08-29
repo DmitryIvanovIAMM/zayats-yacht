@@ -89,14 +89,14 @@ jobs:
 
   # 3. E2E tests (Cypress)
   e2e-tests:
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
     env:
       APP_ENV: CI
       AUTH_SECRET: ZAYATS-YACHT-SECRET
       NEXTAUTH_SECRET: ZAYATS-YACHT-SECRET
       NEXTAUTH_URL: http://localhost:3000/api/auth
-      SEND_EMAIL: 'false'
+      SEND_EMAIL: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -105,25 +105,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "20"
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Download .next artifact
+      - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: next-build
           path: .
 
-      - name: Extract .next
-        run: tar -xzf next-build.tar.gz
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Start Next.js
-        run: npx next start -p 3000 &
-
-      - name: Wait for Next.js
-        run: npx wait-on http://localhost:3000
-
-      - name: Run Cypress tests
+      - name: Run e2e tests with Cypress
         run: npm run e2e
+

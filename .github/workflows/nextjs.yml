@@ -1,4 +1,4 @@
-name: Check NextJs build
+name: CI Next.js
 
 on:
   push:
@@ -14,47 +14,51 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-deps.outputs.cache-primary-key }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          if [ -f "yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+          else
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+          fi
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
-          cache: npm
+          node-version: 20
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ steps.detect-package-manager.outputs.manager }}-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}
 
       - name: Install dependencies
-        run: npm ci
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build with Next.js
+      - name: Build Next.js
         run: npm run build
 
-      - name: Upload build artifacts
+      - name: Upload .next build
         uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: |
-            .next
-            node_modules
-            package.json
-            package-lock.json
+          path: .next
 
   unit-tests:
     runs-on: ubuntu-latest
     needs: build
-    env:
-      APP_ENV: CI
-      MONGODB_URI: 'mongodb://root:password@localhost:27019/test?authSource=admin'
-      AUTH_SECRET: 'ZAYATS-YACHT-SECRET'
-      NEXTAUTH_SECRET: 'ZAYATS-YACHT-SECRET'
-      NEXTAUTH_URL: http://localhost:3000/api/auth
-      SEND_EMAIL: 'false'
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_S3_OBJECT_BUCKET: ${{ secrets.AWS_S3_OBJECT_BUCKET }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,13 +66,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
-          cache: npm
+          node-version: 20
 
-      - name: Download build artifacts
+      - name: Restore dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ needs.build.outputs.cache-key }}
+
+      - name: Download .next build
         uses: actions/download-artifact@v4
         with:
           name: next-build
+          path: .next
 
       - name: Run Jest tests
         run: npm run test
@@ -76,18 +86,23 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-latest
     needs: build
+    services:
+      mongodb:
+        image: mongo:6
+        ports:
+          - 27019:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand(\"ping\")'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
       APP_ENV: CI
-      MONGODB_URI: 'mongodb://root:password@localhost:27019/test?authSource=admin'
-      AUTH_SECRET: 'ZAYATS-YACHT-SECRET'
-      NEXTAUTH_SECRET: 'ZAYATS-YACHT-SECRET'
+      MONGODB_URI: mongodb://root:password@localhost:27019/test?authSource=admin
+      AUTH_SECRET: ZAYATS-YACHT-SECRET
+      NEXTAUTH_SECRET: ZAYATS-YACHT-SECRET
       NEXTAUTH_URL: http://localhost:3000/api/auth
       SEND_EMAIL: 'false'
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_S3_OBJECT_BUCKET: ${{ secrets.AWS_S3_OBJECT_BUCKET }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -95,15 +110,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
-          cache: npm
+          node-version: 20
 
-      - name: Download build artifacts
+      - name: Restore dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ needs.build.outputs.cache-key }}
+
+      - name: Download .next build
         uses: actions/download-artifact@v4
         with:
           name: next-build
+          path: .next
 
-      - name: Start Next.js in background
+      - name: Start Next.js
         run: |
           npm run start &
           npx wait-on http://localhost:3000

@@ -1,10 +1,18 @@
-name: Check NextJs build
+name: CI
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - master
   pull_request:
-  workflow_dispatch:
+
+env:
+  APP_ENV: CI
+  SEND_EMAIL: false
+  AUTH_SECRET: ZAYATS-YACHT-SECRET
+  NEXTAUTH_SECRET: ZAYATS-YACHT-SECRET
+  NEXTAUTH_URL: http://localhost:3000/api/auth
+  MONGODB_URI: mongodb://root:password@localhost:27019/test?authSource=admin
 
 permissions:
   contents: read
@@ -91,12 +99,6 @@ jobs:
   e2e-tests:
     needs: build
     runs-on: ubuntu-latest
-    env:
-      APP_ENV: CI
-      AUTH_SECRET: ZAYATS-YACHT-SECRET
-      NEXTAUTH_SECRET: ZAYATS-YACHT-SECRET
-      NEXTAUTH_URL: http://localhost:3000/api/auth
-      SEND_EMAIL: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4

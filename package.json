@@ -78,6 +78,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "get-port": "^5.1.1",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "mongodb-memory-server": "^10.2.0",

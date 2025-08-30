@@ -2,7 +2,6 @@
  * @jest-environment node
  */
 import request from 'supertest';
-import InMemoryDBRunner from '@/modules/mongoose/InMemoryDBRunner';
 import { startNextServer, stopNextServer } from '@/helpers/test-next-server';
 import {
   regularShipStopSummerMedFethiye,
@@ -18,16 +17,16 @@ import {
 } from '@/test-data/seedData';
 import { summerMediterraneanSailing } from '@/test-data/sailings';
 
-describe('API /api/schedule/nearest', () => {
-  let inMemoryDBRunnerInstance: InMemoryDBRunner;
+describe('GET /api/schedule/nearest public API ', () => {
+  let serverUrl: string;
 
   beforeAll(async () => {
-    const { inMemoryDBRunner } = await startNextServer(3000);
-    inMemoryDBRunnerInstance = inMemoryDBRunner;
+    const { url } = await startNextServer();
+    serverUrl = url;
   }, 70000);
 
   afterAll(async () => {
-    await stopNextServer(inMemoryDBRunnerInstance);
+    await stopNextServer();
   });
 
   const toExpectedStop = (stop: any, port: any) =>
@@ -54,8 +53,8 @@ describe('API /api/schedule/nearest', () => {
       })
     });
 
-  it('returns 200', async () => {
-    const res = await request('http://localhost:3000').get('/api/schedule/nearest');
+  it("should returns three nearest shipping's", async () => {
+    const res = await request(serverUrl).get('/api/schedule/nearest');
     expect(res.status).toBe(200);
 
     const segments = [

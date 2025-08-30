@@ -1,12 +1,18 @@
 import { spawn } from 'child_process';
 import InMemoryDBRunner from '@/modules/mongoose/InMemoryDBRunner';
+import getPort from 'get-port'; // 👈 use "get-port": "^5.1.1" because it is not ESM
 
 /* eslint-disable no-console */
 
 let nextProcess: any;
+let InMemoryDBRunnerInstance: InMemoryDBRunner;
 
-export async function startNextServer(port = 3000) {
+export async function startNextServer() {
+  const port = await getPort(); // 👈free port
+  console.log('Starting Next.js server on port ', port);
+
   const inMemoryDBRunner = new InMemoryDBRunner();
+  InMemoryDBRunnerInstance = inMemoryDBRunner;
   const uri = await inMemoryDBRunner.connectToInMemoryDBAndLoadTestData();
 
   nextProcess = spawn('npx', ['next', 'dev', '-p', port.toString()], {
@@ -31,22 +37,22 @@ export async function startNextServer(port = 3000) {
     });
 
     nextProcess.stderr.on('data', (data: Buffer) => {
-      console.error('Next.js stderr:', data.toString());
+      console.error(`[Next.js stderr port:${port}]:`, data.toString());
     });
 
     nextProcess.on('error', reject);
 
     setTimeout(() => {
-      if (!ready) reject(new Error('Next.js server did not start in time'));
-    }, 70000);
+      if (!ready) reject(new Error(`Next.js server did not start in time on port ${port}`));
+    }, 60000);
   });
 
-  return { port, inMemoryDBRunner };
+  return { port, url: `http://localhost:${port}`, inMemoryDBRunner, process: nextProcess };
 }
 
-export async function stopNextServer(inMemoryDBRunner?: InMemoryDBRunner) {
-  if (inMemoryDBRunner) {
-    await inMemoryDBRunner.closeDatabase();
+export async function stopNextServer() {
+  if (InMemoryDBRunnerInstance) {
+    await InMemoryDBRunnerInstance.closeDatabase();
   }
 
   if (nextProcess) {

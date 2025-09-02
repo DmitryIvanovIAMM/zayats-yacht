@@ -2,6 +2,8 @@ import { spawn } from 'child_process';
 import InMemoryDBRunner from '@/modules/mongoose/InMemoryDBRunner';
 import getPort from 'get-port'; // 👈 use "get-port": "^5.1.1" because it is not ESM
 
+/* eslint-disable no-console */
+
 export async function startNextServer() {
   const port = await getPort();
   console.log('Starting Next.js server on port ', port);

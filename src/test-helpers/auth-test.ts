@@ -118,6 +118,8 @@ export const logout = async (agent: request.SuperTest<request.Test>) => {
   await agent.post('/api/auth/logout');
 };
 
+export const mapObjectToFormUrlEncoded = (obj: Record<string, any>): string => {
+  return Object.entries(obj)
     .map(([key, value]) => `${key}=${encodeURIComponent(value == null ? '' : value)}`)
     .join('&');
 };

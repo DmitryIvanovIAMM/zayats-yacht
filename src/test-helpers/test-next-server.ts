@@ -60,7 +60,11 @@ export async function stopNextServer() {
       setTimeout(() => {
         if (!proc.killed) {
           try {
-            process.kill(proc.pid!, 'SIGKILL');
+            if (proc.pid !== undefined) {
+              process.kill(proc.pid, 'SIGKILL');
+            } else {
+              console.warn('Cannot SIGKILL Next.js: proc.pid is undefined');
+            }
           } catch (e) {
             console.warn('Next.js already terminated:', e);
           }

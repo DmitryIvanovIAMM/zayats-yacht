@@ -13,7 +13,7 @@
     "start": "next start",
     "lint": "next lint",
     "test:unit": "jest --config jest.unit.config.js",
-    "test:api": "jest --config jest.api.config.js --runInBand",
+    "test:api": "jest --config jest.api.config.js --runInBand --forceExit --detectOpenHandles",
     "e2e": "start-server-and-test dev:mongo http://localhost:3000 \"cypress run --e2e\"",
     "e2e:watch": "start-server-and-test dev:mongo http://localhost:3000 \"cypress open --e2e\"",
     "cypress:open": "cypress open"

@@ -1,8 +1,8 @@
 /**
  * @jest-environment node
  */
-import request from 'supertest';
-import { startNextServer, stopNextServer } from '@/helpers/test-next-server';
+import request, { Test } from 'supertest';
+import { startNextServer, stopNextServer } from '@/test-helpers/test-next-server';
 import {
   regularShipStopSummerMedFethiye,
   regularShipStopSummerMedFortLauderdale,
@@ -16,18 +16,25 @@ import {
   palmaDeMallorcaPort
 } from '@/test-data/seedData';
 import { summerMediterraneanSailing } from '@/test-data/sailings';
+import TestAgent from 'supertest/lib/agent';
 
 describe('GET /api/schedule/nearest public API ', () => {
-  let serverUrl: string;
+  let agent: TestAgent<Test> | null = null;
+  let selfTestServerControl = false;
 
   beforeAll(async () => {
-    const { url } = await startNextServer();
-    serverUrl = url;
+    if (!global.__NEXT_SERVER__) {
+      selfTestServerControl = true;
+      const { url, port, proc, inMemoryDBRunner } = await startNextServer();
+      global.__NEXT_SERVER__ = { url, port, proc, inMemoryDBRunner };
+    }
+    const { url } = global.__NEXT_SERVER__;
+    agent = request(url);
   }, 70000);
 
   afterAll(async () => {
-    await stopNextServer();
-  });
+    if (selfTestServerControl) await stopNextServer();
+  }, 20000);
 
   const toExpectedStop = (stop: any, port: any) =>
     expect.objectContaining({
@@ -54,8 +61,8 @@ describe('GET /api/schedule/nearest public API ', () => {
     });
 
   it("should returns three nearest shipping's", async () => {
-    const res = await request(serverUrl).get('/api/schedule/nearest');
-    expect(res.status).toBe(200);
+    const response = await agent?.get('/api/schedule/nearest');
+    expect(response?.status).toBe(200);
 
     const segments = [
       // Fort Lauderdale -> Palma
@@ -75,11 +82,11 @@ describe('GET /api/schedule/nearest public API ', () => {
       ])
     ];
 
-    expect(res.body).toEqual(
+    expect(response?.body).toEqual(
       expect.objectContaining({
         success: true,
         data: expect.arrayContaining(segments)
       })
     );
-  }, 40000);
+  }, 80000);
 });

@@ -12,7 +12,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "test:unit": "jest --config jest.unit.config.js",
+    "test:api": "jest --config jest.api.config.js --runInBand",
     "e2e": "start-server-and-test dev:mongo http://localhost:3000 \"cypress run --e2e\"",
     "e2e:watch": "start-server-and-test dev:mongo http://localhost:3000 \"cypress open --e2e\"",
     "cypress:open": "cypress open"
@@ -87,6 +88,7 @@
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.1",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0"
   }

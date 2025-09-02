@@ -54,7 +54,6 @@ describe('POST /api/quote-request public API', () => {
     login: string = yachtAdmin.email,
     password: string = defaultPassword
   ) => {
-    // const authCookie = await getAuthCookie(agent, serverUrl, login, password);
     const authCookie = await getAuthCookie(agent as TestAgent<Test>, login, password);
     return agent
       ?.post('/api/quote-request')
@@ -62,7 +61,7 @@ describe('POST /api/quote-request public API', () => {
       .set('Cookie', authCookie as string);
   };
 
-  it('should return unauthenticated response', async () => {
+  it('should return unauthenticated for non-logged user', async () => {
     const response = await agent?.post('/api/quote-request').send(correctQuoteRequest);
 
     expect(response?.status).toBe(200);
@@ -73,6 +72,53 @@ describe('POST /api/quote-request public API', () => {
       })
     );
   }, 40000);
+
+  it('should return validation errors for wrong data', async () => {
+    const wrongQuoteRequest = {
+      firstName: '',
+      lastName: false,
+      phoneNumber: '',
+      email: 'test.john.doe.email.gmail.com',
+      bestTimeToContact: 4,
+      purpose: true,
+      yachtName: false,
+      yachtModel: '',
+      insuredValue: -500000,
+      length: -30,
+      lengthUnit: 'km',
+      beam: -8,
+      beamUnit: 'kg',
+      weight: -20,
+      weightUnit: 'tons',
+      fromWhere: false,
+      toWhere: true,
+      when: '2024-12',
+      notes: 50
+    };
+
+    const response = await postAuthenticatedQuoteRequest(
+      wrongQuoteRequest as any as QuoteRequestForm
+    );
+
+    expect(response?.status).toBe(200);
+    expect(response?.body).toEqual(
+      expect.objectContaining({
+        success: false,
+        message: Messages.ValidationError,
+        data: expect.objectContaining({
+          firstName: ['First Name is required'],
+          phoneNumber: ['Phone is required'],
+          email: ['Must be valid email'],
+          purpose: [
+            'purpose must be one of the following values: boatShow, charter, purchaseSale, yardWork, fishingTournament, regatta, other, '
+          ],
+          lengthUnit: ['lengthUnit must be one of the following values: meters, feet'],
+          beamUnit: ['beamUnit must be one of the following values: meters, feet'],
+          weightUnit: ['weightUnit must be one of the following values: metricTons, lbs']
+        })
+      })
+    );
+  }, 80000);
 
   it('should accept quote request with correct data', async () => {
     const response = await postAuthenticatedQuoteRequest(correctQuoteRequest);

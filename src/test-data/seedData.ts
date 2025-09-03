@@ -3,6 +3,8 @@ import { REGULAR_SHIP_STOPS_2020 } from './regularShipStops_2020';
 import { ALASKA_YACHTING_SHIP_STOPS_2020 } from './alaskaYachtingAdventure_2020';
 import { Types } from 'mongoose';
 
+export const defaultPassword = 'Yacht123';
+
 export const customer1 = {
   _id: new Types.ObjectId('6809ea399a784e46a366d780'),
   name: 'Dmytro Ivanov',

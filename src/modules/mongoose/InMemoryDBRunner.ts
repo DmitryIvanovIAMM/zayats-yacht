@@ -7,8 +7,9 @@ class InMemoryDBRunner {
 
   public connectToInMemoryDBAndLoadTestData = async () => {
     try {
-      await this.connectToInMemoryDBServer();
+      const uri = await this.connectToInMemoryDBServer();
       await testDataLoader();
+      return uri;
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Failed to connect and load test data: ', error);
@@ -33,7 +34,7 @@ class InMemoryDBRunner {
       await mongoose.connect(uri, mongooseOptions);
       // eslint-disable-next-line no-console
       console.log('Connected to in-memory MongoDB:', uri);
-      return;
+      return uri;
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Cannot connect to in-memory mongodb:', error);

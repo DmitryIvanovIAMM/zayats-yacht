@@ -1,5 +1,3 @@
-'use server';
-
 import { fromBuffer } from 'file-type';
 import {
   DeleteObjectCommand,

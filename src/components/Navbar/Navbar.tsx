@@ -10,7 +10,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Image from 'next/image';
-import logoImage from '../../../public/images/allied_yacht_vertical_png_120.png';
+// import logoImage from '../../../public/images/allied_yacht_vertical_png_120.png';
+import logoImage from '../../../public/images/zayats-logo-transparent.png';
 import {
   CssBaseline,
   Divider,

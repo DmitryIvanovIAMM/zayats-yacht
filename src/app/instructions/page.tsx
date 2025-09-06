@@ -29,7 +29,7 @@ export default async function Instructions() {
     <Box id="faq" sx={{ ...centeredSectionSx, color: 'secondary.dark' }}>
       <SectionTitle title="Yacht Transport Instructions" />
       <div style={textStyle}>
-        <span style={emphasizedTextStyle}>Allied Yacht Transport</span> is pleased to provide our
+        <span style={emphasizedTextStyle}>Zayats Yacht Transport</span> is pleased to provide our
         customers with the following instructions and information to ensure a successful transit
         facilitated by properly preparing vessels and their representatives to work with our
         experienced, professional team in support of safely loading, stowing, and transporting
@@ -46,7 +46,7 @@ export default async function Instructions() {
             <h4>INSURANCE</h4>
           </AccordionSummary>
           <AccordionDetails>
-            <span style={emphasizedTextStyle}>Allied Yacht Transport</span> maintains marine cargo
+            <span style={emphasizedTextStyle}>Zayats Yacht Transport</span> maintains marine cargo
             insurance coverages. In addition, owners of all vessels to be transported should
             maintain insurance coverage to cover their vessel before and after the shipment.
             <br />
@@ -62,26 +62,26 @@ export default async function Instructions() {
             <h4>DOCUMENTATION, PASSPORTS & VISAS</h4>
           </AccordionSummary>
           <AccordionDetails>
-            <span style={emphasizedTextStyle}>Allied Yacht Transport</span> will facilitate the
+            <span style={emphasizedTextStyle}>Zayats Yacht Transport</span> will facilitate the
             timely customs filings, port passes, and other formalities required by law on your
             behalf at arrival ports for vessels and riders. The customs agency at the arrival port
             will arrange all necessary clearances.
             <br />
             <br />
-            <span style={emphasizedTextStyle}>Allied Yacht Transport</span> will request
+            <span style={emphasizedTextStyle}>Zayats Yacht Transport</span> will request
             documentation associated with the vessel to be transported. Customs procedures are to be
             strictly adhered to for each country of origin and destination.
             <br />
             <br />
-            Customs paperwork must be timely filed with the authorizedAllied Yacht Transport
+            Customs paperwork must be timely filed with the authorizedZayats Yacht Transport
             representative upon request. Without proper clearances in place, vessels will not be
             able to load or unload, resulting in significant fines from the country of origin,
             demurrage, or potential arrest of the vessel by authorities.
             <br />
             <br />
-            Citizens of countries other than the United States aboard an Allied Yacht Transport ship
+            Citizens of countries other than the United States aboard an Zayats Yacht Transport ship
             as a rider arriving in or passing through the United States are required to hold a valid
-            B1/B2 Visa. Without a B1/B2 Visa, riders will not be allowed on an Allied Yacht
+            B1/B2 Visa. Without a B1/B2 Visa, riders will not be allowed on an Zayats Yacht
             Transport ship.
             <br />
             <br />
@@ -125,7 +125,7 @@ export default async function Instructions() {
             <h4>VESSEL SPECIFICATIONS FOR CRIBBING</h4>
           </AccordionSummary>
           <AccordionDetails>
-            For a vessel to be safely secured and stowed on an Allied Yacht Transport ship, all
+            For a vessel to be safely secured and stowed on an Zayats Yacht Transport ship, all
             measurements provided must include any protrusions including but not limited to
             outriggers, bowsprits, transducers, etc.
             <br />
@@ -174,7 +174,7 @@ export default async function Instructions() {
           <AccordionDetails>
             Weight of the vessel can sometimes require that quantities of fuel and water onboard the
             vessel be reduced as much as possible while maintaining enough onboard for getting to
-            and from an Allied Yacht Transport ship.
+            and from an Zayats Yacht Transport ship.
             <br />
             <br />
             If the vessel to be loaded is of a significant weight, Allied Ocean Transport
@@ -204,7 +204,7 @@ export default async function Instructions() {
             <br />
             <br />
             Plug-in connections and specifications will be provided. If arrangements have been made
-            in advance,Allied Yacht Transport can also provide water connections. Standard 2&ldquo;
+            in advance,Zayats Yacht Transport can also provide water connections. Standard 2&ldquo;
             water connections are available on board and vessels are responsible for supplying their
             own hoses with multiple hoses sometimes required.
             <br />
@@ -235,8 +235,8 @@ export default async function Instructions() {
             <h4>STRICTLY PROHIBITED AND SUBJECT TO HEAVY FINES OR ARREST</h4>
           </AccordionSummary>
           <AccordionDetails>
-            WhileAllied Yacht Transport representatives will never board a vessel, the following are
-            strictly prohibited to be aboard a vessel during transport on an Allied Yacht Transport
+            WhileZayats Yacht Transport representatives will never board a vessel, the following are
+            strictly prohibited to be aboard a vessel during transport on an Zayats Yacht Transport
             ship:
             <ul> 1. Firearms </ul>
             <ul> 2. Ammunitions </ul>
@@ -259,7 +259,7 @@ export default async function Instructions() {
             Yacht Transport ship for loading.
             <br />
             <br />
-            Removal of waste from a vessel to the deck of an Allied Yacht Transport ship is strictly
+            Removal of waste from a vessel to the deck of an Zayats Yacht Transport ship is strictly
             prohibited.
             <br />
             <br />
@@ -274,11 +274,11 @@ export default async function Instructions() {
             <h4>GENERAL</h4>
           </AccordionSummary>
           <AccordionDetails>
-            <span style={emphasizedTextStyle}>Allied Yacht Transport</span> cannot accept deliveries
+            <span style={emphasizedTextStyle}>Zayats Yacht Transport</span> cannot accept deliveries
             for any vessel.
             <br />
             <br />
-            When an Allied Yacht Transport ship is anchored offshore, limited launch service will be
+            When an Zayats Yacht Transport ship is anchored offshore, limited launch service will be
             provided.
             <br />
             <br />
@@ -319,22 +319,22 @@ export default async function Instructions() {
           </AccordionSummary>
           <AccordionDetails>
             <li>
-              Radio check on VHF Channel 17 with theAllied Yacht Transport load master and await
+              Radio check on VHF Channel 17 with theZayats Yacht Transport load master and await
               instruction.
             </li>
             <br />
             <li>
-              Berthing alongside an Allied Yacht Transport ship is not permitted without prior
-              authorization from theAllied Yacht Transport load master.
+              Berthing alongside an Zayats Yacht Transport ship is not permitted without prior
+              authorization from theZayats Yacht Transport load master.
             </li>
             <br />
             <li>
-              Upon reaching theAllied Yacht Transport ship, ensure fenders and lines are set and
+              Upon reaching theZayats Yacht Transport ship, ensure fenders and lines are set and
               maintained at correct locations and heights.
             </li>
             <br />
             <li>
-              Pay close attention to instructions from crew and theAllied Yacht Transport load
+              Pay close attention to instructions from crew and theZayats Yacht Transport load
               master and be prepared for line handling.
             </li>
             <br />
@@ -344,7 +344,7 @@ export default async function Instructions() {
             </li>
             <br />
             <li>
-              Stay on board your vessel until the vessel is properly secured to theAllied Yacht
+              Stay on board your vessel until the vessel is properly secured to theZayats Yacht
               Transport ship.
             </li>
             <br />
@@ -355,17 +355,17 @@ export default async function Instructions() {
             </li>
             <br />
             <li>
-              Unless instructed otherwise, board the tender provided byAllied Yacht Transport and
+              Unless instructed otherwise, board the tender provided byZayats Yacht Transport and
               proceed to the designated marina for ground transportation.
             </li>
             <br />
             <li>
-              All riders aboard an Allied Yacht Transport ship must be on board one hour before
+              All riders aboard an Zayats Yacht Transport ship must be on board one hour before
               scheduled departure.
             </li>
             <br />
             <li>
-              If permitted, all visitors must leave theAllied Yacht Transport ship at least one hour
+              If permitted, all visitors must leave theZayats Yacht Transport ship at least one hour
               before scheduled departure
             </li>
             <br />
@@ -381,11 +381,11 @@ export default async function Instructions() {
             <h4>ARRIVAL AT PORT OF DISCHARGE</h4>
           </AccordionSummary>
           <AccordionDetails>
-            Arrive at designated departure dock to boardAllied Yacht Transport provided tender to be
+            Arrive at designated departure dock to boardZayats Yacht Transport provided tender to be
             transported to the ship.
             <br />
             <br />
-            Upon arrival by tender to theAllied Yacht Transport ship, pay close attention to Allied
+            Upon arrival by tender to theZayats Yacht Transport ship, pay close attention to Allied
             Ocean Transport crew instructions.
             <br />
             <br />
@@ -400,21 +400,21 @@ export default async function Instructions() {
             <h4>TIPS FOR VESSEL TRANSPORT RIDERS</h4>
           </AccordionSummary>
           <AccordionDetails>
-            <span style={emphasizedTextStyle}>Allied Yacht Transport</span> riders must attend the
+            <span style={emphasizedTextStyle}>Zayats Yacht Transport</span> riders must attend the
             orientation meeting on board the vessel prior to departure in order to familiarize
             themselves with safety protocols, procedures and ask any further questions of Allied
             Yacht Transport representatives and ship&lsquo;s crew before departure from port.
             <br />
             <br />
-            Riders must be physically capable of boarding an Allied Yacht Transport ship from a
+            Riders must be physically capable of boarding an Zayats Yacht Transport ship from a
             tender and climb a rope ladder.
             <br />
             <br />
-            After receiving instructions from an Allied Yacht Transport representatives or
+            After receiving instructions from an Zayats Yacht Transport representatives or
             ship&lsquo;s crew member, riders can proceed to climb the ladder and board the ship.
             <br />
             <br />
-            <span style={emphasizedTextStyle}>Allied Yacht Transport</span> does not accept any
+            <span style={emphasizedTextStyle}>Zayats Yacht Transport</span> does not accept any
             liability whatsoever for accidents associated with ladders utilized to board our ships.
             <br />
             <br />

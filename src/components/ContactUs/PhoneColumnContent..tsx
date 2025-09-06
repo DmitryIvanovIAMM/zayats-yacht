@@ -6,8 +6,8 @@ export default function PhoneColumnContent() {
     <div style={{ fontSize: '16px', lineHeight: '150%' }}>
       <br />
       Tel:&nbsp;
-      <a href="tel:+19549186694" style={{ textDecoration: 'none', color: secondary.dark }}>
-        +1 954-918-6694
+      <a href="tel:+15555555555" style={{ textDecoration: 'none', color: secondary.dark }}>
+        +1 555-555-5555
       </a>
       <br />
     </div>

@@ -45,7 +45,7 @@ const Testimonials: FC = () => {
       <Divider sx={dividerSx} />
       <Box sx={quotedTextSx}>
         I would like to express my sincere gratitude for the ship visit last week. Justin really
-        gave me a great tour! Very happy to be a customer and to be able to support Allied Yacht
+        gave me a great tour! Very happy to be a customer and to be able to support Zayats Yacht
         Transport. You are running a really good business!
         <br />
         Thanks again for the amazing customer service!!
@@ -57,7 +57,7 @@ const Testimonials: FC = () => {
       </Box>
       <Divider sx={dividerSx} />
       <Box sx={quotedTextSx}>
-        Thanks are in order for Allied Yacht Transport and Vadim who, thanks to their commitment to
+        Thanks are in order for Zayats Yacht Transport and Vadim who, thanks to their commitment to
         service, helped our team to ensure we made the trip to the transport boat on time for
         departure. Awesome support.
       </Box>

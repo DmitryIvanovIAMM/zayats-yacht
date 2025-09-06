@@ -4,11 +4,11 @@ export default function AddressColumnContent() {
   return (
     <div style={{ fontSize: '16px', lineHeight: '150%' }}>
       <br />
-      Allied Yacht Transport, LLC
+      Zayats Yacht Transport, LLC
       <br />
-      12555 Orange Drive, Suite 107
+      55555 Orange Drive, Suite 555
       <br />
-      Fort Lauderdale, FL, 33330, USA
+      Fort Lauderdale, FL, +55555, USA
     </div>
   );
 }

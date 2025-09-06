@@ -19,14 +19,14 @@ describe('ContactUs component', () => {
     const { container } = await setup();
 
     expect(container.getByText('Address')).toBeInTheDocument();
-    expect(container.container).toHaveTextContent('Allied Yacht Transport');
-    expect(container.container).toHaveTextContent('12555 Orange Drive, Suite 107');
-    expect(container.container).toHaveTextContent('Fort Lauderdale, FL, 33330, USA');
+    expect(container.container).toHaveTextContent('Zayats Yacht Transport');
+    expect(container.container).toHaveTextContent('55555 Orange Drive, Suite 555');
+    expect(container.container).toHaveTextContent('Fort Lauderdale, FL, +55555, USA');
 
     expect(container.getByText('Phone')).toBeInTheDocument();
-    expect(container.container).toHaveTextContent('+1 954-918-6694');
+    expect(container.container).toHaveTextContent('+1 555-555-5555');
 
     expect(container.getByText('Email')).toBeInTheDocument();
-    expect(container.container).toHaveTextContent('CustomerService@allied-yacht.com');
+    expect(container.container).toHaveTextContent('CustomerService@zayats-yacht.com');
   });
 });

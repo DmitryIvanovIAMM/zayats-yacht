@@ -10,8 +10,8 @@ export default function EmailsColumnContent() {
   return (
     <div style={{ fontSize: '16px', lineHeight: '150%' }}>
       <br />
-      <a href="mailto:CustomerService@allied-yacht.com" style={emailStyle}>
-        CustomerService@allied-yacht.com
+      <a href="mailto:CustomerService@zayats-yacht.com" style={emailStyle}>
+        CustomerService@zayats-yacht.com
       </a>
     </div>
   );

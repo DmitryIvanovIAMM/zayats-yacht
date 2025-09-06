@@ -19,7 +19,7 @@ export const INCLUDED_SERVICES: ServiceCardProps[] = [
     index: 3,
     title: 'Operational elements',
     description:
-      'All operational elements such as loading, discharging, cradling, and other equipment are always included in your yacht transport booking contract with Allied Yacht Transport.',
+      'All operational elements such as loading, discharging, cradling, and other equipment are always included in your yacht transport booking contract with Zayats Yacht Transport.',
     image: '/images/services/Operations1.jpg'
   },
   {
@@ -43,14 +43,14 @@ export const OPTIONAL_SERVICES: ServiceCardProps[] = [
     index: 1,
     title: 'Bait Freezer',
     description:
-      'Allied Yacht Transport is the first yacht transport company to provide bait freezers on every sailing that customers can use to store their frozen bait in. This alleviates the hassle and liability of carrying the bait in the yacht’s freezers. The bait is delivered to the port and is then stored in Allied Yacht Transport’s reefers at temperatures as low as -20 degrees Fahrenheit.',
+      'Zayats Yacht Transport is the first yacht transport company to provide bait freezers on every sailing that customers can use to store their frozen bait in. This alleviates the hassle and liability of carrying the bait in the yacht’s freezers. The bait is delivered to the port and is then stored in Zayats Yacht Transport’s reefers at temperatures as low as -20 degrees Fahrenheit.',
     image: '/images/services/Baitfreezer.jpg'
   },
   {
     index: 2,
     title: 'Power',
     description:
-      'Allied Yacht Transport provides boat plugs to yachts that want to have their battery chargers running during the trip. The power specifications are: 220 Volts x 50 Hertz x 15 Amps',
+      'Zayats Yacht Transport provides boat plugs to yachts that want to have their battery chargers running during the trip. The power specifications are: 220 Volts x 50 Hertz x 15 Amps',
     image: '/images/services/Power2.jpg'
   }
 ];

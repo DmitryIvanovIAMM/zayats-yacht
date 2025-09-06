@@ -27,7 +27,7 @@ const Services = () => {
         }}
       >
         <div style={{ marginLeft: '10px' }}>
-          <span style={emphasizedTextStyle}>Allied Yacht Transport</span>
+          <span style={emphasizedTextStyle}>Zayats Yacht Transport</span>
           &nbsp;offers numerous services which yacht owners have access to. Some services are
           necessary for every transport and these are included in every shipping contract; while
           others are optional based on customer needs.

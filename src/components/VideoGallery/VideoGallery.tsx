@@ -74,7 +74,7 @@ const VideoGallery = () => {
     return (
       <Image
         src={getVideoThumb(videoId)}
-        alt={'Allied Yacht Transport, LLC'}
+        alt={'Zayats Yacht Transport, LLC'}
         key={item?.original}
         height={50}
         width={73}

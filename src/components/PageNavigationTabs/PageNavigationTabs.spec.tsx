@@ -1,27 +1,31 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import PageNavigationTabs, { navigationTabsStyles } from './PageNavigationTabs';
+import PageNavigationTabs from './PageNavigationTabs';
 
 // Mock next/navigation to control usePathname
 jest.mock('next/navigation', () => ({
   // Will be overridden per test
-  usePathname: jest.fn(() => '/'),
+  usePathname: jest.fn(() => '/')
 }));
 
 // Mock next/link to render a simple anchor to avoid Next.js runtime specifics
 jest.mock('next/link', () => {
-  return ({ href, children, ...props }: any) => (
-    <a href={href} {...props}>
-      {children}
-    </a>
-  );
+  function NextLinkMock({ href, children, ...props }: any) {
+    return (
+      <a href={href} {...props}>
+        {children}
+      </a>
+    );
+  }
+  NextLinkMock.displayName = 'NextLinkMock';
+  return NextLinkMock;
 });
 
 describe('PageNavigationTabs', () => {
   const tabs = [
     { label: 'Home', link: '/' },
     { label: 'Destinations', link: '/destination' },
-    { label: 'Services', link: '/services' },
+    { label: 'Services', link: '/services' }
   ];
 
   function setPathname(path: string) {
@@ -45,7 +49,6 @@ describe('PageNavigationTabs', () => {
     render(<PageNavigationTabs tabs={tabs} />);
 
     // Find the inner Box for each tab via text
-    const home = screen.getByText('Home');
     const destination = screen.getByText('Destinations');
     const services = screen.getByText('Services');
 

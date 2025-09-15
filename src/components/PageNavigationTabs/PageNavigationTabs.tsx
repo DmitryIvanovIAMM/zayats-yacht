@@ -70,6 +70,7 @@ const PageNavigationTabs: FC<PageNavigationTabsProps> = ({ tabs }) => {
                 : { ...navigationTabsStyles.tabStyle, ...navigationTabsStyles.hooverSx }
             }
             component="nav"
+            data-active={currentPath?.includes(tab.link) ? 'true' : 'false'}
           >
             {tab.label}
           </Box>

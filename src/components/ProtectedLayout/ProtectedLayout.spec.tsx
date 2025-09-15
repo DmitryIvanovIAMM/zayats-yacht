@@ -18,7 +18,7 @@ const defaultSession: Session = {
   expires: new Date().toString()
 };
 
-const setup = (propsOverride: Partial<ProtectedLayoutProps>) => {
+const setup = (propsOverride: Partial<ProtectedLayoutProps> = {}) => {
   const protectedLayout = {
     session: defaultSession,
     ...propsOverride

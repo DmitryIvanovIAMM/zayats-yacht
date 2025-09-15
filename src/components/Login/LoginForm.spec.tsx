@@ -100,8 +100,10 @@ describe('LoginForm', () => {
   });
 
   it('shows spinner while submitting', async () => {
-    let resolveFn: ((value?: any) => void) | null = null;
-    const pending = new Promise((resolve: (value?: any) => void) => (resolveFn = resolve));
+    let resolveFn: ((value?: void) => void) | undefined;
+    const pending = new Promise<void>((resolve: (value?: void) => void) => {
+      resolveFn = resolve;
+    });
     signInMock.mockReturnValue(pending);
 
     render(<LoginForm />);
@@ -119,9 +121,7 @@ describe('LoginForm', () => {
 
     // CircularProgress renders with role "progressbar"
     expect(await screen.findByRole('progressbar')).toBeInTheDocument();
-
-    // Resolve the pending sign in and ensure spinner can disappear eventually
-  if (resolveFn) resolveFn({ error: undefined });
+    resolveFn?.();
     await waitFor(() => expect(signInMock).toHaveBeenCalled());
   });
 });

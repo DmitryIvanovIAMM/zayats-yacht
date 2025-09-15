@@ -67,7 +67,8 @@ export const defaultQuoteRequest: QuoteRequestForm = {
   beam: 0,
   beamUnit: LENGTH_METRIC.meters,
   weight: 0,
-  weightUnit: WEIGHT_METRIC.metricTons,
+  // Select expects the option key (e.g., 'metricTons'), not the display value
+  weightUnit: 'metricTons',
   fromWhere: '',
   toWhere: '',
   when: '',

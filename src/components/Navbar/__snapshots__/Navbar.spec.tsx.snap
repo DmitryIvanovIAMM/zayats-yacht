@@ -54,12 +54,8 @@ exports[`Navbar component should render correctly 1`] = `
               >
                 <img
                   alt="Allied-Yacht logo"
-                  data-nimg="1"
-                  decoding="async"
                   height="71"
-                  src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
-                  srcset="/_next/image?url=%2Fimg.jpg&w=128&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
-                  style="color: transparent;"
+                  src="test-file-stub"
                   width="105"
                 />
               </a>
@@ -121,7 +117,9 @@ exports[`Navbar component should render correctly 1`] = `
         tabindex="-1"
       />
       <div
+        aria-modal="true"
         class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorLeft css-cyqh1t-MuiPaper-root-MuiDrawer-paper"
+        role="dialog"
         style="--Paper-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12); visibility: hidden; -webkit-transform: translateX(-0px); transform: translateX(-0px);"
         tabindex="-1"
       >
@@ -139,12 +137,8 @@ exports[`Navbar component should render correctly 1`] = `
             >
               <img
                 alt="allied-yacht-left-menu-logo"
-                data-nimg="1"
-                decoding="async"
                 height="36"
-                src="/_next/image?url=%2Fimg.jpg&w=128&q=75"
-                srcset="/_next/image?url=%2Fimg.jpg&w=64&q=75 1x, /_next/image?url=%2Fimg.jpg&w=128&q=75 2x"
-                style="color: transparent;"
+                src="test-file-stub"
                 width="52"
               />
             </a>
@@ -409,12 +403,8 @@ exports[`Navbar component should render correctly 1`] = `
             >
               <img
                 alt="Allied-Yacht logo"
-                data-nimg="1"
-                decoding="async"
                 height="71"
-                src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
-                srcset="/_next/image?url=%2Fimg.jpg&w=128&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
-                style="color: transparent;"
+                src="test-file-stub"
                 width="105"
               />
             </a>

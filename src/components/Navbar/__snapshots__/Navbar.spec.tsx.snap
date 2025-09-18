@@ -55,7 +55,7 @@ exports[`Navbar component should render correctly 1`] = `
                 <img
                   alt="Allied-Yacht logo"
                   height="71"
-                  src="test-file-stub"
+                  src="[object Object]"
                   width="105"
                 />
               </a>
@@ -138,7 +138,7 @@ exports[`Navbar component should render correctly 1`] = `
               <img
                 alt="allied-yacht-left-menu-logo"
                 height="36"
-                src="test-file-stub"
+                src="[object Object]"
                 width="52"
               />
             </a>
@@ -404,7 +404,7 @@ exports[`Navbar component should render correctly 1`] = `
               <img
                 alt="Allied-Yacht logo"
                 height="71"
-                src="test-file-stub"
+                src="[object Object]"
                 width="105"
               />
             </a>

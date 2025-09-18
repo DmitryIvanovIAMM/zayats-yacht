@@ -4,12 +4,12 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 // Mocks must be defined before importing the component under test
 const enqueueMock = jest.fn();
 jest.mock('notistack', () => ({
-  useSnackbar: () => ({ enqueueSnackbar: enqueueMock }),
+  useSnackbar: () => ({ enqueueSnackbar: enqueueMock })
 }));
 
 const sendQuoteRequestMock = jest.fn();
 jest.mock('@/app/server-actions/serverActions', () => ({
-  sendQuoteRequestAction: (...args: any[]) => sendQuoteRequestMock(...args),
+  sendQuoteRequestAction: (...args: any[]) => sendQuoteRequestMock(...args)
 }));
 
 import QuoteRequest from './QuoteRequest';
@@ -117,5 +117,51 @@ describe('QuoteRequest', () => {
 
     resolveFn?.();
     await waitFor(() => expect(sendQuoteRequestMock).toHaveBeenCalled());
+  });
+
+  it('shows validation errors when user enters incomplete information', async () => {
+    render(<QuoteRequest />);
+
+    // Try to submit without filling any required fields
+    fireEvent.click(screen.getByRole('button', { name: /send/i }));
+
+    // Wait for validation errors to appear and check each required field
+    await waitFor(() => {
+      expect(screen.getByText('First Name is required')).toBeInTheDocument();
+    });
+
+    expect(screen.getByText('Last Name is required')).toBeInTheDocument();
+    expect(screen.getByText('Phone is required')).toBeInTheDocument();
+    expect(screen.getByText('Email is required')).toBeInTheDocument();
+
+    // Fill only first name and try to submit again
+    const firstName = screen.getByTestId('firstName-form-text-input') as HTMLInputElement;
+    fireEvent.change(firstName, { target: { value: 'John' } });
+    fireEvent.blur(firstName);
+
+    fireEvent.click(screen.getByRole('button', { name: /send/i }));
+
+    // First name error should be gone, but others should remain
+    await waitFor(() => {
+      expect(screen.queryByText('First Name is required')).not.toBeInTheDocument();
+    });
+
+    expect(screen.getByText('Last Name is required')).toBeInTheDocument();
+    expect(screen.getByText('Phone is required')).toBeInTheDocument();
+    expect(screen.getByText('Email is required')).toBeInTheDocument();
+
+    // Also test that filling an invalid email shows email validation
+    const email = screen.getByTestId('email-form-text-input') as HTMLInputElement;
+    fireEvent.change(email, { target: { value: 'invalid-email' } });
+    fireEvent.blur(email);
+
+    fireEvent.click(screen.getByRole('button', { name: /send/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText('Must be valid email')).toBeInTheDocument();
+    });
+
+    // Should not call the API when validation fails
+    expect(sendQuoteRequestMock).not.toHaveBeenCalled();
   });
 });

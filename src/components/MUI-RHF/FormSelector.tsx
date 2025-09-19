@@ -22,7 +22,6 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
     <Controller
       control={control}
       name={name}
-      defaultValue=""
       render={({ field, fieldState: { error } }) => {
         return (
           <div
@@ -41,7 +40,6 @@ export const FormSelector: FC<FormInputTextProps & { options: Record<string, str
                 onChange={(event) => {
                   setValue(name, event.target.value, defaultRHFSetValueOptions);
                 }}
-                defaultValue={WEIGHT_METRIC.metricTons}
                 value={field.value}
                 inputProps={{
                   MenuProps: { disableScrollLock: true },

@@ -5,12 +5,13 @@ import Navbar, { NavbarProps } from '@/components/Navbar/Navbar';
 import SessionProvider from '@/components/SessionProvider/SessionProvider';
 
 const mockSession = {
-  user: null
+  user: undefined,
+  expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
 };
 
 jest.mock('next/navigation');
 
-const setup = async (propsOverride?: Partial<NavbarProps> = {}, session: Partial<Session> = {}) => {
+const setup = async (propsOverride: Partial<NavbarProps> = {}, session: Partial<Session> = {}) => {
   const sessionForProvider = {
     ...mockSession,
     ...session

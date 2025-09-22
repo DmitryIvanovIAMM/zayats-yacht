@@ -2,6 +2,7 @@ import { queryNearestShippingsAction } from '@/app/server-actions/serverActions'
 
 function getAllowedOrigin(request: Request) {
   const origin = request.headers.get('origin');
+  console.log('getAllowedOrigin().  origin: ', origin);
   if (origin && origin.startsWith('http://localhost')) {
     return origin;
   }

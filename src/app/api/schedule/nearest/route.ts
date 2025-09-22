@@ -16,8 +16,9 @@ export async function GET(request: Request) {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
-      ...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      //...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
       'Access-Control-Allow-Headers': 'Content-Type'
     }
   });

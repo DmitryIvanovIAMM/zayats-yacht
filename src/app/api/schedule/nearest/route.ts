@@ -21,7 +21,8 @@ export async function GET(request: Request) {
       //...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
-      'Access-Control-Allow-Headers': 'Content-Type'
+      'Access-Control-Allow-Headers':
+        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
     }
   });
 }

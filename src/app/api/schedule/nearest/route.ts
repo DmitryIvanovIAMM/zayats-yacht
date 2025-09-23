@@ -12,7 +12,9 @@ function getAllowedOrigin(request: Request) {
 
 export async function GET(request: Request) {
   const schedule = await queryNearestShippingsAction(new Date());
-  //const allowedOrigin = getAllowedOrigin(request);
+  const allowedOrigin = getAllowedOrigin(request);
+  // eslint-disable-next-line no-console
+  console.log('allowedOrigin: ', allowedOrigin);
 
   return new Response(JSON.stringify(schedule), {
     status: 200,

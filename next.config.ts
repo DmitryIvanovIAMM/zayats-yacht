@@ -16,7 +16,9 @@ const nextConfig = {
     // temporary silent warning for legacy-js-api
     // https://github.com/vercel/next.js/issues/71638
     silenceDeprecations: ['legacy-js-api']
-  }
+  },
+  allowedDevOrigins: ['http://localhost:3000', 'http://localhost:8081']
+
   // headers: async () => {
   //   return [
   //     {

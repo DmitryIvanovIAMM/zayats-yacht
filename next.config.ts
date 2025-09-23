@@ -17,7 +17,7 @@ const nextConfig = {
     // https://github.com/vercel/next.js/issues/71638
     silenceDeprecations: ['legacy-js-api']
   },
-  async headers() {
+  headers: async () => {
     return [
       {
         source: '/api/(.*)',

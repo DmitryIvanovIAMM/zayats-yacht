@@ -14,7 +14,7 @@ export async function GET(request: Request) {
   const schedule = await queryNearestShippingsAction(new Date());
   const allowedOrigin = getAllowedOrigin(request);
   // eslint-disable-next-line no-console
-  console.log('allowedOrigin: ', allowedOrigin);
+  console.log('GET allowedOrigin: ', allowedOrigin);
 
   return new Response(JSON.stringify(schedule), {
     status: 200,
@@ -26,6 +26,16 @@ export async function GET(request: Request) {
       'Access-Control-Allow-Headers':
         'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
     }
+  });
+}
+
+export function OPTIONS(request: Request) {
+  const allowedOrigin = getAllowedOrigin(request);
+  // eslint-disable-next-line no-console
+  console.log('OPTIONS allowedOrigin: ', allowedOrigin);
+
+  return new Response(null, {
+    status: 200
   });
 }
 

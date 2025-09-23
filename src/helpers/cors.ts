@@ -2,11 +2,15 @@
 
 export function getAllowedOrigin(request: Request): string {
   const origin = request.headers.get('origin');
+  // eslint-disable-next-line no-console
+  console.log('§origin:', origin);
   return origin && /^https?:\/\/localhost(:\d+)?$/.test(origin) ? origin : '';
 }
 
 export function getCORSHeaders(request: Request): HeadersInit {
   const allowedOrigin = getAllowedOrigin(request);
+  // eslint-disable-next-line no-console
+  console.log('Allowed Origin:', allowedOrigin);
   const headers: Record<string, string> = {
     'Content-Type': 'application/json'
   };
@@ -17,5 +21,7 @@ export function getCORSHeaders(request: Request): HeadersInit {
     headers['Access-Control-Allow-Headers'] =
       'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version';
   }
+  // eslint-disable-next-line no-console
+  console.log('CORS Headers:', headers);
   return headers;
 }

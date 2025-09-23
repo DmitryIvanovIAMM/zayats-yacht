@@ -21,6 +21,7 @@ export async function GET(request: Request) {
     headers: {
       'Content-Type': 'application/json',
       ...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
+      ...(allowedOrigin && { 'Access-Control-Allow-Credentials': 'true' }),
       'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
       'Access-Control-Allow-Headers':
         'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
@@ -38,6 +39,7 @@ export function OPTIONS(request: Request) {
     headers: {
       'Content-Type': 'application/json',
       ...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
+      ...(allowedOrigin && { 'Access-Control-Allow-Credentials': 'true' }),
       'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
       'Access-Control-Allow-Headers':
         'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'

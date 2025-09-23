@@ -29,23 +29,23 @@ export async function GET(request: Request) {
   });
 }
 
-export function OPTIONS(request: Request) {
-  // const allowedOrigin = getAllowedOrigin(request);
-
-  return new Response(null, {
-    status: 204,
-    // headers: {
-    //   ...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
-    //   'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    //   'Access-Control-Allow-Headers': 'Content-Type'
-    // }
-    headers: {
-      'Content-Type': 'application/json',
-      //...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
-      'Access-Control-Allow-Headers':
-        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-    }
-  });
-}
+// export function OPTIONS(request: Request) {
+//   // const allowedOrigin = getAllowedOrigin(request);
+//
+//   return new Response(null, {
+//     status: 204,
+//     // headers: {
+//     //   ...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
+//     //   'Access-Control-Allow-Methods': 'GET, OPTIONS',
+//     //   'Access-Control-Allow-Headers': 'Content-Type'
+//     // }
+//     headers: {
+//       'Content-Type': 'application/json',
+//       //...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
+//       'Access-Control-Allow-Origin': '*',
+//       'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
+//       'Access-Control-Allow-Headers':
+//         'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+//     }
+//   });
+// }

@@ -2,47 +2,39 @@ import { queryNearestShippingsAction } from '@/app/server-actions/serverActions'
 
 function getAllowedOrigin(request: Request) {
   const origin = request.headers.get('origin');
-  // eslint-disable-next-line no-console
-  console.log('getAllowedOrigin().  origin: ', origin);
-  if (origin && /^https?:\/\/localhost(:\d+)?$/.test(origin)) {
-    return origin;
-  }
-  return '';
+  return origin && /^https?:\/\/localhost(:\d+)?$/.test(origin) ? origin : '';
+}
+
+function getCORSHeaders(request: Request) {
+  const allowedOrigin = getAllowedOrigin(request);
+  return allowedOrigin
+    ? {
+        'Access-Control-Allow-Origin': allowedOrigin,
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
+        'Access-Control-Allow-Headers':
+          'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+      }
+    : {};
 }
 
 export async function GET(request: Request) {
   const schedule = await queryNearestShippingsAction(new Date());
-  const allowedOrigin = getAllowedOrigin(request);
-  // eslint-disable-next-line no-console
-  console.log('GET allowedOrigin: ', allowedOrigin);
-
   return new Response(JSON.stringify(schedule), {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
-      ...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
-      ...(allowedOrigin && { 'Access-Control-Allow-Credentials': 'true' }),
-      'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
-      'Access-Control-Allow-Headers':
-        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+      ...getCORSHeaders(request)
     }
   });
 }
 
 export function OPTIONS(request: Request) {
-  const allowedOrigin = getAllowedOrigin(request);
-  // eslint-disable-next-line no-console
-  console.log('OPTIONS allowedOrigin: ', allowedOrigin);
-
   return new Response(null, {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
-      ...(allowedOrigin && { 'Access-Control-Allow-Origin': allowedOrigin }),
-      ...(allowedOrigin && { 'Access-Control-Allow-Credentials': 'true' }),
-      'Access-Control-Allow-Methods': 'GET, OPTIONS, HEAD, PUT, POST, DELETE',
-      'Access-Control-Allow-Headers':
-        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+      ...getCORSHeaders(request)
     }
   });
 }

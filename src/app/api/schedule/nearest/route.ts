@@ -4,7 +4,7 @@ function getAllowedOrigin(request: Request) {
   const origin = request.headers.get('origin');
   // eslint-disable-next-line no-console
   console.log('getAllowedOrigin().  origin: ', origin);
-  if (origin && origin.startsWith('http://localhost')) {
+  if (origin && /^https?:\/\/localhost(:\d+)?$/.test(origin)) {
     return origin;
   }
   return '';

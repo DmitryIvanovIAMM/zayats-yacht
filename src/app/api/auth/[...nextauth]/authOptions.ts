@@ -82,17 +82,17 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/sign-in',
     verifyRequest: '/auth/verify-request' // (used for check email message)
-  },
-  cookies: {
-    sessionToken: {
-      name: `next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        domain: 'localhost', // Uncomment if you want to force domain
-        secure: process.env.NODE_ENV === 'production'
-      }
-    }
   }
+  // cookies: {
+  //   sessionToken: {
+  //     name: `next-auth.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: 'lax',
+  //       path: '/',
+  //       domain: 'localhost', // Uncomment if you want to force domain
+  //       secure: process.env.NODE_ENV === 'production'
+  //     }
+  //   }
+  // }
 };

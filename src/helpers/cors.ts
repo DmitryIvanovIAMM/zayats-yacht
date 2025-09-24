@@ -20,6 +20,8 @@ export function getCORSHeaders(request: Request): HeadersInit {
     headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS, HEAD, PUT, POST, DELETE';
     headers['Access-Control-Allow-Headers'] =
       'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version';
+    headers['Access-Control-Expose-Headers'] =
+      'Set-Cookie, Content-Type, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version';
   }
   // eslint-disable-next-line no-console
   console.log('CORS Headers:', headers);

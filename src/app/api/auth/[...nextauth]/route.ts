@@ -63,6 +63,7 @@ export async function POST(request: Request, context: any) {
   });
   // eslint-disable-next-line no-console
   console.log('[nextauth] POST newHeaders: ', newHeaders);
+  // eslint-disable-next-line no-console
   console.log('response.bory: ', await response.body);
   return new Response(response.body, {
     status: response.status,

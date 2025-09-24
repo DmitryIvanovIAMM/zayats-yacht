@@ -13,7 +13,10 @@ const nextAuthHandler = NextAuth(authOptions);
 // Wrap GET and POST to set CORS headers
 export async function GET(request: Request, context: any) {
   const response = await nextAuthHandler(request, context);
+  console.log('GET response before CORS headers: ', response);
+  console.log('Request headers: ', request.headers);
   const headers = getCORSHeaders(request);
+  console.log('CORS headers to set: ', headers);
   Object.entries(headers).forEach(([key, value]) => {
     response.headers.set(key, value as string);
   });

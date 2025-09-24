@@ -110,7 +110,7 @@ export async function sendQuoteRequestAction(
   // eslint-disable-next-line no-console
   console.log('sendQuoteRequestAction().  quoteRequest: ', quoteRequest);
   // return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
-  return await sendQuoteRequest(yachtAdmin, quoteRequest);
+  return await sendQuoteRequest(yachtAdmin as User, quoteRequest);
 }
 
 export async function getBackendDataByAdminAction<T>(

@@ -83,4 +83,49 @@ export const authOptions: NextAuthOptions = {
     signIn: '/sign-in',
     verifyRequest: '/auth/verify-request' // (used for check email message)
   }
+  // https://next-auth.js.org/configuration/options#cookies
+  // cookies: {
+  //   sessionToken: {
+  //     name: `__Secure-next-auth.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: 'lax',
+  //       path: '/',
+  //       domain: 'localhost', // Uncomment if you want to force domain
+  //       secure: process.env.NODE_ENV === 'production'
+  //     }
+  //   },
+  //   csrfToken: {
+  //     name: `__Host-next-auth.csrf-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: 'lax',
+  //       path: '/',
+  //       domain: 'localhost', // Uncomment if you want to force domain
+  //       secure: process.env.NODE_ENV === 'production'
+  //     }
+  //   },
+  //   callbackUrl: {
+  //     name: `__Secure-next-auth.callback-url`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: 'lax',
+  //       path: '/',
+  //       domain: 'localhost', // Uncomment if you want to force domain
+  //       secure: process.env.NODE_ENV === 'production'
+  //     }
+  //   }
+  // }
+  // cookies: {
+  //   sessionToken: {
+  //     name: `next-auth.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       sameSite: 'lax',
+  //       path: '/',
+  //       domain: 'localhost', // Uncomment if you want to force domain
+  //       secure: process.env.NODE_ENV === 'production'
+  //     }
+  //   }
+  // }
 };

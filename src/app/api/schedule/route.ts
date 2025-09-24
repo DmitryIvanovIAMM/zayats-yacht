@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import { getSchedulesAction } from '@/app/server-actions/serverActions';
+import { getCORSHeaders } from '@/helpers/cors';
 
 export async function GET(request: NextRequest) {
   const scheduleParams = Object.fromEntries(request?.nextUrl?.searchParams);
@@ -11,6 +12,13 @@ export async function GET(request: NextRequest) {
 
   return new Response(JSON.stringify(schedule), {
     status: 200,
-    headers: { 'Content-Type': 'application/json' }
+    headers: getCORSHeaders(request)
+  });
+}
+
+export function OPTIONS(request: NextRequest) {
+  return new Response(null, {
+    status: 200,
+    headers: getCORSHeaders(request)
   });
 }

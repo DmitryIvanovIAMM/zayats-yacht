@@ -38,12 +38,20 @@ export async function GET(request: Request, context: any) {
 
 export async function POST(request: Request, context: any) {
   // eslint-disable-next-line no-console
+  console.log('[nextauth] POST request.body: ', await request.clone().text());
+  // eslint-disable-next-line no-console
+  console.log('[nextauth] POST request.headers: ', request.headers);
+  // eslint-disable-next-line no-console
+  console.log('[nextauth] POST request.cookies: ', request.headers.get('cookie'));
+  // eslint-disable-next-line no-console
+  console.log('[nextauth] POST context: ', context);
+  // eslint-disable-next-line no-console
   console.log('[nextauth] POST: ', request.method, request.url);
   // eslint-disable-next-line no-console
-  console.log('[nextauth] POST. request.headers', request.headers);
+  console.log('[nextauth] POST. request.headers: ', request.headers);
   const response = await nextAuthHandler(request, context);
   // eslint-disable-next-line no-console
-  console.log('[nextauth] POST response.body', response.body);
+  console.log('[nextauth] POST response.body: ', response.body);
   // eslint-disable-next-line no-console
   console.log('[nextauth] POST response.heders: ', response.headers);
   const corsHeaders = getCORSHeaders(request);

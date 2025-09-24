@@ -83,6 +83,7 @@ export const authOptions: NextAuthOptions = {
     signIn: '/sign-in',
     verifyRequest: '/auth/verify-request' // (used for check email message)
   }
+  // https://next-auth.js.org/configuration/options#cookies
   // cookies: {
   //   sessionToken: {
   //     name: `__Secure-next-auth.session-token`,

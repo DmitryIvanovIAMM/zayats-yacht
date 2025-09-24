@@ -45,7 +45,6 @@ import {
 } from '@/controllers/ShipsController';
 import { PortForm } from '@/components/AdminDashboard/AdminPorts/Port/types';
 import { ScheduleForm } from '@/components/AdminDashboard/ScheduleManagement/Schedule/types';
-import { yachtAdmin } from '@/test-data/seedData';
 
 export async function getPortsInRoutesAction(): Promise<ActionData<PortFrontend[]>> {
   try {
@@ -109,8 +108,7 @@ export async function sendQuoteRequestAction(
 ): Promise<ActionResult> {
   // eslint-disable-next-line no-console
   console.log('sendQuoteRequestAction().  quoteRequest: ', quoteRequest);
-  // return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
-  return await sendQuoteRequest(yachtAdmin as User, quoteRequest);
+  return await withServerAuth([Roles.Admin, Roles.User], sendQuoteRequest, quoteRequest);
 }
 
 export async function getBackendDataByAdminAction<T>(

@@ -16,6 +16,8 @@ export async function GET(request: Request, context: any) {
   console.log('[nextauth] GET', request.method, request.url);
   const response = await nextAuthHandler(request, context);
   // eslint-disable-next-line no-console
+  console.log('[nextauth] GET response.body', response.body);
+  // eslint-disable-next-line no-console
   console.log('[nextauth] GET response.headers', response.headers);
   const corsHeaders = getCORSHeaders(request);
   // eslint-disable-next-line no-console
@@ -40,6 +42,8 @@ export async function POST(request: Request, context: any) {
   // eslint-disable-next-line no-console
   console.log('[nextauth] POST. request.headers', request.headers);
   const response = await nextAuthHandler(request, context);
+  // eslint-disable-next-line no-console
+  console.log('[nextauth] POST response.body', response.body);
   // eslint-disable-next-line no-console
   console.log('[nextauth] POST response.heders: ', response.headers);
   const corsHeaders = getCORSHeaders(request);

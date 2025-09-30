@@ -1,9 +1,7 @@
 describe('Admin on Ports management page', () => {
   beforeEach(() => {
-    cy.visit('/sign-in?callbackUrl=/admin/ports');
-    cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
-    cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
-    cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
+    // @ts-ignore: custom command 'login' is defined in Cypress support
+    cy.login('admin', '/admin/ports');
     cy.contains('Ports', { timeout: 40000 });
   });
 

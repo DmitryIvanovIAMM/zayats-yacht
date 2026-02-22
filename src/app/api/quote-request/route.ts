@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import { sendQuoteRequestAction } from '@/app/server-actions/serverActions';
+import { getCORSHeaders } from '@/helpers/cors';
 
 export async function POST(request: NextRequest) {
   let body;
@@ -10,7 +11,7 @@ export async function POST(request: NextRequest) {
     console.error('Invalid JSON in request body:', err);
     return new Response(JSON.stringify({ error: 'Invalid JSON in request body' }), {
       status: 400,
-      headers: { 'Content-Type': 'application/json' }
+      headers: getCORSHeaders(request)
     });
   }
   // eslint-disable-next-line no-console
@@ -22,6 +23,13 @@ export async function POST(request: NextRequest) {
 
   return new Response(JSON.stringify(quoteRequestResult), {
     status: 200,
-    headers: { 'Content-Type': 'application/json' }
+    headers: getCORSHeaders(request)
+  });
+}
+
+export function OPTIONS(request: NextRequest) {
+  return new Response(null, {
+    status: 200,
+    headers: getCORSHeaders(request)
   });
 }

@@ -56,6 +56,9 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      - name: Run ESLint
+        run: npm run lint
+
       - name: Build with Next.js
         run: npm run build
 
@@ -156,4 +159,3 @@ jobs:
 
       - name: Run e2e tests with Cypress
         run: npm run e2e
-

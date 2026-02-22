@@ -140,6 +140,7 @@ export default function QuoteRequest() {
             >
               <Button
                 type="submit"
+                data-testid="quote-request-submit-button"
                 variant="contained"
                 endIcon={
                   <div

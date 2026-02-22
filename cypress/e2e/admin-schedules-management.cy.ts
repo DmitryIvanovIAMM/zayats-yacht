@@ -2,10 +2,8 @@ describe('Admin on Schedules management page', () => {
   beforeEach(() => {
     cy.viewport('macbook-15');
 
-    cy.visit('/sign-in?callbackUrl=/admin/schedule-management');
-    cy.get('[data-testid="email-form-text-input"]').clear().type('yacht.admin@gmail.com').blur();
-    cy.get('[data-testid="password-form-text-input"]').clear().type('Yacht123').blur();
-    cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
+    // @ts-ignore: custom command 'login' is defined in Cypress support
+    cy.login('admin', '/admin/schedule-management');
     cy.contains('Sailing Name', { timeout: 45000 });
   });
 

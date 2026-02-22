@@ -1,37 +1,18 @@
-/// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+// @ts-ignore: Cypress.Commands.add custom command type
+Cypress.Commands.add('login', (role = 'user', callbackUrl = '') => {
+  // UI-based login for NextAuth.js
+  let email = '';
+  let password = '';
+  if (role === 'admin') {
+    email = 'yacht.admin@gmail.com';
+    password = 'Yacht123';
+  } else {
+    email = 'customer3@email.com';
+    password = 'Yacht123';
+  }
+  const url = callbackUrl ? `/sign-in?callbackUrl=${callbackUrl}` : '/sign-in';
+  cy.visit(url);
+  cy.get('[data-testid="email-form-text-input"]').clear().type(email).blur();
+  cy.get('[data-testid="password-form-text-input"]').clear().type(password).blur();
+  cy.get('[data-testid="login-form-button"]').should('be.enabled').click();
+});

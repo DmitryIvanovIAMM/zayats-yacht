@@ -45,11 +45,13 @@ export enum Messages {
   ArrivalOnShouldBeBeforeDepartureOn = 'Arrival date should be before departure date',
   DepartureOnShouldBeAfterArrivalOn = 'Departure date should be after arrival date',
   MilesRequired = 'Miles are required',
-  NonNegativeMiles = 'Miles must be a non-negative number',
+  NonNegativeNumber = 'Must be a non-negative number',
   ShipStopsRequired = 'At least one ship stop is required',
   FailedAddSchedule = 'Failed to add schedule',
   ScheduleAddedSuccessfully = 'Schedule added successfully',
   FailedUpdateSchedule = 'Failed to update schedule',
   ScheduleUpdatedSuccessfully = 'Schedule updated successfully',
+  SpacePriceRequired = 'Space Price is required',
+  InsuranceCoefficientRequired = 'Insurance Coefficient is required',
   ValidationError = 'Validation error'
 }

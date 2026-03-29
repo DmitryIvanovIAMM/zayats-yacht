@@ -1,0 +1,2 @@
+export const DEFAULT_SPACE_PRICE = 1000;
+export const DEFAULT_INSURANCE_COEFFICIENT = 0.23;
